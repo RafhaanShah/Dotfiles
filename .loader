@@ -1,0 +1,7 @@
+### loads all other dot files
+
+# location of dotfile repository
+DOTFILE_DIR="${HOME}/Dotfiles"
+
+### exported environment variables
+[ -f "${DOTFILE_DIR}/.exports" ] && source "${DOTFILE_DIR}/.exports"

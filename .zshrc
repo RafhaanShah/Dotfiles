@@ -4,12 +4,11 @@
 # print date
 command -v date > /dev/null 2>&1 && date
 
-### environment variables
 # location of dotfile repository
 DOTFILE_DIR="${HOME}/Dotfiles"
 
-# load environment variables
-[ -f "${DOTFILE_DIR}/.env" ] && source "${DOTFILE_DIR}/.env"
+# load other dot files
+[ -f "${DOTFILE_DIR}/.loader" ] && source "${DOTFILE_DIR}/.loader"
 
 ### shell parameters
 # http://zsh.sourceforge.net/Doc/Release/Parameters.html#Parameters-Used-By-The-Shell
