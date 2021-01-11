@@ -1,5 +1,17 @@
 ### exported environment variables
 
+# add extra directories to the PATH
+PATH_DIRS=(
+	"${HOME}/bin" # home bin
+	"${HOME}/.local/bin" # alternative bin
+)
+	
+for DIR in "${PATH_DIRS[@]}"; do
+	[ -d "${DIR}" ] && PATH="${PATH}:${DIR}"
+done
+
+unset DIR && unset PATH_DIRS
+
 # colours used in ls
 export LS_COLORS="di=1;34:ln=1;36:so=31:pi=31:ex=1;32:bd=35:cd=35:su=1;32:sg=1;32:tw=1;34:ow=1;34"
 
