@@ -1,18 +1,29 @@
 #!/bin/sh
+
+# exit on any error
 set -e
 
+# repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
+# list of files
+DOTFILES=(
+	.bashrc 
+	.zshrc
+)
+
+# add .old to existing files and symlink repo files to home directory
+add_symlinks() {
+	for FILE in "${DOTFILES[@]}"; do
+	    echo "${HOME}/${FILE}.old"
+		[ -f "${HOME}/${FILE}" ] && mv "${HOME}/${FILE}" "${HOME}/${FILE}.old"
+		ln -s "${DOTFILE_DIR}/${FILE}" "${HOME}/${FILE}"
+	done
+}
+
 
 echo "This will rename existing .zshrc and .bashrc and add symlinks to ${HOME}/Dotfiles"
 
-add_symlinks() {
-	[ -f "${HOME}/.zshrc" ] && mv "${HOME}/.zshrc" "${HOME}/.zshrc.old"
-	[ -f "${HOME}/.bashrc" ] && mv "${HOME}/.bashrc" "${HOME}/.bashrc.old"
-	
-	ln -s "${DOTFILE_DIR}/.zshrc" "${HOME}/.zshrc"
-	ln -s "${DOTFILE_DIR}/.bashrc" "${HOME}/.bashrc"
-}
-
+# prompt for confirmation
 read -p "Continue (y/n)?" CONT
 if [ "$CONT" != "y" ]; then
   exit 1
