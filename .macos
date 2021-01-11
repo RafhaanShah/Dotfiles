@@ -1,0 +1,5 @@
+### macOS specifics
+
+# enable colouring for ls
+export CLICOLOR=1
+export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
