@@ -7,8 +7,9 @@ set -e
 DOTFILE_DIR="${HOME}/Dotfiles"
 # list of files
 DOTFILES=(
+	.hushlogin
 	.bash_profile
-	.bashrc 
+	.bashrc
 	.zshrc
 )
 
