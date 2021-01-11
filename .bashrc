@@ -33,7 +33,11 @@ PROMPT_DIRTRIM=4
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
 # auto cd's into directories when typed in
-shopt -s autocd
+shopt -s autocd 2> /dev/null # needs Bash v4
+# check the window size after each command
+shopt -s checkwinsize
+# "**" used in a pathname expansion context will match all files and subdirectories
+shopt -s globstar 2> /dev/null # needs Bash v4
 # history list is appended to instead of overwritten
 shopt -s histappend
 # attempts spelling correction on directory names during word completion
@@ -72,3 +76,25 @@ bind '"\e[Z":menu-complete-backward'
 bind '"\e[A": history-search-backward'
 # same for down arrow
 bind '"\e[B": history-search-forward'
+
+
+### programmable completion
+# https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html
+
+# load default programmable completions
+if ! shopt -oq posix; then
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+	  	source /usr/share/bash-completion/bash_completion
+  	elif [ -f /etc/bash_completion ]; then
+    	source /etc/bash_completion
+	elif [[ -f /usr/local/etc/bash_completion ]]; then
+		source /usr/local/etc/bash_completion
+	fi
+fi
+
+# add completion for SSH hostnames based on ~/.ssh/config
+[[ -e "${HOME}/.ssh/config" ]] && complete -o "default" \
+	-o "nospace" \
+	-W "$(grep "^Host" ~/.ssh/config | \
+	grep -v "[?*]" | cut -d " " -f2 | \
+	tr ' ' '\n')" scp sftp ssh
