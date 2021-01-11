@@ -7,6 +7,7 @@ set -e
 DOTFILE_DIR="${HOME}/Dotfiles"
 # list of files
 DOTFILES=(
+	.bash_profile
 	.bashrc 
 	.zshrc
 )
@@ -14,14 +15,13 @@ DOTFILES=(
 # add .old to existing files and symlink repo files to home directory
 add_symlinks() {
 	for FILE in "${DOTFILES[@]}"; do
-	    echo "${HOME}/${FILE}.old"
+	    echo "${FILE}"
 		[ -f "${HOME}/${FILE}" ] && mv "${HOME}/${FILE}" "${HOME}/${FILE}.old"
 		ln -s "${DOTFILE_DIR}/${FILE}" "${HOME}/${FILE}"
 	done
 }
 
-
-echo "This will rename existing .zshrc and .bashrc and add symlinks to ${HOME}/Dotfiles"
+echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
 
 # prompt for confirmation
 read -p "Continue (y/n)?" CONT

@@ -1,6 +1,12 @@
 ### bash configuration
 # https://www.gnu.org/software/bash/manual/html_node/index.html
 
+# if not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # print date
 command -v date > /dev/null 2>&1 && date
 
