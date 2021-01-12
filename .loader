@@ -1,5 +1,12 @@
 ### loads all other dot files
 
+# helper functions
+# checks if we are running in wsl
+_is_wsl() { [ grep -qEi "(microsoft|WSL)" /proc/version &> /dev/null ]; }
+
+# checks if we are running on macOS
+_is_macos() { [ $(uname -s) = "Darwin" ]; }
+
 # location of dotfile repository
 DOTFILE_DIR="${HOME}/Dotfiles"
 
@@ -9,7 +16,18 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 # aliases
 [ -f "${DOTFILE_DIR}/.aliases" ] && source "${DOTFILE_DIR}/.aliases"
 
+# if on wsl, load wsl file
+if _is_wsl; then
+	[ -f "${DOTFILE_DIR}/.wsl" ] && source "${DOTFILE_DIR}/.wsl"
+fi
+
 # if on macOS, load macOS file
-if [ $(uname -s) = "Darwin" ]; then
+if _is_macos; then
 	[ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
 fi
+
+# functions
+# if aliases are used inside functions, they must be defined first
+[ -f "${DOTFILE_DIR}/.functions" ] && source "${DOTFILE_DIR}/.functions"
+
+unset DOTFILE_DIR

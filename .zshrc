@@ -4,15 +4,36 @@
 # print date
 command -v date > /dev/null 2>&1 && date
 
+
+### overrides
+
+# make history command behave like bash
+history() { builtin history -"$*" }
+
+
+### load config
+
 # location of dotfile repository
 DOTFILE_DIR="${HOME}/Dotfiles"
 
 # load other dot files
 [ -f "${DOTFILE_DIR}/.loader" ] && source "${DOTFILE_DIR}/.loader"
 
+
+### shell hook functions
+# http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
+
+# do not add HIST_IGNORE commands to interactive history
+function zshaddhistory() {
+  [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]
+}
+
+
 ### shell parameters
 # http://zsh.sourceforge.net/Doc/Release/Parameters.html#Parameters-Used-By-The-Shell
 
+# history file
+HISTFILE="${HOME}/.zsh_history"
 # history file size
 HISTSIZE=1000
 # ignores common commands when saving command history
@@ -69,15 +90,6 @@ setopt SHARE_HISTORY
 # use partial commands for history search with arrows
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
-
-
-### shell hook functions
-# http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
-
-# do not add HIST_IGNORE commands to interactive history
-function zshaddhistory() {
-  [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]
-}
 
 
 ### zsh completion

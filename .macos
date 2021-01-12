@@ -9,5 +9,8 @@ alias ls="command ls -G"
 alias copy="pbcopy"
 alias paste="paste"
 
-# opens file or folder in default app
+# opens file or folder in default app (the macOS command is open)
 unalias open
+
+# get last wake / sleep events
+alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'

@@ -10,11 +10,15 @@ esac
 # print date
 command -v date > /dev/null 2>&1 && date
 
+
+### load config
+
 # location of dotfile repository
 DOTFILE_DIR="${HOME}/Dotfiles"
 
 # load other dot files
 [ -f "${DOTFILE_DIR}/.loader" ] && source "${DOTFILE_DIR}/.loader"
+
 
 ### shell variables
 # https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
@@ -46,6 +50,7 @@ shopt -s dirspell 2> /dev/null
 shopt -s cdspell 2> /dev/null
 # case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
+
 
 ### readline settings
 # https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html

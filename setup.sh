@@ -25,9 +25,9 @@ add_symlinks() {
 echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
 
 # prompt for confirmation
-read -p "Continue (y/n)?" CONT
+read -p "Continue (y/n)? " CONT
 if [ "$CONT" != "y" ]; then
-  exit 1
+    exit 1
 else
-  add_symlinks && echo "Done"
+    add_symlinks && echo "Done"
 fi
