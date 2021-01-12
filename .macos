@@ -3,3 +3,11 @@
 # enable colouring for ls
 export CLICOLOR=1
 export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
+alias ls="command ls -G"
+
+# clipboard
+alias copy="pbcopy"
+alias paste="paste"
+
+# opens file or folder in default app
+unalias open

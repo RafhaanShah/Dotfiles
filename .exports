@@ -17,5 +17,6 @@ export LS_COLORS="di=1;34:ln=1;36:so=31:pi=31:ex=1;32:bd=35:cd=35:su=1;32:sg=1;3
 
 # default text editor
 export EDITOR="nano"
+
 # default visual text editor
 export VISUAL="${EDITOR}"

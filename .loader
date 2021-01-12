@@ -6,6 +6,9 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 # exported environment variables
 [ -f "${DOTFILE_DIR}/.exports" ] && source "${DOTFILE_DIR}/.exports"
 
+# aliases
+[ -f "${DOTFILE_DIR}/.aliases" ] && source "${DOTFILE_DIR}/.aliases"
+
 # if on macOS, load macOS file
 if [ $(uname -s) = "Darwin" ]; then
 	[ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
