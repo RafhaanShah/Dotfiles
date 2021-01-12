@@ -11,6 +11,7 @@ DOTFILES=(
     .bash_profile
     .bashrc
     .zshrc
+    .nanorc
 )
 
 # add .old to existing files and symlink repo files to home directory

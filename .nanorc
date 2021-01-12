@@ -1,0 +1,16 @@
+# nano syntax highlighting
+# https://github.com/scopatz/nanorc
+include "~/.nano/*.nanorc"
+
+# Automatically indent a newly created line
+set autoindent
+# Display line numbers to the left of the text area
+set linenumbers
+# Enable mouse support
+set mouse
+
+set functioncolor brightyellow
+set keycolor brightcyan
+set numbercolor white
+set statuscolor magenta
+set titlecolor brightyellow
