@@ -18,12 +18,12 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 
 # if on wsl, load wsl file
 if _is_wsl; then
-	[ -f "${DOTFILE_DIR}/.wsl" ] && source "${DOTFILE_DIR}/.wsl"
+    [ -f "${DOTFILE_DIR}/.wsl" ] && source "${DOTFILE_DIR}/.wsl"
 fi
 
 # if on macOS, load macOS file
 if _is_macos; then
-	[ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
+    [ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
 fi
 
 # functions

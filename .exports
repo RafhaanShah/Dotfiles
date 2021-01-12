@@ -2,12 +2,12 @@
 
 # add extra directories to the PATH
 PATH_DIRS=(
-	"${HOME}/bin" # home bin
-	"${HOME}/.local/bin" # alternative bin
+    "${HOME}/bin" # home bin
+    "${HOME}/.local/bin" # alternative bin
 )
-	
+    
 for DIR in "${PATH_DIRS[@]}"; do
-	[ -d "${DIR}" ] && PATH="${PATH}:${DIR}"
+    [ -d "${DIR}" ] && PATH="${PATH}:${DIR}"
 done
 
 unset DIR && unset PATH_DIRS

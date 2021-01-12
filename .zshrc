@@ -8,7 +8,7 @@ command -v date > /dev/null 2>&1 && date
 ### overrides
 
 # make history command behave like bash
-history() { builtin history -"$*" }
+history() { builtin history -"$*"; }
 
 
 ### load config
@@ -24,9 +24,7 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 # http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 
 # do not add HIST_IGNORE commands to interactive history
-function zshaddhistory() {
-  [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]
-}
+zshaddhistory() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
 
 
 ### shell parameters

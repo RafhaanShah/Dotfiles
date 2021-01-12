@@ -1,5 +1,5 @@
 ### functions
-testfun() { myvar=abc; }
+
 # auto ls after cd
 cd() {
     if [ "$#" -eq 0 ]; then
@@ -64,6 +64,7 @@ extract() {
          echo "$1 is not a valid file"
      fi
 }
+
 # count the number of files and directories
 dirstat() { 
     local files="$(ls -p | grep -v / | wc -l)"
@@ -88,17 +89,17 @@ sizeof() {
 
 # open github repo in browser
 github() {
-	if ! git branch 2>/dev/null 1>&2 ; then
-		echo "Not a git repo"
-		return 1
-	fi
+    if ! git branch 2>/dev/null 1>&2 ; then
+        echo "Not a git repo"
+        return 1
+    fi
     
-	local base_url="$(git remote get-url origin)"
-	base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
-	base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
-	base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
+    local base_url="$(git remote get-url origin)"
+    base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
+    base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
+    base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
 
-	open "${base_url}/$1" &> /dev/null || (echo "Failed to open url" && return 1)
+    open "${base_url}/$1" &> /dev/null || (echo "Failed to open url" && return 1)
 }
 
 # enerate a qrcode
@@ -114,6 +115,7 @@ weather() {
         curl "http://wttr.in/London"
     fi
 }
+
 
 ### helper functions
 # checks if the given command exists
