@@ -7,7 +7,12 @@ PATH_DIRS=(
 )
     
 for DIR in "${PATH_DIRS[@]}"; do
-    [ -d "${DIR}" ] && PATH="${PATH}:${DIR}"
+    if [ -d "${DIR}" ]; then
+        case ":${PATH:=$DIR}:" in
+            *:"$DIR":*) ;;
+            *) PATH="${PATH}:${DIR}" ;;
+        esac
+    fi
 done
 
 unset DIR && unset PATH_DIRS
