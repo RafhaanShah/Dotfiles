@@ -1,23 +1,8 @@
 ### zsh configuration
 # http://zsh.sourceforge.net/Doc/Release/
 
-# print date
-command -v date > /dev/null 2>&1 && date
-
-
-### overrides
-
-# make history command behave like bash
-history() { builtin history -"$*"; }
-
-
-### load config
-
-# location of dotfile repository
-DOTFILE_DIR="${HOME}/Dotfiles"
-
-# load other dot files
-[ -f "${DOTFILE_DIR}/.loader" ] && source "${DOTFILE_DIR}/.loader"
+# load config
+[ -f "${HOME}/Dotfiles/.loader" ] && source "${HOME}/Dotfiles/.loader"
 
 
 ### shell hook functions
@@ -25,6 +10,12 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 
 # do not add HIST_IGNORE commands to interactive history
 zshaddhistory() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
+
+
+### overrides
+
+# make history command behave like bash
+history() { builtin history -"$@"; }
 
 
 ### shell parameters

@@ -1,14 +1,10 @@
 ### loads all other dot files
 
-# helper functions
-# checks if we are running in wsl
-_is_wsl() { [ grep -qEi "(microsoft|WSL)" /proc/version &> /dev/null ]; }
-
-# checks if we are running on macOS
-_is_macos() { [ $(uname -s) = "Darwin" ]; }
-
 # location of dotfile repository
 DOTFILE_DIR="${HOME}/Dotfiles"
+
+# helper functions
+[ -f "${DOTFILE_DIR}/.helpers" ] && source "${DOTFILE_DIR}/.helpers"
 
 # exported environment variables
 [ -f "${DOTFILE_DIR}/.exports" ] && source "${DOTFILE_DIR}/.exports"
@@ -26,8 +22,13 @@ if _is_macos; then
     [ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
 fi
 
-# functions
-# if aliases are used inside functions, they must be defined first
+# functions (to be loaded after aliases as aliases are read at function definition)
 [ -f "${DOTFILE_DIR}/.functions" ] && source "${DOTFILE_DIR}/.functions"
+
+# print some info at the start of a new terminal
+_command_exists date && date
+_command_exists uptime && uptime
+_is_bash && echo "${USER} @ ${HOST} running bash ${BASH_VERSION}"
+_is_zsh && echo "${USER} @ ${HOST} running zsh ${ZSH_VERSION}"
 
 unset DOTFILE_DIR

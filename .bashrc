@@ -7,17 +7,8 @@ case $- in
       *) return;;
 esac
 
-# print date
-command -v date > /dev/null 2>&1 && date
-
-
-### load config
-
-# location of dotfile repository
-DOTFILE_DIR="${HOME}/Dotfiles"
-
-# load other dot files
-[ -f "${DOTFILE_DIR}/.loader" ] && source "${DOTFILE_DIR}/.loader"
+# load config
+[ -f "${HOME}/Dotfiles/.loader" ] && source "${HOME}/Dotfiles/.loader"
 
 
 ### shell variables

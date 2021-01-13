@@ -1,0 +1,25 @@
+### common use helper functions
+
+# checks if the given command exists
+_command_exists() { command -v "$1" >/dev/null 2>&1; }
+
+# checks if the given variable is set
+_variable_set() { [ -n "$1" ]; }
+
+# checks if $2 begins with $1
+_begins_with() { case "$2" in "$1"*) true;; *) false;; esac; }
+
+# checks if $2 ends with $1
+_ends_with() { case "$2" in *"$1") true;; *) false;; esac; }
+
+# checks if we are running bash
+_is_bash() { _variable_set "${BASH_VERSION}"; }
+
+# checks if we are running zsh
+_is_zsh() { _variable_set "${ZSH_VERSION}"; }
+
+# checks if we are running in wsl
+_is_wsl() { [ grep -qEi "(microsoft|WSL)" /proc/version &> /dev/null ]; }
+
+# checks if we are running on macOS
+_is_macos() { [ $(uname -s) = "Darwin" ]; }
