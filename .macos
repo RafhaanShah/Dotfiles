@@ -1,5 +1,8 @@
 ### macOS specifics
 
+# opens file or folder in default app (the macOS command is open)
+unalias open
+
 # enable colouring for ls
 export CLICOLOR=1
 export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
@@ -8,9 +11,6 @@ alias ls='command ls -G'
 # clipboard
 alias copy='pbcopy'
 alias paste='paste'
-
-# opens file or folder in default app (the macOS command is open)
-unalias open
 
 # get last wake / sleep events
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'

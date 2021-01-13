@@ -24,14 +24,14 @@ CP_FILES=(
 )
     
 run_setup() {
-    [ ! -d "${DOTFILE_DIR}" ] && echo "Inavlid Dotfile folder" && exit 1
+    [ ! -d "${DOTFILE_DIR}" ] && echo "Invalid Dotfile folder" && exit 1
     mkdir -p "${DOTFILE_DIR}/old"
     copy_dotfiles
     symlink_dotfiles
 }
 
 copy_dotfiles() {
-    for FILE in "${DOTFILES[@]}"; do
+    for FILE in "${CP_FILES[@]}"; do
         echo "${FILE}"
         [ -f "${HOME}/${FILE}" ] && mv "${HOME}/${FILE}" "${BACKUP_DIR}/${FILE}.old"
         cp "${CP_FILES}/${FILE}" "${HOME}/${FILE}"

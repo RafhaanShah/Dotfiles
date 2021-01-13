@@ -25,3 +25,6 @@ export EDITOR="nano"
 
 # default visual text editor
 export VISUAL="${EDITOR}"
+
+# for using GPG with git
+export GPG_TTY=$(tty)
