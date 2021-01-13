@@ -1,0 +1,28 @@
+### git config
+# https://git-scm.com/docs/git-config
+[user]
+        email = RafhaanShah@users.noreply.github.com
+        name = Rafhaan Shah
+        # signingkey = GPG_KEY_ID
+
+[core]
+        editor = nano
+
+[credential]
+        # Windows
+        # helper = wincred
+        # macOS
+        # helper = osxkeychain
+        # Linux: https://github.com/microsoft/Git-Credential-Manager-Core
+        # credentialStore = gpg
+        # helper = /usr/bin/git-credential-manager-core
+
+[credential "https://dev.azure.com"]
+        # needed for git-credential-manager-core
+        # useHttpPath = true
+
+[gpg]
+        # Windows
+    	# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+        # macOS / Linux
+        # program = gpg2
