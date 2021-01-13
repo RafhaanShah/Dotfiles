@@ -39,7 +39,7 @@ hist() {
     if [ "$#" -eq 0 ]; then
         history 25
     else 
-        history 1000 | grep "$@" | grep -v "hist"
+        history 1000 | grep "$*" | grep -v "hist"
     fi
 }
 

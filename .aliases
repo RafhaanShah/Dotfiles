@@ -1,61 +1,60 @@
 ### aliases
-# if any $ variables are used then use single quotes
 
 # carries over aliases with sudo
-alias sudo="sudo "
+alias sudo='sudo '
 
 # ls aliases
-alias ls="command ls --color" # show colours
-alias ll="ls -lh" # long human readable format
-alias lsa="ls -A" # include hidden files
-alias lsf="ls -p | grep -v /" # list files only
-alias lsd="ls -d */ 2> /dev/null" # list folders only
-alias ls.="ls -d .[^.]* 2> /dev/null" # list hidden items only
+alias ls='command ls --color' # show colours
+alias ll='ls -lh' # long human readable format
+alias lsa='ls -A' # include hidden files
+alias lsf='ls -p | grep -v /' # list files only
+alias lsd='ls -d */ 2> /dev/null' # list folders only
+alias ls.='ls -d .[^.]* 2> /dev/null' # list hidden items only
 
 # cd aliases
-alias cd..="cd .."
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # coloured grep
-alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # safer file operations
-alias rm="rm -Irv"
-alias mv="mv -iv"
-alias cp="cp -aiv"
+alias rm='rm -Irv'
+alias mv='mv -iv'
+alias cp='cp -aiv'
 
 # reloads shell
-alias reload='exec ${SHELL} -l'
+alias reload='exec "${SHELL}" -l'
 
 # get exit code of last command
 alias lexit='echo $?'
 
 # shows path
-alias path='echo -e ${PATH//:/\\n}'
+alias path='echo -e "${PATH//:/\\n}"'
 
 # opens file or folder in default app
-alias open="xdg-open"
+alias open='xdg-open'
 
 # clipboard
-alias copy="xclip -selection clipboard"
-alias paste="xclip -selection clipboard -o"
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
 
 # adds execute permissions
-alias runnable="chmod +x"
+alias runnable='chmod +x'
 
 # generates a random password
-alias passgen="openssl rand -base64 14"
+alias passgen='openssl rand -base64 14'
 
 # shows current ip information
-alias ip="ipconfig getifaddr en0 && curl http://ipecho.net/plain; echo"
+alias ip='ipconfig getifaddr en0 && curl http://ipecho.net/plain; echo'
 
 # shows listening ports
-alias ports="sudo lsof -i | grep LISTEN"
+alias ports='sudo lsof -i | grep LISTEN'
 
 # opens hosts file for editing
-alias hosts='sudo ${EDITOR} /etc/hosts'
+alias hosts='sudo "${EDITOR}" /etc/hosts'
