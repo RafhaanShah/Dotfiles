@@ -1,6 +1,6 @@
 # nano syntax highlighting
 # https://github.com/scopatz/nanorc
-include "~/.nano/*.nanorc"
+# include "~/.nano/*.nanorc"
 
 # Automatically indent a newly created line
 set autoindent
