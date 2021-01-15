@@ -27,8 +27,9 @@ fi
 
 # print some info at the start of a new terminal
 _command_exists date && date
-_command_exists uptime && uptime
-_is_bash && echo "${USER} @ ${HOST} running bash ${BASH_VERSION}"
-_is_zsh && echo "${USER} @ ${HOST} running zsh ${ZSH_VERSION}"
+# _command_exists uptime && uptime
+_is_bash && echo "${USER} @ ${HOSTNAME} -> bash ${BASH_VERSION}" \
+    && [ -f "${DOTFILE_DIR}/.bash_prompt" ] && source "${DOTFILE_DIR}/.bash_prompt"
+_is_zsh && echo "${USER} @ ${HOST} -> zsh ${ZSH_VERSION}"
 
 unset DOTFILE_DIR

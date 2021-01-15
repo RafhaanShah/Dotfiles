@@ -1,0 +1,51 @@
+### bash prompt
+# https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt
+
+_prompt_git() {
+	local s='';
+	local branchName='';
+
+	# check if git repo
+	git rev-parse --is-inside-work-tree &>/dev/null || return;
+
+	# check branch
+	branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+		git describe --all --exact-match HEAD 2> /dev/null || \
+		git rev-parse --short HEAD 2> /dev/null || \
+		echo '(unknown)')";
+
+	# check for uncomitted changes
+	if ! $(git diff --quiet --ignore-submodules --cached); then
+		s+='+';
+	fi;
+	# check for unstaged changes
+	if ! $(git diff-files --quiet --ignore-submodules --); then
+		s+='!';
+	fi;
+	# check for untracked files
+	if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+		s+='?';
+	fi;
+	# check for stashed files
+	if $(git rev-parse --verify refs/stash &>/dev/null); then
+		s+='$';
+	fi;
+
+	[ -n "${s}" ] && s=" [${s}]";
+    
+    echo -e "${1}${branchName}${2}${s}"
+}
+
+# if _variable_set COLORTERM; then # 24-bit colour
+#
+# elif [ $(tput color) -eq 256 ]; then # 8-bit colour
+#
+# else # 4-bit colour
+#
+# fi
+
+PS1="\u "
+PS1+="@ \h "
+PS1+=": \W/ "
+PS1+='$(_prompt_git "-> ")'
+PS1+=$'\n\u203a '
