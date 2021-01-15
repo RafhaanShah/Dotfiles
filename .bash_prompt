@@ -35,29 +35,41 @@ _prompt_git() {
     echo -e "${1}${br}${2}${s}"
 }
 
-# if _variable_set COLORTERM; then # 24-bit colour
-#
-_PROMPT_COL_USER="\[\e[1;38;2;253;151;31m\]"
-_PROMPT_COL_HOST="\[\e[1;38;2;255;232;148m\]"
-_PROMPT_COL_DIR="\[\e[1;38;2;102;217;239m\]"
-_PROMPT_COL_GIT="\[\e[1;38;2;249;38;114m\]"
-_PROMPT_COL_OK="\[\e[1;38;2;166;226;46m\]"
-_PROMPT_COL_ERR="\[\e[1;38;2;248;53;53m\]"
-# elif [ $(tput color) -eq 256 ]; then # 8-bit colour
-#
-# else # 4-bit colour
-#
-# fi
-_PROMPT_COL_WHITE="\[\e[1;38;2;248;248;241m\]"
+if _variable_set COLORTERM; then # 24-bit colour
+    _PROMPT_COL_USER="\[\e[1;38;2;253;151;31m\]" # orange
+    _PROMPT_COL_HOST="\[\e[1;38;2;255;232;148m\]" # yellow
+    _PROMPT_COL_DIR="\[\e[1;38;2;102;217;239m\]" # cyan
+    _PROMPT_COL_GIT="\[\e[1;38;2;249;38;114m\]" # pink
+    _PROMPT_COL_OK="\[\e[1;38;2;166;226;46m\]" # green
+    _PROMPT_COL_ERR="\[\e[1;38;2;248;53;53m\]" # red
+    _PROMPT_COL_NORM="\[\e[1;38;2;248;248;241m\]" # white
+elif [ $(tput color) -eq 256 ]; then # 8-bit colour
+    _PROMPT_COL_USER="\[\e[1;38;5;208m\]" # orange
+    _PROMPT_COL_HOST="\[\e[1;38;5;221m\]" # yellow
+    _PROMPT_COL_DIR="\[\e[1;38;5;81m\]" # cyan
+    _PROMPT_COL_GIT="\[\e[1;38;5;197m\]" # pink
+    _PROMPT_COL_OK="\[\e[1;38;5;112m\]" # green
+    _PROMPT_COL_ERR="\[\e[1;38;5;196m\]" # red
+    _PROMPT_COL_NORM="\[\e[1;38;5;255m\]" # white
+else # 4-bit colour
+    _PROMPT_COL_USER="\[\e[1;95m\]" # magenta
+    _PROMPT_COL_HOST="\[\e[1;93m\]" # yellow
+    _PROMPT_COL_DIR="\[\e[1;96m\]" # cyan
+    _PROMPT_COL_GIT="\[\e[1;91m\]" # red
+    _PROMPT_COL_OK="\[\e[1;92m\]" # green
+    _PROMPT_COL_ERR="\[\e[1;91m\]" # red
+    _PROMPT_COL_NORM="\[\e[1;97m\]" # white
+fi
+
 _PROMPT_COL_RESET="\[\e[0m\]"
 _PROMPT_CHAR=$'\u203a'
 
 PS1="${_PROMPT_COL_USER}\u "
-PS1+="${_PROMPT_COL_WHITE}@ ${_PROMPT_COL_HOST}\h "
-PS1+="${_PROMPT_COL_WHITE}: ${_PROMPT_COL_DIR}\w "
-PS1+="\$(_prompt_git \"${_PROMPT_COL_WHITE}-> ${_PROMPT_COL_GIT}\")"
-PS1+="${_PROMPT_COL_WHITE}\n${_PROMPT_CHAR} ${_PROMPT_COL_RESET}"
+PS1+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h "
+PS1+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}\w "
+PS1+="\$(_prompt_git \"${_PROMPT_COL_NORM}-> ${_PROMPT_COL_GIT}\")"
+PS1+="${_PROMPT_COL_NORM}\n${_PROMPT_CHAR} ${_PROMPT_COL_RESET}"
 
 unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
 unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR
-unset _PROMPT_COL_WHITE _PROMPT_COL_RESET _PROMPT_CHAR
+unset _PROMPT_COL_NORM _PROMPT_COL_RESET _PROMPT_CHAR
