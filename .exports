@@ -26,5 +26,8 @@ export EDITOR="nano"
 # default visual text editor
 export VISUAL="${EDITOR}"
 
+# default pager
+export PAGER="less"
+
 # for using GPG with git
 export GPG_TTY=$(tty)

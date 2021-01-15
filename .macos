@@ -14,3 +14,16 @@ alias paste='paste'
 
 # get last wake / sleep events
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
+
+# rm moves to trash instead
+unalias rm
+rm() {
+    for FILE in "$@"; do
+        local BASENAME=$(basename "${FILE}")
+        while [ -e "${HOME}/.Trash/${BASENAME}" ]; do
+            BASENAME="${BASENAME} $(date +%H.%M.%S %p)"
+        done
+        mv "${FILE}" "${HOME}/.Trash/${BASENAME}"
+    done
+    unset FILE
+}
