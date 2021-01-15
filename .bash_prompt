@@ -31,11 +31,28 @@ _PROMPT_COL_RESET="\[\e[0m\]" # reset colour
 _PROMPT_ARROW=$'\u2192' # git arrow
 _PROMPT_CHAR=$'\u203a' # prompt character
 
-PS1="${_PROMPT_COL_USER}\u " # user
-PS1+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h " # host
-PS1+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}\w " # directory
-PS1+="\$(_prompt_git \"${_PROMPT_COL_NORM}${_PROMPT_ARROW} ${_PROMPT_COL_GIT}\")" # git
-PS1+="${_PROMPT_COL_NORM}\n${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # prompt
+# runs after each command, before PS1 is printed
+_prompt_command() {
+    local EXIT="$?"
+    unset PS1
+    _prompt_dir_changed && PS1="${_PROMPT_STR}\n"
+    
+    if [ "${EXIT}" -eq 0 ]; then
+        PS1+="${_PROMPT_CH_OK}"
+    else
+        PS1+="${_PROMPT_CH_ERR}"
+    fi
+}
+
+_PROMPT_STR="${_PROMPT_COL_USER}\u " # user
+_PROMPT_STR+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h " # host
+_PROMPT_STR+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}\w " # directory
+_PROMPT_STR+="\$(_prompt_git \"${_PROMPT_COL_NORM}${_PROMPT_ARROW} ${_PROMPT_COL_GIT}\")" # git
+
+_PROMPT_CH_OK="${_PROMPT_COL_OK}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # success prompt
+_PROMPT_CH_ERR="${_PROMPT_COL_ERR}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # error prompt
+
+PROMPT_COMMAND=_prompt_command
 
 unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
 unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR _PROMPT_COL_NORM

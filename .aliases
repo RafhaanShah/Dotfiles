@@ -34,6 +34,9 @@ alias reload='exec "${SHELL}" -l'
 # get exit code of last command
 alias lexit='echo $?'
 
+# gets the last command
+alias lcommand='history | tail -2 | head -1 | cut -c8-999'
+
 # shows path
 alias path='echo -e "${PATH//:/\\n}"'
 

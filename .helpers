@@ -64,3 +64,9 @@ _prompt_git() {
 	[ -n "${s}" ] && s=" [${s}]";
     echo -e "${1}${br}${2}${s}"
 }
+
+# checks if the working directory has changed
+_prompt_dir_changed() {
+	[ "${_PROMPT_PWD}" != "${PWD}" ] && _PROMPT_PWD="${PWD}" && return 0
+    return 1
+}
