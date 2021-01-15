@@ -3,13 +3,13 @@
 
 _prompt_git() {
 	local s='';
-	local branchName='';
+	local br='';
 
 	# check if git repo
 	git rev-parse --is-inside-work-tree &>/dev/null || return;
 
 	# check branch
-	branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+	br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
 		git describe --all --exact-match HEAD 2> /dev/null || \
 		git rev-parse --short HEAD 2> /dev/null || \
 		echo '(unknown)')";
@@ -32,20 +32,32 @@ _prompt_git() {
 	fi;
 
 	[ -n "${s}" ] && s=" [${s}]";
-    
-    echo -e "${1}${branchName}${2}${s}"
+    echo -e "${1}${br}${2}${s}"
 }
 
 # if _variable_set COLORTERM; then # 24-bit colour
 #
+_PROMPT_COL_USER="\[\e[1;38;2;253;151;31m\]"
+_PROMPT_COL_HOST="\[\e[1;38;2;255;232;148m\]"
+_PROMPT_COL_DIR="\[\e[1;38;2;102;217;239m\]"
+_PROMPT_COL_GIT="\[\e[1;38;2;249;38;114m\]"
+_PROMPT_COL_OK="\[\e[1;38;2;166;226;46m\]"
+_PROMPT_COL_ERR="\[\e[1;38;2;248;53;53m\]"
 # elif [ $(tput color) -eq 256 ]; then # 8-bit colour
 #
 # else # 4-bit colour
 #
 # fi
+_PROMPT_COL_WHITE="\[\e[1;38;2;248;248;241m\]"
+_PROMPT_COL_RESET="\[\e[0m\]"
+_PROMPT_CHAR=$'\u203a'
 
-PS1="\u "
-PS1+="@ \h "
-PS1+=": \W/ "
-PS1+='$(_prompt_git "-> ")'
-PS1+=$'\n\u203a '
+PS1="${_PROMPT_COL_USER}\u "
+PS1+="${_PROMPT_COL_WHITE}@ ${_PROMPT_COL_HOST}\h "
+PS1+="${_PROMPT_COL_WHITE}: ${_PROMPT_COL_DIR}\w "
+PS1+="\$(_prompt_git \"${_PROMPT_COL_WHITE}-> ${_PROMPT_COL_GIT}\")"
+PS1+="${_PROMPT_COL_WHITE}\n${_PROMPT_CHAR} ${_PROMPT_COL_RESET}"
+
+unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
+unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR
+unset _PROMPT_COL_WHITE _PROMPT_COL_RESET _PROMPT_CHAR
