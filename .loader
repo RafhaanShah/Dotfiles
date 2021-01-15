@@ -30,6 +30,7 @@ _command_exists date && date
 # _command_exists uptime && uptime
 _is_bash && echo "${USER} @ ${HOSTNAME} -> bash ${BASH_VERSION}" \
     && [ -f "${DOTFILE_DIR}/.bash_prompt" ] && source "${DOTFILE_DIR}/.bash_prompt"
-_is_zsh && echo "${USER} @ ${HOST} -> zsh ${ZSH_VERSION}"
+_is_zsh && echo "${USER} @ ${HOST} -> zsh ${ZSH_VERSION}" \
+    && [ -f "${DOTFILE_DIR}/.zsh_prompt" ] && source "${DOTFILE_DIR}/.zsh_prompt"
 
 unset DOTFILE_DIR

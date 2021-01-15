@@ -1,0 +1,43 @@
+### zsh prompt
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+
+if _variable_set COLORTERM; then # 24-bit colour
+    _PROMPT_COL_USER=$'%{\e[1;38;2;166;226;46m%}' # green
+    _PROMPT_COL_HOST=$'%{\e[1;38;2;253;151;31m%}' # orange
+    _PROMPT_COL_DIR=$'%{\e[1;38;2;102;217;239m%}' # cyan
+    _PROMPT_COL_GIT=$'%{\e[1;38;2;249;38;114m%}' # pink
+    _PROMPT_COL_OK=$'%{\e[1;38;2;166;226;46m%}' # green
+    _PROMPT_COL_ERR=$'%{\e[1;38;2;248;53;53m%}' # red
+    _PROMPT_COL_NORM=$'%{\e[1;38;2;248;248;241m%}' # white
+elif [ $(tput color) -eq 256 ]; then # 8-bit colour
+    e=$'%{\e[1;38;5;112m%}' # green
+    _PROMPT_COL_HOST=$'%{\e[1;38;5;208m%}' # orange
+    _PROMPT_COL_DIR=$'%{\e[1;38;5;81m%}' # cyan
+    _PROMPT_COL_GIT=$'%{\e[1;38;5;197m%}' # pink
+    _PROMPT_COL_OK=$'%{\e[1;38;5;112m%}' # green
+    _PROMPT_COL_ERR=$'%{\e[1;38;5;196m%}' # red
+    _PROMPT_COL_NORM=$'%{\e[1;38;5;255m%}' # white
+else # 4-bit colour
+    _PROMPT_COL_USER=$'%{\e[1;92m%}' # green
+    _PROMPT_COL_HOST=$'%{\e[1;93m%}' # yellow
+    _PROMPT_COL_DIR=$'%{\e[1;96m%}' # cyan
+    _PROMPT_COL_GIT=$'%{\e[1;91m%}' # red
+    _PROMPT_COL_OK=$'%{\e[1;92m%}' # green
+    _PROMPT_COL_ERR=$'%{\e[1;91m%}' # red
+    _PROMPT_COL_NORM=$'%{\e[1;97m%}' # white
+fi
+
+_PROMPT_COL_RESET=$'%{\e[0m%}' # reset colour
+_PROMPT_ARROW=$'\u2192' # git arrow
+_PROMPT_CHAR=$'\u203a' # prompt character
+_PROMPT_NEWLINE=$'\n' # new line
+
+PROMPT="${_PROMPT_COL_USER}%n " # user
+PROMPT+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}%m " # host
+PROMPT+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}%4~ " # directory
+PROMPT+="\$(_prompt_git '${_PROMPT_COL_NORM}${_PROMPT_ARROW} ${_PROMPT_COL_GIT}')" # git
+PROMPT+="${_PROMPT_COL_NORM}${_PROMPT_NEWLINE}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # prompt
+
+unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
+unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR _PROMPT_COL_NORM
+unset _PROMPT_COL_RESET _PROMPT_CHAR _PROMPT_ARROW _PROMPT_NEWLINE

@@ -67,6 +67,8 @@ setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 # print error when pattern has no matches
 setopt NOMATCH
+# expand prompt strings
+setopt PROMPT_SUBST
 # ignore pushd duplicates
 setopt PUSHD_IGNORE_DUPS
 # make pushd silent
