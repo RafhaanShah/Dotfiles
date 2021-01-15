@@ -67,9 +67,9 @@ extract() {
 
 # count the number of files and directories
 dirstat() { 
-    local files="$(ls -p | grep -v / | wc -l)"
-    local dirs="$(ls -d */ 2> /dev/null | wc -l)"
-    echo "${files} files, ${dirs} directories" | tr -s " "
+    local files="$(ls -p | grep -v / | wc -l | tr -d ' ')"
+    local dirs="$(ls -d */ 2> /dev/null | wc -l | tr -d ' ')"
+    echo "${files} files, ${dirs} directories"
 }
 
 # gets the size of a file or directory

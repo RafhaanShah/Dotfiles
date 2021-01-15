@@ -23,3 +23,44 @@ _is_wsl() { [ grep -qEi "(microsoft|WSL)" /proc/version &> /dev/null ]; }
 
 # checks if we are running on macOS
 _is_macos() { [ $(uname -s) = "Darwin" ]; }
+
+# outputs git branch and status: master[4+!?$]
+# number of changes, uncomitted, unstaged, untracked indicators
+_prompt_git() {
+	local s='';
+	local br='';
+
+	# check if git repo
+	git rev-parse --is-inside-work-tree &>/dev/null || return;
+
+	# check branch
+	br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+		git describe --all --exact-match HEAD 2> /dev/null || \
+		git rev-parse --short HEAD 2> /dev/null || \
+		echo '(unknown)')";
+
+    # check for status counter
+    local fc="$(git status --porcelain | wc -l | tr -d ' ')"
+    if [ "${fc}" -gt 0 ]; then
+        s+="${fc}";
+    fi
+	# check for uncomitted changes
+	if ! $(git diff --quiet --ignore-submodules --cached); then
+		s+='+';
+	fi;
+	# check for unstaged changes
+	if ! $(git diff-files --quiet --ignore-submodules --); then
+		s+='!';
+	fi;
+	# check for untracked files
+	if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+		s+='?';
+	fi;
+	# check for stashed files
+	if $(git rev-parse --verify refs/stash &>/dev/null); then
+		s+='$';
+	fi;
+
+	[ -n "${s}" ] && s=" [${s}]";
+    echo -e "${1}${br}${2}${s}"
+}

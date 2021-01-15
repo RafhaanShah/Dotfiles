@@ -1,58 +1,24 @@
 ### bash prompt
 # https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt
 
-_prompt_git() {
-	local s='';
-	local br='';
-
-	# check if git repo
-	git rev-parse --is-inside-work-tree &>/dev/null || return;
-
-	# check branch
-	br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
-		git describe --all --exact-match HEAD 2> /dev/null || \
-		git rev-parse --short HEAD 2> /dev/null || \
-		echo '(unknown)')";
-
-	# check for uncomitted changes
-	if ! $(git diff --quiet --ignore-submodules --cached); then
-		s+='+';
-	fi;
-	# check for unstaged changes
-	if ! $(git diff-files --quiet --ignore-submodules --); then
-		s+='!';
-	fi;
-	# check for untracked files
-	if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-		s+='?';
-	fi;
-	# check for stashed files
-	if $(git rev-parse --verify refs/stash &>/dev/null); then
-		s+='$';
-	fi;
-
-	[ -n "${s}" ] && s=" [${s}]";
-    echo -e "${1}${br}${2}${s}"
-}
-
 if _variable_set COLORTERM; then # 24-bit colour
-    _PROMPT_COL_USER="\[\e[1;38;2;253;151;31m\]" # orange
-    _PROMPT_COL_HOST="\[\e[1;38;2;255;232;148m\]" # yellow
+    _PROMPT_COL_USER="\[\e[1;38;2;166;226;46m\]" # green
+    _PROMPT_COL_HOST="\[\e[1;38;2;253;151;31m\]" # orange
     _PROMPT_COL_DIR="\[\e[1;38;2;102;217;239m\]" # cyan
     _PROMPT_COL_GIT="\[\e[1;38;2;249;38;114m\]" # pink
     _PROMPT_COL_OK="\[\e[1;38;2;166;226;46m\]" # green
     _PROMPT_COL_ERR="\[\e[1;38;2;248;53;53m\]" # red
     _PROMPT_COL_NORM="\[\e[1;38;2;248;248;241m\]" # white
 elif [ $(tput color) -eq 256 ]; then # 8-bit colour
-    _PROMPT_COL_USER="\[\e[1;38;5;208m\]" # orange
-    _PROMPT_COL_HOST="\[\e[1;38;5;221m\]" # yellow
+    _PROMPT_COL_USER="\[\e[1;38;5;112m\]" # green
+    _PROMPT_COL_HOST="\[\e[1;38;5;208m\]" # orange
     _PROMPT_COL_DIR="\[\e[1;38;5;81m\]" # cyan
     _PROMPT_COL_GIT="\[\e[1;38;5;197m\]" # pink
     _PROMPT_COL_OK="\[\e[1;38;5;112m\]" # green
     _PROMPT_COL_ERR="\[\e[1;38;5;196m\]" # red
     _PROMPT_COL_NORM="\[\e[1;38;5;255m\]" # white
 else # 4-bit colour
-    _PROMPT_COL_USER="\[\e[1;95m\]" # magenta
+    _PROMPT_COL_USER="\[\e[1;92m\]" # green
     _PROMPT_COL_HOST="\[\e[1;93m\]" # yellow
     _PROMPT_COL_DIR="\[\e[1;96m\]" # cyan
     _PROMPT_COL_GIT="\[\e[1;91m\]" # red
@@ -61,15 +27,16 @@ else # 4-bit colour
     _PROMPT_COL_NORM="\[\e[1;97m\]" # white
 fi
 
-_PROMPT_COL_RESET="\[\e[0m\]"
-_PROMPT_CHAR=$'\u203a'
+_PROMPT_COL_RESET="\[\e[0m\]" # reset colour
+_PROMPT_ARROW=$'\u2192' # git arrow
+_PROMPT_CHAR=$'\u203a' # prompt character
 
-PS1="${_PROMPT_COL_USER}\u "
-PS1+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h "
-PS1+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}\w "
-PS1+="\$(_prompt_git \"${_PROMPT_COL_NORM}-> ${_PROMPT_COL_GIT}\")"
-PS1+="${_PROMPT_COL_NORM}\n${_PROMPT_CHAR} ${_PROMPT_COL_RESET}"
+PS1="${_PROMPT_COL_USER}\u " # user
+PS1+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h " # host
+PS1+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}\w " # directory
+PS1+="\$(_prompt_git \"${_PROMPT_COL_NORM}${_PROMPT_ARROW} ${_PROMPT_COL_GIT}\")" # git
+PS1+="${_PROMPT_COL_NORM}\n${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # prompt
 
 unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
-unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR
-unset _PROMPT_COL_NORM _PROMPT_COL_RESET _PROMPT_CHAR
+unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR _PROMPT_COL_NORM
+unset _PROMPT_COL_RESET _PROMPT_CHAR _PROMPT_ARROW
