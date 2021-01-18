@@ -65,7 +65,8 @@ _prompt_git() {
     echo -e "${1}${br}${2}${s}"
 }
 
-_show_prompt_dir() {
+# checks if either pwd or git st has changed
+_prompt_show_status() {
     local rc=1
     _prompt_dir_changed && rc=0
     _prompt_git_changed && rc=0
