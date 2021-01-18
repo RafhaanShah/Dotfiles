@@ -35,6 +35,8 @@ _PROMPT_CHAR=$'\u203a' # prompt character
 _prompt_command() {
     local EXIT="$?"
     unset PS1
+    
+    # only show status line (name, host, dir, git) if dir changed or git changed
     _prompt_show_status && PS1="${_PROMPT_STR}\n"
     
     if [ "${EXIT}" -eq 0 ]; then

@@ -27,11 +27,11 @@ _is_macos() { [ $(uname -s) = "Darwin" ]; }
 # outputs git branch and status: master[4+!?$]
 # number of changes, uncomitted, unstaged, untracked indicators
 _prompt_git() {
-	local s='';
-	local br='';
-
 	# check if git repo
 	git rev-parse --is-inside-work-tree &>/dev/null || return;
+
+	local s='';
+	local br='';
 
 	# check branch
 	br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \

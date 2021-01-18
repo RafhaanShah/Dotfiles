@@ -6,12 +6,13 @@ alias sudo='sudo '
 # ls aliases
 alias ls='command ls --color' # show colours
 alias ll='ls -lh' # long human readable format
-alias lsa='ls -A' # include hidden files
+alias la='ls -A' # include hidden files
 alias lsf='ls -p | grep -v /' # list files only
 alias lsd='ls -d */ 2> /dev/null' # list folders only
 alias ls.='ls -d .[^.]* 2> /dev/null' # list hidden items only
 
 # cd aliases
+alias -- -='cd -' # the alias is just '-'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -27,6 +28,12 @@ alias egrep='egrep --color=auto'
 alias rm='rm -Irv'
 alias mv='mv -iv'
 alias cp='cp -aiv'
+
+# shortcut for 'command' to ignore aliases and functions
+alias cmd='command'
+
+# get the name of the current directory
+alias wd='echo ${PWD##*/}'
 
 # reloads shell
 alias reload='exec "${SHELL}" -l'

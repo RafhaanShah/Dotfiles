@@ -10,7 +10,7 @@ if _variable_set COLORTERM; then # 24-bit colour
     _PROMPT_COL_ERR=$'%{\e[1;38;2;248;53;53m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;38;2;248;248;241m%}' # white
 elif [ $(tput color) -eq 256 ]; then # 8-bit colour
-    e=$'%{\e[1;38;5;112m%}' # green
+    _PROMPT_COL_USER=$'%{\e[1;38;5;112m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;5;208m%}' # orange
     _PROMPT_COL_DIR=$'%{\e[1;38;5;81m%}' # cyan
     _PROMPT_COL_GIT=$'%{\e[1;38;5;197m%}' # pink
@@ -36,6 +36,8 @@ precmd() {
     local EXIT="$?"
     local _NEWLINE=$'\n' # new line
     unset PROMPT
+    
+    # only show status line (name, host, dir, git) if dir changed or git changed
     _prompt_show_status && PROMPT="${_PROMPT_STR}${_NEWLINE}"
     
     if [ "${EXIT}" -eq 0 ]; then
@@ -55,4 +57,4 @@ _PROMPT_CH_ERR="${_PROMPT_COL_ERR}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # error 
 
 unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
 unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR _PROMPT_COL_NORM
-unset _PROMPT_COL_RESET _PROMPT_CHAR _PROMPT_ARROW _PROMPT_NEWLINE
+unset _PROMPT_COL_RESET _PROMPT_CHAR _PROMPT_ARROW

@@ -19,6 +19,10 @@
         # rebase local branches on top of the fetched branch, instead of merging
         rebase = true
 
+[fetch]
+        # remove any remote-tracking references that no longer exist on the remote
+        prune = true
+
 [help]
         # correct and execute mistyped commands after 2 seconds
 	    autocorrect = 20

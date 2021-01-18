@@ -12,6 +12,11 @@ cd() {
 # make dir and cd into it automatically
 mkdir() { command mkdir -p "$@" && builtin cd "$1"; }
 
+# default find to search filenames
+find() {
+	command find . -name "$1" 2>&1 | grep -v 'Permission denied'
+}
+
 # list files and folders in a tree format with a default level of 2
 tree() {
     if [ "$#" -eq 0 ]; then
