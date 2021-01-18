@@ -35,7 +35,7 @@ _PROMPT_CHAR=$'\u203a' # prompt character
 _prompt_command() {
     local EXIT="$?"
     unset PS1
-    _prompt_dir_changed && PS1="${_PROMPT_STR}\n"
+    _show_prompt_dir && PS1="${_PROMPT_STR}\n"
     
     if [ "${EXIT}" -eq 0 ]; then
         PS1+="${_PROMPT_CH_OK}"

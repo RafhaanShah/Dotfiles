@@ -65,8 +65,23 @@ _prompt_git() {
     echo -e "${1}${br}${2}${s}"
 }
 
+_show_prompt_dir() {
+    local rc=1
+    _prompt_dir_changed && rc=0
+    _prompt_git_changed && rc=0
+    return "${rc}"
+}
+
 # checks if the working directory has changed
 _prompt_dir_changed() {
 	[ "${_PROMPT_PWD}" != "${PWD}" ] && _PROMPT_PWD="${PWD}" && return 0
+    return 1
+}
+
+# checks if there have been any git changes
+_prompt_git_changed() {
+    git rev-parse --is-inside-work-tree &>/dev/null || return 1;
+    local gs="$(git status --porcelain)"
+	[ "${_PROMPT_GIT}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
     return 1
 }
