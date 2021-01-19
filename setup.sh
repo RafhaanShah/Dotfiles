@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # exit on any error
 set -e
@@ -15,14 +15,14 @@ SYM_FILES=(
     .bashrc
     .zshrc
 )
-    
+
 # list of files to copy so they can be modified as needed
 CP_FILES=(
     .hushlogin
     .gitconfig
     .nanorc
 )
-    
+
 run_setup() {
     [ ! -d "${DOTFILE_DIR}" ] && echo "Invalid Dotfile folder" && exit 1
     mkdir -p "${DOTFILE_DIR}/old"
@@ -34,7 +34,7 @@ copy_dotfiles() {
     for FILE in "${CP_FILES[@]}"; do
         echo "${FILE}"
         [ -f "${HOME}/${FILE}" ] && mv "${HOME}/${FILE}" "${BACKUP_DIR}/${FILE}.old"
-        cp "${CP_FILES}/${FILE}" "${HOME}/${FILE}"
+        cp "${DOTFILE_DIR}/${FILE}" "${HOME}/${FILE}"
     done
 }
 
