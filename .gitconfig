@@ -52,8 +52,8 @@
         freset = "!freset() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; freset"
         last = log -p -1
         ll = log --pretty=oneline -n 20 --graph --abbrev-commit
-        pll = pull
-        psh = push
+        pl = pull
+        ps = push
         st = status
         reb = "!reb() { git rebase -i HEAD~$1 && git commit --amend --date=\"now\" --no-edit; }; reb"
         undo = reset --soft HEAD~1
@@ -78,6 +78,6 @@
 
 [gpg]
         # Windows
-    	# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+        # program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
         # macOS / Linux
         # program = gpg2
