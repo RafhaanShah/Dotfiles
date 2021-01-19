@@ -25,6 +25,9 @@ fi
 # functions (to be loaded after aliases as aliases are read at function definition)
 [ -f "${DOTFILE_DIR}/.functions" ] && source "${DOTFILE_DIR}/.functions"
 
+# prompt functions
+[ -f "${DOTFILE_DIR}/.prompt" ] && source "${DOTFILE_DIR}/.prompt"
+
 # print some info at the start of a new terminal
 _command_exists date && date
 # _command_exists uptime && uptime

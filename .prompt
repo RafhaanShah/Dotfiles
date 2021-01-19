@@ -1,0 +1,138 @@
+### functions used in prompts
+
+# checks if either pwd or git st has changed
+_prompt_show_status() {
+    local rc=1
+    _prompt_dir_changed && rc=0
+    _prompt_git_changed && rc=0
+    return "${rc}"
+}
+
+# checks if the working directory has changed
+_prompt_dir_changed() {
+	[ "${_PROMPT_PWD}" != "${PWD}" ] && _PROMPT_PWD="${PWD}" && return 0
+    return 1
+}
+
+# checks if there have been any git changes
+_prompt_git_changed() {
+    git rev-parse --is-inside-work-tree &>/dev/null || return 1;
+    local gs="$(git status --porcelain --branch)"
+	[ "${_PROMPT_GIT}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
+    return 1
+}
+
+# git repo status in the form: branch [↓2↑3|✔1✖2✚3●4◯]
+# branch name, behind, ahead, clean, conflicts, staged, unstaged, untracked
+# adapted from https://github.com/magicmonty/bash-git-prompt/blob/master/gitstatus.sh
+_prompt_git() {
+    # check if git repo
+    git rev-parse --is-inside-work-tree &>/dev/null || return;
+    
+    # get git status string in porcelain format with branch
+    # local gitstatus="$(git status --porcelain --branch)"
+    local gitstatus="${_PROMPT_GIT}" # set by _prompt_git_changed
+    
+    local num_staged=0
+    local num_changed=0
+    local num_conflicts=0
+    local num_untracked=0
+    local stat line branch_line
+    
+    # loop over status lines
+    while IFS='' read -r line || [[ -n "${line}" ]]; do
+        stat="${line:0:2}"
+        while [[ -n ${stat} ]]; do
+            case "${stat}" in
+                \#\#) branch_line="${line/\#\# }"; break ;; # format: ## master...origin/master
+                \?\?) ((num_untracked++)); break ;;
+                U?) ((num_conflicts++)); break;;
+                ?U) ((num_conflicts++)); break;;
+                DD) ((num_conflicts++)); break;;
+                AA) ((num_conflicts++)); break;;
+                ?M) ((num_changed++)) ;;
+                ?D) ((num_changed++)) ;;
+                ?\ ) ;;
+                U) ((num_conflicts++)) ;;
+                \ ) ;;
+                *) ((num_staged++)) ;;
+            esac
+            stat="${stat:0:(${#stat}-1)}"
+        done
+    done <<< "${gitstatus}"
+    
+    # separate branch string
+    branch="${branch_line%%...*}" # removes ...origin/master
+    
+    local gitstring="${branch} ["
+    local upstream="$(git rev-list --left-right --count origin/${branch}...HEAD 2>/dev/null)"
+    
+    # check for divergences from upstream (origin/branch)
+    if [ -n "${upstream}" ]; then
+        local behind="$(cut -f1 <<< "${upstream}")"
+        local ahead="$(cut -f2 <<< "${upstream}")"
+        local upstring
+        
+        [ "${behind}" -gt 0 ] && upstring+="↓${behind}" # commits behind
+        [ "${ahead}" -gt 0 ] && upstring+="↑${ahead}" # commits ahead
+        [ -n "${upstring}" ] && gitstring+="${upstring}|" # separator
+    fi
+    
+    # count changes of each type
+    if (( num_changed == 0 \
+        && num_staged == 0 \
+        && num_untracked == 0 \
+        && num_stashed == 0 \
+        && num_conflicts == 0 )); then
+            gitstring+="✔" # clean
+    else
+        [ "${num_conflicts}" -gt 0 ] && gitstring+="✖${num_conflicts}" # conflicts
+        [ "${num_staged}" -gt 0 ] && gitstring+="✚${num_staged}" # staged
+        [ "${num_changed}" -gt 0 ] && gitstring+="●${num_changed}" # unstaged
+        [ "${num_untracked}" -gt 0 ] && gitstring+="◯${num_untracked}" # untracked
+    fi
+    
+    echo -e "${1}${gitstring}]"
+}
+
+# outputs git branch and status: master [1x+!?]
+# branch, number of changes, conflicts, staged, unstaged, untracked
+# adapted from https://github.com/mathiasbynens/dotfiles/blob/main/.bash_prompt
+_prompt_git_old() {
+	# check if git repo
+	git rev-parse --is-inside-work-tree &>/dev/null || return;
+
+	local s='';
+	local br='';
+
+	# check branch
+	br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+		git describe --all --exact-match HEAD 2> /dev/null || \
+		git rev-parse --short HEAD 2> /dev/null || \
+		echo '(unknown)')";
+
+    # check for status counter
+    local fc="$(git status --porcelain | wc -l | tr -d ' ')"
+    if [ "${fc}" -gt 0 ]; then
+        s+="${fc}";
+    fi
+	# check for conflicts
+	if ! $(git diff --quiet --ignore-submodules --diff-filter=U); then
+		s+='x';
+	fi;
+	# check for uncomitted changes
+	if ! $(git diff --quiet --ignore-submodules --cached); then
+		s+='+';
+	fi;
+	# check for unstaged changes
+	if ! $(git diff-files --quiet --ignore-submodules --); then
+		s+='!';
+	fi;
+	# check for untracked files
+	if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+		s+='?';
+	fi;
+
+	[ -n "${s}" ] && s=" [${s}]";
+    echo -e "${1}${br}${s}"
+}

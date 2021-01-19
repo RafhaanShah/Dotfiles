@@ -94,10 +94,7 @@ sizeof() {
 
 # open github repo in browser
 github() {
-    if ! git branch 2>/dev/null 1>&2 ; then
-        echo "Not a git repo"
-        return 1
-    fi
+    git rev-parse --is-inside-work-tree &>/dev/null || echo "Not a git repo" && return 1
     
     local base_url="$(git remote get-url origin)"
     base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
@@ -120,7 +117,3 @@ weather() {
         curl "http://wttr.in/London"
     fi
 }
-
-
-### helper functions
-
