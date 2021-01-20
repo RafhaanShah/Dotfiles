@@ -12,9 +12,14 @@ cd() {
 # make dir and cd into it automatically
 mkdir() { command mkdir -p "$@" && builtin cd "$1"; }
 
-# default find to search filenames
-find() {
+# find files in current folder
+ffile() {
 	command find . -name "$1" 2>&1 | grep -v 'Permission denied'
+}
+
+# find text in current folder
+ftext () {
+	grep -iIHrn "$1" .
 }
 
 # list files and folders in a tree format with a default level of 2
@@ -72,9 +77,9 @@ extract() {
 
 # count the number of files and directories
 dirstat() { 
-    local files="$(ls -p | grep -v / | wc -l | tr -d ' ')"
-    local dirs="$(ls -d */ 2> /dev/null | wc -l | tr -d ' ')"
-    echo "${files} files, ${dirs} directories"
+    local files="$(ls -p | grep -v / | wc -l)"
+    local dirs="$(ls -d */ 2> /dev/null | wc -l)"
+    _trim "${files} files, ${dirs} directories"
 }
 
 # gets the size of a file or directory
