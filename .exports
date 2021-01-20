@@ -31,3 +31,7 @@ export PAGER="less"
 
 # for using GPG with git
 export GPG_TTY=$(tty)
+
+# currently only set by some terminals such as iTerm2
+# https://gist.github.com/XVilka/8346728
+# export COLORTERM="truecolor"

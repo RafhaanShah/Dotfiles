@@ -22,6 +22,9 @@ if _is_macos; then
     [ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
 fi
 
+# custom profile file outside of vcs for machine specific stuff
+[ -f "${DOTFILE_DIR}/.raf" ] && source "${HOME}/.raf"
+
 # functions (to be loaded after aliases as aliases are read at function definition)
 [ -f "${DOTFILE_DIR}/.functions" ] && source "${DOTFILE_DIR}/.functions"
 
