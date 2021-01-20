@@ -11,6 +11,12 @@ esac
 [ -f "${HOME}/Dotfiles/.loader" ] && source "${HOME}/Dotfiles/.loader"
 
 
+### overrides
+
+# append and read new history after every command so it is available in other terminals
+PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND:+;}history -a; history -n"
+
+
 ### shell variables
 # https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
 

@@ -15,6 +15,9 @@ alias paste='paste'
 # get last wake / sleep events
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
 
+# get processes using webcam
+alias camusage='lsof | grep "AppleCamera"'
+
 # rm moves to trash instead
 unalias rm
 rm() {
