@@ -22,25 +22,25 @@ _prompt_dir_changed() {
 
 # checks if there have been any git changes
 _prompt_git_changed() {
-    local pg="${_PROMPT_GIT}"; unset _PROMPT_GIT
-    
+    _prompt_git_blocklist || return 1
+    _is_git_repo || return 1
+    local gs="$(git status --porcelain --branch)"
+    [ "${_PROMPT_GIT}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
+    return 1
+}
+
+_prompt_git_blocklist() {
     if _variable_set "${_PROMPT_GIT_BLOCKLIST}"; then
         local wd="${PWD##*/}"
-        _in_list "${wd}" "${_PROMPT_GIT_BLOCKLIST[@]}" && return 1
+        _in_list "${wd}" "${_PROMPT_GIT_BLOCKLIST[@]}" && { unset _PROMPT_GIT; return 1; }
     fi
-    
-    git rev-parse --is-inside-work-tree &>/dev/null || return 1
-    local gs="$(git status --porcelain --branch)"
-    [ "${pg}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
-    return 1
 }
 
 # git repo status in the form: branch [↓2↑3|✔1✖2✚3●4◯]
 # branch name, behind, ahead, clean, conflicts, staged, unstaged, untracked
 # adapted from https://github.com/magicmonty/bash-git-prompt/blob/master/gitstatus.sh
 _prompt_git() {
-    # check if git repo
-    git rev-parse --is-inside-work-tree &>/dev/null || return;
+    _is_git_repo || return 1
     
     # get git status string in porcelain format with branch
     # local gitstatus="$(git status --porcelain --branch)"
@@ -113,40 +113,40 @@ _prompt_git() {
 # branch, number of changes, conflicts, staged, unstaged, untracked
 # adapted from https://github.com/mathiasbynens/dotfiles/blob/main/.bash_prompt
 _prompt_git_old() {
-	# check if git repo
-	git rev-parse --is-inside-work-tree &>/dev/null || return;
+	_is_git_repo || return 1
+    _prompt_git_blocklist || return 1
 
-	local s='';
-	local br='';
+	local s=''
+	local br=''
 
 	# check branch
 	br="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
 		git describe --all --exact-match HEAD 2> /dev/null || \
 		git rev-parse --short HEAD 2> /dev/null || \
-		echo '(unknown)')";
+		echo 'unknown')"
 
     # check for status counter
     local fc="$(git status --porcelain | wc -l | tr -d ' ')"
     if [ "${fc}" -gt 0 ]; then
-        s+="${fc}";
+        s+="${fc}"
     fi
 	# check for conflicts
 	if ! $(git diff --quiet --ignore-submodules --diff-filter=U); then
-		s+='x';
+		s+='x'
 	fi;
 	# check for uncomitted changes
 	if ! $(git diff --quiet --ignore-submodules --cached); then
-		s+='+';
+		s+='+'
 	fi;
 	# check for unstaged changes
 	if ! $(git diff-files --quiet --ignore-submodules --); then
-		s+='!';
+		s+='!'
 	fi;
 	# check for untracked files
 	if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-		s+='?';
+		s+='?'
 	fi;
 
-	[ -n "${s}" ] && s=" [${s}]";
+	[ -n "${s}" ] && s=" [${s}]"
     echo -e "${1}${br}${s}"
 }

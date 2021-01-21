@@ -105,7 +105,7 @@ reload() {
 
 # open github repo in browser
 github() {
-    git rev-parse --is-inside-work-tree &>/dev/null || { echo "Not a git repo" && return 1; }
+    _is_git_repo || { echo "Not a git repo" && return 1; }
     local base_url="$(git remote get-url origin)"
     base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
     base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"

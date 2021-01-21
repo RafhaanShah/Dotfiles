@@ -12,18 +12,14 @@ _begins_with() { case "$2" in "$1"*) true;; *) false;; esac; }
 # checks if $2 ends with $1
 _ends_with() { case "$2" in *"$1") true;; *) false;; esac; }
 
-# checks if $1 is in an array $2, must be passed as "${array[@]}"
-# does not work with spaces in elements
-_in_list() {
-    local str="${1}"; shift
-    [[ " $@ " =~ " ${str} " ]]
-}
-
 # checks if we are running bash
 _is_bash() { _variable_set "${BASH_VERSION}"; }
 
 # checks if we are running zsh
 _is_zsh() { _variable_set "${ZSH_VERSION}"; }
+
+# checks if we are in a git repo
+_is_git_repo() { git rev-parse --is-inside-work-tree &>/dev/null; }
 
 # checks if we are running in wsl
 _is_wsl() { [ grep -qEi "(microsoft|WSL)" /proc/version &> /dev/null ]; }
@@ -37,4 +33,11 @@ _trim() {
 	var="${var#"${var%%[![:space:]]*}"}"  # remove leading whitespace characters
 	var="${var%"${var##*[![:space:]]}"}"  # remove trailing whitespace characters
 	echo "${var}"
+}
+
+# checks if $1 is in an array $2, must be passed as "${array[@]}"
+# does not work with spaces in elements as that requires looping
+_in_list() {
+    local str="${1}"; shift
+    [[ " $@ " =~ " ${str} " ]]
 }
