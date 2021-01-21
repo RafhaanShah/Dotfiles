@@ -51,9 +51,6 @@ alias cmd='command'
 # get the name of the current directory
 alias wd='echo ${PWD##*/}'
 
-# reloads shell
-alias reload='exec "${SHELL}" -l'
-
 # get exit code of last command
 alias lexit='echo $?'
 

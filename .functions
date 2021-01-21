@@ -13,14 +13,10 @@ cd() {
 mkdir() { command mkdir -p "$@" && builtin cd "$1"; }
 
 # find files in current folder
-ffile() {
-	command find . -name "$1" 2>&1 | grep -v 'Permission denied'
-}
+ffile() { command find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
 
 # find text in current folder
-ftext () {
-	grep -iIHrn "$1" .
-}
+ftext () { grep -iIHrn "$1" .; }
 
 # list files and folders in a tree format with a default level of 2
 tree() {
@@ -100,22 +96,25 @@ sizeof() {
 # exec into a docker container
 dk-exec() { docker exec -it "$1" sh; }
 
+# reloads shell
+reload() {
+    _is_bash && exec bash -l
+    _is_zsh && exec zsh -l
+    exec "${SHELL}" -l
+}
+
 # open github repo in browser
 github() {
-    git rev-parse --is-inside-work-tree &>/dev/null || echo "Not a git repo" && return 1
-    
+    git rev-parse --is-inside-work-tree &>/dev/null || { echo "Not a git repo" && return 1; }
     local base_url="$(git remote get-url origin)"
     base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
     base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
     base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
-
-    open "${base_url}/$1" &> /dev/null || (echo "Failed to open url" && return 1)
+    open "${base_url}/$1"
 }
 
 # enerate a qrcode
-qrcode() {
-    curl "http://qrenco.de/$1"
-}
+qrcode() { curl "http://qrenco.de/$1"; }
 
 # shows the current weather
 weather() {

@@ -1,5 +1,11 @@
 ### functions used in prompts
 
+# set this varable to disable git-prompt in specific repos
+# _PROMPT_GIT_BLOCKLIST=(
+#     "large-repo"
+#     "another-folder"
+# )
+
 # checks if either pwd or git st has changed
 _prompt_show_status() {
     local rc=1
@@ -16,9 +22,16 @@ _prompt_dir_changed() {
 
 # checks if there have been any git changes
 _prompt_git_changed() {
-    git rev-parse --is-inside-work-tree &>/dev/null || return 1;
+    local pg="${_PROMPT_GIT}"; unset _PROMPT_GIT
+    
+    if _variable_set "${_PROMPT_GIT_BLOCKLIST}"; then
+        local wd="${PWD##*/}"
+        _in_list "${wd}" "${_PROMPT_GIT_BLOCKLIST[@]}" && return 1
+    fi
+    
+    git rev-parse --is-inside-work-tree &>/dev/null || return 1
     local gs="$(git status --porcelain --branch)"
-	[ "${_PROMPT_GIT}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
+    [ "${pg}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
     return 1
 }
 
@@ -31,6 +44,7 @@ _prompt_git() {
     
     # get git status string in porcelain format with branch
     # local gitstatus="$(git status --porcelain --branch)"
+    _variable_set "${_PROMPT_GIT}" || return 1
     local gitstatus="${_PROMPT_GIT}" # set by _prompt_git_changed
     
     local num_staged=0

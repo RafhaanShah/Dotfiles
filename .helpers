@@ -12,6 +12,13 @@ _begins_with() { case "$2" in "$1"*) true;; *) false;; esac; }
 # checks if $2 ends with $1
 _ends_with() { case "$2" in *"$1") true;; *) false;; esac; }
 
+# checks if $1 is in an array $2, must be passed as "${array[@]}"
+# does not work with spaces in elements
+_in_list() {
+    local str="${1}"; shift
+    [[ " $@ " =~ " ${str} " ]]
+}
+
 # checks if we are running bash
 _is_bash() { _variable_set "${BASH_VERSION}"; }
 
