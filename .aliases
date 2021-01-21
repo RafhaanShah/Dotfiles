@@ -7,12 +7,12 @@ alias sudo='sudo '
 alias ls='command ls --color' # show colours
 alias la='ls -A' # include hidden files
 alias ll='ls -Alh' # long human readable format
-alias lsfile='ls -p | grep -v /' # list files only
-alias lsdir='ls -d */ 2> /dev/null' # list folders only
-alias lsdot='ls -d .[^.]* 2> /dev/null' # list hidden items only
-alias lssize='ls -lASrh' # sort by size
-alias lsdate='ls -lAtrh' # sort by date
-alias lsext='ls -lAXBh' # sort by extension
+alias ls-file='ls -p | grep -v /' # list files only
+alias ls-dir='ls -d */ 2> /dev/null' # list folders only
+alias ls-dot='ls -d .[^.]* 2> /dev/null' # list hidden items only
+alias ls-size='ls -lASrh' # sort by size
+alias ls-date='ls -lAtrh' # sort by date
+alias ls-ext='ls -lAXBh' # sort by extension
 
 # cd aliases
 alias -- -='cd -' # the alias is just '-'
@@ -29,6 +29,11 @@ alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit --message'
 alias gco='git checkout'
+
+# docker aliases
+alias dk='docker'
+alias dkc='docker-compose'
+alias dkc-upd='docker-compose pull && docker-compose up -d'
 
 # coloured grep
 alias grep='grep --color=auto'

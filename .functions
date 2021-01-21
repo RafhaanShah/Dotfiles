@@ -97,6 +97,9 @@ sizeof() {
     fi
 }
 
+# exec into a docker container
+dk-exec() { docker exec -it "$1" sh; }
+
 # open github repo in browser
 github() {
     git rev-parse --is-inside-work-tree &>/dev/null || echo "Not a git repo" && return 1
