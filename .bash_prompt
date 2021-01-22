@@ -44,7 +44,7 @@ fi
 
 _PROMPT_COL_RESET="\[\e[0m\]" # reset colour
 _PROMPT_ARROW=$'\u2192' # git arrow
-_PROMPT_CHAR=$'\u203a' # prompt character
+_PROMPT_CHAR=$'\u276F' # prompt character
 
 _PROMPT_STR="${_PROMPT_COL_USER}\u " # user
 _PROMPT_STR+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h " # host
