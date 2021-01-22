@@ -1,42 +1,40 @@
 ### loads all other dot files
 
+# source file if it exists
+_load_file() { [ -f "${1}" ] && source "${1}"; }
+
 # location of dotfile repository
 DOTFILE_DIR="${HOME}/Dotfiles"
 
 # helper functions
-[ -f "${DOTFILE_DIR}/.helpers" ] && source "${DOTFILE_DIR}/.helpers"
+_load_file "${DOTFILE_DIR}/.helpers"
 
 # exported environment variables
-[ -f "${DOTFILE_DIR}/.exports" ] && source "${DOTFILE_DIR}/.exports"
+_load_file "${DOTFILE_DIR}/.exports"
 
 # aliases
-[ -f "${DOTFILE_DIR}/.aliases" ] && source "${DOTFILE_DIR}/.aliases"
+_load_file "${DOTFILE_DIR}/.aliases"
 
 # if on wsl, load wsl file
-if _is_wsl; then
-    [ -f "${DOTFILE_DIR}/.wsl" ] && source "${DOTFILE_DIR}/.wsl"
-fi
+_is_wsl && _load_file "${DOTFILE_DIR}/.wsl"
 
 # if on macOS, load macOS file
-if _is_macos; then
-    [ -f "${DOTFILE_DIR}/.macos" ] && source "${DOTFILE_DIR}/.macos"
-fi
+_is_macos && _load_file "${DOTFILE_DIR}/.macos"
 
 # custom profile file outside of vcs for machine specific stuff
-[ -f "${HOME}/.raf" ] && source "${HOME}/.raf"
+_load_file "${HOME}/.raf"
 
 # functions (to be loaded after aliases as aliases are read at function definition)
-[ -f "${DOTFILE_DIR}/.functions" ] && source "${DOTFILE_DIR}/.functions"
+_load_file "${DOTFILE_DIR}/.functions"
 
 # prompt functions
-[ -f "${DOTFILE_DIR}/.prompt" ] && source "${DOTFILE_DIR}/.prompt"
+_load_file "${DOTFILE_DIR}/.prompt"
 
-# print some info at the start of a new terminal
-_command_exists date && date
-# _command_exists uptime && uptime
-_is_bash && echo "${USER} @ ${HOSTNAME} -> bash ${BASH_VERSION}" \
-    && [ -f "${DOTFILE_DIR}/.bash_prompt" ] && source "${DOTFILE_DIR}/.bash_prompt"
-_is_zsh && echo "${USER} @ ${HOST} -> zsh ${ZSH_VERSION}" \
-    && [ -f "${DOTFILE_DIR}/.zsh_prompt" ] && source "${DOTFILE_DIR}/.zsh_prompt"
+# print version info and load prompt
+_is_bash && echo -n "bash ${BASH_VERSION} - " && date \
+    && _load_file "${DOTFILE_DIR}/.bash_prompt"
 
-unset DOTFILE_DIR
+_is_zsh && echo -n "zsh ${ZSH_VERSION} - " && date \
+    && _load_file "${DOTFILE_DIR}/.zsh_prompt"
+
+unset DOTFILE_DIR _load_file

@@ -96,13 +96,6 @@ sizeof() {
 # exec into a docker container
 dk-exec() { docker exec -it "$1" sh; }
 
-# reloads shell
-reload() {
-    _is_bash && exec bash -l
-    _is_zsh && exec zsh -l
-    exec "${SHELL}" -l
-}
-
 # open github repo in browser
 github() {
     _is_git_repo || { echo "Not a git repo" && return 1; }

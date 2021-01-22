@@ -57,6 +57,9 @@ alias lexit='echo $?'
 # gets the last command
 alias lcommand='history | tail -2 | head -1 | cut -c8-999'
 
+# reloads shell
+alias reload='exec "${0//-}" -l'
+
 # shows path
 alias path='echo -e "${PATH//:/\\n}"'
 
