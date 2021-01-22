@@ -12,21 +12,6 @@ cd() {
 # make dir and cd into it automatically
 mkdir() { command mkdir -p "$@" && builtin cd "$1"; }
 
-# find files in current folder
-ffile() { command find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
-
-# find text in current folder
-ftext () { grep -iIHrn "$1" .; }
-
-# list files and folders in a tree format with a default level of 2
-tree() {
-    if [ "$#" -eq 0 ]; then
-        command tree --dirsfirst -C -L 2
-    else
-        command tree --dirsfirst -C "$@"
-    fi
-}
-
 # add colours to man
 man() {
     env \
@@ -48,6 +33,18 @@ hist() {
         history 1000 | grep "$*" | grep -v "hist"
     fi
 }
+
+### other functions
+
+# count the number of files and directories
+dirstat() { 
+    local files="$(ls -p | grep -v / | wc -l)"
+    local dirs="$(ls -d */ 2> /dev/null | wc -l)"
+    _trim "${files} files, ${dirs} directories"
+}
+
+# exec into a docker container
+dk-exec() { docker exec -it "$1" sh; }
 
 # extract archives
 extract() {
@@ -71,12 +68,24 @@ extract() {
      fi
 }
 
-# count the number of files and directories
-dirstat() { 
-    local files="$(ls -p | grep -v / | wc -l)"
-    local dirs="$(ls -d */ 2> /dev/null | wc -l)"
-    _trim "${files} files, ${dirs} directories"
+# find files in current folder
+ffile() { command find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
+
+# find text in current folder
+ftext () { grep -iIHrn "$1" .; }
+
+# open github repo in browser
+github() {
+    _is_git_repo || { echo "Not a git repo" && return 1; }
+    local base_url="$(git remote get-url origin)"
+    base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
+    base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
+    base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
+    open "${base_url}/$1"
 }
+
+# enerate a qrcode
+qrcode() { curl "http://qrenco.de/$1"; }
 
 # gets the size of a file or directory
 sizeof() {
@@ -93,28 +102,12 @@ sizeof() {
     fi
 }
 
-# exec into a docker container
-dk-exec() { docker exec -it "$1" sh; }
-
-# open github repo in browser
-github() {
-    _is_git_repo || { echo "Not a git repo" && return 1; }
-    local base_url="$(git remote get-url origin)"
-    base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
-    base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
-    base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
-    open "${base_url}/$1"
-}
-
-# enerate a qrcode
-qrcode() { curl "http://qrenco.de/$1"; }
-
-# shows the current weather
-weather() {
-    if [ "$#" -lt 1 ]; then
-        curl "http://wttr.in/$1"
+# list files and folders in a tree format with a default level of 2
+tree() {
+    if [ "$#" -eq 0 ]; then
+        command tree --dirsfirst -C -L 2
     else
-        curl "http://wttr.in/London"
+        command tree --dirsfirst -C "$@"
     fi
 }
 
@@ -134,4 +127,13 @@ true_colour_wave() {
         }
         printf "\n";
     }'
+}
+
+# shows the current weather
+weather() {
+    if [ "$#" -lt 1 ]; then
+        curl "http://wttr.in/$1"
+    else
+        curl "http://wttr.in/London"
+    fi
 }

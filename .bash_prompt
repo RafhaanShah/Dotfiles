@@ -1,6 +1,23 @@
 ### bash prompt
 # https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt
 
+# runs after each command, before PS1 is printed
+_prompt_command() {
+    local EXIT="$?"
+    PS1="\[\e]0;\u@\h: \w\a\]" # set terminal title
+    
+    # only show status line (name, host, dir, git) if dir changed or git changed
+    _prompt_show_status && PS1+="${_PROMPT_STR}\n"
+    
+    if [ "${EXIT}" -eq 0 ]; then
+        PS1+="${_PROMPT_CH_OK}"
+    else
+        PS1+="${_PROMPT_CH_ERR}"
+    fi
+}
+
+PROMPT_COMMAND=_prompt_command
+
 if _variable_set "${COLORTERM}"; then # 24-bit colour
     _PROMPT_COL_USER="\[\e[1;38;2;166;226;46m\]" # green
     _PROMPT_COL_HOST="\[\e[1;38;2;253;151;31m\]" # orange
@@ -31,21 +48,6 @@ _PROMPT_COL_RESET="\[\e[0m\]" # reset colour
 _PROMPT_ARROW=$'\u2192' # git arrow
 _PROMPT_CHAR=$'\u203a' # prompt character
 
-# runs after each command, before PS1 is printed
-_prompt_command() {
-    local EXIT="$?"
-    PS1="\[\e]0;\u@\h: \w\a\]" # set terminal title
-    
-    # only show status line (name, host, dir, git) if dir changed or git changed
-    _prompt_show_status && PS1+="${_PROMPT_STR}\n"
-    
-    if [ "${EXIT}" -eq 0 ]; then
-        PS1+="${_PROMPT_CH_OK}"
-    else
-        PS1+="${_PROMPT_CH_ERR}"
-    fi
-}
-
 _PROMPT_STR="${_PROMPT_COL_USER}\u " # user
 _PROMPT_STR+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}\h " # host
 _PROMPT_STR+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}\w " # directory
@@ -53,8 +55,6 @@ _PROMPT_STR+="\$(_prompt_git \"${_PROMPT_COL_NORM}${_PROMPT_ARROW} ${_PROMPT_COL
 
 _PROMPT_CH_OK="${_PROMPT_COL_OK}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # success prompt
 _PROMPT_CH_ERR="${_PROMPT_COL_ERR}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # error prompt
-
-PROMPT_COMMAND=_prompt_command
 
 unset _PROMPT_COL_USER _PROMPT_COL_HOST _PROMPT_COL_DIR
 unset _PROMPT_COL_GIT _PROMPT_COL_OK _PROMPT_COL_ERR _PROMPT_COL_NORM

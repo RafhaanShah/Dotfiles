@@ -1,6 +1,21 @@
 ### zsh prompt
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
+# runs after each command, before PROMPT is printed
+precmd() {
+    local EXIT="$?"; local _NEWLINE=$'\n' # new line
+    PROMPT=$'%{\e]0;%n@%m: %3~\a%}' # set terminal title
+    
+    # only show status line (name, host, dir, git) if dir changed or git changed
+    _prompt_show_status && PROMPT+="${_PROMPT_STR}${_NEWLINE}"
+    
+    if [ "${EXIT}" -eq 0 ]; then
+        PROMPT+="${_PROMPT_CH_OK}"
+    else
+        PROMPT+="${_PROMPT_CH_ERR}"
+    fi
+}
+
 if _variable_set "${COLORTERM}"; then # 24-bit colour
     _PROMPT_COL_USER=$'%{\e[1;38;2;166;226;46m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;2;253;151;31m%}' # orange
@@ -30,22 +45,6 @@ fi
 _PROMPT_COL_RESET=$'%{\e[0m%}' # reset colour
 _PROMPT_ARROW=$'\u2192' # git arrow
 _PROMPT_CHAR=$'\u203a' # prompt character
-
-# runs after each command, before PROMPT is printed
-precmd() {
-    local EXIT="$?"
-    local _NEWLINE=$'\n' # new line
-    PROMPT=$'%{\e]0;%n@%m: %3~\a%}' # set terminal title
-    
-    # only show status line (name, host, dir, git) if dir changed or git changed
-    _prompt_show_status && PROMPT+="${_PROMPT_STR}${_NEWLINE}"
-    
-    if [ "${EXIT}" -eq 0 ]; then
-        PROMPT+="${_PROMPT_CH_OK}"
-    else
-        PROMPT+="${_PROMPT_CH_ERR}"
-    fi
-}
 
 _PROMPT_STR="${_PROMPT_COL_USER}%n " # user
 _PROMPT_STR+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}%m " # host
