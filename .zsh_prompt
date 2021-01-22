@@ -35,10 +35,10 @@ _PROMPT_CHAR=$'\u203a' # prompt character
 precmd() {
     local EXIT="$?"
     local _NEWLINE=$'\n' # new line
-    unset PROMPT
+    PROMPT=$'%{\e]0;%n@%m: %3~\a%}' # set terminal title
     
     # only show status line (name, host, dir, git) if dir changed or git changed
-    _prompt_show_status && PROMPT="${_PROMPT_STR}${_NEWLINE}"
+    _prompt_show_status && PROMPT+="${_PROMPT_STR}${_NEWLINE}"
     
     if [ "${EXIT}" -eq 0 ]; then
         PROMPT+="${_PROMPT_CH_OK}"
@@ -49,7 +49,7 @@ precmd() {
 
 _PROMPT_STR="${_PROMPT_COL_USER}%n " # user
 _PROMPT_STR+="${_PROMPT_COL_NORM}@ ${_PROMPT_COL_HOST}%m " # host
-_PROMPT_STR+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}%4~ " # directory
+_PROMPT_STR+="${_PROMPT_COL_NORM}: ${_PROMPT_COL_DIR}%3~ " # directory
 _PROMPT_STR+="\$(_prompt_git '${_PROMPT_COL_NORM}${_PROMPT_ARROW} ${_PROMPT_COL_GIT}')" # git
 
 _PROMPT_CH_OK="${_PROMPT_COL_OK}${_PROMPT_CHAR} ${_PROMPT_COL_RESET}" # success prompt

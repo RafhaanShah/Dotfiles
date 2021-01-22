@@ -27,7 +27,7 @@ HISTIGNORE="cd*:ls*:pwd:clear:bg*:fg*:exit:history*"
 # sets history size
 HISTSIZE=1000
 # truncates directory names when X levels deep
-PROMPT_DIRTRIM=4
+PROMPT_DIRTRIM=3
 
 
 ### shell options
