@@ -5,9 +5,7 @@
 precmd() {
     local EXIT="$?"; local _NEWLINE=$'\n' # new line
     PROMPT=$'%{\e]0;%n@%m: %3~\a%}' # set terminal title
-    
-    # only show status line (name, host, dir, git) if dir changed or git changed
-    _prompt_show_status && PROMPT+="${_PROMPT_STR}${_NEWLINE}"
+    PROMPT+="${_NEWLINE}${_PROMPT_STR}${_NEWLINE}" # user, host, dir, git
     
     if [ "${EXIT}" -eq 0 ]; then
         PROMPT+="${_PROMPT_CH_OK}"

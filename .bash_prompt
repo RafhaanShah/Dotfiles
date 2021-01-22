@@ -5,9 +5,7 @@
 _prompt_command() {
     local EXIT="$?"
     PS1="\[\e]0;\u@\h: \w\a\]" # set terminal title
-    
-    # only show status line (name, host, dir, git) if dir changed or git changed
-    _prompt_show_status && PS1+="${_PROMPT_STR}\n"
+    PS1+="\n${_PROMPT_STR}\n" # user, host, dir, git
     
     if [ "${EXIT}" -eq 0 ]; then
         PS1+="${_PROMPT_CH_OK}"

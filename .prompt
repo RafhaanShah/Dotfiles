@@ -1,11 +1,11 @@
 ### functions used in prompts
 
 # set this varable to disable git-prompt in specific repos
-# _PROMPT_GIT_BLOCKLIST=(
+# _PROMPT_GIT_STATUS_BLOCKLIST=(
 #     "large-repo"
 #     "another-folder"
 # )
-
+ 
 # checks if either pwd or git st has changed
 _prompt_show_status() {
     local rc=1
@@ -22,17 +22,18 @@ _prompt_dir_changed() {
 
 # checks if there have been any git changes
 _prompt_git_changed() {
-    _prompt_git_blocklist || return 1
     _is_git_repo || return 1
+    _prompt_git_blocklist || return 1
     local gs="$(git status --porcelain --branch)"
-    [ "${_PROMPT_GIT}" != "${gs}" ] && _PROMPT_GIT="${gs}" && return 0
+    [ "${_PROMPT_GIT_STATUS}" != "${gs}" ] && _PROMPT_GIT_STATUS="${gs}" && return 0
     return 1
 }
 
+# checks if git prompt should be ignored
 _prompt_git_blocklist() {
-    if _variable_set "${_PROMPT_GIT_BLOCKLIST}"; then
+    if _variable_set "${_PROMPT_GIT_STATUS_BLOCKLIST}"; then
         local wd="${PWD##*/}"
-        _in_list "${wd}" "${_PROMPT_GIT_BLOCKLIST[@]}" && { unset _PROMPT_GIT; return 1; }
+        _in_list "${wd}" "${_PROMPT_GIT_STATUS_BLOCKLIST[@]}" && return 1
     fi
 }
 
@@ -41,11 +42,11 @@ _prompt_git_blocklist() {
 # adapted from https://github.com/magicmonty/bash-git-prompt/blob/master/gitstatus.sh
 _prompt_git() {
     _is_git_repo || return 1
+    _prompt_git_blocklist || return 1
     
     # get git status string in porcelain format with branch
-    # local gitstatus="$(git status --porcelain --branch)"
-    _variable_set "${_PROMPT_GIT}" || return 1
-    local gitstatus="${_PROMPT_GIT}" # set by _prompt_git_changed
+    local gitstatus="$(git status --porcelain --branch)"
+    # local gitstatus="${_PROMPT_GIT_STATUS}" # set by _prompt_git_changed
     
     local num_staged=0
     local num_changed=0
@@ -55,9 +56,9 @@ _prompt_git() {
     
     # loop over status lines
     while IFS='' read -r line || [[ -n "${line}" ]]; do
-        stat="${line:0:2}"
-        while [[ -n ${stat} ]]; do
-            case "${stat}" in
+        stat_line="${line:0:2}"
+        while [[ -n ${stat_line} ]]; do
+            case "${stat_line}" in
                 \#\#) branch_line="${line/\#\# }"; break ;; # format: ## master...origin/master
                 \?\?) ((num_untracked++)); break ;;
                 U?) ((num_conflicts++)); break;;
@@ -71,7 +72,7 @@ _prompt_git() {
                 \ ) ;;
                 *) ((num_staged++)) ;;
             esac
-            stat="${stat:0:(${#stat}-1)}"
+            stat_line="${stat_line:0:(${#stat_line}-1)}"
         done
     done <<< "${gitstatus}"
     
