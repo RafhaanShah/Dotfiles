@@ -693,7 +693,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<integer>20</integer>
+			<integer>25</integer>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
