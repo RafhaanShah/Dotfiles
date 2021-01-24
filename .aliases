@@ -25,6 +25,7 @@ alias .....='cd ../../../..'
 # git aliases
 alias gs='git status'
 alias ga='git add'
+alias gl='git log'
 alias gpl='git pull'
 alias gps='git push'
 alias gcm='git commit --message'
