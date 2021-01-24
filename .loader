@@ -27,6 +27,9 @@ _load_file "${HOME}/.raf"
 # functions (to be loaded after aliases as aliases are read at function definition)
 _load_file "${DOTFILE_DIR}/.functions"
 
+# tools
+_load_file "${DOTFILE_DIR}/.tools"
+
 # prompt functions
 _load_file "${DOTFILE_DIR}/.prompt"
 

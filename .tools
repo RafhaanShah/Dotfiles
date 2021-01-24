@@ -1,0 +1,10 @@
+### loads other cli tools
+
+# nvm: Node Version Manager
+# https://github.com/nvm-sh/nvm
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/VERSION/install.sh | bash
+if [ -d "${HOME}/.nvm" ]; then
+    export NVM_DIR="${HOME}/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && source "${NVM_DIR}/nvm.sh" # loads nvm
+    _is_bash && [ -s "$NVM_DIR/bash_completion" ] && source "${NVM_DIR}/bash_completion" # nvm bash_completion
+fi
