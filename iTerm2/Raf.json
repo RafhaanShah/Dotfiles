@@ -72,7 +72,7 @@
     }
   },
   "Hide After Opening" : false,
-  "Brighten Bold Text" : false,
+  "Brighten Bold Text" : true,
   "Flashing Bell" : false,
   "Cursor Guide Color" : {
     "Red Component" : 0.81568628549575806,
@@ -97,7 +97,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.59215688705444336
   },
-  "Use Non-ASCII Font" : true,
+  "Use Non-ASCII Font" : false,
   "Shortcut" : "",
   "Background Image Location" : "",
   "Bold Color" : {
@@ -415,7 +415,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.67843139171600342
   },
-  "Transparency" : 0.40000000000000000,
+  "Transparency" : 0.40000000000000002,
   "Background Color" : {
     "Red Component" : 0.15294118225574493,
     "Color Space" : "sRGB",

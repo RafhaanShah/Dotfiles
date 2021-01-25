@@ -389,7 +389,7 @@
 		</dict>
 	</dict>
 	<key>Default Bookmark Guid</key>
-	<string>CBBD8361-5DCE-435C-B3E5-FEF8901E095B</string>
+	<string>1AC4137C-A563-4F40-80E6-C507C5823E21</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -788,11 +788,11 @@
 				<real>0.97254902124404907</real>
 			</dict>
 			<key>Guid</key>
-			<string>CBBD8361-5DCE-435C-B3E5-FEF8901E095B</string>
+			<string>1AC4137C-A563-4F40-80E6-C507C5823E21</string>
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<integer>1</integer>
 			<key>Icon</key>
 			<integer>1</integer>
 			<key>Idle Code</key>
@@ -1243,7 +1243,7 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/raf.shah</string>
+			<string>/Users/rafhaanshah</string>
 		</dict>
 	</array>
 	<key>NumberOfSpacesPerTab</key>
