@@ -100,3 +100,34 @@ fi
     -W "$(grep "^Host" ~/.ssh/config | \
     grep -v "[?*]" | cut -d " " -f2 | \
     tr ' ' '\n')" scp sftp ssh
+
+# https://github.com/Charlietje/bash/blob/master/bashrc.sh#L161
+_fuzzy_file_completion()  {
+    local IFS=$'\n'
+    if [ -z $2 ]; then
+        COMPREPLY=( $(\ls) )
+    else
+        local DIR="$2"
+        if [[ $DIR =~ ^~ ]]; then
+            DIR="${2/\~/$HOME}"
+        fi
+        local DIRPATH=$(echo "$DIR" | sed 's|[^/]*$||' | sed 's|//|/|')
+        local BASENAME=$(echo "$DIR" | sed 's|.*/||')
+        local FILTER=$(echo "$BASENAME" | sed 's|.|\0.*|g')
+        if [[ $BASENAME == .* ]]; then
+            local FILES=$(\ls -A $DIRPATH 2>/dev/null)
+        else
+            local FILES=$(\ls -A $DIRPATH 2>/dev/null | egrep -v '^\.')
+        fi
+        local X=$(echo "$FILES" | \grep -i "$BASENAME" 2>/dev/null)
+        if [ -z "$X"  ]; then
+            X=$(echo "$FILES" | \grep -i "$FILTER" 2>/dev/null)
+        fi
+        COMPREPLY=($X)
+        COMPREPLY=("${COMPREPLY[@]/#/$DIRPATH}")
+    fi
+}
+
+# https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html
+# allows fuzzy completion for file/dir names: cd tuf<TAB> => cd Stuff
+complete -o nospace -o filenames -o bashdefault -D -F _fuzzy_file_completion
