@@ -1,13 +1,14 @@
 ### functions
 
 # auto ls after cd
-cd() {
-    if [ "$#" -eq 0 ]; then
-        builtin cd && ls
-    else
-        builtin cd "$1" && ls
-    fi
-}
+# handled by the prompt now as if you type in a dir without 'cd' then it won't ls
+# cd() {
+#     if [ "$#" -eq 0 ]; then
+#         builtin cd && ls
+#     else
+#         builtin cd "$1" && ls
+#     fi
+# }
 
 # make dir and cd into it automatically
 mkdir() { command mkdir -p "$@" && builtin cd "$1"; }
