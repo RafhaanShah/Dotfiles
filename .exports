@@ -4,15 +4,11 @@
 PATH_DIRS=(
     "${HOME}/bin" # home bin
     "${HOME}/.local/bin" # alternative bin
+    "${HOME}/Library/Android/sdk/platform-tools" # macOS Android tools
 )
-    
+
 for DIR in "${PATH_DIRS[@]}"; do
-    if [ -d "${DIR}" ]; then
-        case ":${PATH:=$DIR}:" in
-            *:"$DIR":*) ;;
-            *) PATH="${PATH}:${DIR}" ;;
-        esac
-    fi
+    _add_to_path "${DIR}"
 done
 
 unset DIR PATH_DIRS

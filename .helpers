@@ -41,3 +41,13 @@ _in_list() {
     local str="${1}"; shift
     [[ " $@ " =~ " ${str} " ]]
 }
+
+# adds a folder to PATH if it exists and is not already added
+_add_to_path() {
+    if [ -d "$1" ]; then
+        case ":${PATH:=$1}:" in
+            *:"$1":*) ;;
+            *) PATH="${PATH}:$1" ;;
+        esac
+    fi
+}
