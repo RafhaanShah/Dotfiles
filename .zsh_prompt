@@ -2,7 +2,7 @@
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
 # runs after each command, before PROMPT is printed
-precmd() {
+_precmd_prompt() {
     local EXIT="$?"; local _NEWLINE=$'\n' # new line
     PROMPT=$'%{\e]0;%n@%m: %3~\a%}' # set terminal title
     PROMPT+="${_NEWLINE}${_PROMPT_STR}${_NEWLINE}" # user, host, dir, git
@@ -14,6 +14,8 @@ precmd() {
         PROMPT+="${_PROMPT_CH_ERR}"
     fi
 }
+
+precmd_functions+=( _precmd_prompt )
 
 if _variable_set "${COLORTERM}"; then # 24-bit colour
     _PROMPT_COL_USER=$'%{\e[1;38;2;166;226;46m%}' # green

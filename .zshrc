@@ -9,7 +9,9 @@
 # http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 
 # do not add HIST_IGNORE commands to interactive history
-zshaddhistory() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
+_zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
+
+zshaddhistory_functions+=( _zshaddhistory_filter )
 
 
 ### overrides
@@ -81,21 +83,15 @@ setopt PUSHD_SILENT
 setopt SHARE_HISTORY
 
 
-### shell key bindings
-# use partial commands for history search with arrows
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
-
-
 ### zsh completion
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
 
 # completer functions to use
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-# small letters will match small and capital letters
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# case insensitive fuzzy completion https://stackoverflow.com/a/24237590
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # max errors for _approximate _correct completer functions
-zstyle ':completion:*' max-errors 1
+zstyle ':completion:*' max-errors 0 # 0 works better with fuzzy completion
 # set color specifications for completion, use LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # 1st tab lists suggestions, 2nd tab starts menu
@@ -104,3 +100,13 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 # initialize zsh completion
 autoload -Uz compinit && compinit
+# initialise complist module http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
+zmodload -i zsh/complist
+
+
+### shell key bindings
+# use partial commands for history search with arrows
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+# accept menu option and run command with one enter press like bash
+bindkey -M menuselect '^M' .accept-line
