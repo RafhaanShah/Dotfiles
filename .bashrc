@@ -128,6 +128,42 @@ _fuzzy_file_completion()  {
     fi
 }
 
+# https://github.com/OpsCharlie/bash/blob/master/bashrc.sh#L194
+_fuzzy_dir_completion() {
+    local IFS=$'\n'
+    if [ -z $2 ]; then
+        COMPREPLY=( $(\ls -d */ | sed 's|/$||') )
+    else
+        DIR="$2"
+        if [[ $DIR =~ ^~ ]]; then
+            DIR="${2/\~/$HOME}"
+        fi
+        DIRPATH=$(echo "$DIR" | sed 's|[^/]*$||' | sed 's|//|/|')
+        BASENAME=$(echo "$DIR" | sed 's|.*/||')
+        FILTER=$(echo "$BASENAME" | sed 's|.|\0.*|g')
+        if [[ $BASENAME == .* ]]; then
+            if [ -z "$DIRPATH" ]; then
+                DIRS=$(\ls -d .*/ | \egrep -v '^\./$|^\.\./$')
+            else
+                DIRS=$(\ls -d ${DIRPATH}.*/ | sed "s|^$DIRPATH||g" | \egrep -v '^\./$|^\.\./$')
+            fi
+        else
+            if [ -z "$DIRPATH" ]; then
+                DIRS=$(\ls -d ${DIRPATH}*/ 2>/dev/null)
+            else
+                DIRS=$(\ls -d ${DIRPATH}*/ 2>/dev/null | sed "s|^$DIRPATH||g")
+            fi
+        fi
+        X=$(echo "$DIRS" | \grep -i "$BASENAME" 2>/dev/null | sed 's|/$||g')
+        if [ -z "$X"  ]; then
+            X=$(echo "$DIRS" | \grep -i "$FILTER" 2>/dev/null | sed 's|/$||g')
+        fi
+        COMPREPLY=($X)
+        COMPREPLY=("${COMPREPLY[@]/#/$DIRPATH}")
+    fi
+}
+
 # https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html
 # allows fuzzy completion for file/dir names: cd tuf<TAB> => cd Stuff
 complete -o nospace -o filenames -o bashdefault -D -F _fuzzy_file_completion
+complete -o nospace -o filenames -o bashdefault -F _fuzzy_dir_completion cd mkdir
