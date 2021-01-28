@@ -31,7 +31,7 @@ hist() {
     if [ "$#" -eq 0 ]; then
         history 25
     else 
-        history 1000 | grep "$*" | grep -v "hist"
+        history 10000 | grep "$*" | grep -v "hist" | tail -n 10
     fi
 }
 
@@ -39,8 +39,8 @@ hist() {
 
 # count the number of files and directories
 dirstat() { 
-    local files="$(ls -p | grep -v / | wc -l)"
-    local dirs="$(ls -d */ 2> /dev/null | wc -l)"
+    local files="$(\ls -p | grep -v / | wc -l)"
+    local dirs="$(\ls -d */ 2> /dev/null | wc -l)"
     _trim "${files} files, ${dirs} directories"
 }
 
