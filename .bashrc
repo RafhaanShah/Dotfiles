@@ -25,7 +25,7 @@ HISTCONTROL="erasedups:ignorespace"
 # ignores common commands when saving command history
 HISTIGNORE="cd*:ls*:pwd:clear:bg*:fg*:exit:history*"
 # sets history size
-HISTSIZE=1000
+HISTSIZE=10000
 # truncates directory names when X levels deep
 PROMPT_DIRTRIM=3
 

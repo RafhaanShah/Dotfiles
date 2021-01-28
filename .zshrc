@@ -30,11 +30,11 @@ history() { builtin history -"$@"; }
 # history file
 HISTFILE="${HOME}/.zsh_history"
 # history file size
-HISTSIZE=1000
+HISTSIZE=10000
 # ignores common commands when saving command history
 HISTORY_IGNORE="(cd*|ls*|pwd|clear|bg*|fg*|exit|history*)"
 # maximum number of history events
-SAVEHIST=1000
+SAVEHIST=10000
 
 
 ### shell options
