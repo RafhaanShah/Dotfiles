@@ -24,7 +24,7 @@ _prompt_dir_changed() {
 _prompt_git_changed() {
     _is_git_repo || return 1
     _prompt_git_blocklist || return 1
-    local gs="$(git status --porcelain --branch)"
+    local gs="$(git status --porcelain --branch --ignore-submodules)"
     [ "${_PROMPT_GIT_STATUS}" != "${gs}" ] && _PROMPT_GIT_STATUS="${gs}" && return 0
     return 1
 }
@@ -45,7 +45,7 @@ _prompt_git() {
     _prompt_git_blocklist || return 1
     
     # get git status string in porcelain format with branch
-    local gitstatus="$(git status --porcelain --branch)"
+    local gitstatus="$(git status --porcelain --branch --ignore-submodules)"
     # local gitstatus="${_PROMPT_GIT_STATUS}" # set by _prompt_git_changed
     
     local num_staged=0
@@ -127,7 +127,7 @@ _prompt_git_old() {
 		echo 'unknown')"
 
     # check for status counter
-    local fc="$(git status --porcelain | wc -l | tr -d ' ')"
+    local fc="$(git status --porcelain --ignore-submodules | wc -l | tr -d ' ')"
     if [ "${fc}" -gt 0 ]; then
         s+="${fc}"
     fi
