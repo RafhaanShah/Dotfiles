@@ -83,6 +83,35 @@ setopt PUSHD_SILENT
 setopt SHARE_HISTORY
 
 
+### zsh plugins
+# using zinit because we gotta go fast
+# https://github.com/zdharma/zinit
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+if [[ -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    source "$HOME/.zinit/bin/zinit.zsh"
+    autoload -Uz _zinit
+    (( ${+_comps} )) && _comps[zinit]=_zinit
+
+    # load a few important annexes, without turbo
+    # (this is currently required for annexes)
+    zinit light-mode for \
+        zinit-zsh/z-a-rust \
+        zinit-zsh/z-a-as-monitor \
+        zinit-zsh/z-a-patch-dl \
+        zinit-zsh/z-a-bin-gem-node
+    
+    # load actual plugins
+    zinit ice blockf # block the traditional method of adding completions, zinit uses own method
+    zinit light zsh-users/zsh-completions # https://github.com/zsh-users/zsh-completions
+    
+    zinit ice wait lucid atload'_zsh_autosuggest_start' # load using turbo mode
+    zinit light zsh-users/zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
+    
+    # syntax highlighting must be sourced last
+    zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
+fi
+
+
 ### zsh completion
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
 
@@ -98,7 +127,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
 # what is displayed during menu selection
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-# initialize zsh completion
+# initialize zsh completion (should be after zinit plugins)
 autoload -Uz compinit && compinit
 # initialise complist module http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 zmodload -i zsh/complist
@@ -108,25 +137,5 @@ zmodload -i zsh/complist
 # use partial commands for history search with arrows
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
-# accept menu option and run command with one enter press like bash
+# accept menu option and run command with one enter press like bash (needs complist)
 bindkey -M menuselect '^M' .accept-line
-
-
-### zsh plugins
-# using zinit because we gotta go fast
-# https://github.com/zdharma/zinit
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    source "$HOME/.zinit/bin/zinit.zsh"
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
-
-    # Load a few important annexes, without Turbo
-    # (this is currently required for annexes)
-    zinit light-mode for \
-        zinit-zsh/z-a-rust \
-        zinit-zsh/z-a-as-monitor \
-        zinit-zsh/z-a-patch-dl \
-        zinit-zsh/z-a-bin-gem-node
-    
-fi
