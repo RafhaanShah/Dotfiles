@@ -110,3 +110,23 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 # accept menu option and run command with one enter press like bash
 bindkey -M menuselect '^M' .accept-line
+
+
+### zsh plugins
+# using zinit because we gotta go fast
+# https://github.com/zdharma/zinit
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    source "$HOME/.zinit/bin/zinit.zsh"
+    autoload -Uz _zinit
+    (( ${+_comps} )) && _comps[zinit]=_zinit
+
+    # Load a few important annexes, without Turbo
+    # (this is currently required for annexes)
+    zinit light-mode for \
+        zinit-zsh/z-a-rust \
+        zinit-zsh/z-a-as-monitor \
+        zinit-zsh/z-a-patch-dl \
+        zinit-zsh/z-a-bin-gem-node
+    
+fi
