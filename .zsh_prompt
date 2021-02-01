@@ -25,6 +25,7 @@ if _variable_set "${COLORTERM}"; then # 24-bit colour
     _PROMPT_COL_OK=$'%{\e[1;38;2;166;226;46m%}' # green
     _PROMPT_COL_ERR=$'%{\e[1;38;2;248;53;53m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;38;2;248;248;241m%}' # white
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e9e9e" # grey
 elif [ $(tput colors) -eq 256 ]; then # 8-bit colour
     _PROMPT_COL_USER=$'%{\e[1;38;5;112m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;5;208m%}' # orange
@@ -33,6 +34,7 @@ elif [ $(tput colors) -eq 256 ]; then # 8-bit colour
     _PROMPT_COL_OK=$'%{\e[1;38;5;112m%}' # green
     _PROMPT_COL_ERR=$'%{\e[1;38;5;196m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;38;5;255m%}' # white
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247" # grey
 else # 4-bit colour
     _PROMPT_COL_USER=$'%{\e[1;92m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;93m%}' # yellow
@@ -41,6 +43,7 @@ else # 4-bit colour
     _PROMPT_COL_OK=$'%{\e[1;92m%}' # green
     _PROMPT_COL_ERR=$'%{\e[1;91m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;97m%}' # white
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8" # grey
 fi
 
 _PROMPT_COL_RESET=$'%{\e[0m%}' # reset colour
