@@ -17,6 +17,8 @@ _precmd_prompt() {
 
 precmd_functions+=( _precmd_prompt )
 
+typeset -gA ZSH_HIGHLIGHT_STYLES # define array for highlighting styles
+
 if _variable_set "${COLORTERM}"; then # 24-bit colour
     _PROMPT_COL_USER=$'%{\e[1;38;2;166;226;46m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;2;253;151;31m%}' # orange
@@ -25,7 +27,13 @@ if _variable_set "${COLORTERM}"; then # 24-bit colour
     _PROMPT_COL_OK=$'%{\e[1;38;2;166;226;46m%}' # green
     _PROMPT_COL_ERR=$'%{\e[1;38;2;248;53;53m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;38;2;248;248;241m%}' # white
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9e9e9e" # grey
+    
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#9e9e9e' # grey
+    ZSH_HIGHLIGHT_STYLES[arg0]='fg=#a6e22e,bold' # green
+    ZSH_HIGHLIGHT_STYLES[path]='fg=#819aff' # blue
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#ffd75f' # yellow
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#ffd75f' # yellow
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#ffd75f' # yellow
 elif [ $(tput colors) -eq 256 ]; then # 8-bit colour
     _PROMPT_COL_USER=$'%{\e[1;38;5;112m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;5;208m%}' # orange
@@ -34,7 +42,13 @@ elif [ $(tput colors) -eq 256 ]; then # 8-bit colour
     _PROMPT_COL_OK=$'%{\e[1;38;5;112m%}' # green
     _PROMPT_COL_ERR=$'%{\e[1;38;5;196m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;38;5;255m%}' # white
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247" # grey
+    
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247' # grey
+    ZSH_HIGHLIGHT_STYLES[arg0]='fg=112,bold' # green
+    ZSH_HIGHLIGHT_STYLES[path]='fg=105' # blue
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=221' # yellow
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=221' # yellow
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=221' # yellow
 else # 4-bit colour
     _PROMPT_COL_USER=$'%{\e[1;92m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;93m%}' # yellow
@@ -43,7 +57,13 @@ else # 4-bit colour
     _PROMPT_COL_OK=$'%{\e[1;92m%}' # green
     _PROMPT_COL_ERR=$'%{\e[1;91m%}' # red
     _PROMPT_COL_NORM=$'%{\e[1;97m%}' # white
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8" # grey
+    
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8' # grey
+    ZSH_HIGHLIGHT_STYLES[arg0]='fg=10,bold' # green
+    ZSH_HIGHLIGHT_STYLES[path]='fg=12' # blue
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=11' # yellow
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=11' # yellow
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=11' # yellow
 fi
 
 _PROMPT_COL_RESET=$'%{\e[0m%}' # reset colour

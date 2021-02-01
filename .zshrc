@@ -96,7 +96,7 @@ _configure_autosuggestions() {
     # suggest from history and possible completions
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     # ignore patterns for history suggestions
-    ZSH_AUTOSUGGEST_HISTORY_IGNORE=""
+    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|mkdir *|cat *|nano *"
     # ignore patterns for completion suggestions
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE="echo *"
 }
