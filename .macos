@@ -1,12 +1,24 @@
 ### macOS specifics
 
+# brew, package manager for macOS
+# https://brew.sh/
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if _command_exists "brew"; then
+    BREW_PREFIX="$(brew --prefix)"
+    # gnu coreutils https://formulae.brew.sh/formula/coreutils
+    _add_to_path "${BREW_PREFIX}/opt/coreutils/libexec/gnubin"
+    unset BREW_PREFIX
+fi
+
+# non gnu ls options
+if ! _command_exists "gls"; then  
+    export CLICOLOR=1
+    export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
+    alias ls='command ls -G'
+fi
+    
 # opens file or folder in default app (the macOS command is open)
 unalias open
-
-# enable colouring for ls
-export CLICOLOR=1
-export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
-alias ls='command ls -G'
 
 # clipboard
 alias copy='pbcopy'
