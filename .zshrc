@@ -87,6 +87,7 @@ setopt SHARE_HISTORY
 # using zinit because we gotta go fast
 # https://github.com/zdharma/zinit
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+# zinit self-update (zinit) | zinit update --all (plugins)
 
 _configure_autosuggestions() {
     # use async suggestion loading
@@ -114,15 +115,15 @@ if [[ -f $HOME/.zinit/bin/zinit.zsh ]]; then
         zinit-zsh/z-a-as-monitor \
         zinit-zsh/z-a-patch-dl \
         zinit-zsh/z-a-bin-gem-node
-    
+
     # load actual plugins
     zinit ice blockf # block the traditional method of adding completions, zinit uses own method
     zinit light zsh-users/zsh-completions # https://github.com/zsh-users/zsh-completions
-    
+
     _configure_autosuggestions
     zinit ice wait lucid atload'_zsh_autosuggest_start' # load using turbo mode
     zinit light zsh-users/zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
-    
+
     # syntax highlighting must be sourced last
     zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
 fi
@@ -157,5 +158,5 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 # accept menu option and run command with one enter press like bash (needs complist)
 bindkey -M menuselect '^M' .accept-line
-# accept and execute current suggestion with ctrl space (needs autosuggestions)
-bindkey '^ ' autosuggest-execute
+# accept the current suggestion word with ctrl space (needs autosuggestions)
+bindkey '^ ' forward-word

@@ -69,8 +69,8 @@ extract() {
      fi
 }
 
-# find files in current folder
-ffile() { command find . -name "$1" 2>&1 | grep -v 'Permission denied'; }
+# find files in current folder (fuzzy)
+ffile() { command find . -iname "*${*}*" 2>&1 | grep -v 'Permission denied'; }
 
 # find text in current folder
 ftext () { grep -iIHrn "$1" .; }
