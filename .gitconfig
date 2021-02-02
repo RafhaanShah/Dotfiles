@@ -1,63 +1,12 @@
-### git config
+### git config (machine specific)
 # https://git-scm.com/docs/git-config
 
 [user]
         name = Rafhaan Shah
         email = RafhaanShah@users.noreply.github.com
         # https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/telling-git-about-your-signing-key
-	# gpg2 --list-keys --keyid-format LONG
+        # gpg2 --list-keys --keyid-format LONG
         # signingkey = GPG_KEY_ID
-
-[core]
-        # editor used
-        editor = nano
-        # pager used
-        pager = less
-        # speed up commands involving untracked files
-        untrackedCache = true
-
-[pull]
-        # rebase local branches on top of the fetched branch, instead of merging
-        rebase = true
-
-[fetch]
-        # remove any remote-tracking references that no longer exist on the remote
-        prune = true
-
-[help]
-        # correct and execute mistyped commands after 2 seconds
-	autocorrect = 20
-
-[apply]
-        # detect and fix whitespace errors
-        whitespace = fix
-
-[branch]
-        # show most recently changed branches first
-        sort = -committerdate
-
-[filter "lfs"]
-        clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-        required = true
-
-[alias]
-        aliases = config --get-regexp alias
-        amend = commit --amend
-        br = branch
-        cl = clone
-        cm = commit --message
-        co = checkout
-        duet = "!duet() { git commit --message $1 --author $2 <$3> --signoff; }; duet"
-        freset = "!freset() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; freset"
-        last = log -p -1
-        ll = log --pretty=oneline -n 20 --graph --abbrev-commit
-        pl = pull
-        ps = push
-        st = status
-        reb = "!reb() { git rebase -i HEAD~$1 && git commit --amend --date=\"now\" --no-edit; }; reb"
-        undo = reset --soft HEAD~1
 
 [commit]
         # https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/signing-commits
@@ -82,3 +31,6 @@
         # program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
         # macOS / Linux
         # program = gpg2
+
+[include]
+        path = ~/Dotfiles/.gitconfig.base
