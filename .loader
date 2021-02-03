@@ -40,4 +40,4 @@ _is_bash && echo -n "bash ${BASH_VERSION} - " && date \
 _is_zsh && echo -n "zsh ${ZSH_VERSION} - " && date \
     && _load_file "${DOTFILE_DIR}/.zsh_prompt"
 
-unset DOTFILE_DIR _load_file
+unset DOTFILE_DIR

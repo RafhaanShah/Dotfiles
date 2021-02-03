@@ -5,8 +5,13 @@
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if _command_exists "brew"; then
     BREW_PREFIX="$(brew --prefix)"
+    
     # gnu coreutils https://formulae.brew.sh/formula/coreutils
     _add_to_path "${BREW_PREFIX}/opt/coreutils/libexec/gnubin"
+    
+    # bash completion https://formulae.brew.sh/formula/bash-completion@2
+    _is_bash && _load_file "${BREW_PREFIX}/etc/profile.d/bash_completion.sh"
+    
     unset BREW_PREFIX
 fi
 
@@ -14,7 +19,7 @@ fi
 if ! _command_exists "gls"; then  
     export CLICOLOR=1
     export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
-    alias ls='command ls -G'
+    alias ls='ls -G'
 fi
     
 # opens file or folder in default app (the macOS command is open)
