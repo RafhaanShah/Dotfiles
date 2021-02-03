@@ -1,0 +1,4 @@
+# system specific configurations
+
+# for terminals that support 24 bit colour
+# export COLORTERM="truecolor"

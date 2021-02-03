@@ -11,16 +11,17 @@ BACKUP_DIR="${DOTFILE_DIR}/old"
 
 # list of files to symlink to repo
 SYM_FILES=(
-    .bash_profile
     .bashrc
     .zshrc
 )
 
 # list of files to copy so they can be modified as needed
 CP_FILES=(
+    .bash_profile
     .hushlogin
     .gitconfig
     .nanorc
+    .rafrc
 )
 
 run_setup() {
@@ -46,12 +47,23 @@ symlink_dotfiles() {
     done
 }
 
-echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
+prompt_user() {
+    echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
+    read -p "Continue (y/n)? " CONT
+    if [ "$CONT" != "y" ]; then
+        exit 1
+    else
+        run_setup
+    fi
+}
 
-# prompt for confirmation
-read -p "Continue (y/n)? " CONT
-if [ "$CONT" != "y" ]; then
-    exit 1
-else
-    run_setup && echo "Done"
-fi
+echo "Running dotfile setup script"
+while getopts 'y' flag; do
+  case "${flag}" in
+    y) run_setup ;;
+    *) ;;
+  esac
+done
+
+if [ "$#" -eq 0 ]; then prompt_user; fi
+echo "Done"
