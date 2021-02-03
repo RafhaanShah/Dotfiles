@@ -1,18 +1,34 @@
 ### macOS specifics
 
-# brew, package manager for macOS
-# https://brew.sh/
+# brew: package manager for macOS https://brew.sh/
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if _command_exists "brew"; then
-    BREW_PREFIX="$(brew --prefix)"
+    HOMEBREW_PREFIX="$(brew --prefix)" # /usr/local
     
     # gnu coreutils https://formulae.brew.sh/formula/coreutils
-    _add_to_path "${BREW_PREFIX}/opt/coreutils/libexec/gnubin"
+    _add_to_path "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin"
     
-    # bash completion https://formulae.brew.sh/formula/bash-completion@2
-    _is_bash && _load_file "${BREW_PREFIX}/etc/profile.d/bash_completion.sh"
+    # gnu findutils https://formulae.brew.sh/formula/findutils
+    _add_to_path "${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin"
     
-    unset BREW_PREFIX
+    # asdf: language version manager https://formulae.brew.sh/formula/asdf
+    _load_file "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
+    _is_bash && _load_file "${HOMEBREW_PREFIX}/opt/asdf/etc/bash_completion.d/asdf.bash"
+    
+    # bash completions https://docs.brew.sh/Shell-Completion
+    # https://formulae.brew.sh/formula/bash-completion@2
+    if _is_bash; then
+        if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+            source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+        else
+            for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+                [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+            done
+        fi
+    fi
+    
+    # zsh completions https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+    _is_zsh && _add_to_fpath "${HOMEBREW_PREFIX}/share/zsh/site-functions"
 fi
 
 # non gnu ls options

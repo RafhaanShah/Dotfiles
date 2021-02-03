@@ -8,3 +8,13 @@ if [ -d "${HOME}/.nvm" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && source "${NVM_DIR}/nvm.sh" # loads nvm
     _is_bash && [ -s "$NVM_DIR/bash_completion" ] && source "${NVM_DIR}/bash_completion" # nvm bash_completion
 fi
+
+# asdf: language version manager
+# https://github.com/asdf-vm/asdf
+# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+if [ -d "${HOME}/.asdf" ]; then
+    export ASDF_DIR="${HOME}/.asdf"
+    _load_file "${ASDF_DIR}/asdf.sh" # load asdf
+    _is_bash && _load_file "${ASDF_DIR}/completions/asdf.bash" # asdf bash completions
+    _is_zsh && _add_to_fpath "${ASDF_DIR}/completions" # asdf zsh completions
+fi

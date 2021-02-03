@@ -42,6 +42,11 @@ _in_list() {
     [[ " $@ " =~ " ${str} " ]]
 }
 
+# adds a path to the front of fpath if it exists
+_add_to_fpath() {
+    [ -d "$1" ] && fpath=( "$1" $fpath )
+}
+
 # adds a folder to front of PATH
 # if it is already in PATH, remove it first
 _add_to_path() {

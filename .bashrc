@@ -82,10 +82,15 @@ bind '"\e[B": history-search-forward'
 
 ### programmable completion
 # https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html
-# load programmable completions
-[ -f /etc/bash_completion ] && source /etc/bash_completion # ubuntu default
-[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion # ubuntu default
-[ -f /usr/share/bash-completion/bash_completion ] && source /usr/share/bash-completion/bash_completion # https://github.com/scop/bash-completion
+# enable programmable completion features
+# https://github.com/scop/bash-completion
+if ! shopt -oq posix; then
+    if [ -f "/usr/share/bash-completion/bash_completion" ]; then
+        source "/usr/share/bash-completion/bash_completion"
+    elif [ -f "/etc/bash_completion" ]; then
+        source "/etc/bash_completion"
+    fi
+fi
 
 # add completion for SSH hostnames based on ~/.ssh/config
 [[ -e "${HOME}/.ssh/config" ]] && complete -o "default" \
