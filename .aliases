@@ -27,8 +27,8 @@ alias gad='git add'
 alias gcm='git commit --message'
 alias gco='git checkout'
 alias gcl='git clone'
-alias glg='git log'
-alias gll="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gll='git log'
+alias glg='git lg'
 alias gpl='git pull'
 alias gps='git push'
 alias gst='git status'
@@ -60,6 +60,9 @@ alias cmd='command'
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 
+# does a sudo
+alias fuck='sudo $(fc -ln -1)'
+
 # opens hosts file for editing
 alias hosts='sudo "${EDITOR}" /etc/hosts'
 
@@ -70,7 +73,7 @@ alias ip='ipconfig getifaddr en0 && curl http://ipecho.net/plain; echo'
 alias lexit='echo $?'
 
 # gets the last command
-alias lcommand='history | tail -2 | head -1 | cut -c8-999'
+alias lcommand='fc -ln -1'
 
 # opens file or folder in default app
 alias open='xdg-open'

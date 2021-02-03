@@ -46,7 +46,8 @@
         duet = "!duet() { git commit --message $1 --author $2 <$3> --signoff; }; duet"
         freset = "!freset() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; freset"
         last = log -p -1
-        ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+        ll = log
+        lg = log -n 20 --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         pl = pull
         ps = push
         st = status
