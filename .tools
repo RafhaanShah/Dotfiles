@@ -1,20 +1,33 @@
 ### loads other cli tools
 
-# nvm: Node Version Manager
-# https://github.com/nvm-sh/nvm
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/VERSION/install.sh | bash
-if [ -d "${HOME}/.nvm" ]; then
-    export NVM_DIR="${HOME}/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && source "${NVM_DIR}/nvm.sh" # loads nvm
-    _is_bash && [ -s "$NVM_DIR/bash_completion" ] && source "${NVM_DIR}/bash_completion" # nvm bash_completion
-fi
-
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
-# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
-if [ -d "${HOME}/.asdf" ]; then
+if [ -f "${HOME}/.asdf/asdf.sh" ]; then
     export ASDF_DIR="${HOME}/.asdf"
     _load_file "${ASDF_DIR}/asdf.sh" # load asdf
     _is_bash && _load_file "${ASDF_DIR}/completions/asdf.bash" # asdf bash completions
     _is_zsh && _add_to_fpath "${ASDF_DIR}/completions" # asdf zsh completions
+fi
+
+# bat: better cat
+# https://github.com/sharkdp/bat
+if _command_exists "bat"; then
+    export BAT_PAGER="less -RF"
+    alias cat='bat'
+    alias cat-plain='bat --plain'
+    alias cat-nopage='bat --plain --paging=never'
+fi
+
+# fd: better find
+# https://github.com/sharkdp/fd
+if _command_exists "fd"; then
+    unset -f ffile
+    alias ffile='fd'
+fi
+
+# ripgrep: better grep
+# https://github.com/burntsushi/ripgrep
+if _command_exists "rg"; then
+    unset -f ftext
+    alias ftext='rg'
 fi

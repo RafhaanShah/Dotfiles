@@ -69,11 +69,11 @@ extract() {
      fi
 }
 
-# find files in current folder (fuzzy, recursive)
+# find files
 ffile() { find . -not -path '*/\.*' -iname "*${*}*" 2>&1 | grep -v 'Permission denied'; }
 
-# find text in current folder (recursive)
-ftext () { grep -iIHrn --exclude-dir='.*' "$1" .; }
+# find text
+ftext () { grep -iIHrn --exclude-dir='.*' "$@"; }
 
 # open github repo in browser
 github() {

@@ -13,7 +13,9 @@ if _command_exists "brew"; then
     
     # asdf: language version manager https://formulae.brew.sh/formula/asdf
     _load_file "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
-    _is_bash && _load_file "${HOMEBREW_PREFIX}/opt/asdf/etc/bash_completion.d/asdf.bash"
+    
+    # brew command not found https://github.com/Homebrew/homebrew-command-not-found
+    _load_file "${HOMEBREW_PREFIX}/Homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
     
     # bash completions https://docs.brew.sh/Shell-Completion
     # https://formulae.brew.sh/formula/bash-completion@2
@@ -47,9 +49,6 @@ alias paste='paste'
 
 # get last wake / sleep events
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
-
-# get processes using webcam
-alias camusage='lsof | grep "AppleCamera"'
 
 # rm moves to trash instead
 unalias rm

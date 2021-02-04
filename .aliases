@@ -1,5 +1,7 @@
 ### aliases
 
+### common
+
 # carries over aliases with sudo
 alias sudo='sudo '
 
@@ -33,11 +35,6 @@ alias gpl='git pull'
 alias gps='git push'
 alias gst='git status'
 
-# docker aliases
-alias dk='docker'
-alias dkc='docker-compose'
-alias dkc-upd='docker-compose pull && docker-compose up -d'
-
 # coloured grep
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -48,7 +45,8 @@ alias rm='rm -Irv'
 alias mv='mv -iv'
 alias cp='cp -aiv'
 
-### other aliases
+
+### general
 
 # bechmark shell startup time
 alias bench_shell='time "${0//-}" -i -c "echo -n"'
@@ -95,3 +93,14 @@ alias runnable='chmod +x'
 
 # get the name of the current directory
 alias wd='echo ${PWD##*/}'
+
+
+### tools
+
+# docker: app containers https://docs.docker.com/engine/install/
+alias dk='docker'
+alias dkc='docker-compose'
+alias dkc-upd='docker-compose pull && docker-compose up -d'
+
+# fx: json processor https://github.com/antonmedv/fx
+alias json='fx'

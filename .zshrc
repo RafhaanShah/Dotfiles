@@ -18,7 +18,7 @@ zshaddhistory_functions+=( _zshaddhistory_filter )
 
 # prevents zsh trying to correct commands to filenames with sudo
 # https://stackoverflow.com/questions/17399056/zsh-tries-to-correct-a-command-to-a-file
-alias sudo='nocorrect sudo'
+alias sudo='nocorrect sudo '
 
 # make history command behave like bash
 history() { builtin history -"$@"; }
