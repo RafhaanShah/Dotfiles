@@ -98,7 +98,6 @@ tree() {
 }
 
 # test if true colour is supported by the terminal
-# https://gist.github.com/XVilka/8346728
 true_colour_wave() {
     awk 'BEGIN{
         s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;

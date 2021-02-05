@@ -35,6 +35,27 @@ _trim() {
 	echo "${var}"
 }
 
+# checks if true colour is supported, this is not set by all terminals
+# https://gist.github.com/XVilka/8346728
+_true_colour() { _variable_set "${COLORTERM}"; }
+
+# checks if 256 colours are supported by the terminal
+_256_colour() { 
+    # [ $(tput colors) -eq 256 ]
+    case "$TERM" in
+        xterm-color|*-256color) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# checks if this is an xterm
+_is_xterm() {
+    case "$TERM" in
+        xterm*|rxvt*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
 # checks if $1 is in an array $2, must be passed as "${array[@]}"
 # does not work with spaces in elements as that requires looping
 _in_list() {
