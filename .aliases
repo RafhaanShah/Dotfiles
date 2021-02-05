@@ -9,12 +9,12 @@ alias sudo='sudo '
 alias ls='ls --color --group-directories-first' # show colours, dirs first
 alias la='ls -A' # include hidden files
 alias ll='ls -Alh' # long human readable format
-alias ls-file='ls -p | grep -v /' # list files only
+alias ls-file='ls -F | grep -v /' # list files only
 alias ls-dir='ls -d */ 2> /dev/null' # list folders only
 alias ls-dot='ls -d .[^.]* 2> /dev/null' # list hidden items only
-alias ls-size='ls -lASrh' # sort by size
-alias ls-date='ls -lAtrh' # sort by date
-alias ls-ext='ls -lAXBh' # sort by extension
+alias ls-size='ls -lSrh' # sort by size
+alias ls-date='ls -ltrh' # sort by date
+alias ls-ext='ls -lXh' # sort by extension
 
 # cd aliases
 alias -- -='cd -' # the alias is just '-'
@@ -104,3 +104,6 @@ alias dkc-upd='docker-compose pull && docker-compose up -d'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
+
+# lazygit: git ui https://github.com/jesseduffield/lazygit
+alias git-ui-'lazygit'

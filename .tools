@@ -25,9 +25,23 @@ if _command_exists "fd"; then
     alias ffile='fd'
 fi
 
+# lsd: ls with icons https://github.com/Peltoche/lsd
+# needs a patched font, e.g: hack-nerd-font https://github.com/ryanoasis/nerd-fonts
+# on iTerm2, set 'non-ascii font'
+if _command_exists "lsd"; then
+    alias ls='lsd --group-dirs first'
+fi
+
 # ripgrep: better grep
 # https://github.com/burntsushi/ripgrep
 if _command_exists "rg"; then
     unset -f ftext
     alias ftext='rg'
 fi
+
+# vivid: generate LS_COLORS https://github.com/sharkdp/vivid
+if _command_exists "vivid"; then
+    export LS_COLORS="$(vivid generate molokai)"
+    # export LS_COLORS="$(vivid -m 8-bit generate molokai)"
+fi
+

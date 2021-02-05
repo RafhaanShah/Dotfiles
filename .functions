@@ -76,7 +76,7 @@ ffile() { find . -not -path '*/\.*' -iname "*${*}*" 2>&1 | grep -v 'Permission d
 ftext () { grep -iIHrn --exclude-dir='.*' "$@"; }
 
 # open github repo in browser
-github() {
+git-hub() {
     _is_git_repo || { echo "Not a git repo" && return 1; }
     local base_url="$(git remote get-url origin)"
     base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
@@ -116,7 +116,7 @@ true_colour_wave() {
 }
 
 # shows the current weather
-weather() {
+wttr() {
     if [ "$#" -lt 1 ]; then
         curl "http://wttr.in/$1"
     else
