@@ -1,5 +1,5 @@
 {
-  "ASCII Ligatures" : true,
+  "Thin Strokes" : 4,
   "Working Directory" : "\/Users\/rafhaanshah",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -82,13 +82,7 @@
     "Green Component" : 0.81568628549575806
   },
   "BM Growl" : true,
-  "Ansi 3 Color" : {
-    "Red Component" : 0.70196080207824707,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.16862745583057404,
-    "Alpha Component" : 1,
-    "Green Component" : 0.70588237047195435
-  },
+  "AWDS Window Directory" : "",
   "Icon" : 1,
   "Link Color" : {
     "Red Component" : 0.99215686321258545,
@@ -97,8 +91,15 @@
     "Alpha Component" : 1,
     "Green Component" : 0.59215688705444336
   },
-  "Use Non-ASCII Font" : false,
+  "Use Non-ASCII Font" : true,
   "Shortcut" : "",
+  "Ansi 3 Color" : {
+    "Red Component" : 0.70196080207824707,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.16862745583057404,
+    "Alpha Component" : 1,
+    "Green Component" : 0.70588237047195435
+  },
   "Background Image Location" : "",
   "Bold Color" : {
     "Red Component" : 0.97254902124404907,
@@ -111,6 +112,7 @@
   "Unlimited Scrollback" : false,
   "Allow Title Setting" : true,
   "Custom Command" : "No",
+  "AWDS Tab Option" : "No",
   "Title Components" : 2,
   "Keyboard Map" : {
     "0xf700-0x260000" : {
@@ -369,9 +371,10 @@
     "Alpha Component" : 1,
     "Green Component" : 0.20000000298023224
   },
+  "AWDS Pane Directory" : "",
   "Blur" : true,
-  "Vertical Spacing" : 1.1000000000000001,
   "Normal Font" : "Monaco 12",
+  "Vertical Spacing" : 1.1000000000000001,
   "Use Underline Color" : false,
   "Ansi 7 Color" : {
     "Red Component" : 0.89019608497619629,
@@ -380,10 +383,23 @@
     "Alpha Component" : 1,
     "Green Component" : 0.89019608497619629
   },
+  "AWDS Tab Directory" : "",
+  "AWDS Pane Option" : "Recycle",
   "Command" : "",
   "Terminal Type" : "xterm-256color",
   "Horizontal Spacing" : 1,
   "Underline Color" : {
+    "Red Component" : 0.97254902124404907,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.94509804248809814,
+    "Alpha Component" : 1,
+    "Green Component" : 0.97254902124404907
+  },
+  "Option Key Sends" : 0,
+  "Only The Default BG Color Uses Transparency" : true,
+  "Blink Allowed" : true,
+  "Minimum Contrast" : 0,
+  "Ansi 15 Color" : {
     "Red Component" : 0.97254902124404907,
     "Color Space" : "sRGB",
     "Blue Component" : 0.94509804248809814,
@@ -397,17 +413,6 @@
     "Alpha Component" : 1,
     "Green Component" : 0.15686275064945221
   },
-  "Only The Default BG Color Uses Transparency" : false,
-  "Option Key Sends" : 0,
-  "Blink Allowed" : true,
-  "Ansi 15 Color" : {
-    "Red Component" : 0.97254902124404907,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.94509804248809814,
-    "Alpha Component" : 1,
-    "Green Component" : 0.97254902124404907
-  },
-  "Minimum Contrast" : 0,
   "Ansi 6 Color" : {
     "Red Component" : 0.33725491166114807,
     "Color Space" : "sRGB",
@@ -424,8 +429,9 @@
     "Green Component" : 0.15686275064945221
   },
   "Screen" : -1,
+  "AWDS Window Option" : "No",
   "Initial Use Transparency" : true,
-  "Non Ascii Font" : "Monaco 12",
+  "Non Ascii Font" : "HackNerdFontComplete-Regular 12",
   "Ansi 13 Color" : {
     "Red Component" : 0.68235296010971069,
     "Color Space" : "sRGB",
@@ -436,13 +442,13 @@
   "Columns" : 200,
   "Use Tab Color" : false,
   "Visual Bell" : true,
-  "Custom Directory" : "No",
-  "Thin Strokes" : 4,
+  "Custom Directory" : "Advanced",
   "Ansi 5 Color" : {
     "Red Component" : 0.54901963472366333,
     "Color Space" : "sRGB",
     "Blue Component" : 0.78431373834609985,
     "Alpha Component" : 1,
     "Green Component" : 0.41960784792900085
-  }
+  },
+  "ASCII Ligatures" : true
 }
