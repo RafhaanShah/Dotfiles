@@ -1,0 +1,112 @@
+colors:
+  # Theme colors
+  background_color: '272822'
+  purple: "AE81FF"
+  yellow: "FFE894"
+  pink: "F92672"
+  cyan: "66D9EF"
+  green: "A6E22E"
+  orange: "FD971F"
+
+  # Others
+  white: "F8F8F1"
+  black: "212117"
+  red: "F83535"
+  gray: "D0D0C3"
+  dimgray: "74705d"
+  darkgray: "3E3D32"
+
+core:
+  regular_file: {}
+
+  directory:
+    foreground: cyan
+
+  executable_file:
+    foreground: pink
+    font-style: bold
+
+  symlink:
+    foreground: pink
+
+  broken_symlink:
+    foreground: black
+    background: red
+  missing_symlink_target:
+    foreground: black
+    background: red
+
+  fifo:
+    foreground: black
+    background: cyan
+
+  socket:
+    foreground: black
+    background: pink
+
+  character_device:
+    foreground: pink
+    background: darkgray
+
+  block_device:
+    foreground: cyan
+    background: darkgray
+
+  normal_text:
+    {}
+
+  sticky:
+    {}
+
+  sticky_other_writable:
+    {}
+
+  other_writable:
+    {}
+
+text:
+  special:
+    foreground: black
+    background: yellow
+
+  todo:
+    font-style: bold
+
+  licenses:
+    foreground: gray
+
+  configuration:
+    foreground: green
+
+  other:
+    foreground: yellow
+
+markup:
+  foreground: yellow
+
+programming:
+  source:
+    foreground: green
+
+  tooling:
+    foreground: green
+
+    continuous-integration:
+      foreground: yellow
+
+media:
+  foreground: orange
+
+office:
+  foreground: yellow
+
+archives:
+  foreground: pink
+  font-style: underline
+
+executable:
+  foreground: pink
+  font-style: bold
+
+unimportant:
+  foreground: dimgray

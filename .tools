@@ -41,7 +41,7 @@ fi
 
 # vivid: generate LS_COLORS https://github.com/sharkdp/vivid
 if _command_exists "vivid"; then
-    export LS_COLORS="$(vivid generate molokai)"
+    export LS_COLORS="$(vivid generate "${DOTFILE_DIR}/vivid/monokai.yml")"
     # export LS_COLORS="$(vivid -m 8-bit generate molokai)"
 fi
 
