@@ -12,7 +12,7 @@ fi
 # bat: better cat
 # https://github.com/sharkdp/bat
 if _command_exists "bat"; then
-    export BAT_PAGER="less -RF"
+    export BAT_PAGER='less -RF'
     alias cat='bat'
     alias cat-plain='bat --plain'
     alias cat-nopage='bat --plain --paging=never'
@@ -30,6 +30,15 @@ fi
 # on iTerm2, set 'non-ascii font'
 if _command_exists "lsd"; then
     alias ls='lsd --group-dirs first'
+    unset -f tree
+    tree() {
+        which ls
+        if [ "$#" -eq 0 ]; then
+            lsd --group-dirs first --tree --depth 2
+        else
+            lsd --group-dirs first --tree --depth "$@"
+        fi
+    }
 fi
 
 # ripgrep: better grep

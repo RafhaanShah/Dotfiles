@@ -54,6 +54,12 @@ alias bench_shell='time "${0//-}" -i -c "echo -n"'
 # shortcut for 'command' to ignore aliases and functions
 alias cmd='command'
 
+# clear screen (ctrl-l)
+alias cls='clear'
+
+# clear screen and scrollback (command-k)
+alias clean='clear && printf "\e[3J"'
+
 # clipboard
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
