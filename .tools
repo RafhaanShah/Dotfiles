@@ -32,13 +32,19 @@ if _command_exists "lsd"; then
     alias ls='lsd --group-dirs first'
     unset -f tree
     tree() {
-        which ls
         if [ "$#" -eq 0 ]; then
             lsd --group-dirs first --tree --depth 2
         else
             lsd --group-dirs first --tree --depth "$@"
         fi
     }
+fi
+
+# set NPM global path to workaround permission issues
+# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+if _command_exists "lsd"; then
+    command mkdir -p "${HOME}/.npm-global"
+    export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
 fi
 
 # ripgrep: better grep

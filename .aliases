@@ -112,4 +112,4 @@ alias dkc-upd='docker-compose pull && docker-compose up -d'
 alias json='fx'
 
 # lazygit: git ui https://github.com/jesseduffield/lazygit
-alias git-ui-'lazygit'
+alias git-ui='lazygit'
