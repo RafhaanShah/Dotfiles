@@ -41,7 +41,6 @@ hist() {
 # from https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 colour_table() {
     T='gYw'
-
     echo -e "\n                 40m     41m     42m     43m\
     44m     45m     46m     47m";
 
@@ -56,6 +55,12 @@ colour_table() {
       echo;
     done
     echo
+}
+
+# lists all xterm 256 colours
+# from https://wiki.archlinux.org/index.php/Color_output_in_console#bash
+colour_list() {
+    (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
 }
 
 # count the number of files and directories

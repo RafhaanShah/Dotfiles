@@ -156,10 +156,11 @@ zmodload -i zsh/complist
 
 ### shell key bindings
 # use partial commands for history search with arrows
-bindkey '\eOA' history-beginning-search-backward
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\eOB' history-beginning-search-forward
-bindkey '\e[B' history-beginning-search-forward
+autoload -U history-search-end # needed to place cursor at end like bash
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '\e[A' history-beginning-search-backward-end
+bindkey '\e[B' history-beginning-search-forward-end
 # accept menu option and run command with one enter press like bash (needs complist)
 bindkey -M menuselect '^M' .accept-line
 # accept the current suggestion word with ctrl space (needs autosuggestions)
