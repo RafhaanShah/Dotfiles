@@ -36,7 +36,7 @@ fi
 # non gnu ls options
 if ! _command_exists "gls"; then  
     export CLICOLOR=1
-    export LSCOLORS="ExGxbxbxCxfxfxCxCxExEx"
+    export LSCOLORS="gxfxcxdxbxagheabhchdad"
     alias ls='ls -G'
 fi
     
