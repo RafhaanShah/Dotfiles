@@ -51,7 +51,7 @@ prompt_user() {
     echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
     read -p "Continue (y/n)? " CONT
     if [ "$CONT" != "y" ]; then
-        exit 1
+        exit
     else
         run_setup
     fi
@@ -59,11 +59,11 @@ prompt_user() {
 
 echo "Running dotfile setup script"
 while getopts 'y' flag; do
-  case "${flag}" in
-    y) run_setup ;;
-    *) ;;
-  esac
+    case "${flag}" in
+        y) run_setup ;;
+        *) ;;
+    esac
 done
 
-if [ "$#" -eq 0 ]; then prompt_user; fi
+[ "$#" -eq 0 ] && prompt_user
 echo "Done"
