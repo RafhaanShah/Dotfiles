@@ -90,6 +90,8 @@ setopt SHARE_HISTORY
 # zinit self-update (zinit) | zinit update --all (plugins)
 
 _configure_autosuggestions() {
+    # disable automatic widget re-binding on each precmd for speed
+    ZSH_AUTOSUGGEST_MANUAL_REBIND=1
     # use async suggestion loading
     ZSH_AUTOSUGGEST_USE_ASYNC=1
     # disable suggestion for large buffers
@@ -100,11 +102,13 @@ _configure_autosuggestions() {
     ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|mkdir *|cat *|nano *"
     # ignore patterns for completion suggestions
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE="echo *"
+    # accept the current suggestion word with ctrl space
+    bindkey '^ ' forward-word
 }
 
 # if zinit is installed, setup and load plugins
-if [[ -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    source "$HOME/.zinit/bin/zinit.zsh"
+if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
+    source "${HOME}/.zinit/bin/zinit.zsh"
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -125,9 +129,14 @@ if [[ -f $HOME/.zinit/bin/zinit.zsh ]]; then
     zinit light zsh-users/zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
     
     zinit light djui/alias-tips # https://github.com/djui/alias-tips
-
+    
     # syntax highlighting must be sourced last
     zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
+    
+    # history substring search must be sourced after syntax highlighting
+    zinit light zsh-users/zsh-history-substring-search # https://github.com/zsh-users/zsh-history-substring-search  
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
 fi
 
 unset _configure_autosuggestions
@@ -150,18 +159,9 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 # initialize zsh completion (should be after zinit plugins)
 autoload -Uz compinit && compinit
-# initialise complist module http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
-zmodload -i zsh/complist
 
 
 ### shell key bindings
-# use partial commands for history search with arrows
-autoload -U history-search-end # needed to place cursor at end like bash
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey '\e[A' history-beginning-search-backward-end
-bindkey '\e[B' history-beginning-search-forward-end
-# accept menu option and run command with one enter press like bash (needs complist)
+# accept menu option and run command with one enter press like bash
+zmodload -i zsh/complist # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 bindkey -M menuselect '^M' .accept-line
-# accept the current suggestion word with ctrl space (needs autosuggestions)
-bindkey '^ ' forward-word
