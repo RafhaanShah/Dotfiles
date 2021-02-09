@@ -12,9 +12,9 @@ fi
 # bat: better cat
 # https://github.com/sharkdp/bat
 if _command_exists "bat"; then
-    export BAT_PAGER='less -RF'
-    alias cat='bat'
-    alias cat-plain='bat --plain'
+    export BAT_PAGER='less -RXF'
+    alias cat='bat --plain'
+    alias cat-full='bat'
     alias cat-nopage='bat --plain --paging=never'
 fi
 
@@ -61,4 +61,11 @@ if _command_exists "vivid"; then
     elif _256_colour; then
         export LS_COLORS="$(vivid -m 8-bit generate "${DOTFILE_DIR}/vivid/monokai.yml")"
     fi
+fi
+
+# zoxide: faster cd'ing https://github.com/ajeetdsouza/zoxide
+if _command_exists "zoxide"; then
+    _is_bash && eval "$(zoxide init bash)"
+    _is_zsh && eval "$(zoxide init zsh)"
+    alias c='z'
 fi

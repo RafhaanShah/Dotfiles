@@ -6,6 +6,7 @@
 alias sudo='sudo '
 
 # ls aliases
+alias l='ls'
 alias ls='ls --color --group-directories-first' # show colours, dirs first
 alias la='ls -A' # include hidden files
 alias ll='ls -Alh' # long human readable format
@@ -17,6 +18,7 @@ alias ls-date='ls -ltrh' # sort by date
 alias ls-ext='ls -lXh' # sort by extension
 
 # cd aliases
+alias c='cd'
 alias -- -='cd -' # the alias is just '-'
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -25,6 +27,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # git aliases
+alias g='git'
 alias gad='git add'
 alias gcm='git commit --message'
 alias gco='git checkout'
