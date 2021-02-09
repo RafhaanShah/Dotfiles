@@ -11,6 +11,9 @@ if _command_exists "brew"; then
     # gnu findutils https://formulae.brew.sh/formula/findutils
     _add_to_path "${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin"
     
+    # gnu sed https://formulae.brew.sh/formula/gnu-sed
+    _add_to_path "${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin"
+    
     # asdf: language version manager https://formulae.brew.sh/formula/asdf
     _load_file "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
     
