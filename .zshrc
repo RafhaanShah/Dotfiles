@@ -129,6 +129,7 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     zinit light zsh-users/zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
     
     zinit light djui/alias-tips # https://github.com/djui/alias-tips
+    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls"
     
     # syntax highlighting must be sourced last
     zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting

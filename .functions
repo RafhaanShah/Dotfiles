@@ -101,6 +101,12 @@ ffile() { find . -not -path '*/\.*' -iname "*${*}*" 2>&1 | grep -v 'Permission d
 # find text
 ftext () { grep -iIHrn --exclude-dir='.*' "$@"; }
 
+# file manager: https://github.com/dylanaraps/fff
+f() {
+    fff "$@"
+    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
 # open github repo in browser
 git-hub() {
     _is_git_repo || { echo "Not a git repo" && return 1; }
