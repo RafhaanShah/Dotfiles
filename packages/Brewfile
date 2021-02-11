@@ -15,14 +15,22 @@ brew "bash"
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# GNU binary tools for native development
+brew "binutils"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Linux/OSX/FreeBSD resource monitor
 brew "bpytop"
 # Core application library for C
 brew "glib"
+# File comparison utilities
+brew "diffutils"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Simple file manager written in bash
 brew "fff"
+# Utility to determine file types
+brew "file-formula"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Infamous electronic fortune-cookie generator
@@ -33,28 +41,54 @@ brew "fpp"
 brew "node"
 # Command-line JSON processing tool
 brew "fx"
+# GNU awk utility
+brew "gawk"
 # GitHub command-line tool
 brew "gh"
+# Distributed revision control system
+brew "git"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# GNU implementation of which utility
+brew "gnu-which"
 # Google Search and News from the command-line
 brew "googler"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Popular GNU data compression program
+brew "gzip"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Pager program similar to more
+brew "less"
+# Version of the SSL/TLS protocol forked from OpenSSL
+brew "libressl"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Utility for directing compilation
+brew "make"
+# Mac App Store command-line interface
+brew "mas"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
 # NCurses Disk Usage
 brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
+# OpenBSD freely-licensed SSH connectivity tools
+brew "openssh"
+# Highly capable, feature-rich programming language
+brew "perl"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Utility that provides fast incremental file transfer
+brew "rsync"
 # Display and control your Android device
 brew "scrcpy"
 # Programmatically correct mistyped console commands
@@ -63,6 +97,8 @@ brew "thefuck"
 brew "tree"
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Internet file retriever
 brew "wget"
 # Shell extension to navigate your filesystem faster
@@ -74,9 +110,23 @@ brew "jesseduffield/lazydocker/lazydocker"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
 cask "font-hack-nerd-font"
+# Desktop client for GitHub repositories
+cask "github"
+# Tools to protect your emails and files
+cask "gpg-suite"
 # System monitor for the status bar
 cask "iglance"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Menu bar calendar
+cask "itsycal"
 # Finder Toolbar app to open the current directory in Terminal or Editor
 cask "openinterminal"
+# HTTP client that helps testing and describing APIs
+cask "paw"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# General-purpose text editor
+cask "textmate"
+# Configurable document editor that supports Markdown
+cask "typora"
