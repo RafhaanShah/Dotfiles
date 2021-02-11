@@ -19,7 +19,7 @@ precmd_functions+=( _precmd_prompt )
 
 typeset -gA ZSH_HIGHLIGHT_STYLES # define array for highlighting styles
 
-if _true_colour; then
+if _colour_true; then
     _PROMPT_COL_USER=$'%{\e[1;38;2;166;226;46m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;2;253;151;31m%}' # orange
     _PROMPT_COL_DIR=$'%{\e[1;38;2;102;217;239m%}' # cyan
@@ -34,7 +34,7 @@ if _true_colour; then
     ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#ffd75f' # yellow
     ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#ffd75f' # yellow
     ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#ffd75f' # yellow
-elif _256_colour; then
+elif _colour_256; then
     _PROMPT_COL_USER=$'%{\e[1;38;5;112m%}' # green
     _PROMPT_COL_HOST=$'%{\e[1;38;5;208m%}' # orange
     _PROMPT_COL_DIR=$'%{\e[1;38;5;81m%}' # cyan

@@ -131,13 +131,25 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     zinit light djui/alias-tips # https://github.com/djui/alias-tips
     export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls"
     
+    zinit ice wait'1' lucid
+    zinit light laggardkernel/zsh-thefuck # https://github.com/laggardkernel/zsh-thefuck
+    
     # syntax highlighting must be sourced last
     zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
     
     # history substring search must be sourced after syntax highlighting
-    zinit light zsh-users/zsh-history-substring-search # https://github.com/zsh-users/zsh-history-substring-search  
+    zinit light zsh-users/zsh-history-substring-search # https://github.com/zsh-users/zsh-history-substring-search
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
+else
+    # better history search with arrows
+    # https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
+    autoload -U up-line-or-beginning-search
+    autoload -U down-line-or-beginning-search
+    zle -N up-line-or-beginning-search
+    zle -N down-line-or-beginning-search
+    bindkey "^[[A" up-line-or-beginning-search
+    bindkey "^[[B" down-line-or-beginning-search
 fi
 
 unset _configure_autosuggestions

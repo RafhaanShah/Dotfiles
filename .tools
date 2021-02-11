@@ -18,6 +18,12 @@ if _command_exists "bat"; then
     alias cat-nopage='bat --plain --paging=never'
 fi
 
+# bpytop: better top
+# https://github.com/aristocratos/bpytop
+if _command_exists "bpytop"; then
+    alias top='bpytop'
+fi
+
 # fd: better find
 # https://github.com/sharkdp/fd
 if _command_exists "fd"; then
@@ -30,7 +36,6 @@ fi
 # on iTerm2, set 'non-ascii font'
 if _command_exists "lsd"; then
     alias ls='lsd --group-dirs first'
-    unset -f tree
     tree() {
         if [ "$#" -eq 0 ]; then
             lsd --group-dirs first --tree --depth 2
@@ -54,16 +59,25 @@ if _command_exists "rg"; then
     alias ftext='rg'
 fi
 
-# vivid: generate LS_COLORS https://github.com/sharkdp/vivid
+# thefuck: magnificent corrector
+# https://github.com/nvbn/thefuck
+if _command_exists "thefuck"; then
+    unalias fuck
+    # eval $(thefuck --alias)
+fi
+
+# vivid: generate LS_COLORS
+# https://github.com/sharkdp/vivid
 if _command_exists "vivid"; then
-    if _true_colour; then
+    if _colour_true; then
         export LS_COLORS="$(vivid generate "${DOTFILE_DIR}/vivid/monokai.yml")"
-    elif _256_colour; then
+    elif _colour_256; then
         export LS_COLORS="$(vivid -m 8-bit generate "${DOTFILE_DIR}/vivid/monokai.yml")"
     fi
 fi
 
-# zoxide: faster cd'ing https://github.com/ajeetdsouza/zoxide
+# zoxide: better cd
+# https://github.com/ajeetdsouza/zoxide
 if _command_exists "zoxide"; then
     _is_bash && eval "$(zoxide init bash)"
     _is_zsh && eval "$(zoxide init zsh)"
