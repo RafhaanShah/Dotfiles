@@ -22,7 +22,7 @@ _is_zsh() { _variable_set "${ZSH_VERSION}"; }
 _is_git_repo() { git rev-parse --is-inside-work-tree &>/dev/null; }
 
 # checks if we are running in wsl
-_is_wsl() { [ grep -qEi "(microsoft|WSL)" /proc/version &> /dev/null ]; }
+_is_wsl() { _variable_set "${WSL_DISTRO_NAME}"; }
 
 # checks if we are running on macOS
 _is_macos() { [ $(uname -s) = "Darwin" ]; }
@@ -37,10 +37,10 @@ _trim() {
 
 # checks if true colour is supported, this is not set by all terminals
 # https://gist.github.com/XVilka/8346728
-_true_colour() { _variable_set "${COLORTERM}"; }
+_colour_true() { _variable_set "${COLORTERM}"; }
 
 # checks if 256 colours are supported by the terminal
-_256_colour() { 
+_colour_256() { 
     # [ $(tput colors) -eq 256 ]
     case "$TERM" in
         xterm-color|*-256color) return 0 ;;

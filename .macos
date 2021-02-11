@@ -58,8 +58,10 @@ unalias rm
 rm() {
     for FILE in "$@"; do
         local BASENAME=$(basename "${FILE}")
+        local COUNTER=1
         while [ -e "${HOME}/.Trash/${BASENAME}" ]; do
-            BASENAME="${BASENAME} $(date +%H.%M.%S %p)"
+            BASENAME="${BASENAME}(${COUNTER})"
+            COUNTER=$((COUNTER + 1))
         done
         mv "${FILE}" "${HOME}/.Trash/${BASENAME}"
     done

@@ -1,8 +1,8 @@
 ### functions
 
 # auto ls after cd
-# handled by the prompt now as if you type in a dir without 'cd' then it won't ls
-# cd() {
+# unalias c
+# c() {
 #     if [ "$#" -eq 0 ]; then
 #         builtin cd && ls
 #     else
@@ -11,7 +11,7 @@
 # }
 
 # make dir and cd into it automatically
-mkdir() { command mkdir -p "$@" && builtin cd "$1"; }
+mkd() { command mkdir -p "$@" && builtin cd "$1"; }
 
 # add colours to man
 man() {
@@ -35,7 +35,7 @@ hist() {
     fi
 }
 
-### other functions
+### colour functions
 
 # shows baseic terminal colours in a table
 # from https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
@@ -63,74 +63,9 @@ colour_list() {
     (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
 }
 
-# count the number of files and directories
-dirstat() { 
-    local files="$(\ls -p | grep -v / | wc -l)"
-    local dirs="$(\ls -d */ 2> /dev/null | wc -l)"
-    _trim "${files} files, ${dirs} directories"
-}
-
-# exec into a docker container
-dk-exec() { docker exec -it "$1" sh; }
-
-# extract archives
-extract() {
-    if [ -f "$1" ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "Could not extract $1" ;;
-         esac
-     else
-         echo "$1 is not a valid file"
-     fi
-}
-
-# find files
-ffile() { find . -not -path '*/\.*' -iname "*${*}*" 2>&1 | grep -v 'Permission denied'; }
-
-# find text
-ftext () { grep -iIHrn --exclude-dir='.*' "$@"; }
-
-# file manager: https://github.com/dylanaraps/fff
-f() {
-    fff "$@"
-    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
-}
-
-# open github repo in browser
-git-hub() {
-    _is_git_repo || { echo "Not a git repo" && return 1; }
-    local base_url="$(git remote get-url origin)"
-    base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
-    base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
-    base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
-    open "${base_url}/$1"
-}
-
-# enerate a qrcode
-qrcode() { curl "http://qrenco.de/$1"; }
-
-# list files and folders in a tree format with a default level of 2
-tree() {
-    if [ "$#" -eq 0 ]; then
-        command tree --dirsfirst -C -L 2
-    else
-        command tree --dirsfirst -C "$@"
-    fi
-}
-
-# test if true colour is supported by the terminal
-true_colour_wave() {
+# prints a colour wave that only works with true colour terminals
+# from https://gist.github.com/XVilka/8346728
+colour_wave() {
     awk 'BEGIN{
         s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
         for (colnum = 0; colnum<77; colnum++) {
@@ -146,11 +81,83 @@ true_colour_wave() {
     }'
 }
 
-# shows the current weather
-wttr() {
-    if [ "$#" -lt 1 ]; then
-        curl "http://wttr.in/$1"
+
+### file / folder functions
+
+# count the number of files and directories
+dirstat() { 
+    local files="$(\ls -p | grep -v / | wc -l)"
+    local dirs="$(\ls -d */ 2> /dev/null | wc -l)"
+    _trim "${files} files, ${dirs} directories"
+}
+
+# extract archives
+extract() {
+    if [ -f "$1" ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "Could not extract $1" ;;
+         esac
+     else
+         echo "$1 is not a valid file"
+     fi
+}
+
+# file manager: https://github.com/dylanaraps/fff
+f() {
+    fff "$@"
+    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
+# find files by name in current folder
+ffile() { find . -not -path '*/\.*' -iname "*${*}*" 2>&1 | grep -v 'Permission denied'; }
+
+# find files containing given text in current folder
+ftext() { grep -iIHrn --exclude-dir='.*' "$@"; }
+
+# gets full path of file in current folder
+fpath() { echo "$(pwd)/$1"; }
+
+# open github repo in browser
+git-hub() {
+    _is_git_repo || { echo "Not a git repo" && return 1; }
+    local base_url="$(git remote get-url origin)"
+    base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
+    base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
+    base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
+    open "${base_url}/$1"
+}
+
+# list files and folders in a tree format with a default level of 2
+tree() {
+    if [ "$#" -eq 0 ]; then
+        command tree --dirsfirst -C -L 2
     else
-        curl "http://wttr.in/London"
+        command tree --dirsfirst -C "$@"
     fi
 }
+
+
+### other functions
+
+# exec into a docker container
+dk-exec() { docker exec -it "$1" sh; }
+
+# opens command cheat sheet on devhints.io
+hint() { open "https://devhints.io/$1"; }
+
+# enerate a qrcode
+qrcode() { curl "http://qrenco.de/$1"; }
+
+# shows the current weather
+wttr() { curl "http://wttr.in/${1:-London}"; }

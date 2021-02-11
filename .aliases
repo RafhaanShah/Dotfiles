@@ -67,8 +67,14 @@ alias clean='clear && printf "\e[3J"'
 alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 
-# does a sudo
+# download file
+alias dl='curl -LJO'
+
+# re-do last command with sudo
 alias fuck='sudo $(fc -ln -1)'
+alias fu='fuck'
+alias please='fuck'
+alias plz='please'
 
 # opens hosts file for editing
 alias hosts='sudo "${EDITOR}" /etc/hosts'
@@ -110,9 +116,18 @@ alias wd='echo ${PWD##*/}'
 alias dk='docker'
 alias dkc='docker-compose'
 alias dkc-upd='docker-compose pull && docker-compose up -d'
+alias dkc-bld='docker-compose build && docker-compose up -d'
+
+# lazydocker: docker ui https://github.com/jesseduffield/lazydocker
+alias dk-gui='lazydocker'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
 
 # lazygit: git ui https://github.com/jesseduffield/lazygit
 alias git-ui='lazygit'
+
+# googler: search google https://github.com/jarun/googler
+alias google='googler'
+alias define='googler -n 2 define'
+alias so='googler -j -w stackoverflow.com'
