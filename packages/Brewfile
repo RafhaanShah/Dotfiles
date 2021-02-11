@@ -1,0 +1,82 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/command-not-found"
+tap "homebrew/core"
+tap "jesseduffield/lazydocker"
+tap "jesseduffield/lazygit"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Programmable completion for Bash 4.2+
+brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Linux/OSX/FreeBSD resource monitor
+brew "bpytop"
+# Core application library for C
+brew "glib"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Simple file manager written in bash
+brew "fff"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# Infamous electronic fortune-cookie generator
+brew "fortune"
+# CLI program that accepts piped input and presents files for selection
+brew "fpp"
+# Platform built on V8 to build network applications
+brew "node"
+# Command-line JSON processing tool
+brew "fx"
+# GitHub command-line tool
+brew "gh"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# Google Search and News from the command-line
+brew "googler"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Rainbows and unicorns in your console!
+brew "lolcat"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Free (GNU) replacement for the Pico text editor
+brew "nano"
+# NCurses Disk Usage
+brew "ncdu"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Display and control your Android device
+brew "scrcpy"
+# Programmatically correct mistyped console commands
+brew "thefuck"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Generator for LS_COLORS with support for multiple color themes
+brew "vivid"
+# Internet file retriever
+brew "wget"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# UNIX shell (command interpreter)
+brew "zsh"
+# A simple terminal UI for docker, written in Go
+brew "jesseduffield/lazydocker/lazydocker"
+# A simple terminal UI for git commands, written in Go
+brew "jesseduffield/lazygit/lazygit"
+cask "font-hack-nerd-font"
+# System monitor for the status bar
+cask "iglance"
+# Finder Toolbar app to open the current directory in Terminal or Editor
+cask "openinterminal"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
