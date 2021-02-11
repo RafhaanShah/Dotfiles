@@ -130,3 +130,5 @@ cask "rectangle"
 cask "textmate"
 # Configurable document editor that supports Markdown
 cask "typora"
+mas "Amphetamine", id: 937984704
+mas "Monosnap", id: 540348655

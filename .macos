@@ -1,7 +1,6 @@
 ### macOS specifics
 
 # brew: package manager for macOS https://brew.sh/
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if _command_exists "brew"; then
     HOMEBREW_PREFIX="$(brew --prefix)" # /usr/local
     
