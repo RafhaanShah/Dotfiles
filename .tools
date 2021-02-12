@@ -12,10 +12,8 @@ fi
 # bat: better cat
 # https://github.com/sharkdp/bat
 if _command_exists "bat"; then
-    export BAT_PAGER='less -RXF'
     alias cat='bat --plain'
-    alias cat-full='bat'
-    alias cat-nopage='bat --plain --paging=never'
+    alias view='bat'
 fi
 
 # bpytop: better top
