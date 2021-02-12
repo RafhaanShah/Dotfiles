@@ -52,6 +52,8 @@ shopt -s nocaseglob
 ### readline settings
 # https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html
 
+# turn off beeps
+bind 'set bell-style none'
 # displays possible completions using different colors from LS_COLORS
 bind 'set colored-stats on'
 # when completing case will not be taken into consideration
@@ -91,13 +93,6 @@ if ! shopt -oq posix; then
         source "/etc/bash_completion"
     fi
 fi
-
-# add completion for SSH hostnames based on ~/.ssh/config
-[[ -e "${HOME}/.ssh/config" ]] && complete -o "default" \
-    -o "nospace" \
-    -W "$(grep "^Host" ~/.ssh/config | \
-    grep -v "[?*]" | cut -d " " -f2 | \
-    tr ' ' '\n')" scp sftp ssh
 
 # https://github.com/Charlietje/bash/blob/master/bashrc.sh#L161
 _fuzzy_file_completion()  {
@@ -163,5 +158,5 @@ _fuzzy_dir_completion() {
 
 # https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html
 # allows fuzzy completion for file/dir names: cd tuf<TAB> => cd Stuff
-complete -o nospace -o filenames -o bashdefault -D -F _fuzzy_file_completion
+complete -o nospace -o filenames -o bashdefault -F _fuzzy_file_completion ls cat less tail cp mv nano
 complete -o nospace -o filenames -o bashdefault -F _fuzzy_dir_completion cd mkdir
