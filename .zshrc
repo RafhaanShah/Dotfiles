@@ -99,7 +99,7 @@ _configure_autosuggestions() {
     # suggest from history and possible completions
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     # ignore patterns for history suggestions
-    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|mkdir *|cat *|nano *"
+    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|c *|mkdir *|mkd *|cat *|nano *"
     # ignore patterns for completion suggestions
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE="echo *"
     # accept the current suggestion word with ctrl space
@@ -172,6 +172,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 # initialize zsh completion (should be after zinit plugins)
 autoload -Uz compinit && compinit
+# complete 'z' command with directories
+compdef _directories z
 
 
 ### shell key bindings
