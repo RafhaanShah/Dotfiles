@@ -53,8 +53,8 @@ setopt AUTO_PUSHD
 setopt COMBINING_CHARS
 # try to correct the spelling of commands
 setopt CORRECT
-# try to correct the spelling of all arguments
-setopt CORRECT_ALL
+# try to correct the spelling of all arguments (gets a bit annoying sometimes)
+# setopt CORRECT_ALL
 # treat ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation
 setopt EXTENDED_GLOB
 # expire duplicates first

@@ -2,7 +2,7 @@
 
 ### common
 
-# carries over aliases with sudo
+# carries over aliases with sudo (bash)
 alias sudo='sudo '
 
 # ls aliases
