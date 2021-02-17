@@ -43,13 +43,6 @@ if _command_exists "lsd"; then
     }
 fi
 
-# set NPM global path to workaround permission issues
-# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
-if _command_exists "npm"; then
-    command mkdir -p "${HOME}/.npm-global"
-    export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
-fi
-
 # ripgrep: better grep
 # https://github.com/burntsushi/ripgrep
 if _command_exists "rg"; then

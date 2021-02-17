@@ -30,3 +30,6 @@ export PAGER="less"
 # for using GPG with git
 export GPG_TTY=$(tty)
 
+# set NPM global path to workaround permission issues
+# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
