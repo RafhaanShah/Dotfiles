@@ -46,15 +46,13 @@ install_deb() {
 }
 
 get_repo_deb() {
-    local api="https://api.github.com/repos/USER_REPO/releases/latest"
-    local ver
-    ver=$(curl -s "${api/USER_REPO/$1}" --fail) || { echo "Failed to get ${1}"; return; }
+    echo "Getting latest version of ${1}..."
+    local api="https://api.github.com/repos/${1}/releases/latest"
+    local ver; ver=$(curl -s "${api}" --fail) || { echo "Failed to get ${1}"; return; }
     ver=$(echo "$ver" | fx .name)
     
     local app="${1##*/}_${ver/v/}_${arch}.deb"
-    local url="https://github.com/USER_REPO/releases/download/VERSION/${app}"
-    url="${url/USER_REPO/$1}"
-    url="${url/VERSION/${ver}}"
+    local url="https://github.com/${1}/releases/download/${ver}/${app}"
     install_deb "${url}"
 }
 
