@@ -9,7 +9,7 @@ source "${DOTFILE_DIR}/.helpers"
 
 get_script() {
     curl -sSL "$1" -o "${HOME}/bin/${2}"
-    chmod +x "${HOME}/bin/{2}"
+    chmod +x "${HOME}/bin/${2}"
 }
 
 echo "Installing some scripts..."

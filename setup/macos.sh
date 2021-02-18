@@ -28,7 +28,7 @@ npm config set prefix '~/.npm-global'
 
 # pip packages
 echo "Installing pip packages..."
-< "${DOTFILE_DIR}/packages/pip.txt" pip3 install --upgrade
+< "${DOTFILE_DIR}/packages/pip.txt" xargs pip3 install --upgrade
 
 # other scripts
 source "${DOTFILE_DIR}/.setup/others.sh"
