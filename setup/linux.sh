@@ -7,11 +7,21 @@ set -euo pipefail
 DOTFILE_DIR="${HOME}/Dotfiles"
 source "${DOTFILE_DIR}/.helpers"
 
+if [ ! $(uname -s) = "Linux" ]; then
+    echo "This is only for Linux"
+    exit  
+fi
+
 # apt packages
 echo "Installing apt packages..."
 sudo apt update && sudo apt upgrade -y
 < "${DOTFILE_DIR}/packages/apt.txt" xargs sudo apt install -y
 sudo apt autoremove
+
+# snap packages
+if _command_exists "snap"; then
+    < "${DOTFILE_DIR}/packages/snap.txt" xargs sudo snap install
+fi
 
 # npm packages
 echo "Installing npm packages..."
@@ -24,24 +34,37 @@ sudo apt install -y nodejs && npm config set prefix '~/.npm-global'
 
 # pip packages
 echo "Installing pip packages..."
-< "${DOTFILE_DIR}/packages/pip-linux.txt" pip3 install --upgrade
-< "${DOTFILE_DIR}/packages/pip.txt" pip3 install --upgrade
+< "${DOTFILE_DIR}/packages/pip-linux.txt" xargs pip3 install --upgrade
+< "${DOTFILE_DIR}/packages/pip.txt" xargs pip3 install --upgrade
 
-# function to download and install a deb
 install_deb() {
-    echo "Installing ${1##*/}..."
-    curl -sSL "$1" -o "${HOME}/app.deb"
-    sudo dpkg -i "${HOME}/app.deb"
-    rm "${HOME}/app.deb"
+    local app="${1##*/}"
+    echo "Installing ${app}..."
+    curl -sSL "$1" -o "${HOME}/${app}" --fail || { echo "Failed to download ${app}"; return; }
+    sudo dpkg -i "${HOME}/${app}" || echo "Failed to install ${app}"
+    rm "${HOME}/${app}"
 }
 
-# bat: better cat
-# https://github.com/sharkdp/bat
-install_deb "https://github.com/sharkdp/bat/releases/download/v0.17.1/bat-musl_0.17.1_amd64.deb"
+get_repo_deb() {
+    local api="https://api.github.com/repos/USER_REPO/releases/latest"
+    local ver
+    ver=$(curl -s "${api/USER_REPO/$1}" --fail) || { echo "Failed to get ${1}"; return; }
+    ver=$(echo "$ver" | fx .name)
+    
+    local app="${1##*/}_${ver/v/}_${arch}.deb"
+    local url="https://github.com/USER_REPO/releases/download/VERSION/${app}"
+    url="${url/USER_REPO/$1}"
+    url="${url/VERSION/${ver}}"
+    install_deb "${url}"
+}
 
-# fd: better find
-# https://github.com/sharkdp/fd
-install_deb "https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb"
+arch=$(dpkg --print-architecture) # amd64 / armhf...
+os=$(uname -s) # Linux / Darwin
+instr=$(uname -m) # x86_64 / armv71...
+
+while read line; do
+    get_repo_deb "$line" || echo "Something went wrong installing ${line}"
+done < deb.txt
 
 # googler: google on the cli
 # https://github.com/jarun/googler
@@ -50,18 +73,6 @@ install_deb "https://github.com/jarun/googler/releases/download/v4.3.2/googler_4
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
 install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.318-beta/gcmcore-linux_amd64.2.0.318.44100.deb"
-
-# lsd: better ls
-# https://github.com/Peltoche/lsd
-install_deb "https://github.com/Peltoche/lsd/releases/download/0.19.0/lsd_0.19.0_amd64.deb"
-
-# ripgrep: better grep
-# https://github.com/burntsushi/ripgrep
-install_deb "https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb"
-
-# vivid: generate LS_COLORS
-# https://github.com/sharkdp/vivid
-install_deb "https://github.com/sharkdp/vivid/releases/download/v0.6.0/vivid_0.6.0_amd64.deb"
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
@@ -81,10 +92,6 @@ sudo apt update && sudo apt install lazygit
 # lazydocker: docker ui
 # https://github.com/jesseduffield/lazydocker
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-
-# lolcat: taste the rainbow
-# https://github.com/busyloop/lolcat
-sudo snap install lolcat
 
 # docker: app containers
 # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository

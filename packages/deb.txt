@@ -1,0 +1,5 @@
+BurntSushi/ripgrep
+Peltoche/lsd
+sharkdp/bat
+sharkdp/fd
+sharkdp/vivid
