@@ -64,7 +64,7 @@ instr=$(uname -m) # x86_64 / armv71...
 
 while read line; do
     get_repo_deb "$line" || echo "Something went wrong installing ${line}"
-done < deb.txt
+done < "${DOTFILE_DIR}/packages/deb.txt"
 
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
@@ -72,18 +72,22 @@ install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/d
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
-[ ! -d "${HOME}/.asdf" ] && git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"\
-    --branch $(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)
+if [ ! -d "${HOME}/.asdf" ] then;
+    git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"\
+        --branch $(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)
+else
+    _command_exsist "asdf" && asdf update
+fi
 
 # fff: file manager
 # https://github.com/dylanaraps/fff
-git clone https://github.com/dylanaraps/fff.git "${HOME}/fff"
-(cd "${HOME}/fff" && sudo make install)
-rm -rf "${HOME}/fff"
+git clone https://github.com/dylanaraps/fff.git "/tmp/fff"
+(cd "/tmp/fff" && sudo make install)
+rm -rf "/tmp/fff"
 
 # lazygit: git ui
 # https://github.com/jesseduffield/lazygit
-sudo add-apt-repository ppa:lazygit-team/release
+sudo add-apt-repository ppa:lazygit-team/release -y
 sudo apt update && sudo apt install lazygit
 
 # lazydocker: docker ui
@@ -97,7 +101,7 @@ curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/i
 # sudo apt-getupdate && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 # sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
 sudo curl -L "https://github.com/docker/compose/releases/download/$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | fx .name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+sudo chmod +x "/usr/local/bin/docker-compose"
 
 # hack nerd font, patched with glyphs
 # https://github.com/ryanoasis/nerd-fonts
@@ -106,8 +110,12 @@ curl -L "https://github.com/ryanoasis/nerd-fonhttps://github.com/ryanoasis/nerd-
 
 # path picker: apply commands on files
 # https://github.com/facebook/PathPicker
-sudo git clone "https://github.com/facebook/PathPicker.git" "/usr/local/pathpicker"
-sudo ln -s "/usr/local/pathpicker/fpp" "/usr/local/bin/fpp"
+if [ ! -d "/usr/local/pathpicker" ] then;
+    sudo git clone "https://github.com/facebook/PathPicker.git" "/usr/local/pathpicker"
+    sudo ln -s "/usr/local/pathpicker/fpp" "/usr/local/bin/fpp"
+else
+    sudo git -C "/usr/local/pathpicker" pull
+fi
 
 # zoxide: better cd
 # https://github.com/ajeetdsouza/zoxide
