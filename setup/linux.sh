@@ -7,7 +7,7 @@ set -euo pipefail
 DOTFILE_DIR="${HOME}/Dotfiles"
 source "${DOTFILE_DIR}/.helpers"
 
-if [ ! $(uname -s) = "Linux" ]; then
+if [ ! "$(uname -s)" = "Linux" ]; then
     echo "This is only for Linux"
     exit  
 fi
@@ -62,7 +62,7 @@ arch=$(dpkg --print-architecture) # amd64 / armhf...
 os=$(uname -s) # Linux / Darwin
 instr=$(uname -m) # x86_64 / armv71...
 
-while read line; do
+while read -r line; do
     get_repo_deb "$line" || echo "Something went wrong installing ${line}"
 done < "${DOTFILE_DIR}/packages/deb.txt"
 
@@ -72,11 +72,11 @@ install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/d
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
-if [ ! -d "${HOME}/.asdf" ] then;
+if [ ! -d "${HOME}/.asdf" ]; then
     git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"\
-        --branch $(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)
+        --branch "$(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)"
 else
-    _command_exsist "asdf" && asdf update
+    source "${HOME}/.asdf/asdf.sh" && asdf update
 fi
 
 # fff: file manager
@@ -110,7 +110,7 @@ curl -L "https://github.com/ryanoasis/nerd-fonhttps://github.com/ryanoasis/nerd-
 
 # path picker: apply commands on files
 # https://github.com/facebook/PathPicker
-if [ ! -d "/usr/local/pathpicker" ] then;
+if [ ! -d "/usr/local/pathpicker" ]; then
     sudo git clone "https://github.com/facebook/PathPicker.git" "/usr/local/pathpicker"
     sudo ln -s "/usr/local/pathpicker/fpp" "/usr/local/bin/fpp"
 else
@@ -129,4 +129,4 @@ source "${DOTFILE_DIR}/.setup/zsh.sh"
 
 # set shell
 echo "Changing shell..."
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"

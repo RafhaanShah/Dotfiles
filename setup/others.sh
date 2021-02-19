@@ -27,7 +27,7 @@ get_script "https://raw.githubusercontent.com/raylee/tldr/master/tldr" "tldr"
 
 # nano syntax highlighting
 # https://github.com/scopatz/nanorc
-if [ ! -d "${HOME}/.nano" ] then;
+if [ ! -d "${HOME}/.nano" ]; then
     git clone https://github.com/scopatz/nanorc.git "${HOME}/.nano"
     sed -i 's|# include "~/.nano/*.nanorc"|include "~/.nano/*.nanorc"|' "${HOME}/.nanorc"
 else
