@@ -31,10 +31,10 @@ echo "Installing pip packages..."
 < "${DOTFILE_DIR}/packages/pip.txt" xargs pip3 install --upgrade
 
 # other scripts
-source "${DOTFILE_DIR}/.setup/others.sh"
+source "${DOTFILE_DIR}/setup/others.sh"
 
 # zsh setup
-source "${DOTFILE_DIR}/.setup/zsh.sh"
+source "${DOTFILE_DIR}/setup/zsh.sh"
 
 # set shell
 echo "Changing shell..."

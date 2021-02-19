@@ -122,10 +122,10 @@ fi
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
 
 # other scripts
-source "${DOTFILE_DIR}/.setup/others.sh"
+source "${DOTFILE_DIR}/setup/others.sh"
 
 # zsh setup
-source "${DOTFILE_DIR}/.setup/zsh.sh"
+source "${DOTFILE_DIR}/setup/zsh.sh"
 
 # set shell
 echo "Changing shell..."
