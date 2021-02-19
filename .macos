@@ -64,6 +64,9 @@ alias paste='paste'
 # get last wake / sleep events
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
 
+# backup brew packages
+alias brew-bkp='brew bundle dump --describe --force --file "${HOME}/Dotfiles/packages/brew.txt"'
+
 # rm moves to trash instead
 unalias rm
 rm() {

@@ -15,5 +15,6 @@ pass
 pinentry-tty
 python3
 python3-pip
+shellcheck
 software-properties-common
 zsh

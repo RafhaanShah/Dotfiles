@@ -91,6 +91,8 @@ brew "ripgrep"
 brew "rsync"
 # Display and control your Android device
 brew "scrcpy"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Display directories as trees (with optional color/HTML output)
