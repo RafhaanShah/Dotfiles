@@ -3,6 +3,8 @@ bash
 ca-certificates
 curl
 fortune-mod
+g++
+gcc
 git
 gnupg-agent
 gnupg2

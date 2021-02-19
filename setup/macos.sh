@@ -33,6 +33,9 @@ echo "Installing pip packages..."
 # other scripts
 source "${DOTFILE_DIR}/.setup/others.sh"
 
+# zsh setup
+source "${DOTFILE_DIR}/.setup/zsh.sh"
+
 # set shell
 echo "Changing shell..."
 chsh -s "$(which zsh)"

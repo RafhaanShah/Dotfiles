@@ -14,9 +14,11 @@ fi
 
 # apt packages
 echo "Installing apt packages..."
+export DEBIAN_FRONTEND=noninteractive
 sudo apt update && sudo apt upgrade -y
 < "${DOTFILE_DIR}/packages/apt.txt" xargs sudo apt install -y
-sudo apt autoremove
+sudo apt autoremove -y
+unset DEBIAN_FRONTEND
 
 # snap packages
 if _command_exists "snap"; then
@@ -64,17 +66,14 @@ while read line; do
     get_repo_deb "$line" || echo "Something went wrong installing ${line}"
 done < deb.txt
 
-# googler: google on the cli
-# https://github.com/jarun/googler
-install_deb "https://github.com/jarun/googler/releases/download/v4.3.2/googler_4.3.2-1_ubuntu20.04.amd64.deb"
-
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
 install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.318-beta/gcmcore-linux_amd64.2.0.318.44100.deb"
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
-[ ! -d "${HOME}/.asdf" ] && git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" --branch v0.8.0
+[ ! -d "${HOME}/.asdf" ] && git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"\
+    --branch $(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)
 
 # fff: file manager
 # https://github.com/dylanaraps/fff
@@ -117,6 +116,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsou
 # other scripts
 source "${DOTFILE_DIR}/.setup/others.sh"
 
-# set zsh as default shell
+# zsh setup
+source "${DOTFILE_DIR}/.setup/zsh.sh"
+
+# set shell
 echo "Changing shell..."
 chsh -s $(which zsh)
