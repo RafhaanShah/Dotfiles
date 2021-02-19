@@ -1,4 +1,5 @@
 ### functions
+# shellcheck shell=bash
 
 # auto ls after cd
 # unalias c
@@ -11,7 +12,7 @@
 # }
 
 # make dir and cd into it automatically
-mkd() { command mkdir -p "$@" && builtin cd "$1"; }
+mkd() { command mkdir -p "$@" && builtin cd "$1" || return; }
 
 # add colours to man
 man() {
@@ -60,7 +61,12 @@ colour_table() {
 # lists all xterm 256 colours
 # from https://wiki.archlinux.org/index.php/Color_output_in_console#bash
 colour_list() {
-    (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
+    for i in {0..255} ; do
+        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+            printf "\n";
+        fi
+    done
 }
 
 # prints a colour wave that only works with true colour terminals
@@ -86,8 +92,8 @@ colour_wave() {
 
 # count the number of files and directories
 dirstat() { 
-    local files="$(\ls -p | grep -v / | wc -l)"
-    local dirs="$(\ls -d */ 2> /dev/null | wc -l)"
+    local files; files="$(find . -maxdepth 1 -type f | wc -l)"
+    local dirs; dirs="$(find . -maxdepth 1 -type d | wc -l)"
     _trim "${files} files, ${dirs} directories"
 }
 
@@ -95,18 +101,18 @@ dirstat() {
 extract() {
     if [ -f "$1" ] ; then
         case $1 in
-            *.tar.bz2)   tar xjf $1     ;;
-            *.tar.gz)    tar xzf $1     ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar e $1     ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xf $1      ;;
-            *.tbz2)      tar xjf $1     ;;
-            *.tgz)       tar xzf $1     ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)           echo "Could not extract $1" ;;
+            *.tar.bz2) tar xjf    "$1" ;;
+            *.tar.gz)  tar xzf    "$1" ;;
+            *.bz2)     bunzip2    "$1" ;;
+            *.rar)     unrar e    "$1" ;;
+            *.gz)      gunzip     "$1" ;;
+            *.tar)     tar xf     "$1" ;;
+            *.tbz2)    tar xjf    "$1" ;;
+            *.tgz)     tar xzf    "$1" ;;
+            *.zip)     unzip      "$1" ;;
+            *.Z)       uncompress "$1" ;;
+            *.7z)      7z x       "$1" ;;
+            *)         echo "Could not extract $1" ;;
          esac
      else
          echo "$1 is not a valid file"
@@ -116,7 +122,7 @@ extract() {
 # file manager: https://github.com/dylanaraps/fff
 f() {
     fff "$@"
-    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return
 }
 
 # find files by name in current folder
@@ -131,7 +137,7 @@ fpath() { echo "$(pwd)/$1"; }
 # open github repo in browser
 git-hub() {
     _is_git_repo || { echo "Not a git repo" && return 1; }
-    local base_url="$(git remote get-url origin)"
+    local base_url; base_url="$(git remote get-url origin)"
     base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
     base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
     base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"

@@ -1,6 +1,8 @@
 ### loads all other dot files
+# shellcheck shell=bash
 
 # source file if it exists
+# shellcheck source=/dev/null
 _load_file() { [ -f "${1}" ] && source "${1}"; }
 
 # location of dotfile repository

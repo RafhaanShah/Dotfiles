@@ -1,5 +1,8 @@
 ### zsh configuration
 # http://zsh.sourceforge.net/Doc/Release/
+# shellcheck shell=bash
+# shellcheck disable=SC2034
+# shellcheck source=/dev/null
 
 # load config
 [ -f "${HOME}/Dotfiles/.loader" ] && source "${HOME}/Dotfiles/.loader"
@@ -9,6 +12,7 @@
 # http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 
 # do not add HIST_IGNORE commands to interactive history
+# shellcheck disable=SC2053
 _zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
 
 zshaddhistory_functions+=( _zshaddhistory_filter )
@@ -21,7 +25,7 @@ zshaddhistory_functions+=( _zshaddhistory_filter )
 alias sudo='nocorrect sudo '
 
 # make history command behave like bash
-history() { builtin history -"$@"; }
+history() { builtin history -"$*"; }
 
 
 ### shell parameters
@@ -110,6 +114,7 @@ _configure_autosuggestions() {
 if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     source "${HOME}/.zinit/bin/zinit.zsh"
     autoload -Uz _zinit
+    # shellcheck disable=SC2154
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
     # load a few important annexes, without turbo
@@ -165,7 +170,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 # max errors for _approximate _correct completer functions
 zstyle ':completion:*' max-errors 0 # 0 works better with fuzzy completion
 # set color specifications for completion, use LS_COLORS
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # 1st tab lists suggestions, 2nd tab starts menu
 zstyle ':completion:*' menu select
 # what is displayed during menu selection

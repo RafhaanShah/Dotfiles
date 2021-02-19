@@ -1,4 +1,5 @@
 ### aliases
+# shellcheck shell=sh
 
 ### common
 
@@ -53,6 +54,7 @@ alias cp='cp -aiv'
 ### general
 
 # bechmark shell startup time
+# shellcheck disable=SC2142
 alias bench_shell='time "${0//-}" -i -c "echo -n"'
 
 # shortcut for 'command' to ignore aliases and functions
@@ -102,10 +104,14 @@ alias passgen='openssl rand -base64 14'
 alias ports='sudo lsof -i | grep LISTEN'
 
 # reloads shell
+# shellcheck disable=SC2142
 alias reload='exec "${0//-}" -l'
 
 # adds execute permissions
 alias runnable='chmod +x'
+
+# gets the size of a file or directory
+alias sizeof='du -h'
 
 # get the name of the current directory
 alias wd='echo ${PWD##*/}'

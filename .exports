@@ -1,4 +1,5 @@
 ### exported environment variables
+# shellcheck shell=bash
 
 # add extra directories to the PATH
 PATH_DIRS=(
@@ -28,6 +29,7 @@ export VISUAL="${EDITOR}"
 export PAGER="less"
 
 # for using GPG with git
+# shellcheck disable=SC2155
 export GPG_TTY=$(tty)
 
 # set NPM global path to workaround permission issues

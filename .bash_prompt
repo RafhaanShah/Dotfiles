@@ -1,5 +1,6 @@
 ### bash prompt
 # https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt
+# shellcheck shell=bash
 
 # runs after each command, before PS1 is printed
 _prompt_command() {

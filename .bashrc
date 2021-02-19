@@ -1,5 +1,7 @@
 ### bash configuration
 # https://www.gnu.org/software/bash/manual/html_node/index.html
+# shellcheck shell=bash
+# shellcheck source=/dev/null
 
 # if not running interactively, don't do anything
 case $- in
@@ -95,6 +97,7 @@ if ! shopt -oq posix; then
 fi
 
 # https://github.com/Charlietje/bash/blob/master/bashrc.sh#L161
+# shellcheck disable=SC2001,SC2086,SC2196,SC2207,SC2155,SC2206,SC2012,SC2035,SC2001,SC2086
 _fuzzy_file_completion()  {
     local IFS=$'\n'
     if [ -z $2 ]; then
@@ -122,6 +125,7 @@ _fuzzy_file_completion()  {
 }
 
 # https://github.com/OpsCharlie/bash/blob/master/bashrc.sh#L194
+# shellcheck disable=SC2001,SC2086,SC2196,SC2207,SC2155,SC2206,SC2012,SC2035,SC2001,SC2086
 _fuzzy_dir_completion() {
     local IFS=$'\n'
     if [ -z $2 ]; then

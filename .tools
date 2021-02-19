@@ -1,4 +1,5 @@
 ### loads other cli tools
+# shellcheck shell=bash
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
@@ -61,10 +62,11 @@ fi
 # https://github.com/sharkdp/vivid
 if _command_exists "vivid"; then
     if _colour_true; then
-        export LS_COLORS="$(vivid generate "${DOTFILE_DIR}/vivid/monokai.yml")"
+        LS_COLORS="$(vivid generate "${DOTFILE_DIR}/vivid/monokai.yml")"
     elif _colour_256; then
-        export LS_COLORS="$(vivid -m 8-bit generate "${DOTFILE_DIR}/vivid/monokai.yml")"
+        LS_COLORS="$(vivid -m 8-bit generate "${DOTFILE_DIR}/vivid/monokai.yml")"
     fi
+    export LS_COLORS
 fi
 
 # zoxide: better cd

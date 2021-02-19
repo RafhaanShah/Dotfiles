@@ -1,5 +1,7 @@
 ### zsh prompt
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+# shellcheck shell=bash
+# shellcheck disable=SC2034
 
 # runs after each command, before PROMPT is printed
 _precmd_prompt() {

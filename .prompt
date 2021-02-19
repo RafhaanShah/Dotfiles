@@ -1,4 +1,5 @@
 ### functions used in prompts
+# shellcheck shell=bash
 
 # set this varable to disable git-prompt in specific repos
 # _PROMPT_GIT_STATUS_BLOCKLIST=(
@@ -24,7 +25,7 @@ _prompt_dir_changed() {
 _prompt_git_changed() {
     _is_git_repo || return 1
     _prompt_git_blocklist || return 1
-    local gs="$(git status --porcelain --branch --ignore-submodules)"
+    local gs; gs="$(git status --porcelain --branch --ignore-submodules)"
     [ "${_PROMPT_GIT_STATUS}" != "${gs}" ] && _PROMPT_GIT_STATUS="${gs}" && return 0
     return 1
 }
@@ -45,14 +46,14 @@ _prompt_git() {
     _prompt_git_blocklist || return 1
     
     # get git status string in porcelain format with branch
-    local gitstatus="$(git status --porcelain --branch --ignore-submodules)"
+    local gitstatus; gitstatus="$(git status --porcelain --branch --ignore-submodules)"
     # local gitstatus="${_PROMPT_GIT_STATUS}" # set by _prompt_git_changed
     
     local num_staged=0
     local num_changed=0
     local num_conflicts=0
     local num_untracked=0
-    local stat line branch_line
+    local stat_line line branch_line
     
     # loop over status lines
     while IFS='' read -r line || [[ -n "${line}" ]]; do
@@ -80,12 +81,12 @@ _prompt_git() {
     branch="${branch_line%%...*}" # removes ...origin/master
     
     local gitstring="${branch} ["
-    local upstream="$(git rev-list --left-right --count origin/${branch}...HEAD 2>/dev/null)"
+    local upstream; upstream="$(git rev-list --left-right --count origin/"${branch}"...HEAD 2>/dev/null)"
     
     # check for divergences from upstream (origin/branch)
     if [ -n "${upstream}" ]; then
-        local behind="$(cut -f1 <<< "${upstream}")"
-        local ahead="$(cut -f2 <<< "${upstream}")"
+        local behind; behind="$(cut -f1 <<< "${upstream}")"
+        local ahead; ahead="$(cut -f2 <<< "${upstream}")"
         local upstring
         
         [ "${behind}" -gt 0 ] && upstring+="↓${behind}" # commits behind
@@ -97,7 +98,6 @@ _prompt_git() {
     if (( num_changed == 0 \
         && num_staged == 0 \
         && num_untracked == 0 \
-        && num_stashed == 0 \
         && num_conflicts == 0 )); then
             gitstring+="✔" # clean
     else
@@ -127,20 +127,20 @@ _prompt_git_old() {
 		echo 'unknown')"
 
     # check for status counter
-    local fc="$(git status --porcelain --ignore-submodules | wc -l | tr -d ' ')"
-    if [ "${fc}" -gt 0 ]; then
-        s+="${fc}"
+    local fcount; fcount="$(git status --porcelain --ignore-submodules | wc -l | tr -d ' ')"
+    if [ "${fcount}" -gt 0 ]; then
+        s+="${fcount}"
     fi
 	# check for conflicts
-	if ! $(git diff --quiet --ignore-submodules --diff-filter=U); then
+	if ! git diff --quiet --ignore-submodules --diff-filter=U; then
 		s+='x'
 	fi;
 	# check for uncomitted changes
-	if ! $(git diff --quiet --ignore-submodules --cached); then
+	if ! git diff --quiet --ignore-submodules --cached; then
 		s+='+'
 	fi;
 	# check for unstaged changes
-	if ! $(git diff-files --quiet --ignore-submodules --); then
+	if ! git diff-files --quiet --ignore-submodules; then
 		s+='!'
 	fi;
 	# check for untracked files

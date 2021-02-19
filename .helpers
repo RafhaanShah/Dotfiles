@@ -1,4 +1,5 @@
 ### common use helper functions
+# shellcheck shell=bash
 
 # checks if the given command exists
 _command_exists() { command -v "$1" >/dev/null 2>&1; }
@@ -25,11 +26,11 @@ _is_git_repo() { git rev-parse --is-inside-work-tree &>/dev/null; }
 _is_wsl() { _variable_set "${WSL_DISTRO_NAME}"; }
 
 # checks if we are running on macOS
-_is_macos() { [ $(uname -s) = "Darwin" ]; }
+_is_macos() { [ "$(uname -s)" = "Darwin" ]; }
 
 # trims given text
 _trim() {
-	local var="$@"
+	local var="$*"
 	var="${var#"${var%%[![:space:]]*}"}"  # remove leading whitespace characters
 	var="${var%"${var##*[![:space:]]}"}"  # remove trailing whitespace characters
 	echo "${var}"
@@ -59,13 +60,13 @@ _is_xterm() {
 # checks if $1 is in an array $2, must be passed as "${array[@]}"
 # does not work with spaces in elements as that requires looping
 _in_list() {
-    local str="${1}"; shift
-    [[ " $@ " =~ " ${str} " ]]
+    local str="$1"; shift
+    [[ " $* " = *" ${str} "* ]]
 }
 
 # adds a path to the front of fpath if it exists
 _add_to_fpath() {
-    [ -d "$1" ] && fpath=( "$1" $fpath )
+    [ -d "$1" ] && fpath=( "$1" "${fpath[@]}" )
 }
 
 # adds a folder to front of PATH
