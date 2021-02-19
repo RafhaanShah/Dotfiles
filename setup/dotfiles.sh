@@ -49,7 +49,7 @@ symlink_dotfiles() {
 
 prompt_user() {
     echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
-    read -p "Continue (y/n)? " CONT
+    read -rp "Continue (y/n)? " CONT
     if [ "$CONT" != "y" ]; then
         exit
     else

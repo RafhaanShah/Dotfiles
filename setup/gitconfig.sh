@@ -5,6 +5,7 @@ set -e
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
+# shellcheck source=../.helpers
 source "${DOTFILE_DIR}/.helpers"
 
 # .gitconfig

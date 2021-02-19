@@ -5,6 +5,7 @@ set -euo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
+# shellcheck source=../.helpers
 source "${DOTFILE_DIR}/.helpers"
 
 if [ ! "$(uname -s)" = "Linux" ]; then
@@ -29,7 +30,8 @@ fi
 echo "Installing npm packages..."
 # https://github.com/nodesource/distributions#debinstall
 curl -sSL "https://deb.nodesource.com/setup_15.x" | sudo -E bash -
-sudo apt install -y nodejs && npm config set prefix '~/.npm-global'
+# shellcheck disable=SC2059
+sudo apt install -y nodejs && npm config set prefix "${HOME}/.npm-global"
 
 < "${DOTFILE_DIR}/packages/npm-linux.txt" xargs npm install -g
 < "${DOTFILE_DIR}/packages/npm.txt" xargs npm install -g
@@ -59,8 +61,8 @@ get_repo_deb() {
 }
 
 arch=$(dpkg --print-architecture) # amd64 / armhf...
-os=$(uname -s) # Linux / Darwin
-instr=$(uname -m) # x86_64 / armv71...
+# os=$(uname -s) # Linux / Darwin
+# instr=$(uname -m) # x86_64 / armv71...
 
 while read -r line; do
     get_repo_deb "$line" || echo "Something went wrong installing ${line}"
@@ -76,6 +78,7 @@ if [ ! -d "${HOME}/.asdf" ]; then
     git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"\
         --branch "$(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)"
 else
+    # shellcheck source=/dev/null
     source "${HOME}/.asdf/asdf.sh" && asdf update
 fi
 
@@ -122,9 +125,11 @@ fi
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
 
 # other scripts
+# shellcheck source=others.sh
 source "${DOTFILE_DIR}/setup/others.sh"
 
 # zsh setup
+# shellcheck source=zsh.sh
 source "${DOTFILE_DIR}/setup/zsh.sh"
 
 # set shell
