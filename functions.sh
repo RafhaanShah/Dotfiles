@@ -31,7 +31,7 @@ man() {
 hist() {
     if [ "$#" -eq 0 ]; then
         history 25
-    else 
+    else
         history 10000 | grep "$*" | grep -v "hist" | tail -n 10
     fi
 }
@@ -43,17 +43,17 @@ hist() {
 colour_table() {
     T='gYw'
     echo -e "\n                 40m     41m     42m     43m\
-    44m     45m     46m     47m";
+    44m     45m     46m     47m"
 
     for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
-               '1;32m' '  33m' '1;33m' '  34m' '1;34m' '  35m' '1;35m' \
-               '  36m' '1;36m' '  37m' '1;37m';
-      do FG=${FGs// /}
-      echo -en " $FGs \033[$FG  $T  "
-      for BG in 40m 41m 42m 43m 44m 45m 46m 47m;
-        do echo -en "$EINS \033[$FG\033[$BG  $T  \033[0m";
-      done
-      echo;
+        '1;32m' '  33m' '1;33m' '  34m' '1;34m' '  35m' '1;35m' \
+        '  36m' '1;36m' '  37m' '1;37m'; do
+        FG=${FGs// /}
+        echo -en " $FGs \033[$FG  $T  "
+        for BG in 40m 41m 42m 43m 44m 45m 46m 47m; do
+            echo -en "$EINS \033[$FG\033[$BG  $T  \033[0m"
+        done
+        echo
     done
     echo
 }
@@ -61,10 +61,10 @@ colour_table() {
 # lists all xterm 256 colours
 # from https://wiki.archlinux.org/index.php/Color_output_in_console#bash
 colour_list() {
-    for i in {0..255} ; do
+    for i in {0..255}; do
         printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-            printf "\n";
+        if ((i == 15)) || ((i > 15)) && (((i - 15) % 6 == 0)); then
+            printf "\n"
         fi
     done
 }
@@ -87,36 +87,37 @@ colour_wave() {
     }'
 }
 
-
 ### file / folder functions
 
 # count the number of files and directories
-dirstat() { 
-    local files; files="$(find . -maxdepth 1 -type f | wc -l)"
-    local dirs; dirs="$(find . -maxdepth 1 -type d | wc -l)"
+dirstat() {
+    local files
+    files="$(find . -maxdepth 1 -type f | wc -l)"
+    local dirs
+    dirs="$(find . -maxdepth 1 -type d | wc -l)"
     _trim "${files} files, ${dirs} directories"
 }
 
 # extract archives
 extract() {
-    if [ -f "$1" ] ; then
+    if [ -f "$1" ]; then
         case $1 in
-            *.tar.bz2) tar xjf    "$1" ;;
-            *.tar.gz)  tar xzf    "$1" ;;
-            *.bz2)     bunzip2    "$1" ;;
-            *.rar)     unrar e    "$1" ;;
-            *.gz)      gunzip     "$1" ;;
-            *.tar)     tar xf     "$1" ;;
-            *.tbz2)    tar xjf    "$1" ;;
-            *.tgz)     tar xzf    "$1" ;;
-            *.zip)     unzip      "$1" ;;
-            *.Z)       uncompress "$1" ;;
-            *.7z)      7z x       "$1" ;;
-            *)         echo "Could not extract $1" ;;
-         esac
-     else
-         echo "$1 is not a valid file"
-     fi
+            *.tar.bz2) tar xjf "$1" ;;
+            *.tar.gz) tar xzf "$1" ;;
+            *.bz2) bunzip2 "$1" ;;
+            *.rar) unrar e "$1" ;;
+            *.gz) gunzip "$1" ;;
+            *.tar) tar xf "$1" ;;
+            *.tbz2) tar xjf "$1" ;;
+            *.tgz) tar xzf "$1" ;;
+            *.zip) unzip "$1" ;;
+            *.Z) uncompress "$1" ;;
+            *.7z) 7z x "$1" ;;
+            *) echo "Could not extract $1" ;;
+        esac
+    else
+        echo "$1 is not a valid file"
+    fi
 }
 
 # find files by name in current folder
@@ -131,7 +132,8 @@ fpath() { echo "$(pwd)/$1"; }
 # open github repo in browser
 git-hub() {
     _is_git_repo || { echo "Not a git repo" && return 1; }
-    local base_url; base_url="$(git remote get-url origin)"
+    local base_url
+    base_url="$(git remote get-url origin)"
     base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
     base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
     base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
@@ -147,7 +149,6 @@ tree() {
     fi
 }
 
-
 ### tool related functions
 
 # toggles animations for Android device
@@ -156,13 +157,16 @@ adb-anim() {
         on)
             adb shell settings put global window_animation_scale 1.0
             adb shell settings put global transition_animation_scale 1.0
-            adb shell settings put global animator_duration_scale 1.0 ;;
+            adb shell settings put global animator_duration_scale 1.0
+            ;;
         off)
             adb shell settings put global window_animation_scale 0.0
             adb shell settings put global transition_animation_scale 0.0
-            adb shell settings put global animator_duration_scale 0.0 ;;
+            adb shell settings put global animator_duration_scale 0.0
+            ;;
         *)
-            echo "Usage adb-anim [on/off]" ;;
+            echo "Usage adb-anim [on/off]"
+            ;;
     esac
 }
 
@@ -171,12 +175,15 @@ adb-zoom() {
     case "$1" in
         on)
             adb shell settings put system font_scale 1.3
-            adb shell wm density 540 ;;
+            adb shell wm density 540
+            ;;
         off)
             adb shell settings put system font_scale 1.0
-            adb shell wm density 420 ;;
+            adb shell wm density 420
+            ;;
         *)
-            echo "Usage adb-zoom [on/off]" ;;
+            echo "Usage adb-zoom [on/off]"
+            ;;
     esac
 }
 

@@ -8,10 +8,10 @@ _command_exists() { command -v "$1" >/dev/null 2>&1; }
 _variable_set() { [ -n "$1" ]; }
 
 # checks if $2 begins with $1
-_begins_with() { case "$2" in "$1"*) true;; *) false;; esac; }
+_begins_with() { case "$2" in "$1"*) true ;; *) false ;; esac; }
 
 # checks if $2 ends with $1
-_ends_with() { case "$2" in *"$1") true;; *) false;; esac; }
+_ends_with() { case "$2" in *"$1") true ;; *) false ;; esac; }
 
 # checks if we are running bash
 _is_bash() { _variable_set "${BASH_VERSION}"; }
@@ -30,10 +30,10 @@ _is_macos() { [ "$(uname -s)" = "Darwin" ]; }
 
 # trims given text
 _trim() {
-	local var="$*"
-	var="${var#"${var%%[![:space:]]*}"}"  # remove leading whitespace characters
-	var="${var%"${var##*[![:space:]]}"}"  # remove trailing whitespace characters
-	echo "${var}"
+    local var="$*"
+    var="${var#"${var%%[![:space:]]*}"}" # remove leading whitespace characters
+    var="${var%"${var##*[![:space:]]}"}" # remove trailing whitespace characters
+    echo "${var}"
 }
 
 # checks if true colour is supported, this is not set by all terminals
@@ -41,10 +41,10 @@ _trim() {
 _colour_true() { _variable_set "${COLORTERM}"; }
 
 # checks if 256 colours are supported by the terminal
-_colour_256() { 
+_colour_256() {
     # [ $(tput colors) -eq 256 ]
     case "$TERM" in
-        xterm-color|*-256color) return 0 ;;
+        xterm-color | *-256color) return 0 ;;
         *) return 1 ;;
     esac
 }
@@ -52,7 +52,7 @@ _colour_256() {
 # checks if this is an xterm
 _is_xterm() {
     case "$TERM" in
-        xterm*|rxvt*) return 0 ;;
+        xterm* | rxvt*) return 0 ;;
         *) return 1 ;;
     esac
 }
@@ -60,13 +60,14 @@ _is_xterm() {
 # checks if $1 is in an array $2, must be passed as "${array[@]}"
 # does not work with spaces in elements as that requires looping
 _in_list() {
-    local str="$1"; shift
-    [[ " $* " = *" ${str} "* ]]
+    local str="$1"
+    shift
+    [[ " $* " == *" ${str} "* ]]
 }
 
 # adds a path to the front of fpath if it exists
 _add_to_fpath() {
-    [ -d "$1" ] && fpath=( "$1" "${fpath[@]}" )
+    [ -d "$1" ] && fpath=("$1" "${fpath[@]}")
 }
 
 # adds a folder to front of PATH
@@ -77,16 +78,16 @@ _add_to_path() {
             *:"$1":*) _remove_from_path "$1" ;;
             *) ;;
         esac
-        PATH="$1:${PATH}" 
+        PATH="$1:${PATH}"
     fi
 }
 
 # removes a dir from PATH
 _remove_from_path() {
-   local p d
-   p=":$1:"
-   d=":$PATH:"
-   d="${d//$p/:}"
-   d="${d/#:/}"
-   PATH="${d/%:/}"
+    local p d
+    p=":$1:"
+    d=":$PATH:"
+    d="${d//$p/:}"
+    d="${d/#:/}"
+    PATH="${d/%:/}"
 }

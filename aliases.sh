@@ -9,15 +9,15 @@ alias sudo='sudo '
 # ls aliases
 alias l='ls'
 alias ls='ls --color --group-directories-first' # show colours, dirs first
-alias la='ls -A' # include hidden files
-alias ll='ls -lh' # long human readable format
-alias lla='ls -Alh' # long human readable with hidden
-alias ls-file='ls -F | grep -v /' # list files only
-alias ls-dir='ls -d */ 2> /dev/null' # list folders only
-alias ls-dot='ls -d .[^.]* 2> /dev/null' # list hidden items only
-alias ls-size='ls -lSrh' # sort by size
-alias ls-date='ls -ltrh' # sort by date
-alias ls-ext='ls -lXh' # sort by extension
+alias la='ls -A'                                # include hidden files
+alias ll='ls -lh'                               # long human readable format
+alias lla='ls -Alh'                             # long human readable with hidden
+alias ls-file='ls -F | grep -v /'               # list files only
+alias ls-dir='ls -d */ 2> /dev/null'            # list folders only
+alias ls-dot='ls -d .[^.]* 2> /dev/null'        # list hidden items only
+alias ls-size='ls -lSrh'                        # sort by size
+alias ls-date='ls -ltrh'                        # sort by date
+alias ls-ext='ls -lXh'                          # sort by extension
 
 # cd aliases
 alias c='cd'
@@ -49,7 +49,6 @@ alias egrep='egrep --color=auto'
 alias rm='rm -Irv'
 alias mv='mv -iv'
 alias cp='cp -aiv'
-
 
 ### general
 
@@ -115,7 +114,6 @@ alias sizeof='du -h'
 
 # get the name of the current directory
 alias wd='echo ${PWD##*/}'
-
 
 ### tools
 

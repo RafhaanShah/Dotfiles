@@ -5,9 +5,9 @@
 # https://github.com/asdf-vm/asdf
 if [ -f "${HOME}/.asdf/asdf.sh" ]; then
     export ASDF_DIR="${HOME}/.asdf"
-    _load_file "${ASDF_DIR}/asdf.sh" # load asdf
+    _load_file "${ASDF_DIR}/asdf.sh"                           # load asdf
     _is_bash && _load_file "${ASDF_DIR}/completions/asdf.bash" # asdf bash completions
-    _is_zsh && _add_to_fpath "${ASDF_DIR}/completions" # asdf zsh completions
+    _is_zsh && _add_to_fpath "${ASDF_DIR}/completions"         # asdf zsh completions
 fi
 
 # bat: better cat
