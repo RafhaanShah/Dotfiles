@@ -1,4 +1,4 @@
-### loads other cli tools
+### cli tools
 # shellcheck shell=bash
 
 # asdf: language version manager

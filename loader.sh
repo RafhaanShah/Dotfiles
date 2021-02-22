@@ -29,17 +29,17 @@ _load_file "${HOME}/.rafrc"
 # functions (to be loaded after aliases as aliases are read at function definition)
 _load_file "${DOTFILE_DIR}/functions.sh"
 
-# tools
+# cli tools
 _load_file "${DOTFILE_DIR}/tools.sh"
 
 # prompt functions
-_load_file "${DOTFILE_DIR}/prompt.sh"
+_load_file "${DOTFILE_DIR}/prompt_functions.sh"
 
 # print version info and load prompt
 _is_bash && echo -n "bash ${BASH_VERSION} - " && date \
-    && _load_file "${DOTFILE_DIR}/bash_prompt.sh"
+    && _load_file "${DOTFILE_DIR}/prompt_bash.sh"
 
 _is_zsh && echo -n "zsh ${ZSH_VERSION} - " && date \
-    && _load_file "${DOTFILE_DIR}/zsh_prompt.sh"
+    && _load_file "${DOTFILE_DIR}/prompt_zsh.sh"
 
 unset DOTFILE_DIR

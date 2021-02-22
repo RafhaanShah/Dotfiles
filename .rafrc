@@ -3,3 +3,9 @@
 # for terminals that support 24 bit colour
 # https://gist.github.com/XVilka/8346728
 # export COLORTERM="truecolor"
+
+# set this varable to disable git-prompt in specific repos
+# _PROMPT_GIT_STATUS_BLOCKLIST=(
+#     "large-repo"
+#     "another-folder"
+# )

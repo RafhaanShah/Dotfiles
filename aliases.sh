@@ -130,6 +130,7 @@ alias dk-gui='lazydocker'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
+alias jq='fx'
 
 # lazygit: git ui https://github.com/jesseduffield/lazygit
 alias git-ui='lazygit'

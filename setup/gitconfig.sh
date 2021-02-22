@@ -52,8 +52,7 @@ configure_git() {
     fi
     
     if _is_wsl; then
-        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${GITCONFIG}"
-        
+        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${GITCONFIG}"  
     else
         sed -i 's|# program = gpg2|program = gpg2|' "${GITCONFIG}"
     fi

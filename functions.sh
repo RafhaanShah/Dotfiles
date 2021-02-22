@@ -119,12 +119,6 @@ extract() {
      fi
 }
 
-# file manager: https://github.com/dylanaraps/fff
-f() {
-    fff "$@"
-    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return
-}
-
 # find files by name in current folder
 ffile() { find . -not -path '*/\.*' -iname "*${*}*" 2>&1 | grep -v 'Permission denied'; }
 
@@ -188,6 +182,12 @@ adb-zoom() {
 
 # exec into a docker container
 dk-exec() { docker exec -it "$1" "${2:-sh}"; }
+
+# file manager: https://github.com/dylanaraps/fff
+f() {
+    fff "$@"
+    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return
+}
 
 # opens command cheat sheet on devhints.io
 hint() { open "https://devhints.io/$1"; }
