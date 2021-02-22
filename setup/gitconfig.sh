@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# exit on any error
-set -e
+# exit on any error, unset variable, or failed piped commands
+set -euo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-# shellcheck source=../.helpers
-source "${DOTFILE_DIR}/.helpers"
+# shellcheck source=../helpers.sh
+source "${DOTFILE_DIR}/helpers.sh"
 
 # .gitconfig
 GITCONFIG="${HOME}/.gitconfig"

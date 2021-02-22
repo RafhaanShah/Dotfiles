@@ -5,8 +5,8 @@ set -euo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-# shellcheck source=../.helpers
-source "${DOTFILE_DIR}/.helpers"
+# shellcheck source=../helpers.sh
+source "${DOTFILE_DIR}/helpers.sh"
 
 get_script() {
     curl -sSL "$1" -o "${HOME}/bin/${2}"

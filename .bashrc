@@ -10,7 +10,7 @@ case $- in
 esac
 
 # load config
-[ -f "${HOME}/Dotfiles/.loader" ] && source "${HOME}/Dotfiles/.loader"
+[ -f "${HOME}/Dotfiles/loader.sh" ] && source "${HOME}/Dotfiles/loader.sh"
 
 
 ### overrides
