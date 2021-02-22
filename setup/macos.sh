@@ -26,11 +26,11 @@ brew bundle --file "${DOTFILE_DIR}/packages/brew.txt"
 # npm packages
 echo "Installing npm packages..."
 npm config set prefix "${HOME}/.npm-global"
-< "${DOTFILE_DIR}/packages/npm.txt" xargs npm install -g
+xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install -g
 
 # pip packages
 echo "Installing pip packages..."
-< "${DOTFILE_DIR}/packages/pip.txt" xargs pip3 install --upgrade
+xargs <"${DOTFILE_DIR}/packages/pip.txt" pip3 install --upgrade
 
 # other scripts
 # shellcheck source=others.sh

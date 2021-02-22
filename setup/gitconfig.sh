@@ -47,7 +47,7 @@ set_gpg_key() {
 
 configure_git() {
     sed -i 's|# gpgsign = true|gpgsign = true|' "${GITCONFIG}"
-    
+
     if _is_macos; then
         sed -i 's|# helper = osxkeychain|helper = osxkeychain|' "${GITCONFIG}"
     elif _is_wsl; then
@@ -56,9 +56,9 @@ configure_git() {
         sed -i 's|# credentialStore = gpg|credentialStore = gpg|' "${GITCONFIG}"
         sed -i 's|# helper = /usr/bin/git-credential-manager-core|helper = /usr/bin/git-credential-manager-core|' "${GITCONFIG}"
     fi
-    
+
     if _is_wsl; then
-        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${GITCONFIG}"  
+        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${GITCONFIG}"
     else
         sed -i 's|# program = gpg2|program = gpg2|' "${GITCONFIG}"
     fi
@@ -70,7 +70,7 @@ echo "Configuring git with gpg"
 if [ "$#" -eq 0 ]; then
     get_email
 else
-    if [[ "$1" == *"@"* ]]; then
+    if [[ $1 == *"@"* ]]; then
         GPG_EMAIL="$1"
         get_gpg_key
     else

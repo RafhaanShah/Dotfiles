@@ -10,20 +10,20 @@ source "${DOTFILE_DIR}/helpers.sh"
 
 if [ ! "$(uname -s)" = "Linux" ]; then
     echo "This is only for Linux"
-    exit  
+    exit
 fi
 
 # apt packages
 echo "Installing apt packages..."
 export DEBIAN_FRONTEND=noninteractive
 sudo apt update && sudo apt upgrade -y
-< "${DOTFILE_DIR}/packages/apt.txt" xargs sudo apt install -y
+xargs <"${DOTFILE_DIR}/packages/apt.txt" sudo apt install -y
 sudo apt autoremove -y
 unset DEBIAN_FRONTEND
 
 # snap packages
 if _command_exists "snap"; then
-    < "${DOTFILE_DIR}/packages/snap.txt" xargs sudo snap install
+    xargs <"${DOTFILE_DIR}/packages/snap.txt" sudo snap install
 fi
 
 # npm packages
@@ -32,18 +32,21 @@ echo "Installing npm packages..."
 curl -sSL "https://deb.nodesource.com/setup_15.x" | sudo -E bash -
 sudo apt install -y nodejs && npm config set prefix "${HOME}/.npm-global"
 
-< "${DOTFILE_DIR}/packages/npm-linux.txt" xargs npm install -g
-< "${DOTFILE_DIR}/packages/npm.txt" xargs npm install -g
+xargs <"${DOTFILE_DIR}/packages/npm-linux.txt" npm install -g
+xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install -g
 
 # pip packages
 echo "Installing pip packages..."
-< "${DOTFILE_DIR}/packages/pip-linux.txt" xargs pip3 install --upgrade
-< "${DOTFILE_DIR}/packages/pip.txt" xargs pip3 install --upgrade
+xargs <"${DOTFILE_DIR}/packages/pip-linux.txt" pip3 install --upgrade
+xargs <"${DOTFILE_DIR}/packages/pip.txt" pip3 install --upgrade
 
 install_deb() {
     local app="${1##*/}"
     echo "Installing ${app}..."
-    curl -sSL "$1" -o "${HOME}/${app}" --fail || { echo "Failed to download ${app}"; return; }
+    curl -sSL "$1" -o "${HOME}/${app}" --fail || {
+        echo "Failed to download ${app}"
+        return
+    }
     sudo dpkg -i "${HOME}/${app}" || echo "Failed to install ${app}"
     rm "${HOME}/${app}"
 }
@@ -51,9 +54,13 @@ install_deb() {
 get_repo_deb() {
     echo "Getting latest version of ${1}..."
     local api="https://api.github.com/repos/${1}/releases/latest"
-    local ver; ver=$(curl -s "${api}" --fail) || { echo "Failed to get ${1}"; return; }
+    local ver
+    ver=$(curl -s "${api}" --fail) || {
+        echo "Failed to get ${1}"
+        return
+    }
     ver=$(echo "$ver" | fx .name)
-    
+
     local app="${1##*/}_${ver/v/}_${arch}.deb"
     local url="https://github.com/${1}/releases/download/${ver}/${app}"
     install_deb "${url}"
@@ -65,7 +72,7 @@ arch=$(dpkg --print-architecture) # amd64 / armhf...
 
 while read -r line; do
     get_repo_deb "$line" || echo "Something went wrong installing ${line}"
-done < "${DOTFILE_DIR}/packages/deb.txt"
+done <"${DOTFILE_DIR}/packages/deb.txt"
 
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
@@ -74,7 +81,7 @@ install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/d
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
 if [ ! -d "${HOME}/.asdf" ]; then
-    git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf"\
+    git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" \
         --branch "$(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)"
 else
     # shellcheck source=/dev/null
