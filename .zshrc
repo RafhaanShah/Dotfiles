@@ -7,7 +7,6 @@
 # load config
 [ -f "${HOME}/Dotfiles/loader.sh" ] && source "${HOME}/Dotfiles/loader.sh"
 
-
 ### shell hook functions
 # http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 
@@ -15,8 +14,7 @@
 # shellcheck disable=SC2053
 _zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
 
-zshaddhistory_functions+=( _zshaddhistory_filter )
-
+zshaddhistory_functions+=(_zshaddhistory_filter)
 
 ### overrides
 
@@ -26,7 +24,6 @@ alias sudo='nocorrect sudo '
 
 # make history command behave like bash
 history() { builtin history -"$*"; }
-
 
 ### shell parameters
 # http://zsh.sourceforge.net/Doc/Release/Parameters.html#Parameters-Used-By-The-Shell
@@ -39,7 +36,6 @@ HISTSIZE=10000
 HISTORY_IGNORE="(cd*|ls*|pwd|clear|bg*|fg*|exit|history*)"
 # maximum number of history events
 SAVEHIST=10000
-
 
 ### shell options
 # http://zsh.sourceforge.net/Doc/Release/Options.html
@@ -86,7 +82,6 @@ setopt PUSHD_SILENT
 # share history across multiple zsh sessions
 setopt SHARE_HISTORY
 
-
 ### zsh plugins
 # using zinit because we gotta go fast
 # https://github.com/zdharma/zinit
@@ -126,22 +121,22 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
         zinit-zsh/z-a-bin-gem-node
 
     # load actual plugins
-    zinit ice blockf # block the traditional method of adding completions, zinit uses own method
+    zinit ice blockf                      # block the traditional method of adding completions, zinit uses own method
     zinit light zsh-users/zsh-completions # https://github.com/zsh-users/zsh-completions
 
     _configure_autosuggestions
     zinit ice wait lucid atload'_zsh_autosuggest_start' # load using turbo mode
-    zinit light zsh-users/zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
-    
+    zinit light zsh-users/zsh-autosuggestions           # https://github.com/zsh-users/zsh-autosuggestions
+
     zinit light djui/alias-tips # https://github.com/djui/alias-tips
     export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls"
-    
+
     zinit ice wait'1' lucid
     zinit light laggardkernel/zsh-thefuck # https://github.com/laggardkernel/zsh-thefuck
-    
+
     # syntax highlighting must be sourced last
     zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
-    
+
     # history substring search must be sourced after syntax highlighting
     zinit light zsh-users/zsh-history-substring-search # https://github.com/zsh-users/zsh-history-substring-search
     bindkey '^[[A' history-substring-search-up
@@ -158,7 +153,6 @@ else
 fi
 
 unset _configure_autosuggestions
-
 
 ### zsh completion
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
@@ -179,7 +173,6 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 autoload -Uz compinit && compinit
 # complete 'z' command with directories
 compdef _directories z
-
 
 ### shell key bindings
 # accept menu option and run command with one enter press like bash

@@ -6,18 +6,16 @@
 # if not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return ;;
 esac
 
 # load config
 [ -f "${HOME}/Dotfiles/loader.sh" ] && source "${HOME}/Dotfiles/loader.sh"
 
-
 ### overrides
 
 # append and read new history after every command so it is available in other terminals
 PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND:+;}history -a; history -n"
-
 
 ### shell variables
 # https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
@@ -31,25 +29,23 @@ HISTSIZE=10000
 # truncates directory names when X levels deep
 PROMPT_DIRTRIM=3
 
-
 ### shell options
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
 # auto cd's into directories when typed in
-shopt -s autocd 2> /dev/null # needs Bash v4
+shopt -s autocd 2>/dev/null # needs Bash v4
 # check the window size after each command
 shopt -s checkwinsize
 # "**" used in a pathname expansion context will match all files and subdirectories
-shopt -s globstar 2> /dev/null # needs Bash v4
+shopt -s globstar 2>/dev/null # needs Bash v4
 # history list is appended to instead of overwritten
 shopt -s histappend
 # attempts spelling correction on directory names during word completion
-shopt -s dirspell 2> /dev/null
+shopt -s dirspell 2>/dev/null
 # minor errors in the spelling of a directory component in a cd command will be corrected
-shopt -s cdspell 2> /dev/null
+shopt -s cdspell 2>/dev/null
 # case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
-
 
 ### readline settings
 # https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html
@@ -83,7 +79,6 @@ bind '"\e[A": history-search-backward'
 # same for down arrow
 bind '"\e[B": history-search-forward'
 
-
 ### programmable completion
 # https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html
 # enable programmable completion features
@@ -98,10 +93,10 @@ fi
 
 # https://github.com/Charlietje/bash/blob/master/bashrc.sh#L161
 # shellcheck disable=SC2001,SC2086,SC2196,SC2207,SC2155,SC2206,SC2012,SC2035,SC2001,SC2086
-_fuzzy_file_completion()  {
+_fuzzy_file_completion() {
     local IFS=$'\n'
     if [ -z $2 ]; then
-        COMPREPLY=( $(\ls) )
+        COMPREPLY=($(\ls))
     else
         local DIR="$2"
         if [[ $DIR =~ ^~ ]]; then
@@ -116,7 +111,7 @@ _fuzzy_file_completion()  {
             local FILES=$(\ls -A $DIRPATH 2>/dev/null | egrep -v '^\.')
         fi
         local X=$(echo "$FILES" | \grep -i "$BASENAME" 2>/dev/null)
-        if [ -z "$X"  ]; then
+        if [ -z "$X" ]; then
             X=$(echo "$FILES" | \grep -i "$FILTER" 2>/dev/null)
         fi
         COMPREPLY=($X)
@@ -129,7 +124,7 @@ _fuzzy_file_completion()  {
 _fuzzy_dir_completion() {
     local IFS=$'\n'
     if [ -z $2 ]; then
-        COMPREPLY=( $(\ls -d */ | sed 's|/$||') )
+        COMPREPLY=($(\ls -d */ | sed 's|/$||'))
     else
         DIR="$2"
         if [[ $DIR =~ ^~ ]]; then
@@ -152,7 +147,7 @@ _fuzzy_dir_completion() {
             fi
         fi
         X=$(echo "$DIRS" | \grep -i "$BASENAME" 2>/dev/null | sed 's|/$||g')
-        if [ -z "$X"  ]; then
+        if [ -z "$X" ]; then
             X=$(echo "$DIRS" | \grep -i "$FILTER" 2>/dev/null | sed 's|/$||g')
         fi
         COMPREPLY=($X)
