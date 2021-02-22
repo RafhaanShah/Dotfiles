@@ -1,5 +1,5 @@
 ### aliases
-# shellcheck shell=sh
+# shellcheck shell=bash
 
 ### common
 

@@ -30,7 +30,6 @@ fi
 echo "Installing npm packages..."
 # https://github.com/nodesource/distributions#debinstall
 curl -sSL "https://deb.nodesource.com/setup_15.x" | sudo -E bash -
-# shellcheck disable=SC2059
 sudo apt install -y nodejs && npm config set prefix "${HOME}/.npm-global"
 
 < "${DOTFILE_DIR}/packages/npm-linux.txt" xargs npm install -g

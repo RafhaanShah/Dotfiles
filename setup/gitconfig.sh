@@ -16,9 +16,11 @@ get_email() {
     config=$(cat "${GITCONFIG}")
     if [[ $config =~ $regex ]]; then
         GPG_EMAIL="${BASH_REMATCH[1]}"
+        echo "Using email: ${GPG_EMAIL}"
+        get_gpg_key
     else
         echo "No email address found in .gitconfig"
-        echo "Re-run with your GPG email: ./gitconfig.sh user@mail.com"
+        echo "Re-run with your GPG email or key: ./gitconfig.sh user@mail.com OR ./gitconfig.sh 1234ABCD"
         exit
     fi
 }
@@ -29,14 +31,18 @@ get_gpg_key() {
     gpg="$(gpg2 --list-secret-keys --keyid-format LONG "${GPG_EMAIL}")"
 
     if [[ $gpg =~ $regex ]]; then
-        key="${BASH_REMATCH[1]}"
-        sed -i 's|# signingkey = GPG_KEY_ID|'"${key}"'|' "${GITCONFIG}"
-        echo "GPG key: ${key}"
-        configure_git
+        GPG_KEY="${BASH_REMATCH[1]}"
+        echo "Using GPG key: ${GPG_KEY}"
+        set_gpg_key
     else
         echo "No GPG key found for your email address"
         exit
     fi
+}
+
+set_gpg_key() {
+    sed -i 's|# signingkey = GPG_KEY_ID|'"${GPG_KEY}"'|' "${GITCONFIG}"
+    configure_git
 }
 
 configure_git() {
@@ -58,13 +64,19 @@ configure_git() {
     fi
 }
 
-echo "Configuring git"
+echo "Configuring git with gpg"
 [ -f "${GITCONFIG}" ] && echo "No .gitconfig found" && exit
 
 if [ "$#" -eq 0 ]; then
     get_email
 else
-    GPG_EMAIL="$1"
+    if [[ "$1" == *"@"* ]]; then
+        GPG_EMAIL="$1"
+        get_gpg_key
+    else
+        GPG_KEY="$1"
+        set_gpg_key
+    fi
 fi
 
-get_gpg_key
+echo "Done configuring git"
