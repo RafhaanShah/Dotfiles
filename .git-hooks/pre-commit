@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+# exit on any error, unset variable
+set -eu
+
+# staged files with specific extension
+FILES="$(git diff --cached --name-only --diff-filter=ACMR "*.sh" | sed 's| |\\ |g')"
+
+if ! command -v shfmt >/dev/null 2>&1; then
+    echo 'Warning: shfmt is not installed'
+else
+    if [ -n "${FILES}" ]; then
+        echo "Running shfmt..."
+        echo "${FILES}" | xargs shfmt -i 4 -ci -l -w -s
+        echo "${FILES}" | xargs git add
+    fi
+fi
+
+if ! command -v shellcheck >/dev/null 2>&1; then
+    echo 'Warning: shellcheck is not installed'
+else
+    if [ -n "${FILES}" ]; then
+        echo "Running shellcheck..."
+        echo "${FILES}" | xargs shellcheck -x -P SCRIPTDIR
+    fi
+fi

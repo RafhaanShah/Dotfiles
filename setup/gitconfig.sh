@@ -81,7 +81,7 @@ if [ ! -f "${GITCONFIG}" ]; then
     exit
 fi
 
-git config core.hooksPath "${hooks_dir}"
+git config core.hooksPath ".git-hooks"
 _is_wsl && setup_wsl
 
 if [ "$#" -eq 0 ]; then
