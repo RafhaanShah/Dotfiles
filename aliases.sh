@@ -70,7 +70,8 @@ alias copy='xclip -selection clipboard'
 alias paste='xclip -selection clipboard -o'
 
 # download file
-alias dl='curl -LJO'
+alias download='curl -LJO'
+alias dl='download'
 
 # re-do last command with sudo
 alias fuck='sudo $(fc -ln -1)'
@@ -92,6 +93,7 @@ alias lcommand='fc -ln -1'
 
 # opens file or folder in default app
 alias open='xdg-open'
+alias o='open'
 
 # shows path
 alias path='echo -e "${PATH//:/\\n}"'

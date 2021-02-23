@@ -7,7 +7,7 @@ g++
 gcc
 git
 gnupg-agent
-gnupg2
+gnupg
 make
 ncdu
 neofetch

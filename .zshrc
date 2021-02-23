@@ -129,7 +129,7 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     zinit light zsh-users/zsh-autosuggestions           # https://github.com/zsh-users/zsh-autosuggestions
 
     zinit light djui/alias-tips # https://github.com/djui/alias-tips
-    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls"
+    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls o .."
 
     zinit ice wait'1' lucid
     zinit light laggardkernel/zsh-thefuck # https://github.com/laggardkernel/zsh-thefuck

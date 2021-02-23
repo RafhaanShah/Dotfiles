@@ -11,6 +11,9 @@ source "${DOTFILE_DIR}/helpers.sh"
 # .gitconfig
 GITCONFIG="${HOME}/.gitconfig"
 
+# gpg program to use
+GPG_PROGRAM='gpg'
+
 get_email() {
     regex="email[[:space:]]=[[:space:]]([a-zA-Z0-9@-_\.]+)[[:space:]]"
     config=$(cat "${GITCONFIG}")
@@ -28,9 +31,9 @@ get_email() {
 get_gpg_key() {
     echo "GPG email: $GPG_EMAIL"
     regex="sec[[:space:]]+rsa[0-9]+\/([a-zA-Z0-9]+)[[:space:]]"
-    gpg="$(gpg2 --list-secret-keys --keyid-format LONG "${GPG_EMAIL}")"
+    gpg_result="$("${GPG_PROGRAM}" --list-secret-keys --keyid-format LONG "${GPG_EMAIL}")"
 
-    if [[ $gpg =~ $regex ]]; then
+    if [[ $gpg_result =~ $regex ]]; then
         GPG_KEY="${BASH_REMATCH[1]}"
         echo "Using GPG key: ${GPG_KEY}"
         set_gpg_key
@@ -58,14 +61,28 @@ configure_git() {
     fi
 
     if _is_wsl; then
-        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${GITCONFIG}"
+        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${WSL_HOME}/.gitconfig"
+        sed -i 's|# program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe|program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe|' "${GITCONFIG}"
     else
-        sed -i 's|# program = gpg2|program = gpg2|' "${GITCONFIG}"
+        sed -i 's|# program = gpg|program = gpg|' "${GITCONFIG}"
     fi
 }
 
+setup_wsl() {
+    GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
+    WSL_HOME="$(wslpath "$(wslvar USERPROFILE)")"
+    [ -d "${WSL_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WSL_HOME}/Dotfiles"
+    cp "${DOTFILE_DIR}/.gitconfig" "${WSL_HOME}/.gitconfig"
+}
+
 echo "Configuring git with gpg"
-[ -f "${GITCONFIG}" ] && echo "No .gitconfig found" && exit
+if [ ! -f "${GITCONFIG}" ]; then
+    echo "No .gitconfig found"
+    exit
+fi
+
+git config core.hooksPath "${hooks_dir}"
+_is_wsl && setup_wsl
 
 if [ "$#" -eq 0 ]; then
     get_email

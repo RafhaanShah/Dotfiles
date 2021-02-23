@@ -5,7 +5,7 @@
         name = Rafhaan Shah
         email = RafhaanShah@users.noreply.github.com
         # https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/telling-git-about-your-signing-key
-        # gpg2 --list-keys --keyid-format LONG
+        # gpg --list-keys --keyid-format LONG
         # signingkey = GPG_KEY_ID
 
 [commit]
@@ -29,8 +29,10 @@
 [gpg]
         # Windows
         # program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+        # WSL
+        # program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe
         # macOS / Linux
-        # program = gpg2
+        # program = gpg
 
 [include]
         path = ~/Dotfiles/config/base.gitconfig

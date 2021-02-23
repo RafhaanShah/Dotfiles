@@ -2,4 +2,4 @@
 # shellcheck shell=bash
 
 # opens file or folder in default app
-alias open='explorer.exe'
+alias open='wslview'
