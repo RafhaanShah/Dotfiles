@@ -75,9 +75,9 @@ bind 'TAB:menu-complete'
 # menu complete but backwards
 bind '"\e[Z":menu-complete-backward'
 # up arrow previous command takes in partially typed commands
-bind '"\e[A": history-search-backward'
+bind '"\e[A":history-substring-search-backward'
 # same for down arrow
-bind '"\e[B": history-search-forward'
+bind '"\e[B":history-substring-search-forward'
 
 ### programmable completion
 # https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html

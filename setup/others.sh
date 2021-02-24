@@ -20,7 +20,7 @@ mkdir -p "${HOME}/bin"
 
 # cheat.sh: cli cheatsheets
 # https://github.com/chubin/cheat.sh
-get_script "https://cht.sh/:cht.sh" "cht"
+get_script "https://cht.sh/:cht.sh" "cht.sh"
 
 # tldr: better manpages
 # https://github.com/tldr-pages/tldr

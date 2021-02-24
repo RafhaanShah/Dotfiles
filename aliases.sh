@@ -73,6 +73,9 @@ alias paste='xclip -selection clipboard -o'
 alias download='curl -LJO'
 alias dl='download'
 
+# opens editor
+alias e='${EDITOR}'
+
 # re-do last command with sudo
 alias fuck='sudo $(fc -ln -1)'
 alias fu='fuck'
@@ -119,6 +122,9 @@ alias wd='echo ${PWD##*/}'
 
 ### tools
 
+# cht.sh: cheatsheets https://github.com/chubin/cheat.sh
+alias cht='cht.sh'
+
 # docker: app containers https://docs.docker.com/engine/install/
 alias dk='docker'
 alias dkc='docker-compose'
@@ -137,5 +143,6 @@ alias git-ui='lazygit'
 
 # googler: search google https://github.com/jarun/googler
 alias google='googler'
+alias goog='google'
 alias define='googler -n 2 define'
 alias so='googler -j -w stackoverflow.com'

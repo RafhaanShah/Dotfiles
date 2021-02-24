@@ -1,5 +1,6 @@
 apt-transport-https
 bash
+bash-completion
 ca-certificates
 curl
 fortune-mod

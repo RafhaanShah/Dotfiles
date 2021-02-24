@@ -83,9 +83,7 @@ setopt PUSHD_SILENT
 setopt SHARE_HISTORY
 
 ### zsh plugins
-# using zinit because we gotta go fast
-# https://github.com/zdharma/zinit
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+# zinit: fast plugin manager: https://github.com/zdharma/zinit
 # zinit self-update (zinit) | zinit update --all (plugins)
 
 _configure_autosuggestions() {
@@ -105,6 +103,26 @@ _configure_autosuggestions() {
     bindkey '^ ' forward-word
 }
 
+_load_completions() {
+    zinit ice blockf # block the traditional method of adding completions, zinit uses own method
+    zinit light zsh-users/zsh-completions
+    
+    zinit ice as"completion" id-as"_cht.sh" # needs to be _command to work
+    zinit snippet 'https://cheat.sh/:zsh'
+    
+    zinit ice as"completion"
+    zinit snippet 'https://github.com/jarun/googler/raw/master//auto-completion/zsh/_googler'
+    
+    zinit ice as"completion"
+    zinit snippet 'OMZ::plugins/docker/_docker'
+    
+    zinit ice as"completion"
+    zinit snippet 'OMZ::plugins/docker-compose/_docker-compose'
+    
+    zinit ice as"completion"
+    zinit snippet 'OMZ::plugins/pip/_pip'
+}
+
 # if zinit is installed, setup and load plugins
 if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     source "${HOME}/.zinit/bin/zinit.zsh"
@@ -112,33 +130,29 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     # shellcheck disable=SC2154
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
-    # load a few important annexes, without turbo
-    # (this is currently required for annexes)
     zinit light-mode for \
-        zinit-zsh/z-a-rust \
-        zinit-zsh/z-a-as-monitor \
-        zinit-zsh/z-a-patch-dl \
-        zinit-zsh/z-a-bin-gem-node
+        'zinit-zsh/z-a-rust' \
+        'zinit-zsh/z-a-as-monitor' \
+        'zinit-zsh/z-a-patch-dl' \
+        'zinit-zsh/z-a-bin-gem-node'
 
-    # load actual plugins
-    zinit ice blockf                      # block the traditional method of adding completions, zinit uses own method
-    zinit light zsh-users/zsh-completions # https://github.com/zsh-users/zsh-completions
-
+    _load_completions
     _configure_autosuggestions
-    zinit ice wait lucid atload'_zsh_autosuggest_start' # load using turbo mode
-    zinit light zsh-users/zsh-autosuggestions           # https://github.com/zsh-users/zsh-autosuggestions
+    
+    zinit ice wait lucid atload'_zsh_autosuggest_start'
+    zinit light 'zsh-users/zsh-autosuggestions'
 
-    zinit light djui/alias-tips # https://github.com/djui/alias-tips
-    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls o .."
+    zinit light djui/alias-tips
+    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls o cd.. .."
 
     zinit ice wait'1' lucid
-    zinit light laggardkernel/zsh-thefuck # https://github.com/laggardkernel/zsh-thefuck
+    zinit light 'laggardkernel/zsh-thefuck'
 
     # syntax highlighting must be sourced last
-    zinit light zsh-users/zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
+    zinit light 'zsh-users/zsh-syntax-highlighting'
 
     # history substring search must be sourced after syntax highlighting
-    zinit light zsh-users/zsh-history-substring-search # https://github.com/zsh-users/zsh-history-substring-search
+    zinit light 'zsh-users/zsh-history-substring-search'
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
 else
@@ -148,11 +162,11 @@ else
     autoload -U down-line-or-beginning-search
     zle -N up-line-or-beginning-search
     zle -N down-line-or-beginning-search
-    bindkey "^[[A" up-line-or-beginning-search
-    bindkey "^[[B" down-line-or-beginning-search
+    bindkey '^[[A' up-line-or-beginning-search
+    bindkey '^[[B' down-line-or-beginning-search
 fi
 
-unset _configure_autosuggestions
+unset -f _configure_autosuggestions _load_completions
 
 ### zsh completion
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
