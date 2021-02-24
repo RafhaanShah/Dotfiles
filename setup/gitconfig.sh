@@ -44,7 +44,8 @@ get_gpg_key() {
 }
 
 set_gpg_key() {
-    sed -i 's|# signingkey = GPG_KEY_ID|'"${GPG_KEY}"'|' "${GITCONFIG}"
+    sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${GITCONFIG}"
+    _is_wsl && sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${WSL_HOME}/.gitconfig"
     configure_git
 }
 
@@ -55,6 +56,7 @@ configure_git() {
         sed -i 's|# helper = osxkeychain|helper = osxkeychain|' "${GITCONFIG}"
     elif _is_wsl; then
         sed -i 's|# helper = wincred|helper = wincred|' "${GITCONFIG}"
+        sed -i 's|# helper = wincred|helper = wincred|' "${WSL_HOME}/.gitconfig"
     else
         sed -i 's|# credentialStore = gpg|credentialStore = gpg|' "${GITCONFIG}"
         sed -i 's|# helper = /usr/bin/git-credential-manager-core|helper = /usr/bin/git-credential-manager-core|' "${GITCONFIG}"
@@ -71,7 +73,7 @@ configure_git() {
 setup_wsl() {
     GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
     WSL_HOME="$(wslpath "$(wslvar USERPROFILE)")"
-    [ -d "${WSL_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WSL_HOME}/Dotfiles"
+    [ ! -d "${WSL_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WSL_HOME}/Dotfiles"
     cp "${DOTFILE_DIR}/.gitconfig" "${WSL_HOME}/.gitconfig"
 }
 
