@@ -59,12 +59,12 @@ configure_git() {
         sed -i 's|# helper = wincred|helper = wincred|' "${WSL_HOME}/.gitconfig"
     else
         sed -i 's|# credentialStore = gpg|credentialStore = gpg|' "${GITCONFIG}"
-        sed -i 's|# helper = /usr/bin/git-credential-manager-core|helper = /usr/bin/git-credential-manager-core|' "${GITCONFIG}"
+        sed -i 's|# helper = /usr/bin|helper = /usr/bin|' "${GITCONFIG}"
     fi
 
     if _is_wsl; then
-        sed -i 's|# program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe|' "${WSL_HOME}/.gitconfig"
-        sed -i 's|# program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe|program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe|' "${GITCONFIG}"
+        sed -i 's|# program = C:\\Program|program = C:\\Program|' "${WSL_HOME}/.gitconfig"
+        sed -i 's|# program = /mnt/c/|program = /mnt/c/|' "${GITCONFIG}"
     else
         sed -i 's|# program = gpg|program = gpg|' "${GITCONFIG}"
     fi
