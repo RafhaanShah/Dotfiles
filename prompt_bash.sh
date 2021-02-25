@@ -5,9 +5,9 @@
 # runs after each command, before PS1 is printed
 _prompt_command() {
     local EXIT="$?"
-    PS1="\[\e]0;\u@\h: \w\a\]" # set terminal title
-    PS1+="\n${_PROMPT_STR}\n"  # user, host, dir, git
-    _prompt_dir_changed && ls  # auto ls if dir changed
+    PS1="\[\e]0;\u@\h: \w\a\]"     # set terminal title
+    PS1+="\n${_PROMPT_STR}"$'\n'"" # user, host, dir, git
+    _prompt_dir_changed && ls      # auto ls if dir changed
 
     if [ "${EXIT}" -eq 0 ]; then
         PS1+="${_PROMPT_CH_OK}"
