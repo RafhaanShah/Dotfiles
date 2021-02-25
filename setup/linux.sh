@@ -71,7 +71,9 @@ arch=$(dpkg --print-architecture) # amd64 / armhf...
 # instr=$(uname -m) # x86_64 / armv71...
 
 while read -r line; do
-    get_repo_deb "$line" || echo "Something went wrong installing ${line}"
+    if [ -n "$line" ]; then
+        get_repo_deb "$line" || echo "Something went wrong installing ${line}"
+    fi
 done <"${DOTFILE_DIR}/packages/deb.txt"
 
 # git credential manager

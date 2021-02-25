@@ -2,6 +2,7 @@ apt-transport-https
 bash
 bash-completion
 ca-certificates
+command-not-found
 curl
 fortune-mod
 g++

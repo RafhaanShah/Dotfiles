@@ -5,4 +5,5 @@
 alias open='wslview'
 
 # windows HOME directory
-export WHOME="$(wslpath "$(wslvar USERPROFILE)")"
+WHOME="$(wslpath "$(wslvar USERPROFILE)")"
+alias wh='cd ${WHOME}'
