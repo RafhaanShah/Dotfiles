@@ -16,6 +16,8 @@
         # https://docs.github.com/en/free-pro-team@latest/github/using-git/caching-your-github-credentials-in-git
         # Windows
         # helper = wincred
+        # WSL https://git-scm.com/download/win
+        # helper = /mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
         # macOS
         # helper = osxkeychain
         # Linux: https://github.com/microsoft/Git-Credential-Manager-Core
@@ -27,7 +29,7 @@
         useHttpPath = true
 
 [gpg]
-        # Windows
+        # Windows https://www.gpg4win.org/
         # program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
         # WSL
         # program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe

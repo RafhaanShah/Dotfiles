@@ -51,11 +51,12 @@ set_gpg_key() {
 
 configure_git() {
     sed -i 's|# gpgsign = true|gpgsign = true|' "${GITCONFIG}"
+    _is_wsl && sed -i 's|# gpgsign = true|gpgsign = true|' "${WSL_HOME}/.gitconfig"
 
     if _is_macos; then
         sed -i 's|# helper = osxkeychain|helper = osxkeychain|' "${GITCONFIG}"
     elif _is_wsl; then
-        sed -i 's|# helper = wincred|helper = wincred|' "${GITCONFIG}"
+        sed -i 's|# helper = /mnt/c|helper = /mnt/c|' "${GITCONFIG}"
         sed -i 's|# helper = wincred|helper = wincred|' "${WSL_HOME}/.gitconfig"
     else
         sed -i 's|# credentialStore = gpg|credentialStore = gpg|' "${GITCONFIG}"
@@ -64,7 +65,7 @@ configure_git() {
 
     if _is_wsl; then
         sed -i 's|# program = C:\\Program|program = C:\\Program|' "${WSL_HOME}/.gitconfig"
-        sed -i 's|# program = /mnt/c/|program = /mnt/c/|' "${GITCONFIG}"
+        sed -i 's|# program = /mnt/c|program = /mnt/c|' "${GITCONFIG}"
     else
         sed -i 's|# program = gpg|program = gpg|' "${GITCONFIG}"
     fi
