@@ -83,7 +83,7 @@ install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/d
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
 if [ ! -d "${HOME}/.asdf" ]; then
-    git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" \
+    git clone 'https://github.com/asdf-vm/asdf.git' "${HOME}/.asdf" \
         --branch "$(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)"
 else
     # shellcheck source=/dev/null
@@ -92,9 +92,9 @@ fi
 
 # fff: file manager
 # https://github.com/dylanaraps/fff
-git clone https://github.com/dylanaraps/fff.git "/tmp/fff"
+[ ! -d "/tmp/fff" ] && git clone 'https://github.com/dylanaraps/fff.git' "/tmp/fff"
 (cd "/tmp/fff" && sudo make install)
-rm -rf "/tmp/fff"
+rm -r "/tmp/fff"
 
 # lazygit: git ui
 # https://github.com/jesseduffield/lazygit
