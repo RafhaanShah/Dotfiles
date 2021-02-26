@@ -20,6 +20,9 @@ _load_file "${DOTFILE_DIR}/aliases.sh"
 # if on wsl, load wsl file
 _is_wsl && _load_file "${DOTFILE_DIR}/wsl.sh"
 
+# if on mingw, load mingw file
+_is_mingw && _load_file "${DOTFILE_DIR}/mingw.sh"
+
 # if on macOS, load macOS file
 _is_macos && _load_file "${DOTFILE_DIR}/macos.sh"
 
