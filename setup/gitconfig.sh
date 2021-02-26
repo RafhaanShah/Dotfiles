@@ -36,46 +36,46 @@ get_gpg_key() {
     if [[ $gpg_result =~ $regex ]]; then
         GPG_KEY="${BASH_REMATCH[1]}"
         echo "Using GPG key: ${GPG_KEY}"
-        set_gpg_key
     else
         echo "No GPG key found for your email address"
         exit
     fi
 }
 
-set_gpg_key() {
-    sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${GITCONFIG}"
-    _is_wsl && sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${WSL_HOME}/.gitconfig"
-    configure_git
-}
-
 configure_git() {
+    sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${GITCONFIG}"
     sed -i 's|# gpgsign = true|gpgsign = true|' "${GITCONFIG}"
-    _is_wsl && sed -i 's|# gpgsign = true|gpgsign = true|' "${WSL_HOME}/.gitconfig"
 
     if _is_macos; then
         sed -i 's|# helper = osxkeychain|helper = osxkeychain|' "${GITCONFIG}"
+        sed -i 's|# program = gpg|program = gpg|' "${GITCONFIG}"
     elif _is_wsl; then
         sed -i 's|# helper = /mnt/c|helper = /mnt/c|' "${GITCONFIG}"
-        sed -i 's|# helper = wincred|helper = wincred|' "${WSL_HOME}/.gitconfig"
+        sed -i 's|# program = /mnt/c|program = /mnt/c|' "${GITCONFIG}"
     else
         sed -i 's|# credentialStore = gpg|credentialStore = gpg|' "${GITCONFIG}"
         sed -i 's|# helper = /usr/bin|helper = /usr/bin|' "${GITCONFIG}"
-    fi
-
-    if _is_wsl; then
-        sed -i 's|# program = C:\\Program|program = C:\\Program|' "${WSL_HOME}/.gitconfig"
-        sed -i 's|# program = /mnt/c|program = /mnt/c|' "${GITCONFIG}"
-    else
         sed -i 's|# program = gpg|program = gpg|' "${GITCONFIG}"
     fi
 }
 
-setup_wsl() {
-    GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
-    WSL_HOME="$(wslpath "$(wslvar USERPROFILE)")"
-    [ ! -d "${WSL_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WSL_HOME}/Dotfiles"
-    cp "${DOTFILE_DIR}/.gitconfig" "${WSL_HOME}/.gitconfig"
+setup_windows() {
+    if _is_wsl; then
+        GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
+        WIN_HOME="$(wslpath "$(wslvar USERPROFILE)")"
+        [ ! -d "${WIN_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WIN_HOME}/Dotfiles"
+        cp "${DOTFILE_DIR}/.gitconfig" "${WIN_HOME}/.gitconfig"
+    elif _is_mingw; then
+        GPG_PROGRAM='/c/Program Files (x86)/GnuPG/bin/gpg.exe'
+        WIN_HOME="${HOME}"
+    fi
+}
+
+configure_windows() {
+    sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${WIN_HOME}/.gitconfig"
+    sed -i 's|# gpgsign = true|gpgsign = true|' "${WIN_HOME}/.gitconfig"
+    sed -i 's|# helper = wincred|helper = wincred|' "${WIN_HOME}/.gitconfig"
+    sed -i 's|# program = C:\\Program|program = C:\\Program|' "${WIN_HOME}/.gitconfig"
 }
 
 echo "Configuring git with gpg"
@@ -85,7 +85,23 @@ if [ ! -f "${GITCONFIG}" ]; then
 fi
 
 git config core.hooksPath ".git-hooks"
-_is_wsl && setup_wsl
+
+setup() {
+    if _is_mingw; then
+        configure_windows
+        return
+    fi
+
+    if _is_wsl; then
+        configure_windows
+    fi
+
+    configure_git
+}
+
+if _is_wsl || _is_mingw; then
+    setup_windows
+fi
 
 if [ "$#" -eq 0 ]; then
     get_email
@@ -95,8 +111,9 @@ else
         get_gpg_key
     else
         GPG_KEY="$1"
-        set_gpg_key
     fi
 fi
+
+setup
 
 echo "Done configuring git"

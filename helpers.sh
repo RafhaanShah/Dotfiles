@@ -25,6 +25,9 @@ _is_git_repo() { git rev-parse --is-inside-work-tree &>/dev/null; }
 # checks if we are running in wsl
 _is_wsl() { _variable_set "${WSL_DISTRO_NAME}"; }
 
+# checks if we are running in mingw in windows
+_is_mingw() { _begins_with "MINGW" "$(uname -s)"; }
+
 # checks if we are running on macOS
 _is_macos() { [ "$(uname -s)" = "Darwin" ]; }
 
