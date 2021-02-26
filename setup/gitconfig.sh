@@ -75,7 +75,7 @@ configure_windows() {
     sed -i 's|# signingkey = GPG_KEY_ID|signingkey = '"${GPG_KEY}"'|' "${WIN_HOME}/.gitconfig"
     sed -i 's|# gpgsign = true|gpgsign = true|' "${WIN_HOME}/.gitconfig"
     sed -i 's|# helper = wincred|helper = wincred|' "${WIN_HOME}/.gitconfig"
-    sed -i 's|# program = C:\\Program|program = C:\\Program|' "${WIN_HOME}/.gitconfig"
+    sed -i 's|# program = C:|program = C:|' "${WIN_HOME}/.gitconfig"
     sed -i 's|autocrlf = input|autocrlf = true|' "${WIN_HOME}/.gitconfig"
 }
 
