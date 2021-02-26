@@ -17,7 +17,7 @@
         # Windows
         # helper = wincred
         # WSL https://git-scm.com/download/win
-        # helper = /mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+        # helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
         # macOS
         # helper = osxkeychain
         # Linux: https://github.com/microsoft/Git-Credential-Manager-Core
