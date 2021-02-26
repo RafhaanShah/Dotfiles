@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# exit on any error, unset variable, or failed piped commands
-set -euo pipefail
+# exit on any error or failed piped commands
+set -eo pipefail
 
 COMPLETION_DIR="${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions"
 mkdir -p "${COMPLETION_DIR}"

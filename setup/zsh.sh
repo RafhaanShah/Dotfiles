@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
-# exit on any error, unset variable, or failed piped commands
-set -euo pipefail
+# exit on any error or failed piped commands
+set -eo pipefail
 
 # setup zinit https://github.com/zdharma/zinit
 if [[ ! -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then

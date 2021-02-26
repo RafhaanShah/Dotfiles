@@ -46,4 +46,4 @@
         required = true
 
 [core]
-        autocrlf = input
+        autocrlf = input # use true for Windows

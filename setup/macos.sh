@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
-# exit on any error, unset variable, or failed piped commands
-set -euo pipefail
+# exit on any error or failed piped commands
+set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
