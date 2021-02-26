@@ -1,0 +1,51 @@
+# https://mintty.github.io/mintty.1.html
+
+Transparency=medium
+OpaqueWhenFocused=no
+
+Cursor=underscore
+CursorBlinks=no
+
+Font=Consolas
+FontHeight=10
+FontIsBold=yes
+
+BoldAsFont=yes
+BoldAsColour=yes
+
+CtrlShiftShortcuts=yes
+ClicksPlaceCursor=yes
+
+Locale=en_GB
+Charset=UTF-8
+
+Columns=200
+Rows=50
+Term=xterm-256color
+BellType=0
+
+ForegroundColour=248, 248, 241
+BackgroundColour=39, 40, 34
+
+HighlightForegroundColour=39, 40, 34
+HighlightBackgroundColour=248, 248, 241
+
+CursorColour=248, 248, 241
+
+Black=51, 51, 51
+Blue=106, 126, 200
+Cyan=86, 173, 188
+Green=134, 180, 43
+Magenta=140, 107, 200
+Red=196, 38, 94
+White=227, 227, 221
+Yellow=179, 180, 43
+
+BoldBlack=102, 102, 102
+BoldBlue=129, 154, 255
+BoldCyan=102, 217, 239
+BoldGreen=166, 226, 46
+BoldMagenta=174, 129, 255
+BoldRed=249, 38, 114
+BoldWhite=248, 248, 241
+BoldYellow=226, 226, 46

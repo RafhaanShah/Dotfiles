@@ -19,8 +19,8 @@
     // If enabled, formatted data is also copied to your clipboard
     "copyFormatting": false,
     
-    // Shrink inactive tabs
-    "tabWidthMode": "compact",
+    // Widen tabs
+    "tabWidthMode": "titleLength",
     
     // Do not ask for confirmation when closing window with multiple tabs
     "confirmCloseAllTabs": false,
@@ -72,6 +72,13 @@
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl",            
                 "hidden": false
+            },
+            {
+                "guid": "{00000000-0000-0000-ba54-000000000002}",
+                "commandline": "%PROGRAMFILES%/git/usr/bin/bash.exe -i -l",
+                "icon": "%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico",
+                "name" : "Git Bash",
+                "startingDirectory": "%USERPROFILE%",
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
