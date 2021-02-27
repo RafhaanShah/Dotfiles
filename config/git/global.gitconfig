@@ -1,6 +1,6 @@
 # to be included in main .gitconfig
 # [include]
-        # path = ~/Dotfiles/.gitconfig.base
+        # path = ~/Dotfiles/config/git/global.gitconfig
 
 [core]
         # editor used

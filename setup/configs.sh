@@ -13,18 +13,22 @@ setup_gpg() {
     if _is_mingw; then
         local GPG_DIR="${APPDATA}/gnupg/"
         mkdir -p "${GPG_DIR}"
-        cp "${DOTFILE_DIR}/config/gpg/windows-gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
+        cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
         return
     fi
     
     if _is_wsl; then
         local GPG_DIR="$(wslpath $(wslvar "APPDATA"))/gnupg"
         mkdir -p "${GPG_DIR}"
-        cp "${DOTFILE_DIR}/config/gpg/windows-gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
+        cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
     fi
     
     mkdir -p "${HOME}/.gnupg"
-    cp "${DOTFILE_DIR}/config/gpg/gnupg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
+    if _is_macos; then
+        cp "${DOTFILE_DIR}/config/gpg/gnupg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
+    else
+        cp "${DOTFILE_DIR}/config/gpg/gnupg/headless-gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
+    fi
 }
 
 setup_gpg

@@ -2,7 +2,7 @@
 Dotfiles with configurations for bash and zsh. As well as aliases, functions, prompts and some others.
 
 Windows Terminal:
-![screenshot](WindowsTerminal/screenshot.png)
+![screenshot](config/WindowsTerminal/screenshot.png)
 
 iTerm2:
-![screenshot](iTerm2/screenshot.png)
+![screenshot](config/iTerm2/screenshot.png)
