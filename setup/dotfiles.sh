@@ -5,6 +5,8 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
+# shellcheck source=../helpers.sh
+source "${DOTFILE_DIR}/helpers.sh"
 
 # folder to backup existing dotfiles
 BACKUP_DIR="${DOTFILE_DIR}/old"
@@ -24,8 +26,24 @@ CP_FILES=(
     .rafrc
 )
 
+# list of files for mingw on windows
+WIN_FILES=(
+    .bash_profile
+    .bashrc
+    .gitconfig
+    .nanorc
+    .rafrc
+    .minttyrc
+)
+
 run_setup() {
     [ ! -d "${DOTFILE_DIR}" ] && echo "Invalid Dotfile folder" && exit 1
+    
+    if _is_mingw; then
+        setup_windows
+        return
+    fi
+    
     mkdir -p "${DOTFILE_DIR}/old"
     copy_dotfiles
     symlink_dotfiles
@@ -44,6 +62,13 @@ symlink_dotfiles() {
         echo "${FILE}"
         [ -f "${HOME}/${FILE}" ] && mv "${HOME}/${FILE}" "${BACKUP_DIR}/${FILE}.old"
         ln -s "${DOTFILE_DIR}/${FILE}" "${HOME}/${FILE}"
+    done
+}
+
+setup_windows() {
+    for FILE in "${WIN_FILES[@]}"; do
+        echo "${FILE}"
+        cp "${DOTFILE_DIR}/${FILE}" "${HOME}/${FILE}"
     done
 }
 

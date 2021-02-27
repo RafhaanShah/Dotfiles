@@ -59,12 +59,12 @@ configure_git() {
     fi
 }
 
-setup_windows() {
+check_windows() {
     if _is_wsl; then
         GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
         WIN_HOME="$(wslpath "$(wslvar USERPROFILE)")"
         [ ! -d "${WIN_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WIN_HOME}/Dotfiles"
-        cp "${DOTFILE_DIR}/.gitconfig" "${WIN_HOME}/.gitconfig"
+        [ ! -f "${WIN_HOME}/.gitconfig" ] && cp "${DOTFILE_DIR}/.gitconfig" "${WIN_HOME}/.gitconfig"
     elif _is_mingw; then
         GPG_PROGRAM='/c/Program Files (x86)/GnuPG/bin/gpg.exe'
         WIN_HOME="${HOME}"
@@ -79,14 +79,6 @@ configure_windows() {
     sed -i 's|autocrlf = input|autocrlf = true|' "${WIN_HOME}/.gitconfig"
 }
 
-echo "Configuring git with gpg"
-if [ ! -f "${GITCONFIG}" ]; then
-    echo "No .gitconfig found"
-    exit
-fi
-
-git config core.hooksPath ".git-hooks"
-
 setup() {
     if _is_mingw; then
         configure_windows
@@ -100,9 +92,10 @@ setup() {
     configure_git
 }
 
-if _is_wsl || _is_mingw; then
-    setup_windows
-fi
+git config core.hooksPath ".git-hooks"
+check_windows
+[ ! -f "${GITCONFIG}" ] && cp "${DOTFILE_DIR}/.gitconfig" "${GITCONFIG}"
+
 
 if [ "$#" -eq 0 ]; then
     get_email
