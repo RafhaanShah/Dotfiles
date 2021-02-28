@@ -22,4 +22,4 @@ for FILE in "/tmp/bash-it/completion/available/"*".completion.bash"; do
     cp -- "${FILE}" "${COMPLETION_DIR}"
 done
 
-rm -r "/tmp/bash-it"
+rm -rf "/tmp/bash-it"

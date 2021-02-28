@@ -30,7 +30,8 @@ fi
 echo "Installing npm packages..."
 # https://github.com/nodesource/distributions#debinstall
 curl -sSL "https://deb.nodesource.com/setup_15.x" | sudo -E bash -
-sudo apt install -y nodejs && npm config set prefix "${HOME}/.npm-global"
+sudo apt install -y nodejs
+npm config set prefix "${HOME}/.npm-global" && _add_to_path "${HOME}/.npm-global/bin"
 
 xargs <"${DOTFILE_DIR}/packages/npm-linux.txt" npm install -g
 xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install -g
@@ -83,8 +84,7 @@ install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/d
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
 if [ ! -d "${HOME}/.asdf" ]; then
-    git clone 'https://github.com/asdf-vm/asdf.git' "${HOME}/.asdf" \
-        --branch "$(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" --fail | fx .name)"
+    git clone 'https://github.com/asdf-vm/asdf.git' "${HOME}/.asdf" --branch 'v0.8.0'
 else
     # shellcheck source=/dev/null
     source "${HOME}/.asdf/asdf.sh" && asdf update
