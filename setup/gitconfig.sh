@@ -63,8 +63,9 @@ check_windows() {
     if _is_wsl; then
         GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
         WIN_HOME="$(wslpath "$(wslvar USERPROFILE)")"
-        [ ! -d "${WIN_HOME}/Dotfiles" ] && git clone 'https://github.com/RafhaanShah/Dotfiles' "${WIN_HOME}/Dotfiles"
-        [ ! -f "${WIN_HOME}/.gitconfig" ] && cp "${DOTFILE_DIR}/.gitconfig" "${WIN_HOME}/.gitconfig"
+        [ -d "${WIN_HOME}/Dotfiles" ] || git clone 'https://github.com/RafhaanShah/Dotfiles' "${WIN_HOME}/Dotfiles"
+        [ -f "${WIN_HOME}/.gitconfig" ] || cp "${DOTFILE_DIR}/.gitconfig" "${WIN_HOME}/.gitconfig"
+        true
     elif _is_mingw; then
         GPG_PROGRAM='/c/Program Files (x86)/GnuPG/bin/gpg.exe'
         WIN_HOME="${HOME}"
@@ -93,8 +94,8 @@ setup() {
 }
 
 git config core.hooksPath ".git-hooks"
+[ -f "${GITCONFIG}" ] || cp "${DOTFILE_DIR}/.gitconfig" "${GITCONFIG}"
 check_windows
-[ ! -f "${GITCONFIG}" ] && cp "${DOTFILE_DIR}/.gitconfig" "${GITCONFIG}"
 
 
 if [ "$#" -eq 0 ]; then
