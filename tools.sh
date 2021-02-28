@@ -44,6 +44,13 @@ if _command_exists "lsd"; then
     }
 fi
 
+# micro: better nano
+# https://github.com/zyedidia/micro
+if _command_exists "micro"; then
+    export EDITOR="micro"
+    export VISUAL="${EDITOR}"
+fi
+
 # ripgrep: better grep
 # https://github.com/burntsushi/ripgrep
 if _command_exists "rg"; then

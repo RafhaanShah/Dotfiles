@@ -22,7 +22,7 @@ sudo apt autoremove -y
 unset DEBIAN_FRONTEND
 
 # snap packages
-if _command_exists "snap"; then
+if _command_exists "snap" && ! is_wsl; then
     xargs <"${DOTFILE_DIR}/packages/snap.txt" sudo snap install
 fi
 
@@ -104,6 +104,10 @@ sudo apt update && sudo apt install lazygit
 # lazydocker: docker ui
 # https://github.com/jesseduffield/lazydocker
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
+# micro: better nano
+curl 'https://getmic.ro' | bash
+sudo mv micro "/usr/bin"
 
 # docker: app containers
 # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository

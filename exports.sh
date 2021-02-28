@@ -30,7 +30,7 @@ export PAGER="less"
 
 # for using GPG with git
 # shellcheck disable=SC2155
-export GPG_TTY=$(tty)
+export GPG_TTY="$(tty)"
 
 # set NPM global path to workaround permission issues
 # https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
