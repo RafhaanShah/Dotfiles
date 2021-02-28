@@ -1,16 +1,71 @@
-# nano syntax highlighting
-# https://github.com/scopatz/nanorc
-# include "~/.nano/*.nanorc"
+# nano configuration
+# https://www.nano-editor.org/dist/latest/nanorc.5.html
 
+# Options
+# When soft line wrapping is enabled, make it wrap lines at blank characters
+set atblanks
 # Automatically indent a newly created line
 set autoindent
 # Display line numbers to the left of the text area
 set linenumbers
 # Enable mouse support
 set mouse
+# When reading in a file with ^R, insert it into a new buffer
+set multibuffer
+# Save the cursor position of files between editing sessions
+set positionlog
+# Display lines that exceed the screen’s width over multiple screen lines
+set softwrap
+# Default tabsize
+set tabsize 2
+# Convert tabs to spaces
+set tabstospaces
 
-set functioncolor brightyellow
+# Key bindings
+unbind ^K main
+unbind ^U main
+unbind ^W main
+unbind M-] main
+unbind M-[ main
+
+bind ^O insert main
+bind ^S writeout main
+bind ^Q exit main
+bind ^A help main
+
+bind ^P findprevious main
+bind ^N findnext main
+bind ^B firstline main
+bind ^E lastline main
+bind ^L curpos main
+bind ^J gotoline main
+
+bind ^X cut main
+bind ^C copy main
+bind ^V paste main
+
+bind ^F whereis main
+bind ^G replace main
+
+bind ^Z undo main
+bind ^Y redo main
+
+bind ^I indent main
+bind ^U unindent main
+
+bind ^_ comment main
+bind ^D justify main
+
+# UI colours
+set errorcolor brightwhite,red
+set functioncolor brightgreen
 set keycolor brightcyan
-set numbercolor white
-set statuscolor magenta
-set titlecolor brightyellow
+set numbercolor brightwhite
+set statuscolor brightmagenta
+set selectedcolor brightblack,white
+set stripecolor brightgreen
+set titlecolor brightred
+
+# nano syntax highlighting
+# https://github.com/scopatz/nanorc
+# include "~/.nano/*.nanorc"
