@@ -146,4 +146,4 @@ source "${DOTFILE_DIR}/setup/zsh.sh"
 
 # set shell
 echo "Changing shell..."
-chsh -s "$(which zsh)"
+chsh -s "$(command -v zsh)"

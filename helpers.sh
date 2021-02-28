@@ -22,12 +22,19 @@ _is_zsh() { _variable_set "${ZSH_VERSION}"; }
 # checks if we are in a git repo
 _is_git_repo() { git rev-parse --is-inside-work-tree &>/dev/null; }
 
+# checks if we are running linux
+_is_linux() { [ "$(uname -s)" = "Linux" ]; }
+
+# checks if we are running in termux
+is_termux() { _variable_set "${TERMUX_VERSION}"; }
+
 # checks if we are running in wsl
 _is_wsl() { _variable_set "${WSL_DISTRO_NAME}"; }
 
 # checks if we are running mingw / cygwin in windows
 _is_mingw() {
-    local name="$(uname -s)"
+    local name
+    name="$(uname -s)"
     _begins_with "MINGW" "${name}" || _begins_with "MSYS" "${name}" || _begins_with "CYGWIN" "${name}"
 }
 

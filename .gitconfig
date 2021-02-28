@@ -37,7 +37,7 @@
         # program = gpg
 
 [include]
-        path = ~/Dotfiles/config/git/base.gitconfig
+        path = ~/Dotfiles/config/git/global.gitconfig
 
 [filter "lfs"]
         clean = git-lfs clean -- %f
