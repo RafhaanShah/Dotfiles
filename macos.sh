@@ -68,7 +68,7 @@ alias paste='paste'
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
 
 # backup brew packages
-alias brew-bkp='brew bundle dump --describe --force --file "${HOME}/Dotfiles/packages/brew.txt"'
+alias brew-bkp='brew bundle dump --describe --force --file "${DOTFILE_DIR}/packages/brew.txt"'
 
 # rm moves to trash instead
 unalias rm

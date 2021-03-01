@@ -1,11 +1,13 @@
+### global git config
+# https://git-scm.com/docs/git-config
 # to be included in main .gitconfig
 # [include]
         # path = ~/Dotfiles/config/git/global.gitconfig
 
 [core]
-        # editor used
+        # editor used, GIT_EDITOR overrides this
         editor = nano
-        # pager used
+        # pager used, GIT_PAGER overrides this
         pager = less
         # speed up commands involving untracked files
         untrackedCache = true
@@ -47,6 +49,6 @@
         pl = pull
         ps = push
         st = status
-        rmbr = "!rmbr() { git branch -vv | grep ': gone]'|  grep -v \"*\" | awk '{ print $1; }' | xargs git branch -D; }; rmbr"
-        reb = "!reb() { git rebase -i HEAD~$1 && git commit --amend --date=\"now\" --no-edit; }; reb"
+        cleanup = "!cleanup() { git branch --format \"%(refname:short) %(upstream)\" | awk '{if (!$2) print $1;}' | xargs git branch -D; }; cleanup"
+        rebs = "!rebs() { git rebase -i HEAD~$1 && git commit --amend --date=\"now\" --no-edit; }; rebs"
         undo = reset --soft HEAD~1

@@ -29,6 +29,10 @@ brew "diffutils"
 brew "fd"
 # Simple file manager written in bash
 brew "fff"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Utility to determine file types
 brew "file-formula"
 # Collection of GNU find, xargs, and locate
@@ -75,6 +79,8 @@ brew "lsd"
 brew "make"
 # Mac App Store command-line interface
 brew "mas"
+# Modern and intuitive terminal-based text editor
+brew "micro"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
 # NCurses Disk Usage
@@ -93,6 +99,8 @@ brew "rsync"
 brew "scrcpy"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Display directories as trees (with optional color/HTML output)

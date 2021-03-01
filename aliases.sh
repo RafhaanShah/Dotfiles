@@ -132,7 +132,7 @@ alias dkc-upd='docker-compose pull && docker-compose up -d'
 alias dkc-bld='docker-compose build && docker-compose up -d'
 
 # lazydocker: docker ui https://github.com/jesseduffield/lazydocker
-alias dk-gui='lazydocker'
+alias dk-ui='lazydocker'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'

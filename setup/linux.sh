@@ -94,7 +94,7 @@ fi
 # https://github.com/dylanaraps/fff
 [ ! -d "/tmp/fff" ] && git clone 'https://github.com/dylanaraps/fff.git' "/tmp/fff"
 (cd "/tmp/fff" && sudo make install)
-rm -r "/tmp/fff"
+rm -rf "/tmp/fff"
 
 # lazygit: git ui
 # https://github.com/jesseduffield/lazygit
