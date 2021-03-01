@@ -5,10 +5,10 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-# shellcheck source=../helpers.sh
-source "${DOTFILE_DIR}/helpers.sh"
+# shellcheck source=../shell/helpers.sh
+source "${DOTFILE_DIR}/shell/helpers.sh"
 
-if [ ! "$(uname -s)" = "Linux" ]; then
+if ! _is_linux; then
     echo "This is only for Linux"
     exit
 fi
@@ -31,7 +31,9 @@ echo "Installing npm packages..."
 # https://github.com/nodesource/distributions#debinstall
 curl -sSL "https://deb.nodesource.com/setup_15.x" | sudo -E bash -
 sudo apt install -y nodejs
-npm config set prefix "${HOME}/.npm-global" && _add_to_path "${HOME}/.npm-global/bin"
+mkdir -p "${HOME}/.npm-global/bin"
+npm config set prefix "${HOME}/.npm-global"
+_add_to_path "${HOME}/.npm-global/bin"
 
 xargs <"${DOTFILE_DIR}/packages/npm-linux.txt" npm install -g
 xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install -g

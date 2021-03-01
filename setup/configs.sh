@@ -5,8 +5,8 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-# shellcheck source=../helpers.sh
-source "${DOTFILE_DIR}/helpers.sh"
+# shellcheck source=../shell/helpers.sh
+source "${DOTFILE_DIR}/shell/helpers.sh"
 
 setup_gpg() {
     echo "Setting up GPG..."
@@ -16,13 +16,14 @@ setup_gpg() {
         cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
         return
     fi
-    
+
     if _is_wsl; then
-        local GPG_DIR="$(wslpath $(wslvar "APPDATA"))/gnupg"
+        local GPG_DIR
+        GPG_DIR="$(wslpath "$(wslvar "APPDATA")")/gnupg"
         mkdir -p "${GPG_DIR}"
         cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
     fi
-    
+
     mkdir -p "${HOME}/.gnupg"
     if _is_macos; then
         cp "${DOTFILE_DIR}/config/gpg/gnupg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"

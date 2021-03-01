@@ -5,8 +5,8 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-# shellcheck source=../helpers.sh
-source "${DOTFILE_DIR}/helpers.sh"
+# shellcheck source=../shell/helpers.sh
+source "${DOTFILE_DIR}/shell/helpers.sh"
 
 # .gitconfig
 GITCONFIG="${HOME}/.gitconfig"
@@ -96,7 +96,6 @@ setup() {
 git config core.hooksPath ".git-hooks"
 [ -f "${GITCONFIG}" ] || cp "${DOTFILE_DIR}/.gitconfig" "${GITCONFIG}"
 check_windows
-
 
 if [ "$#" -eq 0 ]; then
     get_email

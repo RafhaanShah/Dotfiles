@@ -6,8 +6,8 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-# shellcheck source=../helpers.sh
-source "${DOTFILE_DIR}/helpers.sh"
+# shellcheck source=../shell/helpers.sh
+source "${DOTFILE_DIR}/shell/helpers.sh"
 
 if ! _is_macos; then
     echo "This is only for macOS"
