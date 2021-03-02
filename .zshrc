@@ -153,8 +153,8 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
 
     # history substring search must be sourced after syntax highlighting
     zinit light 'zsh-users/zsh-history-substring-search'
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
+    bindkey "$terminfo[kcuu1]" history-substring-search-up
+    bindkey "$terminfo[kcud1]" history-substring-search-down
 else
     # better history search with arrows
     # https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
@@ -184,7 +184,12 @@ zstyle ':completion:*' menu select
 # what is displayed during menu selection
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 # initialize zsh completion (should be after zinit plugins)
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n  "${ZDOTDIR:-${HOME}}/.zcompdump"(#qN.mh+20) ]]; then
+	compinit;
+else
+	compinit -C;
+fi
 # complete 'z' command with directories
 compdef _directories z
 

@@ -50,6 +50,7 @@ if _command_exists "micro"; then
     export EDITOR="micro"
     export VISUAL="${EDITOR}"
     export GIT_EDITOR="${EDITOR}"
+    alias nano='micro'
 fi
 
 # ripgrep: better grep
