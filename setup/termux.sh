@@ -40,7 +40,7 @@ source "${DOTFILE_DIR}/setup/zsh.sh"
 
 # set shell
 echo "Changing shell..."
-chsh -s "$(command -v zsh)"
+chsh -s "zsh"
 
 # intial ssh setup instructions:
 # pkg install openssh
