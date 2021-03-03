@@ -17,7 +17,7 @@ ncdu
 nmap
 nodejs
 ripgrep
-sshd
+openssh
 pass
 pinentry
 python
