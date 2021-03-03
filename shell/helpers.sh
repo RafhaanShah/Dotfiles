@@ -26,7 +26,7 @@ _is_git_repo() { git rev-parse --is-inside-work-tree &>/dev/null; }
 _is_linux() { [ "$(uname -s)" = "Linux" ]; }
 
 # checks if we are running in termux
-is_termux() { _variable_set "${TERMUX_VERSION}"; }
+_is_termux() { _begins_with "${PREFIX}" "/data/data/com.termux"; }
 
 # checks if we are running in wsl
 _is_wsl() { _variable_set "${WSL_DISTRO_NAME}"; }
