@@ -40,6 +40,9 @@ source "${DOTFILE_DIR}/setup/others.sh"
 # shellcheck source=zsh.sh
 source "${DOTFILE_DIR}/setup/zsh.sh"
 
+# iterm2 config
+defaults write com.googlecode.iterm2 PrefsCustomFolder "${DOTFILE_DIR}/config/iTerm2"
+
 # set shell
 echo "Changing shell..."
-chsh -s "$(which zsh)"
+chsh -s "$(command -v zsh)"
