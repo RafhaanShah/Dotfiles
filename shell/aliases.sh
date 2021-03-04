@@ -122,6 +122,9 @@ alias wd='echo ${PWD##*/}'
 
 ### tools
 
+# adb clear app data
+alias adb-clear='adb shell pm clear'
+
 # cht.sh: cheatsheets https://github.com/chubin/cheat.sh
 alias cht='cht.sh'
 
