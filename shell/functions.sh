@@ -140,6 +140,36 @@ git-hub() {
     open "${base_url}/$1"
 }
 
+# backs up a directory to a tar
+tar-backup() {
+    if [ ! -e "$1" ]; then
+        echo "Invalid argument"
+        return 1
+    fi
+    local backup_name
+    backup_name="${2:-backup.tar.gz}"
+    echo "This will backup $1 into ${backup_name}. Continuing in 10 seconds..."
+    sleep 10
+    echo "Backing up..."
+    tar -cpzf "${backup_name}" --exclude="{backup_name}" --one-file-system "$1"
+    echo "Backup complete"
+}
+
+# unzips a tar to a directory
+tar-restore() {
+    if [ ! -e "$1" ]; then
+        echo "Invalid argument"
+        return 1
+    fi
+    local restore_dir
+    restore_dir="${2:-$(pwd)}"
+    echo "This will copy everything from $1 into ${restore_dir}. Continuing in 10 seconds..."
+    sleep 10
+    echo "Restoring..."
+    tar -xpzf "$1" -C "${restore_dir}" --numeric-owner
+    echo "Restore complete"
+}
+
 # list files and folders in a tree format with a default level of 2
 tree() {
     if [ "$#" -eq 0 ]; then
