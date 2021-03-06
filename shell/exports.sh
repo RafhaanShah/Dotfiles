@@ -17,7 +17,7 @@ done
 unset DIR PATH_DIRS
 
 # colours used in ls # https://geoff.greer.fm/lscolors/
-export LS_COLORS="di=36:ln=35:so=32:pi=33:ex=31:bd=30;46:cd=37;44:su=30;41:sg=37;42:tw=37;43:ow=30;43"
+export LS_COLORS="di=1;36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=30;46:cd=37;44:su=30;41:sg=37;42:tw=37;43:ow=30;43"
 
 # default text editor
 export EDITOR="nano"
