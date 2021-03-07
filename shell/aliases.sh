@@ -130,9 +130,11 @@ alias cht='cht.sh'
 
 # docker: app containers https://docs.docker.com/engine/install/
 alias dk='docker'
+alias dk-clean='docker system prune'
+
 alias dkc='docker-compose'
 alias dkc-upd='docker-compose pull && docker-compose up -d'
-alias dkc-bld='docker-compose build && docker-compose up -d'
+alias dkc-bld='docker-compose build --pull && docker-compose up -d'
 
 # lazydocker: docker ui https://github.com/jesseduffield/lazydocker
 alias dk-ui='lazydocker'
