@@ -53,7 +53,7 @@ fi
 # non gnu ls options
 if ! _command_exists "gls"; then
     export CLICOLOR=1
-    export LSCOLORS="gxfxcxdxbxagheabhchdad"
+    export LSCOLORS="GxFxcxdxbxagheabhchdad"
     alias ls='ls -G'
 fi
 
@@ -75,7 +75,7 @@ unalias rm
 rm() {
     for FILE in "$@"; do
         local BASENAME
-        BASENAME=$(basename "${FILE}")
+        BASENAME="$(basename "${FILE}")"
         local COUNTER=1
         while [ -e "${HOME}/.Trash/${BASENAME}" ]; do
             BASENAME="${BASENAME}(${COUNTER})"
