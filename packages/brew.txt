@@ -119,7 +119,7 @@ brew "zsh"
 brew "jesseduffield/lazydocker/lazydocker"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
-cask "font-hack-nerd-font"
+cask "font-meslo-lg-nerd-font"
 # Desktop client for GitHub repositories
 cask "github"
 # Tools to protect your emails and files

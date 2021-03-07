@@ -9,7 +9,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.15686275064945221
   },
-  "Rows" : 40,
+  "Rows" : 45,
   "Ansi 11 Color" : {
     "Red Component" : 0.88627451658248901,
     "Color Space" : "sRGB",
@@ -57,7 +57,7 @@
     "slogin",
     "telnet"
   ],
-  "Non-ASCII Ligatures" : true,
+  "Non-ASCII Ligatures" : false,
   "Scrollback Lines" : 1000,
   "Draw Powerline Glyphs" : true,
   "Status Bar Layout" : {
@@ -72,7 +72,7 @@
     }
   },
   "Hide After Opening" : false,
-  "Brighten Bold Text" : true,
+  "Brighten Bold Text" : false,
   "Flashing Bell" : false,
   "Cursor Guide Color" : {
     "Red Component" : 0.81568628549575806,
@@ -91,7 +91,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.59215688705444336
   },
-  "Use Non-ASCII Font" : true,
+  "Use Non-ASCII Font" : false,
   "Shortcut" : "",
   "Ansi 3 Color" : {
     "Red Component" : 0.70196080207824707,
@@ -303,7 +303,7 @@
     "Green Component" : 0.14901961386203766
   },
   "Use Bold Font" : true,
-  "Silence Bell" : false,
+  "Silence Bell" : true,
   "Ansi 12 Color" : {
     "Red Component" : 0.5058823823928833,
     "Color Space" : "sRGB",
@@ -373,8 +373,8 @@
   },
   "AWDS Pane Directory" : "",
   "Blur" : true,
-  "Normal Font" : "Monaco 12",
-  "Vertical Spacing" : 1.1000000000000001,
+  "Normal Font" : "MesloLGMNerdFontComplete-Regular 12",
+  "Vertical Spacing" : 1,
   "Use Underline Color" : false,
   "Ansi 7 Color" : {
     "Red Component" : 0.89019608497619629,
@@ -431,7 +431,7 @@
   "Screen" : -1,
   "AWDS Window Option" : "No",
   "Initial Use Transparency" : true,
-  "Non Ascii Font" : "HackNerdFontComplete-Regular 12",
+  "Non Ascii Font" : "MesloLGMNerdFontComplete-Regular 12",
   "Ansi 13 Color" : {
     "Red Component" : 0.68235296010971069,
     "Color Space" : "sRGB",
@@ -440,6 +440,7 @@
     "Green Component" : 0.5058823823928833
   },
   "Columns" : 200,
+  "Unicode Normalization" : 0,
   "Use Tab Color" : false,
   "Visual Bell" : true,
   "Custom Directory" : "Advanced",
@@ -450,5 +451,5 @@
     "Alpha Component" : 1,
     "Green Component" : 0.41960784792900085
   },
-  "ASCII Ligatures" : true
+  "ASCII Ligatures" : false
 }
