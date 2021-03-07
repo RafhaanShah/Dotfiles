@@ -28,10 +28,10 @@ else
     mkdir -p "${FONT_DIR}"
 fi
 
-curl -fLo "${FONT_DIR}/MesloLGM Nerd Font" "${MESLO_URL}"
-curl -fLo "${FONT_DIR}/MesloLGM Bold Nerd Font" "${MESLO_BOLD_URL}"
+curl -fLo "${FONT_DIR}/MesloLGM Nerd Font.ttf" "${MESLO_URL}"
+curl -fLo "${FONT_DIR}/MesloLGM Bold Nerd Font.ttf" "${MESLO_BOLD_URL}"
 curl -fLo "${FONT_DIR}/JB_Mono.zip" "${JB_MONO_URL}"
-unzip "${FONT_DIR}/JB_Mono.zip"
+unzip -j "${FONT_DIR}/JB_Mono.zip" "fonts/ttf/*" -d "${FONT_DIR}"
 rm "${FONT_DIR}/JB_Mono.zip"
 
 echo "Done installing fonts"
