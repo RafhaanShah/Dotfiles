@@ -26,6 +26,9 @@ _is_mingw && _load_file "${DOTFILE_DIR}/shell/mingw.sh"
 # if on macOS, load macOS file
 _is_macos && _load_file "${DOTFILE_DIR}/shell/macos.sh"
 
+# if on termux, load termux file
+_is_macos && _load_file "${DOTFILE_DIR}/shell/termux.sh"
+
 # custom profile file for machine specific stuff
 _load_file "${HOME}/.rafrc"
 
@@ -44,5 +47,3 @@ _is_bash && echo -n "bash ${BASH_VERSION} - " && date &&
 
 _is_zsh && echo -n "zsh ${ZSH_VERSION} - " && date &&
     _load_file "${DOTFILE_DIR}/shell/prompt_zsh.sh"
-
-unset DOTFILE_DIR
