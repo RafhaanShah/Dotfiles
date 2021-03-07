@@ -19,5 +19,6 @@ python3
 python3-pip
 shellcheck
 software-properties-common
+unzip
 xclip
 zsh

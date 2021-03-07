@@ -9,3 +9,5 @@ iTerm2:
 
 Termux:  
 <img src="config/termux/screenshot.png" height="700">
+
+[//]: # (Windows Wallpaper: https://assets.hongkiat.com/uploads/beautiful-minimalist-desktop-wallpapers/4k/original/01.jpg)
