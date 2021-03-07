@@ -13,13 +13,13 @@ source "${DOTFILE_DIR}/shell/helpers.sh"
 
 if ! _is_termux; then
     echo "This is only for Termux"
-    exit
+    exit 1
 fi
 
 mkdir -p "${HOME}/.termux"
-cp "${DOTFILE_DIR}/config/termux/termux.properties" "${HOME}/.termux"
-cp "${DOTFILE_DIR}/config/termux/colors.properties" "${HOME}/.termux"
-# cp "${DOTFILE_DIR}/config/font/font.tff" "${HOME}/.termux"
+ln -s "${DOTFILE_DIR}/config/termux/termux.properties" "${HOME}/.termux"
+ln -s "${DOTFILE_DIR}/config/termux/colors.properties" "${HOME}/.termux"
+curl -fLo "${HOME}/.termux/font.ttf" "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf"
 
 # install termux packages
 pkg upgrade
