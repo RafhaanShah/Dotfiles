@@ -31,7 +31,7 @@ fi
 # npm packages
 echo "Installing npm packages..."
 # https://github.com/nodesource/distributions#debinstall
-curl -sSL "https://deb.nodesource.com/setup_15.x" | sudo -E bash -
+curl -sSL 'https://deb.nodesource.com/setup_15.x' | sudo -E bash -
 sudo apt install -y nodejs
 mkdir -p "${HOME}/.npm-global/bin"
 npm config set prefix "${HOME}/.npm-global"
@@ -83,7 +83,7 @@ done <"${DOTFILE_DIR}/packages/deb.txt"
 
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
-install_deb "https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.318-beta/gcmcore-linux_amd64.2.0.318.44100.deb"
+install_deb 'https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.318-beta/gcmcore-linux_amd64.2.0.318.44100.deb'
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
@@ -107,7 +107,7 @@ sudo apt update && sudo apt install lazygit
 
 # lazydocker: docker ui
 # https://github.com/jesseduffield/lazydocker
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+curl 'https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh' | bash
 
 # micro: better nano
 curl 'https://getmic.ro' | bash
@@ -119,13 +119,13 @@ sudo mv micro "/usr/bin"
 # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 # sudo apt-getupdate && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 # sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
-sudo curl -L "https://github.com/docker/compose/releases/download/$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | fx .name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x "/usr/local/bin/docker-compose"
+# sudo curl -L "https://github.com/docker/compose/releases/download/$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | fx .name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# sudo chmod +x "/usr/local/bin/docker-compose"
 
 # hack nerd font, patched with glyphs
 # https://github.com/ryanoasis/nerd-fonts
-mkdir -p "${HOME}/.local/share/fonts"
-curl -L "https://github.com/ryanoasis/nerd-fonhttps://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf" -o "${HOME}/.local/share/fonts/Hack-Nerd-Mono.tff"
+# mkdir -p "${HOME}/.local/share/fonts"
+# curl -L "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf" -o "${HOME}/.local/share/fonts/Hack-Nerd-Mono.tff"
 
 # path picker: apply commands on files
 # https://github.com/facebook/PathPicker
@@ -138,7 +138,7 @@ fi
 
 # zoxide: better cd
 # https://github.com/ajeetdsouza/zoxide
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf 'https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh' | sh
 
 # other scripts
 # shellcheck source=others.sh

@@ -4,11 +4,13 @@ binutils
 build-essential
 ca-certificates
 curl
+dnsutils
 findutils
 fortune-mod
 git
 gnupg-agent
 gnupg
+nano
 ncdu
 neofetch
 pass

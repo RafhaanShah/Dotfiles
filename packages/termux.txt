@@ -5,6 +5,7 @@ ca-certificates
 command-not-found
 curl
 dpkg
+dnsutils
 fd
 findutils
 fortune
