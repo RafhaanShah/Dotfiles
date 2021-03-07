@@ -153,6 +153,8 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
 
     # history substring search must be sourced after syntax highlighting
     zinit light 'zsh-users/zsh-history-substring-search'
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
     bindkey "$terminfo[kcuu1]" history-substring-search-up
     bindkey "$terminfo[kcud1]" history-substring-search-down
 else
@@ -164,6 +166,8 @@ else
     zle -N down-line-or-beginning-search
     bindkey '^[[A' up-line-or-beginning-search
     bindkey '^[[B' down-line-or-beginning-search
+    bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+    bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 fi
 
 unset -f _configure_autosuggestions _load_completions
