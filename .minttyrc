@@ -6,12 +6,12 @@ OpaqueWhenFocused=no
 Cursor=underscore
 CursorBlinks=no
 
-Font=Consolas
-FontHeight=10
-FontIsBold=yes
+Font=MesloLGM Nerd Font
+FontHeight=9
+FontIsBold=no
 
 BoldAsFont=yes
-BoldAsColour=yes
+BoldAsColour=no
 
 CtrlShiftShortcuts=yes
 ClicksPlaceCursor=yes
