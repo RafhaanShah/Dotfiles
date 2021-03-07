@@ -37,7 +37,10 @@ WIN_FILES=(
 )
 
 run_setup() {
-    [ ! -d "${DOTFILE_DIR}" ] && echo "Invalid Dotfile folder" && exit 1
+    if [ ! -d "${DOTFILE_DIR}" ]; then
+        echo "Invalid dotfile folder, ${DOTFILE_DIR}"
+        exit 1
+    fi
 
     if _is_mingw; then
         setup_windows
@@ -72,23 +75,8 @@ setup_windows() {
     done
 }
 
-prompt_user() {
-    echo "This will rename existing dotfiles and add symlinks to ${DOTFILE_DIR}"
-    read -rp "Continue (y/n)? " CONT
-    if [ "$CONT" != "y" ]; then
-        exit
-    else
-        run_setup
-    fi
-}
+echo "Running dotfile setup script..."
 
-echo "Running dotfile setup script"
-while getopts 'y' flag; do
-    case "${flag}" in
-        y) run_setup ;;
-        *) ;;
-    esac
-done
+run_setup
 
-[ "$#" -eq 0 ] && prompt_user
-echo "Done"
+echo "Done settings up dotfiles"

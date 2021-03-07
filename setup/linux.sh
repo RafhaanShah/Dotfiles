@@ -8,6 +8,8 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 # shellcheck source=../shell/helpers.sh
 source "${DOTFILE_DIR}/shell/helpers.sh"
 
+echo "Running linux setup script..."
+
 if ! _is_linux; then
     echo "This is only for Linux"
     exit
@@ -149,3 +151,5 @@ source "${DOTFILE_DIR}/setup/zsh.sh"
 # set shell
 echo "Changing shell..."
 chsh -s "$(command -v zsh)"
+
+echo "Done setting up linux"

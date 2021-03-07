@@ -4,6 +4,8 @@
 # exit on any error or failed piped commands
 set -eo pipefail
 
+echo "Running termux setup script..."
+
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
 # shellcheck source=../shell/helpers.sh
@@ -41,6 +43,8 @@ source "${DOTFILE_DIR}/setup/zsh.sh"
 # set shell
 echo "Changing shell..."
 chsh -s "zsh"
+
+echo "Done setting up termux"
 
 # intial ssh setup instructions:
 # pkg install openssh

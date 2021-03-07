@@ -3,6 +3,8 @@
 # exit on any error or failed piped commands
 set -eo pipefail
 
+echo "Running bash setup script..."
+
 COMPLETION_DIR="${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions"
 mkdir -p "${COMPLETION_DIR}"
 
@@ -23,3 +25,5 @@ for FILE in "/tmp/bash-it/completion/available/"*".completion.bash"; do
 done
 
 rm -rf "/tmp/bash-it"
+
+echo "Done settings up bash"

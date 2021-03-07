@@ -8,12 +8,12 @@ DOTFILE_DIR="${HOME}/Dotfiles"
 # shellcheck source=../shell/helpers.sh
 source "${DOTFILE_DIR}/shell/helpers.sh"
 
+echo "Installing some scripts..."
+
 get_script() {
     curl -sSL "$1" -o "${HOME}/bin/${2}"
     chmod +x "${HOME}/bin/${2}"
 }
-
-echo "Installing some scripts..."
 
 # make home bin
 mkdir -p "${HOME}/bin"
@@ -35,3 +35,5 @@ if [ ! -d "${HOME}/.nano" ]; then
 else
     git -C "${HOME}/.nano" pull
 fi
+
+echo "Done installing scripts"

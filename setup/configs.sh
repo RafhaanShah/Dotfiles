@@ -30,6 +30,11 @@ setup_gpg() {
     else
         cp "${DOTFILE_DIR}/config/gpg/gnupg/headless-gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
     fi
+    echo "Done settings up GPG"
 }
 
+echo "Running config setup script..."
+
 setup_gpg
+
+echo "Done settings up configs"

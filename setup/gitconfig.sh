@@ -19,7 +19,6 @@ get_email() {
     config=$(cat "${GITCONFIG}")
     if [[ $config =~ $regex ]]; then
         GPG_EMAIL="${BASH_REMATCH[1]}"
-        echo "Using email: ${GPG_EMAIL}"
         get_gpg_key
     else
         echo "No email address found in .gitconfig"
@@ -93,7 +92,11 @@ setup() {
     configure_git
 }
 
+echo "Running git setup script..."
+
 git config core.hooksPath ".git-hooks"
+chmod -R +x "$(git rev-parse --git-path hooks)"
+
 [ -f "${GITCONFIG}" ] || cp "${DOTFILE_DIR}/.gitconfig" "${GITCONFIG}"
 check_windows
 
@@ -110,4 +113,4 @@ fi
 
 setup
 
-echo "Done configuring git"
+echo "Done setting up git"
