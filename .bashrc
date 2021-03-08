@@ -91,6 +91,15 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# bash-it plugins: https://github.com/Bash-it/bash-it
+cite(){ :; }
+about-plugin(){ :; }
+for PLUGIN in "${HOME}/.local/share/bash-plugins/"*; do
+    # shellcheck source=/dev/null
+    [[ -r "${PLUGIN}" ]] && source "${PLUGIN}"
+done
+unset -f cite about-plugin
+
 # https://github.com/Charlietje/bash/blob/master/bashrc.sh#L161
 # shellcheck disable=SC2001,SC2086,SC2196,SC2207,SC2155,SC2206,SC2012,SC2035,SC2001,SC2086
 _fuzzy_file_completion() {
