@@ -27,7 +27,7 @@ _is_mingw && _load_file "${DOTFILE_DIR}/shell/mingw.sh"
 _is_macos && _load_file "${DOTFILE_DIR}/shell/macos.sh"
 
 # if on termux, load termux file
-_is_macos && _load_file "${DOTFILE_DIR}/shell/termux.sh"
+_is_termux && _load_file "${DOTFILE_DIR}/shell/termux.sh"
 
 # custom profile file for machine specific stuff
 _load_file "${HOME}/.rafrc"
