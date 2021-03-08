@@ -19,7 +19,7 @@ jobs:
 
       - name: Download shellcheck
         run: |
-          sudo apt install shellcheck
+          sudo snap install --channel=edge shellcheck
           shellcheck --version
 
       - name: Run shellcheck
