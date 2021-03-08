@@ -1,0 +1,37 @@
+# This workflow will run shellcheck and shfmt on all .sh files
+
+name: ShellCheck and shfmt
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Download shellcheck
+        run: sudo apt install shellcheck
+
+      - name: Run shellcheck
+        run: find . -type f -name "*.sh" | xargs shellcheck -x -P SCRIPTDIR
+        
+  shfmt:
+    name: shfmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Download shfmt
+        run: sudo snap install shfmt
+
+      - name: Run shfmt
+        run: find . -type f -name "*.sh" | xargs shfmt -d -i 4
