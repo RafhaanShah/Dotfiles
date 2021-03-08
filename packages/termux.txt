@@ -9,6 +9,7 @@ dnsutils
 fd
 findutils
 fortune
+fzf
 git
 gnupg
 neofetch

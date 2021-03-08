@@ -45,6 +45,8 @@ brew "fpp"
 brew "node"
 # Command-line JSON processing tool
 brew "fx"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GNU awk utility
 brew "gawk"
 # GitHub command-line tool

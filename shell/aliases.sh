@@ -23,6 +23,7 @@ alias ls-ext='ls -lXh'                          # sort by extension
 alias c='cd'
 alias -- -='cd -' # the alias is just '-'
 alias cd..='cd ..'
+alias cdh='cd "${$(dirs -p | fzf)/\~/${HOME}}"'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
