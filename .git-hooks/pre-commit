@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
-# exit on any error, unset variable
-set -eu
+# exit on any error, unset variable, or failed piped commands
+set -euo pipefail
 
 # staged files with specific extension
 FILES="$(git diff --cached --name-only --diff-filter=ACMR "*.sh" | sed 's| |\\ |g')"
 
-if ! command -v shfmt >/dev/null 2>&1; then
+if ! [ -x "$(command -v shfmt)" ]; then
     echo 'Warning: shfmt is not installed'
 else
     if [ -n "${FILES}" ]; then
@@ -16,7 +16,7 @@ else
     fi
 fi
 
-if ! command -v shellcheck >/dev/null 2>&1; then
+if ! [ -x "$(command -v shellcheck)" ]; then
     echo 'Warning: shellcheck is not installed'
 else
     if [ -n "${FILES}" ]; then
