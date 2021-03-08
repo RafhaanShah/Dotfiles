@@ -140,6 +140,9 @@ git-hub() {
     open "${base_url}/$1"
 }
 
+# simple python http server
+server() { python3 -m http.server "${1:-8069}"; }
+
 # backs up a directory to a tar
 tar-backup() {
     if [ ! -e "$1" ]; then
