@@ -12,7 +12,7 @@
         # speed up commands involving untracked files
         untrackedCache = true
         # global gitignore file
-        excludesfile = ~/Dotfiles/config/global.gitignore
+        excludesfile = ~/Dotfiles/config/git/global.gitignore
 
 [pull]
         # rebase local branches on top of the fetched branch, instead of merging
