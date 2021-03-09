@@ -13,6 +13,7 @@
         untrackedCache = true
         # global gitignore file
         excludesfile = ~/Dotfiles/config/git/global.gitignore
+		symlinks = false
 
 [pull]
         # rebase local branches on top of the fetched branch, instead of merging
@@ -23,8 +24,8 @@
         prune = true
 
 [help]
-        # correct and execute mistyped commands after 2 seconds
-	    autocorrect = 20
+        # correct and execute mistyped commands after 5 seconds
+	    autocorrect = 50
 
 [apply]
         # detect and fix whitespace errors

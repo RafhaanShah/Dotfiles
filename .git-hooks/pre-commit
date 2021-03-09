@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-# exit on any error, unset variable, or failed piped commands
-set -euo pipefail
+# exit on any error, unset variable
+set -eu
 
 # staged files with specific extension
 FILES="$(git diff --cached --name-only --diff-filter=ACMR "*.sh" | sed 's| |\\ |g')"
