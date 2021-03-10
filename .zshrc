@@ -103,6 +103,41 @@ _configure_autosuggestions() {
     bindkey '^ ' forward-word
 }
 
+# faster git status for prompts
+# https://github.com/romkatv/gitstatus
+_fast_prompt_git() {
+    # start gitstatusd instance with name "MY"
+    # enable staged, unstaged, conflicted and untracked counters.
+    gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+    
+    # git repo status in the form: branch [↓2↑3|✔1✖2✚3●4◯5‡]
+    # branch name, behind, ahead, clean, conflicts, staged, unstaged, untracked, stashes
+    _prompt_git() {
+        _prompt_git_blocklist || return 1
+        if gitstatus_query 'MY' && [[ "${VCS_STATUS_RESULT}" == 'ok-sync' ]]; then
+            local gitstring
+            gitstring="${VCS_STATUS_LOCAL_BRANCH:-${VCS_STATUS_COMMIT:0:7}} ["
+        
+            local upstream
+            [ "${VCS_STATUS_PUSH_COMMITS_BEHIND}" -gt 0 ] && upstream+="↓${VCS_STATUS_PUSH_COMMITS_BEHIND}"
+            [ "${VCS_STATUS_PUSH_COMMITS_AHEAD}" -gt 0 ] && upstream+="↑${VCS_STATUS_PUSH_COMMITS_AHEAD}"
+            [ -n "${upstream}" ] && gitstring+="${upstring}|"
+        
+            local changes
+            [ "${VCS_STATUS_NUM_CONFLICTED}" -gt 0 ] && changes+="✖${VCS_STATUS_NUM_CONFLICTED}"
+            [ "${VCS_STATUS_NUM_STAGED}" -gt 0 ] && changes+="✚${VCS_STATUS_NUM_STAGED}"
+            [ "${VCS_STATUS_NUM_UNSTAGED}" -gt 0 ] && changes+="●${VCS_STATUS_NUM_UNSTAGED}"
+            [ "${VCS_STATUS_NUM_UNTRACKED}" -gt 0 ] && changes+="◯${VCS_STATUS_NUM_UNTRACKED}"
+            [ "${VCS_STATUS_STASHES}" -gt 0 ] && changes+="‡${VCS_STATUS_STASHES}"
+    
+            changes="${changes:-✔}"
+            gitstring+="${changes}"
+        
+            echo -e "${1}${gitstring}]"
+        fi
+    }
+}
+
 _load_completions() {
     zinit ice blockf # block the traditional method of adding completions, zinit uses own method
     zinit light zsh-users/zsh-completions
@@ -142,8 +177,11 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     zinit ice wait lucid atload'_zsh_autosuggest_start'
     zinit light 'zsh-users/zsh-autosuggestions'
 
-    zinit light djui/alias-tips
-    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="l ll la c g cmd cls o cd.. .."
+    zinit light 'djui/alias-tips'
+    export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ - -- .. cd.. c cat cmd cls dl dk dkc fu g l ll la o open plz v view"
+    
+    zinit light 'romkatv/gitstatus'
+    _fast_prompt_git
 
     zinit ice wait'1' lucid
     zinit light 'laggardkernel/zsh-thefuck'
@@ -151,7 +189,7 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     # syntax highlighting must be sourced last
     zinit light 'zsh-users/zsh-syntax-highlighting'
 
-    # history substring search must be sourced after syntax highlighting
+    # but history substring search must be sourced after syntax highlighting
     zinit light 'zsh-users/zsh-history-substring-search'
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
@@ -170,7 +208,8 @@ else
     bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 fi
 
-unset -f _configure_autosuggestions _load_completions
+# unset plugin functions
+unset -f _configure_autosuggestions _load_completions _fast_prompt_git
 
 ### zsh completion
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
