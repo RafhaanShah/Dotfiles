@@ -39,7 +39,41 @@ _prompt_git_blocklist() {
     fi
 }
 
-# git repo status in the form: branch [↓2↑3|✔1✖2✚3●4◯]
+# faster git status for prompts
+# https://github.com/romkatv/gitstatus
+_prompt_git_fast() {
+    # start gitstatusd instance with name "MY"
+    # enable staged, unstaged, conflicted and untracked counters.
+    gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+
+    # git repo status in the form: branch [↓1↑2|✔ ✖3✚4●5◯6‡7]
+    # branch name, behind, ahead, clean, conflicts, staged, unstaged, untracked, stashes
+    _prompt_git() {
+        _prompt_git_blocklist || return 1
+        if gitstatus_query 'MY' && [[ ${VCS_STATUS_RESULT} == 'ok-sync' ]]; then
+            local gitstring
+            gitstring="${VCS_STATUS_LOCAL_BRANCH:-${VCS_STATUS_COMMIT:0:7}} ["
+
+            local upstream
+            [ "${VCS_STATUS_COMMITS_BEHIND}" -gt 0 ] && upstream+="↓${VCS_STATUS_COMMITS_BEHIND}"
+            [ "${VCS_STATUS_COMMITS_AHEAD}" -gt 0 ] && upstream+="↑${VCS_STATUS_COMMITS_AHEAD}"
+            [ -n "${upstream}" ] && gitstring+="${upstream}|"
+
+            local changes
+            [ "${VCS_STATUS_NUM_CONFLICTED}" -gt 0 ] && changes+="✖${VCS_STATUS_NUM_CONFLICTED}"
+            [ "${VCS_STATUS_NUM_STAGED}" -gt 0 ] && changes+="✚${VCS_STATUS_NUM_STAGED}"
+            [ "${VCS_STATUS_NUM_UNSTAGED}" -gt 0 ] && changes+="●${VCS_STATUS_NUM_UNSTAGED}"
+            [ "${VCS_STATUS_NUM_UNTRACKED}" -gt 0 ] && changes+="◯${VCS_STATUS_NUM_UNTRACKED}"
+            [ "${VCS_STATUS_STASHES}" -gt 0 ] && changes+="‡${VCS_STATUS_STASHES}"
+
+            changes="${changes:-✔}"
+            gitstring+="${changes}"
+            echo -e "${1}${gitstring}]"
+        fi
+    }
+}
+
+# git repo status in the form: branch [↓1↑2|✔ ✖3✚4●5◯]
 # branch name, behind, ahead, clean, conflicts, staged, unstaged, untracked
 # adapted from https://github.com/magicmonty/bash-git-prompt/blob/master/gitstatus.sh
 _prompt_git() {
@@ -111,36 +145,32 @@ _prompt_git() {
         local ahead
         ahead="$(cut -f2 <<<"${upstream}")"
         local upstring
-
         [ "${behind}" -gt 0 ] && upstring+="↓${behind}"   # commits behind
         [ "${ahead}" -gt 0 ] && upstring+="↑${ahead}"     # commits ahead
         [ -n "${upstring}" ] && gitstring+="${upstring}|" # separator
     fi
 
     # count changes of each type
-    if ((num_changed == 0 && \
-        num_staged == 0 && \
-        num_untracked == 0 && \
-        num_conflicts == 0)); then
-        gitstring+="✔" # clean
-    else
-        [ "${num_conflicts}" -gt 0 ] && gitstring+="✖${num_conflicts}" # conflicts
-        [ "${num_staged}" -gt 0 ] && gitstring+="✚${num_staged}"       # staged
-        [ "${num_changed}" -gt 0 ] && gitstring+="●${num_changed}"     # unstaged
-        [ "${num_untracked}" -gt 0 ] && gitstring+="◯${num_untracked}" # untracked
-    fi
+    local changes
+    [ "${num_conflicts}" -gt 0 ] && changes+="✖${num_conflicts}" # conflicts
+    [ "${num_staged}" -gt 0 ] && changes+="✚${num_staged}"       # staged
+    [ "${num_changed}" -gt 0 ] && changes+="●${num_changed}"     # unstaged
+    [ "${num_untracked}" -gt 0 ] && changes+="◯${num_untracked}" # untracked
+
+    changes="${changes:-✔}" # clean
+    gitstring+="${changes}"
 
     echo -e "${1}${gitstring}]"
 }
 
-# outputs git branch and status: master [1x+!?]
+# git repo status in the form: branch [1x+!?]
 # branch, number of changes, conflicts, staged, unstaged, untracked
 # adapted from https://github.com/mathiasbynens/dotfiles/blob/main/.bash_prompt
-_prompt_git_old() {
+_prompt_git_basic() {
     _is_git_repo || return 1
     _prompt_git_blocklist || return 1
 
-    local s=''
+    local str=''
     local br=''
 
     # check branch
@@ -153,25 +183,25 @@ _prompt_git_old() {
     local fcount
     fcount="$(git status --porcelain --ignore-submodules | wc -l | tr -d ' ')"
     if [ "${fcount}" -gt 0 ]; then
-        s+="${fcount}"
+        str+="${fcount}"
     fi
     # check for conflicts
     if ! git diff --quiet --ignore-submodules --diff-filter=U; then
-        s+='x'
+        str+='x'
     fi
     # check for uncomitted changes
     if ! git diff --quiet --ignore-submodules --cached; then
-        s+='+'
+        str+='+'
     fi
     # check for unstaged changes
     if ! git diff-files --quiet --ignore-submodules; then
-        s+='!'
+        str+='!'
     fi
     # check for untracked files
     if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-        s+='?'
+        str+='?'
     fi
 
-    [ -n "${s}" ] && s=" [${s}]"
-    echo -e "${1}${br}${s}"
+    [ -n "${str}" ] && str=" [${str}]"
+    echo -e "${1}${br}${str}"
 }
