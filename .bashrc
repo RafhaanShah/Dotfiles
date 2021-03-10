@@ -33,17 +33,17 @@ PROMPT_DIRTRIM=3
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
 # auto cd's into directories when typed in
-shopt -s autocd 2>/dev/null # needs Bash v4
+shopt -s autocd
 # check the window size after each command
 shopt -s checkwinsize
 # "**" used in a pathname expansion context will match all files and subdirectories
-shopt -s globstar 2>/dev/null # needs Bash v4
+shopt -s globstar
 # history list is appended to instead of overwritten
 shopt -s histappend
 # attempts spelling correction on directory names during word completion
-shopt -s dirspell 2>/dev/null
+shopt -s dirspell
 # minor errors in the spelling of a directory component in a cd command will be corrected
-shopt -s cdspell 2>/dev/null
+shopt -s cdspell
 # case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 

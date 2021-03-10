@@ -50,6 +50,6 @@
         pl = pull
         ps = push
         st = status
-        cleanup = "!cleanup() { git branch --format \"%(refname:short) %(upstream)\" | awk '{if (!$2) print $1;}' | xargs git branch -D; }; cleanup"
+        cleanup = "!cleanup() { git branch -vv | grep ': gone]'|  grep -v \"*\" | awk '{ print $1; }' | xargs git branch -D; }; cleanup"
         rebs = "!rebs() { git rebase -i HEAD~$1 && git commit --amend --date=\"now\" --no-edit; }; rebs"
         undo = reset --soft HEAD~1
