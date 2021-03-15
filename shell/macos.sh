@@ -70,6 +70,12 @@ alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
 # backup brew packages
 alias brew-bkp='brew bundle dump --describe --force --file "${DOTFILE_DIR}/packages/brew.txt"'
 
+# start spotifyd
+alias spotify='spotifyd --no-daemon -b rodio -d Spotifyd@macOS -B 320 --initial-volume 75'
+
+# sends a system notification
+notify() { osascript -e "display notification \"$2\" with title \"$1\""; }
+
 # rm moves to trash instead
 unalias rm
 rm() {

@@ -103,6 +103,8 @@ brew "scrcpy"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Spotify daemon
+brew "spotifyd"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Display directories as trees (with optional color/HTML output)
