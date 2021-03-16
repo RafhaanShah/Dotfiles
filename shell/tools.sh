@@ -83,5 +83,6 @@ fi
 if _command_exists "zoxide"; then
     _is_bash && eval "$(zoxide init bash)"
     _is_zsh && eval "$(zoxide init zsh)"
-    alias c='z'
+    alias c='__zoxide_z'
+    alias cdh='__zoxide_zi'
 fi

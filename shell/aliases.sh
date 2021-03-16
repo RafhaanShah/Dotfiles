@@ -130,6 +130,9 @@ alias v='view'
 # adb clear app data
 alias adb-clear='adb shell pm clear'
 
+# calculator tool
+alias calc='bc'
+
 # cht.sh: cheatsheets https://github.com/chubin/cheat.sh
 alias cht='cht.sh'
 
