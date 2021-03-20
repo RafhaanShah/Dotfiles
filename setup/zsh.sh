@@ -14,4 +14,6 @@ if [[ ! -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     command git clone 'https://github.com/zdharma/zinit' "${HOME}/.zinit/bin"
 fi
 
+zsh -c 'echo Setting up zinit plugins...'
+
 echo "Done settings up zsh"
