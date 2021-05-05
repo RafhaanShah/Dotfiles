@@ -130,6 +130,9 @@ alias v='view'
 # adb clear app data
 alias adb-clear='adb shell pm clear'
 
+# adb screenshot
+alias adb-screenshot='adb exec-out screencap -p > Screenshot_$(date +"%Y%m%dT%H%M%S").png'
+
 # calculator tool
 alias calc='bc'
 
