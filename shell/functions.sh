@@ -11,6 +11,9 @@
 #     fi
 # }
 
+# search / list aliases
+al() { alias | grep "${1:-=}"; }
+
 # make dir and cd into it automatically
 mkd() { command mkdir -p "$@" && builtin cd "$1" || return; }
 
