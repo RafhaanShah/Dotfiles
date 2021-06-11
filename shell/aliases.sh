@@ -157,8 +157,14 @@ alias jq='fx'
 # lazygit: git ui https://github.com/jesseduffield/lazygit
 alias git-ui='lazygit'
 
+# clear gradle cache
+alias gradle-cache='rm ~/.gradle/caches/build-cache-1/'
+
 # googler: search google https://github.com/jarun/googler
 alias google='googler'
 alias goog='google'
 alias define='googler -n 2 define'
 alias so='googler -j -w stackoverflow.com'
+
+# speed test with large file
+alias speedtest='curl http://ipv4.download.thinkbroadband.com/512MB.zip -o /dev/null'
