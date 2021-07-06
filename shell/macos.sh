@@ -5,6 +5,9 @@
 if _command_exists "brew"; then
     HOMEBREW_PREFIX="$(brew --prefix)" # /usr/local
 
+    # brew sbin
+    _add_to_path "${HOMEBREW_PREFIX}/sbin"
+
     # gnu coreutils https://formulae.brew.sh/formula/coreutils
     _add_to_path "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin"
 

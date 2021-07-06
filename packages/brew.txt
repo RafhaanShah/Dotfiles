@@ -1,3 +1,4 @@
+tap "buo/cask-upgrade"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -13,6 +14,8 @@ brew "asdf"
 brew "bash"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
+# Bastard Tetris
+brew "bastet"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # GNU binary tools for native development
@@ -31,8 +34,10 @@ brew "fd"
 brew "fff"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
 # Utility to determine file types
 brew "file-formula"
 # Collection of GNU find, xargs, and locate
@@ -53,6 +58,8 @@ brew "gawk"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Reverse tethering tool for Android
+brew "gnirehtet"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU version of the tar archiving utility
@@ -67,8 +74,6 @@ brew "grep"
 brew "gzip"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Pager program similar to more
 brew "less"
 # Version of the SSL/TLS protocol forked from OpenSSL
@@ -89,6 +94,10 @@ brew "nano"
 brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
+# Classic snake game with textual interface
+brew "nsnake"
+# Renders an animated, color, ANSI-text loop of the Poptart Cat
+brew "nyancat"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # Highly capable, feature-rich programming language
@@ -103,6 +112,8 @@ brew "scrcpy"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Space Invaders in your terminal written in Go
+brew "spaceinvaders-go"
 # Spotify daemon
 brew "spotifyd"
 # Programmatically correct mistyped console commands
@@ -123,6 +134,8 @@ brew "zsh"
 brew "jesseduffield/lazydocker/lazydocker"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
+# Tool to hide status bar icons
+cask "dozer"
 cask "font-meslo-lg-nerd-font"
 # Desktop client for GitHub repositories
 cask "github"
