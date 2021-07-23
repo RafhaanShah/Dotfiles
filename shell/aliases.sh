@@ -150,6 +150,9 @@ alias dkc-bld='docker-compose build --pull && docker-compose up -d'
 # lazydocker: docker ui https://github.com/jesseduffield/lazydocker
 alias dk-ui='lazydocker'
 
+# rainbow coloured quotes from a cow
+alias fcl='fortune | cowsay | lolcat'
+
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
 alias jq='fx'

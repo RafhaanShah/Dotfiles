@@ -35,3 +35,6 @@ export GPG_TTY="$(tty)"
 # set NPM global path to workaround permission issues
 # https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
 export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
+
+# https://consoledonottrack.com/
+export DO_NOT_TRACK=1
