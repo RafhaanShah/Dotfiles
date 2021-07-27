@@ -144,8 +144,8 @@ alias dk='docker'
 alias dk-clean='docker system prune'
 
 alias dkc='docker-compose'
-alias dkc-upd='docker-compose pull && docker-compose up -d'
-alias dkc-bld='docker-compose build --pull && docker-compose up -d'
+alias dkc-update='docker-compose pull && docker-compose up -d'
+alias dkc-build='docker-compose build --pull && docker-compose up -d'
 
 # lazydocker: docker ui https://github.com/jesseduffield/lazydocker
 alias dk-ui='lazydocker'
