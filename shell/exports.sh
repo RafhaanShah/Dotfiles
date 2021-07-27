@@ -5,9 +5,10 @@
 PATH_DIRS=(
     "${HOME}/bin"                                # home bin
     "${HOME}/.local/bin"                         # alternative bin
-    "${HOME}/Library/Android/sdk/platform-tools" # macOS Android tools
     "${HOME}/.npm-global/bin"                    # npm global bin
+    "${HOME}/Library/Android/sdk/platform-tools" # macOS Android tools
     "/usr/local/go/bin"                          # go
+    "/snap/bin"                                  # snap bin
 )
 
 for DIR in "${PATH_DIRS[@]}"; do
