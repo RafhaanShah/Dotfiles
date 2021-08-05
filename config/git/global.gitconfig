@@ -37,23 +37,31 @@
 
 [alias]
         al = aliases
+        ad = add
+        amd = amend
         br = branch
         cl = clone
         cm = commit --message
         co = checkout
+        disc = discard
         last = log -p -1
+        lg = logg
         ll = log
         pl = pull
         ps = push
         st = status
+        sq = squash
+        unst = unstage
+        upd = update
 
-        aliases = config --get-regexp alias
+        aliases = "!al() { git config --get-regexp alias | grep \"${*:-alias}\"; }; al"
         amend = commit --amend
-        cleanup = "!cleanup() { git branch -vv | grep ': gone]'|  grep -v \"*\" | awk '{ print $1; }' | xargs git branch -D; }; cleanup"
+        cleanup = "!cln() { git branch -vv | grep ': gone]'|  grep -v \"*\" | awk '{ print $1; }' | xargs git branch -D; }; cln"
+        discard = reset --hard
         duet = "!duet() { git commit --message $1 --author $2 <$3> --signoff; }; duet"
-        lg = log -n 20 --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        freset = "!freset() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; freset"
-        rebs = "!rebs() { git rebase -i HEAD~$1 && git commit --amend --date=\"now\" --no-edit; }; rebs"
-        redo = "!redo() { git add . && git amend --no-edit; }; redo"
+        logg = log -n 20 --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        nuke = "!nuke() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; nuke"
+        squash = "!squash() { git rebase -i HEAD~\"${1:-2}\" && git commit --amend --date=\"now\" --no-edit; }; squash"
         undo = reset --soft HEAD~1
-        upd = "!upd() { git add . && git amend --no-edit; }; upd"
+        unstage = reset
+        update = "!upd() { git add . && git amend --no-edit; }; upd"

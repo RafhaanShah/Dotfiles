@@ -29,18 +29,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-# git aliases
-alias g='git'
-alias gad='git add'
-alias gcm='git commit --message'
-alias gco='git checkout'
-alias gcl='git clone'
-alias gll='git log'
-alias glg='git lg'
-alias gpl='git pull'
-alias gps='git push'
-alias gst='git status'
-
 # coloured grep
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -50,6 +38,9 @@ alias egrep='egrep --color=auto'
 alias rm='rm -Irv'
 alias mv='mv -iv'
 alias cp='cp -aiv'
+
+# git
+alias g='git'
 
 ### general
 
@@ -158,7 +149,7 @@ alias json='fx'
 alias jq='fx'
 
 # lazygit: git ui https://github.com/jesseduffield/lazygit
-alias git-ui='lazygit'
+alias g-ui='lazygit'
 
 # clear gradle cache
 alias gradle-cache='rm ~/.gradle/caches/build-cache-1/'
