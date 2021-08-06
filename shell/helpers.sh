@@ -8,10 +8,10 @@ _command_exists() { command -v "$1" >/dev/null 2>&1; }
 _variable_set() { [ -n "$1" ]; }
 
 # checks if $2 begins with $1
-_begins_with() { case "$2" in "$1"*) true ;; *) false ;; esac; }
+_begins_with() { case "$2" in "$1"*) true ;; *) false ;; esac }
 
 # checks if $2 ends with $1
-_ends_with() { case "$2" in *"$1") true ;; *) false ;; esac; }
+_ends_with() { case "$2" in *"$1") true ;; *) false ;; esac }
 
 # checks if we are running bash
 _is_bash() { _variable_set "${BASH_VERSION}"; }

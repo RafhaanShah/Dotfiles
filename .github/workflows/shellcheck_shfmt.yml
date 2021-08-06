@@ -1,6 +1,6 @@
 # This workflow will run shellcheck and shfmt on all .sh files
 
-name: ShellCheck and shfmt
+name: ShellCheck and ShellFormat
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
         run: find . -type f -name "*.sh" | xargs shellcheck -x -P SCRIPTDIR
         
   shfmt:
-    name: shfmt
+    name: ShellFormat
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
