@@ -21,10 +21,13 @@ unset DIR PATH_DIRS
 export LS_COLORS="di=1;36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=30;46:cd=37;44:su=30;41:sg=37;42:tw=37;43:ow=30;43"
 
 # default text editor
-export EDITOR="nano"
+export EDITOR="${DOTFILE_DIR}/bin/editor.sh"
 
 # default visual text editor
 export VISUAL="${EDITOR}"
+
+# default git editor
+export GIT_EDITOR="${EDITOR}"
 
 # default pager
 export PAGER="less"

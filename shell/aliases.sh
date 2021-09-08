@@ -67,6 +67,7 @@ alias dl='download'
 
 # opens editor
 alias e='${EDITOR}'
+alias nano='e'
 
 # re-do last command with sudo
 alias fuck='sudo $(fc -ln -1)'
