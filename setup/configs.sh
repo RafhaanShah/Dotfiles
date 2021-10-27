@@ -22,13 +22,14 @@ setup_gpg() {
         GPG_DIR="$(wslpath "$(wslvar "APPDATA")")/gnupg"
         mkdir -p "${GPG_DIR}"
         cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${GPG_DIR}/gpg-agent.conf"
+        return
     fi
 
     mkdir -p "${HOME}/.gnupg"
     if _is_macos; then
-        cp "${DOTFILE_DIR}/config/gpg/gnupg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
+        cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
     else
-        cp "${DOTFILE_DIR}/config/gpg/gnupg/headless-gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
+        cp "${DOTFILE_DIR}/config/gpg/headless-gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
     fi
     echo "Done settings up GPG"
 }
