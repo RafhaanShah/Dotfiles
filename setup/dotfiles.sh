@@ -5,6 +5,10 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
+[ ! -d "${DOTFILE_DIR}" ] && {
+    echo "Invalid Dotfile folder"
+    exit 1
+}
 # shellcheck source=../shell/helpers.sh
 source "${DOTFILE_DIR}/shell/helpers.sh"
 
@@ -37,11 +41,6 @@ WIN_FILES=(
 )
 
 run_setup() {
-    if [ ! -d "${DOTFILE_DIR}" ]; then
-        echo "Invalid dotfile folder, ${DOTFILE_DIR}"
-        exit 1
-    fi
-
     if _is_mingw; then
         setup_windows
         return

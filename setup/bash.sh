@@ -13,15 +13,16 @@ get_completion() {
     curl -sSL "$1" -o "${COMPLETION_DIR}/${2}"
 }
 
-get_completion 'https://cheat.sh/:bash_completion' cht.sh
-get_completion 'https://github.com/jarun/googler/raw/master/auto-completion/bash/googler-completion.bash' googler
-get_completion 'https://github.com/httpie/httpie/raw/master/extras/httpie-completion.bash' http
+get_completion "https://cheat.sh/:bash_completion" cht.sh
+get_completion "https://github.com/jarun/googler/raw/master/auto-completion/bash/googler-completion.bash" googler
+get_completion "https://github.com/httpie/httpie/raw/master/extras/httpie-completion.bash" http
 
 # copy completions from bash-it: https://github.com/Bash-it/bash-it
 echo "Copying bash-it completions..."
-[ ! -d "/tmp/bash-it" ] && git clone --depth=1 'https://github.com/Bash-it/bash-it.git' "/tmp/bash-it"
+BASH_IT="/tmp/bash-it"
+[ ! -d "${BASH_IT}" ] && git clone --depth=1 "https://github.com/Bash-it/bash-it.git" "${BASH_IT}"
 
-for FILE in "/tmp/bash-it/completion/available/"*".completion.bash"; do
+for FILE in "${BASH_IT}/completion/available/"*".completion.bash"; do
     cp -- "${FILE}" "${COMPLETION_DIR}"
 done
 
@@ -31,9 +32,9 @@ BASH_PLUGINS=(
 
 echo "Copying bash-it plugins..."
 for PLUGIN in "${BASH_PLUGINS[@]}"; do
-    cp -- "/tmp/bash-it/plugins/available/${PLUGIN}.plugin.bash" "${PLUGIN_DIR}"
+    cp -- "${BASH_IT}/plugins/available/${PLUGIN}.plugin.bash" "${PLUGIN_DIR}"
 done
 
-rm -rf "/tmp/bash-it"
+rm -rf "${BASH_IT}"
 
 echo "Done settings up bash"

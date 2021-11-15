@@ -5,6 +5,10 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
+[ ! -d "${DOTFILE_DIR}" ] && {
+    echo "Invalid Dotfile folder"
+    exit 1
+}
 # shellcheck source=../shell/helpers.sh
 source "${DOTFILE_DIR}/shell/helpers.sh"
 
@@ -59,14 +63,15 @@ configure_git() {
 }
 
 check_windows() {
+    GPG_EXE='c/Program Files (x86)/GnuPG/bin/gpg.exe'
     if _is_wsl; then
-        GPG_PROGRAM='/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe'
+        GPG_PROGRAM="/mnt/${GPG_EXE}"
         WIN_HOME="$(wslpath "$(wslvar USERPROFILE)")"
         [ -d "${WIN_HOME}/Dotfiles" ] || git clone 'https://github.com/RafhaanShah/Dotfiles' "${WIN_HOME}/Dotfiles"
         [ -f "${WIN_HOME}/.gitconfig" ] || cp "${DOTFILE_DIR}/.gitconfig" "${WIN_HOME}/.gitconfig"
         true
     elif _is_mingw; then
-        GPG_PROGRAM='/c/Program Files (x86)/GnuPG/bin/gpg.exe'
+        GPG_PROGRAM="/${GPG_EXE}"
         WIN_HOME="${HOME}"
     fi
 }
@@ -79,7 +84,7 @@ configure_windows() {
     sed -i 's|autocrlf = input|autocrlf = true|' "${WIN_HOME}/.gitconfig"
 }
 
-setup() {
+setup_gitconfig() {
     if _is_mingw; then
         configure_windows
         return
@@ -111,6 +116,6 @@ else
     fi
 fi
 
-setup
+setup_gitconfig
 
 echo "Done setting up git"

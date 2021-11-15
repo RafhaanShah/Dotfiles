@@ -19,7 +19,6 @@ fi
 mkdir -p "${HOME}/.termux"
 ln -s "${DOTFILE_DIR}/config/termux/termux.properties" "${HOME}/.termux"
 ln -s "${DOTFILE_DIR}/config/termux/colors.properties" "${HOME}/.termux"
-curl -fLo "${HOME}/.termux/font.ttf" "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf"
 
 # install termux packages
 pkg upgrade
