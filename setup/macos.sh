@@ -32,17 +32,5 @@ xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install -g
 echo "Installing pip packages..."
 xargs <"${DOTFILE_DIR}/packages/pip.txt" pip3 install --upgrade
 
-# other scripts
-# shellcheck source=others.sh
-source "${DOTFILE_DIR}/setup/others.sh"
-
-# zsh setup
-# shellcheck source=zsh.sh
-source "${DOTFILE_DIR}/setup/zsh.sh"
-
 # iterm2 config
 defaults write com.googlecode.iterm2 PrefsCustomFolder "${DOTFILE_DIR}/config/iTerm2"
-
-# set shell
-echo "Changing shell..."
-chsh -s "$(command -v zsh)"

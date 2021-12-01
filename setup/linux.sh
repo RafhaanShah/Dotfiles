@@ -113,20 +113,6 @@ curl 'https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/
 curl 'https://getmic.ro' | bash
 sudo mv micro "/usr/bin"
 
-# docker: app containers
-# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
-# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-# sudo apt-getupdate && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-# sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
-# sudo curl -L "https://github.com/docker/compose/releases/download/$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | fx .name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-# sudo chmod +x "/usr/local/bin/docker-compose"
-
-# hack nerd font, patched with glyphs
-# https://github.com/ryanoasis/nerd-fonts
-# mkdir -p "${HOME}/.local/share/fonts"
-# curl -L "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf" -o "${HOME}/.local/share/fonts/Hack-Nerd-Mono.tff"
-
 # path picker: apply commands on files
 # https://github.com/facebook/PathPicker
 if [ ! -d "/usr/local/pathpicker" ]; then
@@ -139,17 +125,5 @@ fi
 # zoxide: better cd
 # https://github.com/ajeetdsouza/zoxide
 curl --proto '=https' --tlsv1.2 -sSf 'https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh' | sh
-
-# other scripts
-# shellcheck source=others.sh
-source "${DOTFILE_DIR}/setup/others.sh"
-
-# zsh setup
-# shellcheck source=zsh.sh
-source "${DOTFILE_DIR}/setup/zsh.sh"
-
-# set shell
-echo "Changing shell..."
-chsh -s "$(command -v zsh)"
 
 echo "Done setting up linux"
