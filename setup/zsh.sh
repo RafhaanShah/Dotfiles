@@ -11,7 +11,7 @@ if [[ ! -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     echo "Installing zinit..."
     command mkdir -p "${HOME}/.zinit" && command chmod g-rwX "${HOME}/.zinit"
     # shellcheck disable=SC2015
-    command git clone 'https://github.com/zdharma/zinit' "${HOME}/.zinit/bin"
+    command git clone 'https://github.com/zdharma-continuum/zinit' "${HOME}/.zinit/bin"
 fi
 
 zsh -c 'echo Setting up zinit plugins...'
