@@ -131,10 +131,10 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
     zinit light-mode for \
-        'zinit-zsh/z-a-rust' \
-        'zinit-zsh/z-a-as-monitor' \
-        'zinit-zsh/z-a-patch-dl' \
-        'zinit-zsh/z-a-bin-gem-node'
+        'zdharma-continuum/zinit-annex-readurl' \
+        'zdharma-continuum/zinit-annex-bin-gem-node' \
+        'zdharma-continuum/zinit-annex-patch-dl' \
+        'zdharma-continuum/zinit-annex-rust'
 
     _load_completions
     _configure_autosuggestions
