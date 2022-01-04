@@ -43,4 +43,6 @@ setup_fonts() {
     rm "${FONT_DIR}/JB_Mono.zip"
 }
 
+setup_fonts
+
 echo "Done installing fonts"
