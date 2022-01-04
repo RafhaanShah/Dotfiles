@@ -1,7 +1,6 @@
 tap "buo/cask-upgrade"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "jesseduffield/lazydocker"
@@ -136,7 +135,6 @@ brew "jesseduffield/lazydocker/lazydocker"
 brew "jesseduffield/lazygit/lazygit"
 # Tool to hide status bar icons
 cask "dozer"
-cask "font-meslo-lg-nerd-font"
 # Desktop client for GitHub repositories
 cask "github"
 # Tools to protect your emails and files
