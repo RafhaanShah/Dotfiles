@@ -45,4 +45,5 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder "${DOTFILE_DIR}/config/iT
 
 # set shell
 echo "Changing shell..."
+echo "$(command -v zsh)" | sudo tee -a /etc/shells
 chsh -s "$(command -v zsh)"
