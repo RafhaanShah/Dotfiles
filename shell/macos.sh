@@ -2,6 +2,7 @@
 # shellcheck shell=bash
 
 # brew: package manager for macOS https://brew.sh/
+_add_to_path "/opt/homebrew/bin" # M1 mac location
 if _command_exists "brew"; then
     HOMEBREW_PREFIX="$(brew --prefix)" # /usr/local
 
