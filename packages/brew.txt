@@ -3,7 +3,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
-tap "jesseduffield/lazydocker"
 tap "jesseduffield/lazygit"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
@@ -19,10 +18,10 @@ brew "bastet"
 brew "bat"
 # GNU binary tools for native development
 brew "binutils"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Linux/OSX/FreeBSD resource monitor
 brew "bpytop"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Core application library for C
 brew "glib"
 # File comparison utilities
@@ -65,6 +64,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
 # Google Search and News from the command-line
 brew "googler"
 # GNU grep, egrep and fgrep
@@ -73,6 +74,8 @@ brew "grep"
 brew "gzip"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Lazier way to manage everything docker
+brew "lazydocker"
 # Pager program similar to more
 brew "less"
 # Version of the SSL/TLS protocol forked from OpenSSL
@@ -83,8 +86,6 @@ brew "lolcat"
 brew "lsd"
 # Utility for directing compilation
 brew "make"
-# Mac App Store command-line interface
-brew "mas"
 # Modern and intuitive terminal-based text editor
 brew "micro"
 # Free (GNU) replacement for the Pico text editor
@@ -101,6 +102,8 @@ brew "nyancat"
 brew "openssh"
 # Highly capable, feature-rich programming language
 brew "perl"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
@@ -129,16 +132,14 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# A simple terminal UI for docker, written in Go
-brew "jesseduffield/lazydocker/lazydocker"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
 # Tool to hide status bar icons
 cask "dozer"
+# System-wide audio equalizer
+cask "eqmac"
 # Desktop client for GitHub repositories
 cask "github"
-# Tools to protect your emails and files
-cask "gpg-suite"
 # System monitor for the status bar
 cask "iglance"
 # Terminal emulator as alternative to Apple's Terminal app
@@ -155,5 +156,3 @@ cask "rectangle"
 cask "textmate"
 # Configurable document editor that supports Markdown
 cask "typora"
-mas "Amphetamine", id: 937984704
-mas "Monosnap", id: 540348655
