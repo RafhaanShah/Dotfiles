@@ -30,7 +30,7 @@ setup_gpg() {
     fi
 
     mkdir -p "${HOME}/.gnupg"
-	cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
+    cp "${DOTFILE_DIR}/config/gpg/gpg-agent.conf" "${HOME}/.gnupg/gpg-agent.conf"
     if _is_macos; then
         sed -i 's|# pinentry-program /opt|pinentry-program /opt|' "${HOME}/.gnupg/gpg-agent.conf"
     else
