@@ -79,7 +79,7 @@ alias plz='please'
 alias hosts='sudo "${EDITOR}" /etc/hosts'
 
 # shows current ip information
-alias ip='ipconfig getifaddr en0 && curl http://ipecho.net/plain; echo'
+alias ip='(ifconfig -l | xargs -n1 ipconfig getifaddr); curl http://ipecho.net/plain; echo'
 
 # get exit code of last command
 alias lexit='echo $?'
