@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 
 alias ssh-on='sshd'
-alias ssh-off='pkil sshd'
+alias ssh-off='pkill sshd'
 
 alias open='termux-open'
 
