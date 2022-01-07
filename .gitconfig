@@ -14,13 +14,13 @@
 
 [credential]
         # https://docs.github.com/en/free-pro-team@latest/github/using-git/caching-your-github-credentials-in-git
-        # Windows
+        # Windows: https://git-scm.com/download/win
         # helper = wincred
-        # WSL https://git-scm.com/download/win
+        # WSL: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/wsl.md
         # helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
-        # macOS
-        # helper = osxkeychain
-        # Linux: https://github.com/microsoft/Git-Credential-Manager-Core
+        # macOS: https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md#macos-homebrew
+        # helper = /usr/local/share/gcm-core/git-credential-manager-core
+        # Linux: https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md#linux
         # credentialStore = gpg
         # helper = /usr/bin/git-credential-manager-core
 

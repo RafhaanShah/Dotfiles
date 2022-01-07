@@ -50,7 +50,7 @@ configure_git() {
     sed -i 's|# gpgsign = true|gpgsign = true|' "${GITCONFIG}"
 
     if _is_macos; then
-        sed -i 's|# helper = osxkeychain|helper = osxkeychain|' "${GITCONFIG}"
+        sed -i 's|# helper = /usr/local|helper = /usr/local|' "${GITCONFIG}"
         sed -i 's|# program = gpg|program = gpg|' "${GITCONFIG}"
     elif _is_wsl; then
         sed -i 's|# helper = /mnt/c|helper = /mnt/c|' "${GITCONFIG}"
