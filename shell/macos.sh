@@ -68,6 +68,9 @@ unalias open
 alias copy='pbcopy'
 alias paste='paste'
 
+# shows current ip information
+alias ip='(ifconfig -l | xargs -n1 ipconfig getifaddr); curl http://ipecho.net/plain; echo'
+
 # get last wake / sleep events
 alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
 
