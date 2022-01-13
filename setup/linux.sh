@@ -24,14 +24,14 @@ sudo apt autoremove -y
 unset DEBIAN_FRONTEND
 
 # snap packages
-if _command_exists "snap" && ! is_wsl; then
+if _command_exists "snap" && ! _is_wsl; then
     xargs <"${DOTFILE_DIR}/packages/snap.txt" sudo snap install
 fi
 
 # npm packages
 echo "Installing npm packages..."
 # https://github.com/nodesource/distributions#debinstall
-curl -sSL 'https://deb.nodesource.com/setup_15.x' | sudo -E bash -
+curl -sSL 'https://deb.nodesource.com/setup_17.x' | sudo -E bash -
 sudo apt install -y nodejs
 mkdir -p "${HOME}/.npm-global/bin"
 npm config set prefix "${HOME}/.npm-global"
@@ -83,7 +83,7 @@ done <"${DOTFILE_DIR}/packages/deb.txt"
 
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
-install_deb 'https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.318-beta/gcmcore-linux_amd64.2.0.318.44100.deb'
+install_deb 'https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.632/gcmcore-linux_amd64.2.0.632.34631.deb'
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf
@@ -138,7 +138,7 @@ fi
 
 # zoxide: better cd
 # https://github.com/ajeetdsouza/zoxide
-curl --proto '=https' --tlsv1.2 -sSf 'https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh' | sh
+curl -sS "https://webinstall.dev/zoxide" | bash
 
 # other scripts
 # shellcheck source=others.sh
