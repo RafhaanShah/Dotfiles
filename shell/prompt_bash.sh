@@ -17,6 +17,7 @@ _prompt_command() {
 }
 
 PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND:+;}_prompt_command"
+PROMPT_COMMAND="${PROMPT_COMMAND//;;/;}"
 
 if _colour_true; then
     _PROMPT_COL_USER="\[\e[1;38;2;166;226;46m\]"  # green
