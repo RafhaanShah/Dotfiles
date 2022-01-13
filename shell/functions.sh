@@ -223,6 +223,23 @@ adb-zoom() {
     esac
 }
 
+# sets proxy on or off
+adb-proxy() {
+    case "$1" in
+        on)
+            ip="$(ifconfig -l | xargs -n1 ipconfig getifaddr)" || true
+            first_ip="${ip%% *}"
+            adb shell settings put global http_proxy "${first_ip}:${2:-9090}"
+            ;;
+        off)
+            adb shell settings put global http_proxy :0
+            ;;
+        *)
+            echo "Usage adb-proxy [on/off]"
+            ;;
+    esac
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "$1" "${2:-sh}"; }
 
