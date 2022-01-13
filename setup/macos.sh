@@ -43,6 +43,9 @@ source "${DOTFILE_DIR}/setup/zsh.sh"
 # iterm2 config
 defaults write com.googlecode.iterm2 PrefsCustomFolder "${DOTFILE_DIR}/config/iTerm2"
 
+# TextMate config
+ln -s "${DOTFILE_DIR}/config/TextMate/.tm_properties" "${HOME}/.tm_properties"
+
 # set shell
 echo "Changing shell..."
 command -v zsh | sudo tee -a /etc/shells
