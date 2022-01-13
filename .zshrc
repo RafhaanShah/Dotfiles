@@ -136,6 +136,8 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
         'zdharma-continuum/zinit-annex-patch-dl' \
         'zdharma-continuum/zinit-annex-rust'
 
+	{ command -v "fzf" >/dev/null 2>&1 && zinit light 'Aloxaf/fzf-tab'} || true
+
     _load_completions
     _configure_autosuggestions
     
