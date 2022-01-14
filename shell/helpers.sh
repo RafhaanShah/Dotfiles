@@ -45,7 +45,7 @@ _is_mingw() {
 _is_macos() { [ "$(uname -s)" = "Darwin" ]; }
 
 # checks if we a running on an M1 mac
-_is_m1_mac() { _in_string "Apple" "$(sysctl -n machdep.cpu.brand_string)"; }
+_is_m1_mac() { _is_macos && _in_string "Apple" "$(sysctl -n machdep.cpu.brand_string)"; }
 
 # trims given text
 _trim() {
