@@ -13,6 +13,9 @@ _begins_with() { case "$2" in "$1"*) true ;; *) false ;; esac }
 # checks if $2 ends with $1
 _ends_with() { case "$2" in *"$1") true ;; *) false ;; esac }
 
+# checks if $2 is in $1
+_in_string() { case "$2" in *"$1"*) true ;; *) false ;; esac }
+
 # checks if we are running bash
 _is_bash() { _variable_set "${BASH_VERSION}"; }
 
@@ -40,6 +43,9 @@ _is_mingw() {
 
 # checks if we are running on macOS
 _is_macos() { [ "$(uname -s)" = "Darwin" ]; }
+
+# checks if we a running on an M1 mac
+_is_m1_mac() { _in_string "Apple" "$(sysctl -n machdep.cpu.brand_string)"; }
 
 # trims given text
 _trim() {
