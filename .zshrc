@@ -183,8 +183,8 @@ unset -f _configure_autosuggestions _load_completions
 
 # completer functions to use
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-# case insensitive fuzzy completion https://stackoverflow.com/a/24237590
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# case insensitive fuzzy completion https://scriptingosx.com/2019/07/moving-to-zsh-part-5-completions/
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 # max errors for _approximate _correct completer functions
 zstyle ':completion:*' max-errors 0 # 0 works better with fuzzy completion
 # set color specifications for completion, use LS_COLORS
