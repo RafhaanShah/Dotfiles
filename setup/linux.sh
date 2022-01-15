@@ -136,10 +136,6 @@ else
     sudo git -C "/usr/local/pathpicker" pull
 fi
 
-# zoxide: better cd
-# https://github.com/ajeetdsouza/zoxide
-curl -sS "https://webinstall.dev/zoxide" | bash
-
 # other scripts
 # shellcheck source=others.sh
 source "${DOTFILE_DIR}/setup/others.sh"
