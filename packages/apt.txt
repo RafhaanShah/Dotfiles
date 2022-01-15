@@ -22,5 +22,4 @@ shellcheck
 software-properties-common
 unzip
 xclip
-zoxide
 zsh

@@ -1,3 +1,4 @@
+ajeetdsouza/zoxide
 BurntSushi/ripgrep
 Peltoche/lsd
 sharkdp/bat
