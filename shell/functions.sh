@@ -240,6 +240,21 @@ adb-proxy() {
     esac
 }
 
+# sets dark mode on or off
+adb-dark-mode() {
+    case "$1" in
+        on)
+            adb shell "cmd uimode night yes"
+            ;;
+        off)
+            adb shell "cmd uimode night no"
+            ;;
+        *)
+            echo "Usage adb-dark-mode [on/off]"
+            ;;
+    esac
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "$1" "${2:-sh}"; }
 
