@@ -78,7 +78,7 @@ alias sleeplog='pmset -g log|grep -e " Sleep  " -e " Wake  " | tail'
 alias brew-bkp='brew bundle dump --describe --force --file "${DOTFILE_DIR}/packages/brew.txt"'
 
 # start spotifyd
-alias spotify='spotifyd --no-daemon -b rodio -d Spotifyd@macOS -B 320 --initial-volume 75'
+alias spotify='spotifyd --no-daemon -b portaudio -d Spotifyd@macOS -B 320 --initial-volume 75 --volume-normalisation'
 
 # sends a system notification
 notify() { osascript -e "display notification \"$2\" with title \"$1\""; }
