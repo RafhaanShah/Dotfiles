@@ -165,4 +165,4 @@ alias so='googler -j -w stackoverflow.com'
 alias speedtest='curl http://ipv4.download.thinkbroadband.com/512MB.zip -o /dev/null'
 
 # scrcpy: android screen mirror
-alias scr-record='scrcpy --no-display --record android_recording.mp4'
+alias scr-record='scrcpy --no-display --show-touches --record android_recording.mp4'
