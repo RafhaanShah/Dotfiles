@@ -162,7 +162,7 @@ alias define='googler -n 2 define'
 alias so='googler -j -w stackoverflow.com'
 
 # speed test with large file
-alias speedtest='curl http://ipv4.download.thinkbroadband.com/512MB.zip -o /dev/null'
+alias speedtest='curl http://ipv4.download.thinkbroadband.com/1GB.zip -o /dev/null'
 
 # scrcpy: android screen mirror
-alias scr-record='scrcpy --no-display --show-touches --record android_recording.mp4'
+alias scr-record='scrcpy --no-display --show-touches --record Recording_$(date +"%Y%m%dT%H%M%S").mp4'
