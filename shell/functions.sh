@@ -132,17 +132,6 @@ ftext() { grep -iIHrn --exclude-dir='.*' "$@"; }
 # gets full path of file in current folder
 fpath() { echo "$(pwd)/$1"; }
 
-# open github repo in browser
-git-hub() {
-    _is_git_repo || { echo "Not a git repo" && return 1; }
-    local base_url
-    base_url="$(git remote get-url origin)"
-    base_url="${base_url%\.git}/tree/$(git rev-parse --abbrev-ref HEAD)"
-    base_url="${base_url//git@github\.com:/https:\/\/github\.com\/}"
-    base_url="${base_url//git:\/\/github\.com/https:\/\/github\.com\/}"
-    open "${base_url}/$1"
-}
-
 # simple python http server
 server() { python3 -m http.server "${1:-8069}"; }
 

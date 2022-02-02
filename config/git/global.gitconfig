@@ -44,9 +44,12 @@
         cm = commit --message
         co = checkout
         disc = discard
+        fr = fetch-remote
         last = log -p -1
         lg = logg
         ll = log
+        mr = merge-req
+        pr = pull-req
         pl = pull
         ps = push
         st = status
@@ -57,11 +60,18 @@
         aliases = "!al() { git config --get-regexp alias | grep \"${*:-alias}\"; }; al"
         amend = commit --amend
         cleanup = "!cln() { git branch -vv | grep ': gone]'|  grep -v \"*\" | awk '{ print $1; }' | xargs git branch -D; }; cln"
+        current-branch = "!cbr() { git rev-parse --abbrev-ref HEAD; }; cbr"
+        default-branch = "!dbr() { br=\"$(git rev-parse --abbrev-ref origin/HEAD)\" && echo \"${br#origin/}\"; }; dbr"
         discard = reset --hard
-        duet = "!duet() { git commit --message $1 --author $2 <$3> --signoff; }; duet"
+        duet = "!dt() { git commit --message $1 --author $2 <$3> --signoff; }; dt"
+        fetch-remote = "!fr() { br=\"${1:-$(git default-branch)}\" && git fetch origin $br:$br; }; fr"
         logg = log -n 20 --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        nuke = "!nuke() { git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; nuke"
-        squash = "!squash() { git rebase -i HEAD~\"${1:-2}\" && git commit --amend --date=\"now\" --no-edit; }; squash"
+        merge-req = "!mr() { open \"$(git url)/-/merge_requests/new?merge_request[source_branch]=$(git current-branch)&merge_request[target_branch]=${1:-$(git default-branch)}\"; }; mr"
+        pull-req = "!pr() { open \"$(git url)/compare/${1:-$(git default-branch)}...$(git current-branch)\"; }; pr"
+        nuke = "!nk() { git reset --hard origin/\"$(git current-branch)\"; }; nk"
+        repo = "!rp() { open \"$(git url)/tree/$(git current-branch)\"; }; rp"
+        squash = "!sq() { git rebase -i \"HEAD~${1:-2}\" && git commit --amend --date=\"now\" --no-edit; }; sq"
         undo = reset --soft HEAD~1
         unstage = reset
         update = "!upd() { git add . && git amend --no-edit; }; upd"
+        url = "!url() { base=\"$(git remote get-url origin)\" && echo \"${base%.git}\"; }; url"
