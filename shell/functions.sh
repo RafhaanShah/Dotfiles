@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 
 # auto ls after cd
-# unalias c
+# unrar c
 # c() {
 #     if [ "$#" -eq 0 ]; then
 #         builtin cd && ls
@@ -176,7 +176,12 @@ tree() {
 
 ### tool related functions
 
-# toggles animations for Android device
+# take android device screenshot
+adb-screenshot() {
+    adb exec-out screencap -p >"${1:-Screenshot_$(date +"%Y%m%dT%H%M%S")}.png"
+}
+
+# toggles animations for android device
 adb-anim() {
     case "$1" in
         on)
@@ -195,7 +200,7 @@ adb-anim() {
     esac
 }
 
-# sets max font and display size for Android device (1920x1080 screen)
+# sets max font and display size for android device (1920x1080 screen)
 adb-zoom() {
     case "$1" in
         on)
@@ -259,5 +264,10 @@ hint() { open "https://devhints.io/$1"; }
 # enerate a qrcode
 qrcode() { curl "http://qrenco.de/$1"; }
 
+# scrcpy: android screen mirror
+scr-record() {
+    scrcpy --no-display --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
+}
+
 # shows the current weather
-wttr() { curl "http://wttr.in/${1:-London}"; }
+weather() { curl "http://wttr.in/${1:-London}"; }

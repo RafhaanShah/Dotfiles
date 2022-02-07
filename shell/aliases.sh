@@ -122,8 +122,8 @@ alias v='view'
 # adb clear app data
 alias adb-clear='adb shell pm clear'
 
-# adb screenshot
-alias adb-screenshot='adb exec-out screencap -p > Screenshot_$(date +"%Y%m%dT%H%M%S").png'
+# adb deeplink
+alias adb-link='adb shell am start -d'
 
 # calculator tool
 alias calc='bc'
@@ -164,5 +164,5 @@ alias so='googler -j -w stackoverflow.com'
 # speed test with large file
 alias speedtest='curl http://ipv4.download.thinkbroadband.com/1GB.zip -o /dev/null'
 
-# scrcpy: android screen mirror
-alias scr-record='scrcpy --no-display --show-touches --record Recording_$(date +"%Y%m%dT%H%M%S").mp4'
+# shows the current weather
+alias wttr='weather'
