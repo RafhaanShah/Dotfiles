@@ -46,7 +46,7 @@
         disc = discard
         fr = fetch-remote
         last = log -p -1
-        lg = logg
+        lg = log-pretty
         ll = log
         mr = merge-req
         pr = pull-req
@@ -65,11 +65,13 @@
         discard = reset --hard
         duet = "!dt() { git commit --message $1 --author $2 <$3> --signoff; }; dt"
         fetch-remote = "!fr() { br=\"${1:-$(git default-branch)}\" && git fetch origin $br:$br; }; fr"
-        logg = log -n 20 --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        log-pretty = log -n 20 --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        merge-remote = "!mrgr() { git fetch-remote "${1:-$(git default-branch)}" && git merge "${1:-$(git default-branch)}"; }; mrgr"
         merge-req = "!mr() { open \"$(git url)/-/merge_requests/new?merge_request[source_branch]=$(git current-branch)&merge_request[target_branch]=${1:-$(git default-branch)}\"; }; mr"
         pull-req = "!pr() { open \"$(git url)/compare/${1:-$(git default-branch)}...$(git current-branch)\"; }; pr"
         nuke = "!nk() { git reset --hard origin/\"$(git current-branch)\"; }; nk"
         repo = "!rp() { open \"$(git url)/tree/$(git current-branch)\"; }; rp"
+        rebase-remote = "!rebr() { git fetch-remote "${1:-$(git default-branch)}" && git rebase "${1:-$(git default-branch)}"; }; rebr"
         squash = "!sq() { git rebase -i \"HEAD~${1:-2}\" && git commit --amend --date=\"now\" --no-edit; }; sq"
         undo = reset --soft HEAD~1
         unstage = reset
