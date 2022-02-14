@@ -80,6 +80,9 @@ alias brew-bkp='brew bundle dump --describe --force --file "${DOTFILE_DIR}/packa
 # start spotifyd
 alias spotify='spotifyd --no-daemon -b portaudio -d Spotifyd@macOS -B 320 --initial-volume 75 --volume-normalisation'
 
+# restarts audio service
+alias kill-audio='sudo launchctl kickstart -k system/com.apple.audio.coreaudiod'
+
 # sends a system notification
 notify() { osascript -e "display notification \"$2\" with title \"$1\""; }
 
