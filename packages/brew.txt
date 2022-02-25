@@ -57,6 +57,8 @@ brew "gawk"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Git extension for versioning large files
+brew "git-lfs"
 # Reverse tethering tool for Android
 brew "gnirehtet"
 # GNU implementation of the famous stream editor
@@ -113,6 +115,8 @@ brew "scrcpy"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# SMART hard drive monitoring
+brew "smartmontools"
 # Space Invaders in your terminal written in Go
 brew "spaceinvaders-go"
 # Spotify daemon
@@ -133,8 +137,6 @@ brew "zoxide"
 brew "zsh"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Tool to hide status bar icons
 cask "dozer"
 # System-wide audio equalizer
@@ -144,6 +146,8 @@ cask "git-credential-manager-core"
 cask "github"
 # Desktop automation application
 cask "hammerspoon"
+# Menu bar application that displays the CPU speed limit due to thermal issues
+cask "hot"
 # System monitor for the status bar
 cask "iglance"
 # Terminal emulator as alternative to Apple's Terminal app
@@ -156,6 +160,8 @@ cask "openinterminal"
 cask "paw"
 # Modern and intuitive HTTP Debugging Proxy app
 cask "proxyman"
+# Image viewer
+cask "qview"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # General-purpose text editor
