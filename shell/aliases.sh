@@ -18,6 +18,7 @@ alias ls-dot='ls -d .[^.]* 2> /dev/null'        # list hidden items only
 alias ls-size='ls -lSrh'                        # sort by size
 alias ls-date='ls -ltrh'                        # sort by date
 alias ls-ext='ls -lXh'                          # sort by extension
+alias sl='sl | lolcat'                          # choo choo
 
 # cd aliases
 alias c='cd'

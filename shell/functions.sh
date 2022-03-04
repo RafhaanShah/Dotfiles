@@ -266,7 +266,7 @@ qrcode() { curl "http://qrenco.de/$1"; }
 
 # scrcpy: android screen mirror
 scr-record() {
-    scrcpy --no-display --no-clipboard-autosync --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
+    scrcpy --bit-rate 2M --max-fps 30 --no-display --no-clipboard-autosync --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
 }
 
 # shows the current weather

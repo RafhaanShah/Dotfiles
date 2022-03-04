@@ -115,6 +115,8 @@ brew "scrcpy"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Prints a steam locomotive if you type sl instead of ls
+brew "sl"
 # SMART hard drive monitoring
 brew "smartmontools"
 # Space Invaders in your terminal written in Go
