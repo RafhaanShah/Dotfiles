@@ -168,5 +168,3 @@ cask "qview"
 cask "rectangle"
 # General-purpose text editor
 cask "textmate"
-# Configurable document editor that supports Markdown
-cask "typora"
