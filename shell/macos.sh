@@ -85,19 +85,3 @@ alias kill-audio='sudo launchctl kickstart -k system/com.apple.audio.coreaudiod'
 
 # sends a system notification
 notify() { osascript -e "display notification \"$2\" with title \"$1\""; }
-
-# rm moves to trash instead
-unalias rm
-rm() {
-    for FILE in "$@"; do
-        local BASENAME
-        BASENAME="$(basename "${FILE}")"
-        local COUNTER=1
-        while [ -e "${HOME}/.Trash/${BASENAME}" ]; do
-            BASENAME="${BASENAME}(${COUNTER})"
-            COUNTER=$((COUNTER + 1))
-        done
-        mv "${FILE}" "${HOME}/.Trash/${BASENAME}"
-    done
-    unset FILE
-}
