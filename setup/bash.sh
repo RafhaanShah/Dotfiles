@@ -13,7 +13,6 @@ get_completion() {
 }
 
 get_completion "https://cheat.sh/:bash_completion" cht
-get_completion "https://github.com/jarun/googler/raw/master/auto-completion/bash/googler-completion.bash" googler
 get_completion "https://github.com/httpie/httpie/raw/master/extras/httpie-completion.bash" http
 
 echo "Done settings up bash"

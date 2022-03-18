@@ -111,9 +111,6 @@ _load_completions() {
     zinit snippet 'https://cheat.sh/:zsh'
     
     zinit ice as"completion"
-    zinit snippet 'https://github.com/jarun/googler/blob/main/auto-completion/zsh/_googler'
-    
-    zinit ice as"completion"
     zinit snippet 'OMZ::plugins/docker/_docker'
     
     zinit ice as"completion"

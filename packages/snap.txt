@@ -1,3 +1,2 @@
-googler
 lolcat
 shfmt

@@ -69,8 +69,6 @@ brew "gnu-tar"
 brew "gnu-which"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Google Search and News from the command-line
-brew "googler"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Popular GNU data compression program
