@@ -24,9 +24,11 @@ PROMPT_COMMAND="${PROMPT_COMMAND//;;/;}"
 # remove duplicates and ignore lines starting with a space
 HISTCONTROL="erasedups:ignorespace"
 # ignores common commands when saving command history
-HISTIGNORE="cd*:ls*:pwd:clear:bg*:fg*:exit:history*"
+HISTIGNORE="cd*:ls*:pwd:clear:bg*:fg*:exit:hist*"
 # sets history size
 HISTSIZE=10000
+# show time with history
+HISTTIMEFORMAT="%d.%m.%y %T "
 # truncates directory names when X levels deep
 PROMPT_DIRTRIM=3
 

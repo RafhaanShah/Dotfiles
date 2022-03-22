@@ -30,6 +30,14 @@ if _command_exists "fd"; then
     alias ffile='fd'
 fi
 
+# fzf: fuzzy finder
+# https://github.com/junegunn/fzf
+if _command_exists "fzf"; then
+    hist() {
+        history 10000 | grep "$*" | grep -v "hist" | tac | fzf
+    }
+fi
+
 # lsd: ls with icons https://github.com/Peltoche/lsd
 # needs a patched font, e.g: hack-nerd-font https://github.com/ryanoasis/nerd-fonts
 # on iTerm2, set 'non-ascii font'

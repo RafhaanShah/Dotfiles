@@ -23,7 +23,7 @@ zshaddhistory_functions+=(_zshaddhistory_filter)
 alias sudo='nocorrect sudo '
 
 # make history command behave like bash
-history() { builtin history -"$*"; }
+history() { builtin history -E -"$*"; }
 
 ### shell parameters
 # http://zsh.sourceforge.net/Doc/Release/Parameters.html#Parameters-Used-By-The-Shell
@@ -33,7 +33,7 @@ HISTFILE="${HOME}/.zsh_history"
 # history file size
 HISTSIZE=10000
 # ignores common commands when saving command history
-HISTORY_IGNORE="(cd*|ls*|pwd|clear|bg*|fg*|exit|history*)"
+HISTORY_IGNORE="(cd*|ls*|pwd|clear|bg*|fg*|exit|hist*)"
 # maximum number of history events
 SAVEHIST=10000
 
