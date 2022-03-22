@@ -189,6 +189,14 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
 # what is displayed during menu selection
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+
+# fzf-tab previews https://github.com/Aloxaf/fzf-tab/wiki/Preview
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd "${realpath}"'
+zstyle ':fzf-tab:complete:(cat|bat|head|tail|less|more):*' fzf-preview 'bat --color=always --plain --line-range=:100 "${realpath}"'
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status "${word}"'
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo "${(P)word}"'
+
+
 # initialize zsh completion (should be after zinit plugins)
 autoload -Uz compinit
 if [[ -n  "${ZDOTDIR:-${HOME}}/.zcompdump"(#qN.mh+20) ]]; then
