@@ -10,10 +10,9 @@
 ### shell hook functions
 # http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 
-# do not add HIST_IGNORE commands to interactive history
+# do not add HIST_IGNORE commands to interactive history, filter overly long commands
 # shellcheck disable=SC2053
-_zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]; }
-
+_zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]] && [ ${#1%%$'\n'} -lt 50 ]; }
 zshaddhistory_functions+=(_zshaddhistory_filter)
 
 ### overrides
