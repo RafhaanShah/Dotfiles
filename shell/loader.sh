@@ -32,7 +32,7 @@ _is_termux && _load_file "${DOTFILE_DIR}/shell/termux.sh"
 # custom profile file for machine specific stuff
 _load_file "${HOME}/.rafrc"
 
-# functions (to be loaded after aliases as aliases are read at function definition)
+# functions (to be loaded after aliases as aliases are only read at function definition, not runtime)
 _load_file "${DOTFILE_DIR}/shell/functions.sh"
 
 # cli tools

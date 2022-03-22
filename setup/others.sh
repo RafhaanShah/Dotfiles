@@ -24,7 +24,7 @@ mkdir -p "${HOME}/bin"
 
 # cheat.sh: cli cheatsheets
 # https://github.com/chubin/cheat.sh
-get_script "https://cht.sh/:cht.sh" "cht.sh"
+get_script "https://cht.sh/:cht.sh" "cht"
 
 # tldr: better manpages
 # https://github.com/tldr-pages/tldr

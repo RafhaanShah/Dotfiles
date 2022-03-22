@@ -47,7 +47,13 @@ alias g='git'
 
 # bechmark shell startup time
 # shellcheck disable=SC2142
-alias bench_shell='time "${0//-}" -i -c "echo -n"'
+alias bench-shell='time "${0//-}" -i -c "echo -n"'
+
+# bash shell with no customisations
+alias clean-bash='bash --noprofile --norc'
+
+# zsh shell with no customisations
+alias clean-zsh='zsh --no-rcs'
 
 # shortcut for 'command' to ignore aliases and functions
 alias cmd='command'
@@ -72,6 +78,7 @@ alias nano='e'
 
 # re-do last command with sudo
 alias fuck='sudo $(fc -ln -1)'
+alias duck='fuck'
 alias fu='fuck'
 alias please='fuck'
 alias plz='please'
@@ -129,9 +136,6 @@ alias adb-link='adb shell am start -d'
 # calculator tool
 alias calc='bc'
 
-# cht.sh: cheatsheets https://github.com/chubin/cheat.sh
-alias cht='cht.sh'
-
 # docker: app containers https://docs.docker.com/engine/install/
 alias dk='docker'
 alias dk-clean='docker system prune'
@@ -145,6 +149,7 @@ alias dk-ui='lazydocker'
 
 # rainbow coloured quotes from a cow
 alias fcl='fortune | cowsay | lolcat'
+alias bored='fcl'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
