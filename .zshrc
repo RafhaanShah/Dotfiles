@@ -204,8 +204,6 @@ if [[ -n  "${ZDOTDIR:-${HOME}}/.zcompdump"(#qN.mh+20) ]]; then
 else
 	compinit -C;
 fi
-# complete 'z' command with directories
-compdef _directories z
 
 ### shell key bindings
 # accept menu option and run command with one enter press like bash

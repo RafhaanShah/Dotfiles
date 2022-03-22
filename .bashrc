@@ -65,6 +65,8 @@ bind 'set completion-map-case on'
 bind 'set completion-prefix-display-length 8'
 # completed names which are symbolic links to directories have a slash appended
 bind 'set mark-symlinked-directories on'
+# don't try auto=-completing hidden files unless starting with a dot
+bind 'set match-hidden-files off'
 # displays the common prefix of the list of possible completions
 bind 'set menu-complete-display-prefix on'
 # attempting completion when the cursor is after the ‘e’ in ‘Makefile’ will result in ‘Makefile’ rather than ‘Makefilefile’
@@ -160,5 +162,5 @@ _fuzzy_dir_completion() {
 
 # https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html
 # allows fuzzy completion for file/dir names: cd tuf<TAB> => cd Stuff
-complete -o nospace -o filenames -o bashdefault -F _fuzzy_file_completion ls cat less tail cp mv nano
-complete -o nospace -o filenames -o bashdefault -F _fuzzy_dir_completion cd mkdir
+complete -o nospace -o filenames -o bashdefault -F _fuzzy_file_completion ls cat less more head tail cp mv nano
+complete -o nospace -o filenames -o bashdefault -F _fuzzy_dir_completion c cd mkdir
