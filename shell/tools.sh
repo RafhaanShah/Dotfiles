@@ -90,7 +90,7 @@ fi
 # https://github.com/ajeetdsouza/zoxide
 if _command_exists "zoxide"; then
     _is_bash && eval "$(zoxide init --no-aliases bash)"
-    _is_zsh && eval "$(zoxide init --no-aliases zsh)" && compdef _directories __zoxide_z
+    _is_zsh && eval "$(zoxide init --no-aliases zsh)"
     alias cd='__zoxide_z'
     alias cdh='__zoxide_zi'
 fi

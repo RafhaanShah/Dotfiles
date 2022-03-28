@@ -196,7 +196,6 @@ zstyle ':fzf-tab:complete:(cat|bat|head|tail|less|more):*' fzf-preview 'bat --co
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status "${word}"'
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo "${(P)word}"'
 
-
 # initialize zsh completion (should be after zinit plugins)
 autoload -Uz compinit
 if [[ -n  "${ZDOTDIR:-${HOME}}/.zcompdump"(#qN.mh+20) ]]; then
@@ -204,6 +203,9 @@ if [[ -n  "${ZDOTDIR:-${HOME}}/.zcompdump"(#qN.mh+20) ]]; then
 else
 	compinit -C;
 fi
+
+# complete 'zoxide' command with directories
+compdef _directories __zoxide_z __zoxide_zi
 
 ### shell key bindings
 # accept menu option and run command with one enter press like bash
