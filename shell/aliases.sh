@@ -74,8 +74,9 @@ alias download='curl -LJO'
 alias dl='download'
 
 # opens editor
-alias e='${EDITOR}'
-alias nano='e'
+alias edit='nano --rcfile "${HOME}/.nanorc"'
+alias nano='edit'
+alias e='edit'
 
 # re-do last command with sudo
 alias fuck='sudo $(fc -ln -1)'
@@ -88,7 +89,7 @@ alias plz='please'
 alias hosts='sudo "${EDITOR}" /etc/hosts'
 
 # shows current ip information
-alias ip='hostname --all-ip-addresses; curl http://ipecho.net/plain; echo'
+alias ip-address='hostname --all-ip-addresses; curl http://ipecho.net/plain; echo'
 
 # get exit code of last command
 alias lexit='echo $?'
