@@ -74,8 +74,8 @@ alias download='curl -LJO'
 alias dl='download'
 
 # opens editor
-alias edit='nano --rcfile "${HOME}/.nanorc"'
-alias nano='edit'
+alias nano='nano --rcfile "${HOME}/.nanorc"'
+alias edit='nano'
 alias e='edit'
 
 # re-do last command with sudo
