@@ -52,6 +52,8 @@ setopt AUTO_PUSHD
 setopt COMBINING_CHARS
 # try to correct the spelling of commands
 setopt CORRECT
+# ignore commands starting with
+CORRECT_IGNORE="[_|.]*"
 # try to correct the spelling of all arguments (gets a bit annoying sometimes)
 # setopt CORRECT_ALL
 # treat ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation
