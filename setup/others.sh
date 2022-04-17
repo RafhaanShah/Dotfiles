@@ -30,6 +30,10 @@ get_script "https://cht.sh/:cht.sh" "cht"
 # https://github.com/tldr-pages/tldr
 get_script "https://raw.githubusercontent.com/raylee/tldr/master/tldr" "tldr"
 
+# python simple http server with directory listing and upload
+# https://github.com/sgrontflix/simplehttpserverwithupload
+get_script "https://raw.githubusercontent.com/sgrontflix/simplehttpserverwithupload/main/main.py" "server.py"
+
 # nano syntax highlighting
 # https://github.com/scopatz/nanorc
 echo "Setting up nano syntax highlighting..."
