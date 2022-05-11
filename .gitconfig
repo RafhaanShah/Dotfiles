@@ -47,3 +47,7 @@
 
 [core]
         autocrlf = input # use true for Windows
+
+# include any folder specific overrides, e.g work email
+[includeIf "gitdir:~/Workspace/"]
+    	path = ~/Workspace/.gitconfig
