@@ -83,7 +83,7 @@ done <"${DOTFILE_DIR}/packages/deb.txt"
 
 # git credential manager
 # https://github.com/microsoft/Git-Credential-Manager-Core
-install_deb 'https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.632/gcmcore-linux_amd64.2.0.632.34631.deb'
+install_deb 'https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.696/gcmcore-linux_amd64.2.0.696.deb'
 
 # asdf: language version manager
 # https://github.com/asdf-vm/asdf

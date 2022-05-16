@@ -1,53 +1,65 @@
 ### git config (machine specific)
 # https://git-scm.com/docs/git-config
 
+# include global git config
+[include]
+    path = ~/Dotfiles/config/git/global.gitconfig
+
+# https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+[core]
+    # macOS / Linux:
+    autocrlf = input
+    # Windows:
+    # autocrlf = true
+
 [user]
-        name = Rafhaan Shah
-        email = RafhaanShah@users.noreply.github.com
-        # https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/telling-git-about-your-signing-key
-        # gpg --list-keys --keyid-format LONG
-        # signingkey = GPG_KEY_ID
+    name = Rafhaan Shah
+    email = RafhaanShah@users.noreply.github.com
+    # https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key
+    # gpg --list-keys --keyid-format LONG
+    # signingkey = GPG_KEY_ID
 
 [commit]
-        # https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/signing-commits
-        # gpgsign = true
-
-[credential]
-        # https://docs.github.com/en/free-pro-team@latest/github/using-git/caching-your-github-credentials-in-git
-        # Windows: https://git-scm.com/download/win
-        # helper = wincred
-        # WSL: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/wsl.md
-        # helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
-        # macOS: https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md#macos-homebrew
-        # helper = /usr/local/share/gcm-core/git-credential-manager-core
-        # Linux: https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md#linux
-        # credentialStore = gpg
-        # helper = /usr/bin/git-credential-manager-core
-
-[credential "https://dev.azure.com"]
-        # needed for git-credential-manager-core
-        useHttpPath = true
+    # https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits
+    # gpgsign = true
 
 [gpg]
-        # Windows https://www.gpg4win.org/
-        # program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
-        # WSL
-        # program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe
-        # macOS / Linux
-        # program = gpg
+    # Windows https://www.gpg4win.org/
+    # program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+    
+    # WSL https://www.gpg4win.org/
+    # program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe
+    
+    # macOS / Linux https://gnupg.org/
+    # program = gpg
 
-[include]
-        path = ~/Dotfiles/config/git/global.gitconfig
+# https://github.com/GitCredentialManager/git-credential-manager
+[credential]
+    # Windows: https://github.com/GitCredentialManager/git-credential-manager#windows
+    # helper = C:\\Program Files \\Git\\mingw64\\libexec\\git-core\\git-credential-manager.exe
+    
+    # WSL: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/wsl.md
+    # helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+    
+    # macOS: https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md#macos-homebrew
+    # helper = /usr/local/share/gcm-core/git-credential-manager-core
+    
+    # Linux: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/credstores.md#gpgpass-compatible-files
+    # helper = /usr/bin/git-credential-manager-core
+    # credentialStore = gpg
+    # guiPrompt = false
 
+# https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/faq.md#why-is-the-credentialusehttppath-setting-required-for-devazurecom
+[credential "https://dev.azure.com"]
+    useHttpPath = true
+
+# git LFS support
 [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
-
-[core]
-        autocrlf = input # use true for Windows
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
 # include any folder specific overrides, e.g work email
 [includeIf "gitdir:~/Workspace/"]
-    	path = ~/Workspace/.gitconfig
+    path = ~/Workspace/.gitconfig
