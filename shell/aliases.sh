@@ -160,8 +160,8 @@ alias jq='fx'
 # lazygit: git ui https://github.com/jesseduffield/lazygit
 alias g-ui='lazygit'
 
-# clear gradle cache
-alias gradle-cache='rm "${HOME}/.gradle/caches/build-cache-1/"'
+# clear gradle cache and clean project
+alias gradle-clean='rm -f "${HOME}/.gradle/caches/build-cache-1/" && ./gradlew --no-daemon clean && clear'
 
 # speed test with large file
 alias speedtest='curl http://ipv4.download.thinkbroadband.com/1GB.zip -o /dev/null'
