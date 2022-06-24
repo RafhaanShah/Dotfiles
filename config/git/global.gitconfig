@@ -58,7 +58,7 @@
 
     aliases = "!al() { git config --get-regexp alias | grep \"${*:-alias}\"; }; al"
     amend = commit --amend
-    amend-date = commit amend --no-edit --date=now
+    amend-date = commit --amend --no-edit --date=now
     cleanup = "!cln() { git branch -vv | grep ': gone]'|  grep -v \"*\" | awk '{ print $1; }' | xargs git branch -D; }; cln"
     current-branch = "!cbr() { git rev-parse --abbrev-ref HEAD; }; cbr"
     default-branch = "!dbr() { br=\"$(git rev-parse --abbrev-ref origin/HEAD)\" && echo \"${br#origin/}\"; }; dbr"
