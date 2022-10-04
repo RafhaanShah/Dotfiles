@@ -47,7 +47,7 @@ brew "fortune"
 brew "fpp"
 # Platform built on V8 to build network applications
 brew "node"
-# Command-line JSON processing tool
+# Terminal JSON viewer
 brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
@@ -95,6 +95,8 @@ brew "nano"
 brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
+# Space Invaders in the terminal
+brew "ninvaders"
 # Classic snake game with textual interface
 brew "nsnake"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
@@ -139,17 +141,11 @@ brew "zsh"
 brew "jesseduffield/lazygit/lazygit"
 # Tool to hide status bar icons
 cask "dozer"
-# System-wide audio equalizer
-cask "eqmac"
 cask "git-credential-manager-core"
 # Desktop client for GitHub repositories
 cask "github"
 # Desktop automation application
 cask "hammerspoon"
-# Menu bar application that displays the CPU speed limit due to thermal issues
-cask "hot"
-# System monitor for the status bar
-cask "iglance"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar calendar
@@ -164,5 +160,7 @@ cask "proxyman"
 cask "qview"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# System monitor for the menu bar
+cask "stats"
 # General-purpose text editor
 cask "textmate"
