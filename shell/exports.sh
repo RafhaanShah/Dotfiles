@@ -42,3 +42,6 @@ export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
 
 # https://consoledonottrack.com/
 export DO_NOT_TRACK=1
+
+# used for determining how to view files
+export LESSOPEN="|${DOTFILE_DIR}/bin/lessfilter.sh %s"
