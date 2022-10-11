@@ -133,7 +133,13 @@ ftext() { grep -iIHrn --exclude-dir='.*' "$@"; }
 fpath() { echo "$(pwd)/$1"; }
 
 # simple python http server
-server() { python3 -m http.server "${1:-8069}"; }
+server() {
+    if [ -f "${HOME}/bin/server.py" ]; then
+        python3 "${HOME}/bin/server.py" "${1:-8069}"
+    else
+        python3 -m http.server "${1:-8069}"
+    fi
+}
 
 # backs up a directory to a tar
 tar-backup() {
