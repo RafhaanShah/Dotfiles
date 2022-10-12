@@ -138,6 +138,10 @@ alias adb-link='adb shell am start -d'
 # calculator tool
 alias calc='bc'
 
+# cheat.sh
+alias cheat='cht.sh'
+alias cht='cheat'
+
 # docker: app containers https://docs.docker.com/engine/install/
 alias dk='docker'
 alias dk-clean='docker system prune'
@@ -157,11 +161,18 @@ alias bored='fcl'
 alias json='fx'
 alias jq='fx'
 
+# google
+alias goog='google'
+
 # lazygit: git ui https://github.com/jesseduffield/lazygit
 alias g-ui='lazygit'
 
 # clear gradle cache and clean project
 alias gradle-clean='rm -f "${HOME}/.gradle/caches/build-cache-1/" && ./gradlew --no-daemon clean && clear'
+
+# howdoi
+alias howto='howdoi'
+alias how2='howto'
 
 # speed test with large file
 alias speedtest='curl http://ipv4.download.thinkbroadband.com/1GB.zip -o /dev/null'

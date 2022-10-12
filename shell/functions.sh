@@ -132,6 +132,9 @@ ftext() { grep -iIHrn --exclude-dir='.*' "$@"; }
 # gets full path of file in current folder
 fpath() { echo "$(pwd)/$1"; }
 
+# search google
+google() { open "https://www.google.com/search?q=${*// /+}"; }
+
 # simple python http server
 server() {
     if [ -f "${HOME}/bin/server.py" ]; then

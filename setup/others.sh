@@ -24,11 +24,7 @@ mkdir -p "${HOME}/bin"
 
 # cheat.sh: cli cheatsheets
 # https://github.com/chubin/cheat.sh
-get_script "https://cht.sh/:cht.sh" "cht"
-
-# tldr: better manpages
-# https://github.com/tldr-pages/tldr
-get_script "https://raw.githubusercontent.com/raylee/tldr/master/tldr" "tldr"
+get_script "https://cht.sh/:cht.sh" "cht.sh"
 
 # python simple http server with directory listing and upload
 # https://github.com/sgrontflix/simplehttpserverwithupload
