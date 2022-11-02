@@ -12,7 +12,7 @@
 
 # do not add HIST_IGNORE commands to interactive history, filter overly long commands
 # shellcheck disable=SC2053
-_zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]] && [ ${#1%%$'\n'} -lt 50 ]; }
+_zshaddhistory_filter() { [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]] && [ ${#1%%$'\n'} -lt 100 ]; }
 zshaddhistory_functions+=(_zshaddhistory_filter)
 
 ### overrides
