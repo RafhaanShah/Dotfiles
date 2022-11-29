@@ -21,8 +21,6 @@ brew "bat"
 brew "binutils"
 # Linux/OSX/FreeBSD resource monitor
 brew "bpytop"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Core application library for C
 brew "glib"
 # File comparison utilities
@@ -45,8 +43,6 @@ brew "findutils"
 brew "fortune"
 # CLI program that accepts piped input and presents files for selection
 brew "fpp"
-# Platform built on V8 to build network applications
-brew "node"
 # Terminal JSON viewer
 brew "fx"
 # Command-line fuzzy finder written in Go
@@ -97,6 +93,8 @@ brew "ncdu"
 brew "neofetch"
 # Space Invaders in the terminal
 brew "ninvaders"
+# Platform built on V8 to build network applications
+brew "node"
 # Classic snake game with textual interface
 brew "nsnake"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
@@ -107,6 +105,8 @@ brew "openssh"
 brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Display and control your Android device
@@ -150,6 +150,8 @@ cask "hammerspoon"
 cask "iterm2"
 # Menu bar calendar
 cask "itsycal"
+# Customize mouse behavior
+cask "linearmouse"
 # Finder Toolbar app to open the current directory in Terminal or Editor
 cask "openinterminal"
 # HTTP client that helps testing and describing APIs
@@ -160,6 +162,8 @@ cask "proxyman"
 cask "qview"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Screenshot measurement and annotation tool
+cask "shottr"
 # System monitor for the menu bar
 cask "stats"
 # General-purpose text editor
