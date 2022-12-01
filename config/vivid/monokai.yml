@@ -1,6 +1,6 @@
 colors:
   # Theme colors
-  background_color: '272822'
+  background_color: "272822"
   purple: "AE81FF"
   yellow: "FFE894"
   pink: "F92672"
@@ -17,7 +17,9 @@ colors:
   darkgray: "3E3D32"
 
 core:
+  normal_text: {}
   regular_file: {}
+  reset_to_normal: {}
 
   directory:
     foreground: cyan
@@ -32,6 +34,7 @@ core:
   broken_symlink:
     foreground: black
     background: red
+  
   missing_symlink_target:
     foreground: black
     background: red
@@ -44,6 +47,10 @@ core:
     foreground: black
     background: pink
 
+  door:
+    foreground: black
+    background: pink
+
   character_device:
     foreground: pink
     background: darkgray
@@ -52,17 +59,19 @@ core:
     foreground: cyan
     background: darkgray
 
-  normal_text:
-    {}
+  sticky: {}
 
-  sticky:
-    {}
+  sticky_other_writable: {}
 
-  sticky_other_writable:
-    {}
+  other_writable: {}
+  
+  setuid: {}
 
-  other_writable:
-    {}
+  setgid: {}
+  
+  file_with_capability: {}
+  
+  multi_hard_link: {}
 
 text:
   special:
