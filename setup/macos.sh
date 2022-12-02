@@ -22,6 +22,7 @@ fi
 
 # brew packages
 echo "Installing brew packages..."
+brew analytics off
 brew bundle --file "${DOTFILE_DIR}/packages/brew.txt"
 
 # npm packages
