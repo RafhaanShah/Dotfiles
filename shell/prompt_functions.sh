@@ -1,6 +1,6 @@
 ### functions used in prompts
 # shellcheck shell=bash
-# shellcheck disable=SC2059
+# shellcheck disable=SC2317
 
 # set this varable to disable git-prompt in specific repos
 # _PROMPT_GIT_STATUS_BLOCKLIST=(
