@@ -113,7 +113,7 @@ _fuzzy_file_completion() {
         if [[ $BASENAME == .* ]]; then
             local FILES=$(\ls -A $DIRPATH 2>/dev/null)
         else
-            local FILES=$(\ls -A $DIRPATH 2>/dev/null | egrep -v '^\.')
+            local FILES=$(\ls -A $DIRPATH 2>/dev/null | grep -E -v '^\.')
         fi
         local X=$(echo "$FILES" | \grep -i "$BASENAME" 2>/dev/null)
         if [ -z "$X" ]; then
@@ -140,9 +140,9 @@ _fuzzy_dir_completion() {
         FILTER=$(echo "$BASENAME" | sed 's|.|\0.*|g')
         if [[ $BASENAME == .* ]]; then
             if [ -z "$DIRPATH" ]; then
-                DIRS=$(\ls -d .*/ | \egrep -v '^\./$|^\.\./$')
+                DIRS=$(\ls -d .*/ | \grep -E -v '^\./$|^\.\./$')
             else
-                DIRS=$(\ls -d ${DIRPATH}.*/ | sed "s|^$DIRPATH||g" | \egrep -v '^\./$|^\.\./$')
+                DIRS=$(\ls -d ${DIRPATH}.*/ | sed "s|^$DIRPATH||g" | \grep -E -v '^\./$|^\.\./$')
             fi
         else
             if [ -z "$DIRPATH" ]; then
