@@ -3,12 +3,13 @@
 
 # add extra directories to the PATH
 PATH_DIRS=(
-    "${HOME}/bin"                                # home bin
-    "${HOME}/.local/bin"                         # alternative bin
-    "${HOME}/.npm-global/bin"                    # npm global bin
-    "${HOME}/Library/Android/sdk/platform-tools" # macOS Android tools
-    "/usr/local/go/bin"                          # go
-    "/snap/bin"                                  # snap bin
+    "${HOME}/bin"                                          # home bin
+    "${HOME}/.local/bin"                                   # alternative bin
+    "${HOME}/.npm-global/bin"                              # npm global bin
+    "${HOME}/Library/Android/sdk/platform-tools"           # macOS Android platform tools
+    "${HOME}/Library/Android/sdk/cmdline-tools/latest/bin" # macOS Android cmdline tools
+    "/usr/local/go/bin"                                    # go
+    "/snap/bin"                                            # snap bin
 )
 
 for DIR in "${PATH_DIRS[@]}"; do
