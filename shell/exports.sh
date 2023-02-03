@@ -46,3 +46,6 @@ export DO_NOT_TRACK=1
 
 # used for determining how to view files
 export LESSOPEN="|${DOTFILE_DIR}/bin/lessfilter.sh %s"
+
+# don't spend half an hour updating everything when you just want something installed
+export HOMEBREW_NO_AUTO_UPDATE=1

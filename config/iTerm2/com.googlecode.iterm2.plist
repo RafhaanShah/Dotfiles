@@ -707,7 +707,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<integer>25</integer>
+			<real>19.581923204787234</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1220,7 +1220,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.40000000000000002</real>
+			<real>0.19818816489361704</real>
 			<key>Underline Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1347,6 +1347,10 @@
 	<true/>
 	<key>ThreeFingerEmulates</key>
 	<true/>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+	</array>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
