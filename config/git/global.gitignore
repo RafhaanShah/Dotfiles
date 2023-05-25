@@ -1,5 +1,8 @@
-# global gitignores
+### global gitignores
 # https://github.com/github/gitignore
+# to be included in .gitconfig
+# [core]
+#    excludesfile = ~/Dotfiles/config/git/global.gitignore
 
 ### Windows
 # Windows thumbnail cache files

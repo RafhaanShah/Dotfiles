@@ -2,7 +2,7 @@
 # https://git-scm.com/docs/git-config
 # to be included in main .gitconfig
 # [include]
-    # path = ~/Dotfiles/config/git/global.gitconfig
+#    path = ~/Dotfiles/config/git/global.gitconfig
 
 [core]
     # editor used, GIT_EDITOR overrides this

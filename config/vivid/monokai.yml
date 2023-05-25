@@ -1,3 +1,6 @@
+### vivid LS_COLORS theme
+# https://github.com/sharkdp/vivid
+# LS_COLORS="$(vivid generate "${DOTFILE_DIR}/config/vivid/monokai.yml")"
 colors:
   # Theme colors
   background_color: "272822"

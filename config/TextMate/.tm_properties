@@ -1,2 +1,6 @@
+### TextMate settings, override project settings
+# https://github.com/textmate/textmate/blob/master/.tm_properties
+# ${HOME}/.tm_properties
+
 include = "{$include,.*}"
 exclude = "{$exclude,.git}"
