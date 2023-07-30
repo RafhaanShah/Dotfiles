@@ -33,25 +33,23 @@
     # macOS / Linux https://gnupg.org/
     # program = gpg
 
-# https://github.com/GitCredentialManager/git-credential-manager
+# https://github.com/git-ecosystem/git-credential-manager/
 [credential]
-    # Windows: https://github.com/GitCredentialManager/git-credential-manager#windows
+    # Windows: https://github.com/git-ecosystem/git-credential-manager/tree/release/docs/install.md#windows
     # helper = C:\\Program Files \\Git\\mingw64\\libexec\\git-core\\git-credential-manager.exe
+    # credentialStore = wincredman
     
-    # WSL: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/wsl.md
-    # helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+    # WSL: https://github.com/git-ecosystem/git-credential-manager/tree/release/docs/install.md#windows-subsystem-for-linux-wsl
+    # helper = "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
     
-    # macOS: https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md#macos-homebrew
+    # macOS: https://github.com/git-ecosystem/git-credential-manager/tree/release/docs/install.md#macos
     # helper = /usr/local/share/gcm-core/git-credential-manager-core
+    # credentialStore = keychain
     
-    # Linux: https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/credstores.md#gpgpass-compatible-files
-    # helper = /usr/bin/git-credential-manager-core
+    # Linux: https://github.com/git-ecosystem/git-credential-manager/tree/main/docs/credstores.md#gpgpass-compatible-files
+    # helper = /usr/local/bin/git-credential-manager
     # credentialStore = gpg
     # guiPrompt = false
-
-# https://github.com/GitCredentialManager/git-credential-manager/blob/main/docs/faq.md#why-is-the-credentialusehttppath-setting-required-for-devazurecom
-[credential "https://dev.azure.com"]
-    useHttpPath = true
 
 # git LFS support
 [filter "lfs"]

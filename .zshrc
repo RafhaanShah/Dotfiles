@@ -112,7 +112,7 @@ _load_completions() {
     zinit snippet 'https://cheat.sh/:zsh'
     
     zinit ice as"completion"
-    zinit snippet 'OMZ::plugins/docker/_docker'
+    zinit snippet 'OMZ::plugins/docker/completions/_docker'
     
     zinit ice as"completion"
     zinit snippet 'OMZ::plugins/docker-compose/_docker-compose'
