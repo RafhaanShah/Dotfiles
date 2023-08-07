@@ -132,8 +132,23 @@ ftext() { grep -iIHrn --exclude-dir='.*' "$@"; }
 # gets full path of file in current folder
 fpath() { echo "$(pwd)/$1"; }
 
-# search google
-google() { open "https://www.google.com/search?q=${*// /+}"; }
+# copy a file to a remote machine
+scp-from() {
+    if [ "$#" -lt 2 ]; then
+        echo "Usage scp-from remote-machine /home/user/file.txt ./file.txt"
+    else
+        scp "${1}:${2}" "${3}"
+    fi
+}
+
+# copy a file to a remote machine
+scp-to() {
+    if [ "$#" -lt 3 ]; then
+        echo "Usage scp-to ./file.txt remote-machine /home/user/file.txt"
+    else
+        scp "${1}" "${2}:${3}"
+    fi
+}
 
 # simple python http server
 server() {
@@ -267,16 +282,21 @@ f() {
     cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return
 }
 
+# scrcpy: android screen mirror
+scr-record() {
+    scrcpy --bit-rate 2M --max-fps 30 --no-display --no-clipboard-autosync --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
+}
+
+### misc
+
 # opens command cheat sheet on devhints.io
 hint() { open "https://devhints.io/$1"; }
 
 # enerate a qrcode
 qrcode() { curl "http://qrenco.de/$1"; }
 
-# scrcpy: android screen mirror
-scr-record() {
-    scrcpy --bit-rate 2M --max-fps 30 --no-display --no-clipboard-autosync --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
-}
+# search google
+google() { open "https://www.google.com/search?q=${*// /+}"; }
 
 # shows the current weather
 weather() { curl "http://wttr.in/${1:-London}"; }
