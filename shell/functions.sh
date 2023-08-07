@@ -132,21 +132,14 @@ ftext() { grep -iIHrn --exclude-dir='.*' "$@"; }
 # gets full path of file in current folder
 fpath() { echo "$(pwd)/$1"; }
 
-# copy a file to a remote machine
-scp-from() {
+# copy a file to/from a remote machine
+scp-copy() {
     if [ "$#" -lt 2 ]; then
-        echo "Usage scp-from remote-machine /home/user/file.txt ./file.txt"
+        echo "Usage scp-copy FROM TO"
+        echo "Usage scp-copy ./file.txt remote-machine:/home/user/file.txt"
+        echo "Usage scp-copy remote-machine:home/user/file.txt ./file.txt"
     else
-        scp "${1}:${2}" "${3}"
-    fi
-}
-
-# copy a file to a remote machine
-scp-to() {
-    if [ "$#" -lt 3 ]; then
-        echo "Usage scp-to ./file.txt remote-machine /home/user/file.txt"
-    else
-        scp "${1}" "${2}:${3}"
+        scp -r "${1}" "${2}"
     fi
 }
 
