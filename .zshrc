@@ -96,8 +96,8 @@ _configure_autosuggestions() {
     ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
     # suggest from history and possible completions
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    # ignore patterns for history suggestions
-    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|c *|mkdir *|mkd *|cat *|nano *|?(#c50,)"
+    # ignore patterns for history suggestions, and length
+    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|c *|mkdir *|mkd *|cat *|nano *|?(#c250,)"
     # ignore patterns for completion suggestions
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE="echo *"
     # accept the current suggestion word with ctrl space
