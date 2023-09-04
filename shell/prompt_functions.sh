@@ -38,6 +38,8 @@ _prompt_git_blocklist() {
         local wd="${PWD##*/}"
         _in_list "${wd}" "${_PROMPT_GIT_STATUS_BLOCKLIST[@]}" && return 1
     fi
+
+    return 0
 }
 
 # faster git status for prompts
