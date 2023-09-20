@@ -118,7 +118,7 @@ alias reload='exec "${0//-}" -l'
 alias runnable='chmod +x'
 
 # gets the size of a file or directory
-alias sizeof='du -h'
+alias sizeof='du -sh'
 
 # get the name of the current directory
 alias wd='echo ${PWD##*/}'
@@ -134,6 +134,9 @@ alias adb-clear='adb shell pm clear'
 
 # adb deeplink
 alias adb-link='adb shell am start -d'
+
+# adb current activity
+alias adb-activity='adb shell dumpsys activity activities | grep mResumedActivity'
 
 # calculator tool
 alias calc='bc'
