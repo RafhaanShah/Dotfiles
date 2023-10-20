@@ -141,7 +141,11 @@ alias adb-activity='adb shell dumpsys activity activities | grep "mResumedActivi
 # adb list packages
 alias adb-packages='adb shell pm list packages'
 
+# adb check display state
 alias adb-display='adb shell dumpsys power | grep "Display"'
+
+# adb force display to stay awake
+alias adb-awake='adb shell svc power stayon true'
 
 # calculator tool
 alias calc='bc'
