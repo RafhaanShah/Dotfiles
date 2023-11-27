@@ -136,10 +136,10 @@ alias adb-clear='adb shell pm clear'
 alias adb-link='adb shell am start -d'
 
 # adb current activity
-alias adb-activity='adb shell dumpsys activity activities | grep "mResumedActivity"'
+alias adb-activity='adb shell dumpsys activity activities | grep -i "resume"'
 
 # adb list packages
-alias adb-packages='adb shell pm list packages'
+alias adb-packages='adb shell pm list packages | sort'
 
 # adb check display state
 alias adb-display='adb shell dumpsys power | grep "Display"'

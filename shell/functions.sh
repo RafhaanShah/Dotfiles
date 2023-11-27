@@ -266,6 +266,11 @@ adb-dark-mode() {
     esac
 }
 
+# kill an app
+adb-kill() {
+    adb shell ps | grep "${1:?Package name not set}" | awk '{print $2}' | xargs adb shell kill
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "$1" "${2:-sh}"; }
 

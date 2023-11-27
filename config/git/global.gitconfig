@@ -55,6 +55,7 @@
     pr = pull-req
     pl = pull
     ps = push
+    root = rev-parse --show-toplevel
     st = status
     sq = squash
     unst = unstage
