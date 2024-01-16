@@ -271,6 +271,11 @@ adb-kill() {
     adb shell ps | grep "${1:?Package name not set}" | awk '{print $2}' | xargs adb shell kill
 }
 
+# adb launch app
+adb-launch() {
+    adb shell monkey "${1}" -p
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "$1" "${2:-sh}"; }
 
