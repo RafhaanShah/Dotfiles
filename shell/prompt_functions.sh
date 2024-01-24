@@ -35,8 +35,13 @@ _prompt_git_changed() {
 # checks if git prompt should be ignored
 _prompt_git_blocklist() {
     if _variable_set "${_PROMPT_GIT_STATUS_BLOCKLIST}"; then
-        local wd="${PWD##*/}"
-        _in_list "${wd}" "${_PROMPT_GIT_STATUS_BLOCKLIST[@]}" && return 1
+
+        _is_zsh && IFS=$'/' read -r -A _PATH_PARTS <<<"${PWD}"
+        _is_bash && IFS=$'/' read -r -a _PATH_PARTS <<<"${PWD}"
+
+        for part in "${_PATH_PARTS[@]}"; do
+            _in_list "${part}" "${_PROMPT_GIT_STATUS_BLOCKLIST[@]}" && return 1
+        done
     fi
 
     return 0
