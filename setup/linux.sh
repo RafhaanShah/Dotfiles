@@ -79,8 +79,8 @@ while read -r line; do
     fi
 done <"${DOTFILE_DIR}/packages/deb.txt"
 
-# shellcheck source=../packages/linux-etc.sh
-source "${DOTFILE_DIR}/packages/linux-etc.sh"
+# shellcheck source=linux-etc.sh
+source "${DOTFILE_DIR}/setup/linux-etc.sh"
 
 # other scripts
 # shellcheck source=others.sh
