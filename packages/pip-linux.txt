@@ -1,3 +1,0 @@
-bpytop
-httpie
-thefuck

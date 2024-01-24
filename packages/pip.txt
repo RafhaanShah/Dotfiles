@@ -1,2 +1,5 @@
+bpytop
 howdoi
+httpie
+thefuck
 yamllint

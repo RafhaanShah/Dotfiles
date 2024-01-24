@@ -1,14 +1,29 @@
 tap "buo/cask-upgrade"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/command-not-found"
-tap "homebrew/core"
 tap "jesseduffield/lazygit"
 tap "microsoft/git"
+tap "veeso/termscp"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
+# New file format for still image compression
+brew "jpeg-xl"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
+# Core application library for C
+brew "glib"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Development kit for the Java programming language
+brew "openjdk"
+# Tool for reverse engineering 3rd party, closed, binary Android apps
+brew "apktool"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.2+
@@ -19,22 +34,28 @@ brew "bastet"
 brew "bat"
 # GNU binary tools for native development
 brew "binutils"
-# Linux/OSX/FreeBSD resource monitor
-brew "bpytop"
-# Core application library for C
-brew "glib"
+# Get/set bluetooth power and discoverable state
+brew "blueutil"
 # File comparison utilities
 brew "diffutils"
+# Program that can automate interactive applications
+brew "expect"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Simple file manager written in bash
 brew "fff"
 # Validating, recursive, caching DNS resolver
 brew "unbound"
-# OpenType text shaping engine
-brew "harfbuzz"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# Image processing and image analysis library
+brew "leptonica"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Utility to determine file types
 brew "file-formula"
 # Collection of GNU find, xargs, and locate
@@ -43,8 +64,6 @@ brew "findutils"
 brew "fortune"
 # CLI program that accepts piped input and presents files for selection
 brew "fpp"
-# Terminal JSON viewer
-brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -69,8 +88,6 @@ brew "gnupg"
 brew "grep"
 # Popular GNU data compression program
 brew "gzip"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Pager program similar to more
@@ -105,10 +122,10 @@ brew "openssh"
 brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # Display and control your Android device
 brew "scrcpy"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -117,14 +134,10 @@ brew "shellcheck"
 brew "shfmt"
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
-# SMART hard drive monitoring
-brew "smartmontools"
 # Space Invaders in your terminal written in Go
 brew "spaceinvaders-go"
 # Spotify daemon
 brew "spotifyd"
-# Programmatically correct mistyped console commands
-brew "thefuck"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Generator for LS_COLORS with support for multiple color themes
@@ -139,6 +152,8 @@ brew "zoxide"
 brew "zsh"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
+# A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/SMB
+brew "veeso/termscp/termscp"
 # Tool to hide status bar icons
 cask "dozer"
 cask "git-credential-manager-core"
@@ -156,7 +171,7 @@ cask "linearmouse"
 cask "openinterminal"
 # HTTP client that helps testing and describing APIs
 cask "paw"
-# Modern and intuitive HTTP Debugging Proxy app
+# HTTP debugging proxy
 cask "proxyman"
 # Image viewer
 cask "qview"
