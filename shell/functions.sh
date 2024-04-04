@@ -273,11 +273,11 @@ adb-kill() {
 
 # adb launch app
 adb-launch() {
-    adb shell monkey "${1}" -p
+    adb shell monkey "${1?Package name not set}" -p 1
 }
 
 # exec into a docker container
-dk-exec() { docker exec -it "$1" "${2:-sh}"; }
+dk-exec() { docker exec -it "${1?Container name not set}" "${2:-sh}"; }
 
 # file manager: https://github.com/dylanaraps/fff
 f() {
