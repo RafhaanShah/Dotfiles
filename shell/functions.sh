@@ -273,7 +273,7 @@ adb-kill() {
 
 # adb launch app
 adb-launch() {
-    adb shell monkey "${1?Package name not set}" -p 1
+    adb shell monkey -p "${1?Package name not set}" 1
 }
 
 # exec into a docker container

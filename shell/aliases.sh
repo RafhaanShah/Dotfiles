@@ -147,6 +147,17 @@ alias adb-display='adb shell dumpsys power | grep "Display"'
 # adb force display to stay awake
 alias adb-awake='adb shell svc power stayon true'
 
+# adb dump all notifications
+alias adb-notifications='adb shell dumpsys notification | grep "NotificationRecord"'
+alias adb-notif='adb-notifications'
+
+# adb dump package details
+alias adb-dump='adb shell dumpsys package'
+
+# adb type in text
+alias adb-input='adb shell input text'
+alias adb-type='adb-input'
+
 # calculator tool
 alias calc='bc'
 
