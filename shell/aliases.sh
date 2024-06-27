@@ -141,6 +141,12 @@ alias adb-activity='adb shell dumpsys activity activities | grep -i "resume"'
 # adb list packages
 alias adb-packages='adb shell pm list packages | sort'
 
+# adb list libraries
+alias adb-libraries='adb shell pm list libraries | sort'
+
+# adb list features
+alias adb-features='adb shell pm list features | sort'
+
 # adb check display state
 alias adb-display='adb shell dumpsys power | grep "Display"'
 
