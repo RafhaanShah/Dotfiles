@@ -276,6 +276,19 @@ adb-launch() {
     adb shell monkey -p "${1?Package name not set}" 1
 }
 
+# adb extract an APK
+adb-extract() {
+    local apk_path
+    apk_path=$(adb shell dumpsys package "${1?Package name not set}" 1 | grep "path:" | awk '/path: / {print $2}')
+
+    if [ -z "${apk_path}" ]; then
+        echo "APK path not found"
+        return 1
+    fi
+
+    adb pull "${apk_path}" "${1}.apk"
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "${1?Container name not set}" "${2:-sh}"; }
 
