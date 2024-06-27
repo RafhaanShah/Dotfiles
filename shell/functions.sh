@@ -291,7 +291,7 @@ adb-extract() {
 
 # dump version details of an APK
 apk-dump() {
-    aapt dump badging "${1?Package name not set}" | grep version
+    aapt dump badging "${1?Package name not set}" | grep -i version
 }
 
 # exec into a docker container
