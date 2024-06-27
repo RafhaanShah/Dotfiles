@@ -289,6 +289,11 @@ adb-extract() {
     adb pull "${apk_path}" "${1}.apk"
 }
 
+# dump version details of an APK
+apk-dump() {
+    aapt dump badging "${1?Package name not set}" | grep version
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "${1?Container name not set}" "${2:-sh}"; }
 
