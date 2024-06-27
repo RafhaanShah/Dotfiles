@@ -49,6 +49,7 @@ _prompt_git_blocklist() {
 
 # faster git status for prompts
 # https://github.com/romkatv/gitstatus
+# shellcheck disable=SC2329
 _prompt_git_fast() {
     # start gitstatusd instance with name "MY"
     # enable staged, unstaged, conflicted and untracked counters.
@@ -84,6 +85,7 @@ _prompt_git_fast() {
 # git repo status in the form: branch [↓1↑2|✔ ✖3✚4●5◯]
 # branch name, behind, ahead, clean, conflicts, staged, unstaged, untracked
 # adapted from https://github.com/magicmonty/bash-git-prompt/blob/master/gitstatus.sh
+# shellcheck disable=SC2329
 _prompt_git() {
     _is_git_repo || return 1
     _prompt_git_blocklist || return 1
@@ -174,6 +176,7 @@ _prompt_git() {
 # git repo status in the form: branch [1x+!?]
 # branch, number of changes, conflicts, staged, unstaged, untracked
 # adapted from https://github.com/mathiasbynens/dotfiles/blob/main/.bash_prompt
+# shellcheck disable=SC2329
 _prompt_git_basic() {
     _is_git_repo || return 1
     _prompt_git_blocklist || return 1
