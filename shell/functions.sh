@@ -294,6 +294,11 @@ apk-dump() {
     aapt dump badging "${1?Package name not set}" | grep -i version
 }
 
+# dump libraries in an APK
+apk-lib() {
+    unzip -Z1 "${1?Package name not set}" "lib/*"
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "${1?Container name not set}" "${2:-sh}"; }
 
