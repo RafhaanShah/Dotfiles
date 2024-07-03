@@ -289,6 +289,13 @@ adb-extract() {
     adb pull "${apk_path}" "${1}.apk"
 }
 
+# adb logcat filtered by package
+adb-logcat() {
+    local package_pid
+    package_pid=$(adb shell pidof "${1?Package name not set}")
+    adb logcat --pid="${package_pid}"
+}
+
 # dump version details of an APK
 apk-dump() {
     aapt dump badging "${1?Package name not set}" | grep -i version
