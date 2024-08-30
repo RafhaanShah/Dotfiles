@@ -164,6 +164,10 @@ alias adb-dump='adb shell dumpsys package'
 alias adb-input='adb shell input text'
 alias adb-type='adb-input'
 
+alias adb-remote='python3 "${DOTFILE_DIR}/bin/adb-remote-tui.py"'
+
+alias bytecode='java -jar "${HOME}/bin/Bytecode-Viewer.jar"'
+
 # calculator tool
 alias calc='bc'
 
