@@ -306,6 +306,23 @@ apk-lib() {
     unzip -Z1 "${1?Package name not set}" "lib/*"
 }
 
+# check for compressed dex and libs in an APK
+apk-compressed() {
+    unzip -lv "${1?Package name not set}" | grep "\.so\|\.dex"
+}
+
+# prints the signature of an APK
+apk-cert() {
+    apksigner verify --print-certs -v "${1?Package name not set}" | grep -v "not protected by signature"
+}
+
+alias apk-signature='apk-cert'
+
+# signs an APK
+apk-sign() {
+    apksigner sign --ks "${2:-debug.keystore}" --ks-key-alias "${3:-androiddebugkey}" --ks-pass "${4:-android}" "${1?Package name not set}"
+}
+
 # exec into a docker container
 dk-exec() { docker exec -it "${1?Container name not set}" "${2:-sh}"; }
 
