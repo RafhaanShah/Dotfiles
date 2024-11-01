@@ -334,7 +334,7 @@ f() {
 
 # scrcpy: android screen mirror
 scr-record() {
-    scrcpy --bit-rate 2M --max-fps 30 --no-display --no-clipboard-autosync --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
+    scrcpy --video-bit-rate 2M --max-fps 30 --no-playback --no-window --no-clipboard-autosync --no-control --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
 }
 
 ### misc
