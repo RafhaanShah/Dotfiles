@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/command-not-found"
 tap "jesseduffield/lazygit"
 tap "microsoft/git"
+tap "mobile-dev-inc/tap"
 tap "veeso/termscp"
 # Color management engine supporting ICC profiles
 brew "little-cms2"
@@ -22,8 +23,6 @@ brew "apktool"
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.2+
@@ -38,6 +37,8 @@ brew "binutils"
 brew "blueutil"
 # File comparison utilities
 brew "diffutils"
+# View disk space usage and delete unwanted data, fast
+brew "dua-cli"
 # Program that can automate interactive applications
 brew "expect"
 # Simple, fast and user-friendly alternative to find
@@ -50,6 +51,8 @@ brew "unbound"
 brew "gnutls"
 # Image processing and image analysis library
 brew "leptonica"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # OCR (Optical Character Recognition) engine
@@ -64,6 +67,8 @@ brew "findutils"
 brew "fortune"
 # CLI program that accepts piped input and presents files for selection
 brew "fpp"
+# Platform built on V8 to build network applications
+brew "node"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -110,8 +115,6 @@ brew "ncdu"
 brew "neofetch"
 # Space Invaders in the terminal
 brew "ninvaders"
-# Platform built on V8 to build network applications
-brew "node"
 # Classic snake game with textual interface
 brew "nsnake"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
@@ -122,6 +125,10 @@ brew "openssh"
 brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
+# Python version management
+brew "pyenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -153,10 +160,12 @@ brew "zsh"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
 # A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/SMB
+# The easiest way to automate UI testing for your mobile app
+brew "mobile-dev-inc/tap/maestro"
+# A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/Kube/SMB/WebDAV
 brew "veeso/termscp/termscp"
 # Tool to hide status bar icons
 cask "dozer"
-cask "git-credential-manager-core"
 # Desktop client for GitHub repositories
 cask "github"
 # Desktop automation application
@@ -165,12 +174,12 @@ cask "hammerspoon"
 cask "iterm2"
 # Menu bar calendar
 cask "itsycal"
-# Customize mouse behavior
+# Customise mouse behavior
 cask "linearmouse"
 # Finder Toolbar app to open the current directory in Terminal or Editor
 cask "openinterminal"
 # HTTP client that helps testing and describing APIs
-cask "paw"
+cask "rapidapi"
 # HTTP debugging proxy
 cask "proxyman"
 # Image viewer
@@ -183,3 +192,5 @@ cask "shottr"
 cask "stats"
 # General-purpose text editor
 cask "textmate"
+# Open-source version of the X.Org X Window System
+cask "xquartz"
