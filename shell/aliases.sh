@@ -148,7 +148,13 @@ alias adb-libraries='adb shell pm list libraries | sort'
 alias adb-features='adb shell pm list features | sort'
 
 # adb check display state
-alias adb-display='adb shell dumpsys power | grep "Display"'
+alias adb-dump-display='adb shell dumpsys power | grep "Display"'
+
+# adb list last input
+alias adb-dump-input='adb shell dumpsys input | grep keyCode='
+
+# adb dump package details
+alias adb-dump-app='adb shell dumpsys package'
 
 # adb force display to stay awake
 alias adb-awake='adb shell svc power stayon true'
@@ -157,12 +163,20 @@ alias adb-awake='adb shell svc power stayon true'
 alias adb-notifications='adb shell dumpsys notification | grep "NotificationRecord"'
 alias adb-notif='adb-notifications'
 
-# adb dump package details
-alias adb-dump='adb shell dumpsys package'
+# adb type in text and keys
+alias adb-input='adb shell input'
+alias adb-type='adb-input text'
+alias adb-text='adb-input text'
+alias adb-key='adb-input keyevent'
 
-# adb type in text
-alias adb-input='adb shell input text'
-alias adb-type='adb-input'
+# adb start an activity or aciton
+alias adb-start='adb shell am start'
+
+# adb send a broadcast
+alias adb-start='adb shell am broadcast'
+
+# adb grant a permission
+alias adb-grant='adb shell pm grant'
 
 alias adb-remote='python3 "${DOTFILE_DIR}/bin/adb-remote-tui.py"'
 

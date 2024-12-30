@@ -268,7 +268,7 @@ adb-dark-mode() {
 
 # kill an app
 adb-kill() {
-    adb shell ps | grep "${1:?Package name not set}" | awk '{print $2}' | xargs adb shell kill
+    adb shell pkill -f "${1?Package name not set}"
 }
 
 # adb launch app
