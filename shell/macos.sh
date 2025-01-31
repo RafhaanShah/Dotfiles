@@ -2,11 +2,9 @@
 # shellcheck shell=bash
 
 # brew: package manager for macOS https://brew.sh/
-if _command_exists "brew"; then
-    eval "$(brew shellenv)"
-
-    # brew sbin
-    _add_to_path "${HOMEBREW_PREFIX}/sbin"
+HOMEBREW_PATH="/opt/homebrew/bin/brew"
+if [ -f "${HOMEBREW_PATH}" ]; then
+    eval "$(${HOMEBREW_PATH} shellenv)"
 
     # gnu coreutils https://formulae.brew.sh/formula/coreutils
     _add_to_path "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin"
