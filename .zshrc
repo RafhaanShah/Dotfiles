@@ -231,3 +231,7 @@ compdef _directories __zoxide_z __zoxide_zi
 # accept menu option and run command with one enter press like bash
 zmodload -i zsh/complist # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 bindkey -M menuselect '^M' .accept-line
+
+# if zsh is giving tab completion errors like:
+# (eval):1: command not found
+# then: rm ~/.zcompdump; compinit

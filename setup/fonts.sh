@@ -14,8 +14,12 @@ source "${DOTFILE_DIR}/shell/helpers.sh"
 
 echo "Installing fonts..."
 
-MESLO_URL='https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf'
-MESLO_BOLD_URL='https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Bold/complete/Meslo%20LG%20M%20Bold%20Nerd%20Font%20Complete.ttf'
+
+# https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.tar.xz
+# TODO: download, unzip, install
+# MesloLGMNerdFont-*
+# MESLO_URL='https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf'
+# MESLO_BOLD_URL='https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Bold/complete/Meslo%20LG%20M%20Bold%20Nerd%20Font%20Complete.ttf'
 JB_MONO_URL='https://download.jetbrains.com/fonts/JetBrainsMono-2.225.zip'
 
 setup_fonts() {
@@ -36,8 +40,8 @@ setup_fonts() {
         mkdir -p "${FONT_DIR}"
     fi
 
-    curl -fLo "${FONT_DIR}/MesloLGM Nerd Font.ttf" "${MESLO_URL}"
-    curl -fLo "${FONT_DIR}/MesloLGM Bold Nerd Font.ttf" "${MESLO_BOLD_URL}"
+    # curl -fLo "${FONT_DIR}/MesloLGM Nerd Font.ttf" "${MESLO_URL}"
+    # curl -fLo "${FONT_DIR}/MesloLGM Bold Nerd Font.ttf" "${MESLO_BOLD_URL}"
     curl -fLo "${FONT_DIR}/JB_Mono.zip" "${JB_MONO_URL}"
     unzip -j "${FONT_DIR}/JB_Mono.zip" "fonts/ttf/*" -d "${FONT_DIR}"
     rm "${FONT_DIR}/JB_Mono.zip"

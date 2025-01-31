@@ -2,9 +2,8 @@
 # shellcheck shell=bash
 
 # brew: package manager for macOS https://brew.sh/
-_add_to_path "/opt/homebrew/bin" # M1 mac location
 if _command_exists "brew"; then
-    HOMEBREW_PREFIX="$(brew --prefix)" # /usr/local
+    eval "$(brew shellenv)"
 
     # brew sbin
     _add_to_path "${HOMEBREW_PREFIX}/sbin"
@@ -51,7 +50,7 @@ if _command_exists "brew"; then
     fi
 
     # zsh completions https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-    # _is_zsh && _add_to_fpath "${HOMEBREW_PREFIX}/share/zsh/site-functions" # seems to already be added
+    # done in .zshrc
 fi
 
 # non gnu ls options

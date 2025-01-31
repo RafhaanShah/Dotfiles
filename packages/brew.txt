@@ -164,8 +164,6 @@ brew "jesseduffield/lazygit/lazygit"
 brew "mobile-dev-inc/tap/maestro"
 # A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/Kube/SMB/WebDAV
 brew "veeso/termscp/termscp"
-# Tool to hide status bar icons
-cask "dozer"
 # Desktop client for GitHub repositories
 cask "github"
 # Desktop automation application
