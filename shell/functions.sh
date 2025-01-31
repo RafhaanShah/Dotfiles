@@ -296,6 +296,28 @@ adb-logcat() {
     adb logcat --pid="${package_pid}"
 }
 
+# select a connected ADB device
+adb-device() {
+    local devices
+    devices=$(adb devices | tail -n +2)
+
+    echo "${devices}" | nl -w2 -s'. '
+    echo -n "Select a device: "
+    local choice
+    read -r choice
+
+    local selected_device
+    selected_device=$(echo "${devices}" | sed -n "${choice}p" | awk '{print $1}')
+
+    if [ -z "$selected_device" ]; then
+        echo "Invalid selection made"
+        return 1
+    fi
+
+    export ANDROID_SERIAL="${selected_device}"
+    echo "ANDROID_SERIAL=${ANDROID_SERIAL}"
+}
+
 # dump version details of an APK
 apk-dump() {
     aapt dump badging "${1?Package name not set}" | grep -i version
