@@ -14,7 +14,6 @@ source "${DOTFILE_DIR}/shell/helpers.sh"
 
 echo "Installing fonts..."
 
-
 # https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.tar.xz
 # TODO: download, unzip, install
 # MesloLGMNerdFont-*
