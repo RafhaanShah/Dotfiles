@@ -48,7 +48,7 @@ alias g='git'
 
 # bechmark shell startup time
 # shellcheck disable=SC2142
-alias bench-shell='time "${0//-}" -i -c "echo -n"'
+alias bench-shell='time SHELL_TIME=1 "${0//-}" -i -c "echo -n"'
 
 # bash shell with no customisations
 alias clean-bash='bash --noprofile --norc'

@@ -4,6 +4,9 @@
 # shellcheck disable=SC2034
 # shellcheck source=/dev/null
 
+# start benchmarking
+[[ -n "${SHELL_TIME}" ]] && zmodload zsh/zprof
+
 # load config
 [ -f "${HOME}/Dotfiles/shell/loader.sh" ] && source "${HOME}/Dotfiles/shell/loader.sh"
 
@@ -134,7 +137,7 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
         'zdharma-continuum/zinit-annex-patch-dl' \
         'zdharma-continuum/zinit-annex-rust'
 
-	{ command -v "fzf" >/dev/null 2>&1 && zinit light 'Aloxaf/fzf-tab'} || true
+    _command_exists "fzf" && zinit light 'Aloxaf/fzf-tab'
 
     _load_completions
     _configure_autosuggestions
@@ -217,7 +220,10 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 	esac'
 
 # initialize zsh completion (should be after zinit plugins)
+# only regenerate completions once per 20 hours
+# https://gist.github.com/ctechols/ca1035271ad134841284
 autoload -Uz compinit
+# shellcheck disable=SC1009,SC1036,SC1072,SC1073
 if [[ -n  "${ZDOTDIR:-${HOME}}/.zcompdump"(#qN.mh+20) ]]; then
 	compinit;
 else
@@ -231,6 +237,9 @@ compdef _directories __zoxide_z __zoxide_zi
 # accept menu option and run command with one enter press like bash
 zmodload -i zsh/complist # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 bindkey -M menuselect '^M' .accept-line
+
+# end benchmarking
+[[ -n "${SHELL_TIME}" ]] && zprof
 
 # if zsh is giving tab completion errors like:
 # (eval):1: command not found
