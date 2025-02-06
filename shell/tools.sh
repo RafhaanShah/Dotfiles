@@ -1,13 +1,11 @@
 ### cli tools
 # shellcheck shell=bash
 
-# asdf: language version manager
-# https://github.com/asdf-vm/asdf
-if [ -f "${HOME}/.asdf/asdf.sh" ]; then
-    export ASDF_DIR="${HOME}/.asdf"
-    _load_file "${ASDF_DIR}/asdf.sh"                           # load asdf
-    _is_bash && _load_file "${ASDF_DIR}/completions/asdf.bash" # asdf bash completions
-    _is_zsh && _add_to_fpath "${ASDF_DIR}/completions"         # asdf zsh completions
+# mise: language version manager
+# https://mise.jdx.dev/
+if _command_exists "mise"; then
+    _is_bash && eval "$(mise activate bash)"
+    _is_zsh && eval "$(mise activate zsh)"
 fi
 
 # bat: better cat
@@ -44,11 +42,7 @@ fi
 if _command_exists "lsd"; then
     alias ls='lsd --group-dirs first'
     tree() {
-        if [ "$#" -eq 0 ]; then
-            lsd --group-dirs first --tree --depth 2
-        else
-            lsd --group-dirs first --tree --depth "$@"
-        fi
+        lsd --group-dirs first --tree --depth "${1:-2}"
     }
 fi
 
@@ -73,6 +67,12 @@ fi
 if _command_exists "thefuck"; then
     unalias fuck
     # eval $(thefuck --alias)
+fi
+
+# tldr: better man pages
+# https://github.com/tldr-pages/tldr
+if _command_exists "tldr"; then
+    alias man='tldr'
 fi
 
 # vivid: generate LS_COLORS

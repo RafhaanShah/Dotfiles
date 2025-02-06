@@ -38,6 +38,10 @@
     # update dependent branches when a base branch has been rebased
     updateRefs = true
 
+[rerere]
+    # remembers conflict resolution
+    enabled = true
+
 [alias]
     al = aliases
     ad = add

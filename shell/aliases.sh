@@ -198,7 +198,8 @@ alias dkc-update='docker-compose down && docker-compose pull && docker-compose u
 alias dkc-build='docker-compose build --pull && docker-compose down && docker-compose up -d'
 
 # lazydocker: docker ui https://github.com/jesseduffield/lazydocker
-alias dk-ui='lazydocker'
+alias docker-ui='lazydocker'
+alias dk-ui='docker-ui'
 
 # rainbow coloured quotes from a cow
 alias fcl='fortune | cowsay | lolcat'
@@ -206,13 +207,14 @@ alias bored='fcl'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
-alias jq='fx'
+alias jq='json'
 
 # google
 alias goog='google'
 
 # lazygit: git ui https://github.com/jesseduffield/lazygit
-alias g-ui='lazygit'
+alias git-ui='lazygit'
+alias g-ui='git-ui'
 
 # clear gradle cache and clean project
 alias gradle-clean='rm -f "${HOME}/.gradle/caches/build-cache-1/" && ./gradlew --no-daemon clean && clear'
@@ -220,6 +222,12 @@ alias gradle-clean='rm -f "${HOME}/.gradle/caches/build-cache-1/" && ./gradlew -
 # howdoi
 alias howto='howdoi'
 alias how2='howto'
+
+# dua: disk usage https://github.com/Byron/dua-cli
+alias disk-usage='dua'
+
+# termscp: scp ui https://github.com/veeso/termscp
+alias scp-ui='termscp'
 
 # speed test with large file
 alias speedtest='curl http://ipv4.download.thinkbroadband.com/1GB.zip -o /dev/null'

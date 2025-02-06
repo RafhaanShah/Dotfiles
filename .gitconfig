@@ -59,5 +59,6 @@
     required = true
 
 # include any folder specific overrides, e.g work email
+# may not work outside of actual git repos
 [includeIf "gitdir:~/Workspace/"]
     path = ~/Workspace/.gitconfig

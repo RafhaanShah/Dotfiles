@@ -27,9 +27,6 @@ if [ -f "${HOMEBREW_PATH}" ]; then
     # gnu which https://formulae.brew.sh/formula/gnu-which
     _add_to_path "${HOMEBREW_PREFIX}/opt/gnu-which/libexec/gnubin"
 
-    # asdf: language version manager https://formulae.brew.sh/formula/asdf
-    _load_file "${HOMEBREW_PREFIX}/opt/asdf/asdf.sh"
-
     # brew command not found https://github.com/Homebrew/homebrew-command-not-found
     _load_file "${HOMEBREW_PREFIX}/Homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
 
@@ -79,6 +76,10 @@ alias spotify='spotifyd --no-daemon -b portaudio -d Spotifyd@macOS -B 320 --init
 
 # restarts audio service
 alias kill-audio='sudo launchctl kickstart -k system/com.apple.audio.coreaudiod'
+
+# allow all programs in a folder
+# https://superuser.com/questions/1618945/file-developer-cannot-be-verified-error
+alias allow-folder='xattr -d -r com.apple.quarantine'
 
 # sends a system notification
 notify() { osascript -e "display notification \"$2\" with title \"$1\""; }

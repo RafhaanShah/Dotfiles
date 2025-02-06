@@ -238,8 +238,12 @@ compdef _directories __zoxide_z __zoxide_zi
 zmodload -i zsh/complist # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 bindkey -M menuselect '^M' .accept-line
 
+# post rc config
+_load_file "${DOTFILE_DIR}/shell/post_rc.sh"
+
 # end benchmarking
 [[ -n "${SHELL_TIME}" ]] && zprof
+true
 
 # if zsh is giving tab completion errors like:
 # (eval):1: command not found

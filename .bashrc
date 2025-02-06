@@ -164,3 +164,6 @@ _fuzzy_dir_completion() {
 # allows fuzzy completion for file/dir names: cd tuf<TAB> => cd Stuff
 complete -o nospace -o filenames -o bashdefault -F _fuzzy_file_completion ls cat less more head tail cp mv nano
 complete -o nospace -o filenames -o bashdefault -F _fuzzy_dir_completion c cd mkdir
+
+# post rc config
+_load_file "${DOTFILE_DIR}/shell/post_rc.sh"
