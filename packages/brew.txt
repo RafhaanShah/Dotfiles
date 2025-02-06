@@ -1,3 +1,4 @@
+tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
 tap "buo/cask-upgrade"
 tap "homebrew/bundle"
 tap "homebrew/command-not-found"
@@ -5,12 +6,22 @@ tap "jesseduffield/lazygit"
 tap "microsoft/git"
 tap "mobile-dev-inc/tap"
 tap "veeso/termscp"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Color management engine supporting ICC profiles
 brew "little-cms2"
 # New file format for still image compression
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Core application library for C
 brew "glib"
 # OpenType text shaping engine
@@ -19,10 +30,6 @@ brew "harfbuzz"
 brew "openjdk"
 # Tool for reverse engineering 3rd party, closed, binary Android apps
 brew "apktool"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.2+
@@ -35,6 +42,8 @@ brew "bat"
 brew "binutils"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # File comparison utilities
 brew "diffutils"
 # View disk space usage and delete unwanted data, fast
@@ -51,8 +60,6 @@ brew "unbound"
 brew "gnutls"
 # Image processing and image analysis library
 brew "leptonica"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # OCR (Optical Character Recognition) engine
@@ -69,6 +76,8 @@ brew "fortune"
 brew "fpp"
 # Platform built on V8 to build network applications
 brew "node"
+# Terminal JSON viewer
+brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -79,8 +88,6 @@ brew "gh"
 brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
-# Reverse tethering tool for Android
-brew "gnirehtet"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU version of the tar archiving utility
@@ -99,6 +106,8 @@ brew "lazydocker"
 brew "less"
 # Version of the SSL/TLS protocol forked from OpenSSL
 brew "libressl"
+# Curses-based tool for viewing and analyzing log files
+brew "lnav"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Clone of ls with colorful output, file type icons, and more
@@ -107,10 +116,10 @@ brew "lsd"
 brew "make"
 # Modern and intuitive terminal-based text editor
 brew "micro"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
-# NCurses Disk Usage
-brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Space Invaders in the terminal
@@ -129,6 +138,8 @@ brew "pinentry-mac"
 brew "pipx"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -159,11 +170,12 @@ brew "zoxide"
 brew "zsh"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
-# A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/SMB
 # The easiest way to automate UI testing for your mobile app
 brew "mobile-dev-inc/tap/maestro"
 # A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/Kube/SMB/WebDAV
 brew "veeso/termscp/termscp"
+# Log analysis tool
+cask "chipmunk"
 # Desktop client for GitHub repositories
 cask "github"
 # Desktop automation application
@@ -172,16 +184,18 @@ cask "hammerspoon"
 cask "iterm2"
 # Menu bar calendar
 cask "itsycal"
+# Menu bar manager
+cask "jordanbaird-ice"
 # Customise mouse behavior
 cask "linearmouse"
 # Finder Toolbar app to open the current directory in Terminal or Editor
 cask "openinterminal"
-# HTTP client that helps testing and describing APIs
-cask "rapidapi"
 # HTTP debugging proxy
 cask "proxyman"
 # Image viewer
 cask "qview"
+# HTTP client that helps testing and describing APIs
+cask "rapidapi"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Screenshot measurement and annotation tool

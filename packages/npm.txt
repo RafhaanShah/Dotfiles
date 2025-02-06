@@ -1,4 +1,3 @@
 cowsay
-fx
 prettier
 tldr

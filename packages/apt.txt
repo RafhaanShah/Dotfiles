@@ -16,6 +16,7 @@ ncdu
 neofetch
 pass
 pinentry-tty
+pipx
 python3
 python3-pip
 shellcheck

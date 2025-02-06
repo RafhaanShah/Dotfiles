@@ -64,7 +64,7 @@ Update:
 `npm update --global`
 
 Backup:
-`npm list --global --depth=0`
+`command ls -1 $(npm root --global) > "${DOTFILE_DIR}/packages/npm.txt"`
 
 Restore:
 `xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install --global`
@@ -74,22 +74,22 @@ Search:
 
 
 ### PIP
-Source: https://pypi.org/project/pip/
+Source: https://github.com/pypa/pipx
 
 Install:
-`pip3 install --upgrade <package>`
+`pipx install <package>`
 
 Uninstall:
-`pip3 uninstall <package>`
+`pipx uninstall <package>`
 
 Update:
-`pip3 list --format=freeze --disable-pip-version-check | awk -F'==' '{print $1}' | pip3 install --upgrade`
+`pipx upgrade-all`
 
 Backup:
-`pip3 list --format=freeze --disable-pip-version-check | awk -F'==' '{print $1}'`
+`pipx list --short | cut -d' ' -f1 > "${DOTFILE_DIR}/packages/pip.txt"`
 
 Restore:
-`xargs <"${DOTFILE_DIR}/packages/pip.txt" pip3 install --upgrade`
+`xargs <"${DOTFILE_DIR}/packages/pip.txt" pipx install`
 
 Search:
 `pip3 search <package>`
