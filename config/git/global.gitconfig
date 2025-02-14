@@ -41,6 +41,7 @@
 [rerere]
     # remembers conflict resolution
     enabled = true
+    autoUpdate = true
 
 [alias]
     al = aliases

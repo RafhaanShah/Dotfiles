@@ -1011,6 +1011,8 @@
 				<key>Red Component</key>
 				<real>0.99215686321258545</real>
 			</dict>
+			<key>Load Shell Integration Automatically</key>
+			<true/>
 			<key>Minimum Contrast</key>
 			<integer>0</integer>
 			<key>Mouse Reporting</key>
