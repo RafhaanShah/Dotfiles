@@ -6,6 +6,7 @@ PATH_DIRS=(
     "${HOME}/bin"                                          # home bin
     "${HOME}/.local/bin"                                   # alternative bin
     "${HOME}/.npm-global/bin"                              # npm global bin
+    "${HOME}/Library/Android/sdk/emulator"                 # macOS Android emulator
     "${HOME}/Library/Android/sdk/platform-tools"           # macOS Android platform tools
     "${HOME}/Library/Android/sdk/cmdline-tools/latest/bin" # macOS Android cmdline tools
     "/usr/local/go/bin"                                    # go

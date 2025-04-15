@@ -298,6 +298,12 @@ adb-logcat() {
 
 # select a connected ADB device
 adb-device() {
+    if [[ -n $1 ]]; then
+        export ANDROID_SERIAL="$1"
+        echo "ANDROID_SERIAL=${ANDROID_SERIAL}"
+        return 0
+    fi
+
     local devices
     devices=$(adb devices | tail -n +2)
 
