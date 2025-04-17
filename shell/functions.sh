@@ -279,7 +279,11 @@ adb-launch() {
 # adb extract an APK
 adb-extract() {
     local apk_path
-    apk_path=$(adb shell dumpsys package "${1?Package name not set}" 1 | grep "path:" | awk '/path: / {print $2}')
+    apk_path=$(adb shell dumpsys package "${1?Package name not set}" 1 | grep -E 'path: .+\.apk$' | awk '{print $2}')
+
+    if [[ -z $apk_path ]]; then
+        apk_path=$(adb shell dumpsys package "${1}" 1 | grep -E 'codePath=.+\.apk$' | awk -F= '{print $2}')
+    fi
 
     if [ -z "${apk_path}" ]; then
         echo "APK path not found"
