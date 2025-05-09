@@ -21,10 +21,17 @@
 [fetch]
     # remove any remote-tracking references that no longer exist on the remote
     prune = true
+    pruneTags = true
+
+[push]
+    # auto setup remote branches and push local tags
+    default = simple
+    autoSetupRemote = true
+    followTags = true
 
 [help]
-    # correct and execute mistyped commands after 5 seconds
-    autocorrect = 50
+    # prompt to correct commands
+    autocorrect = prompt
 
 [apply]
     # detect and fix whitespace errors
@@ -37,11 +44,28 @@
 [rebase]
     # update dependent branches when a base branch has been rebased
     updateRefs = true
+    autoSquash = true
+    autoStash = true
 
 [rerere]
     # remembers conflict resolution
     enabled = true
     autoUpdate = true
+
+[column]
+    # show columns for listings like branches
+    ui = auto
+
+[tag]
+    # sort tags better
+    sort = version:refname
+
+[diff]
+    # make git diffs better
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 
 [alias]
     al = aliases
