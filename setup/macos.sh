@@ -49,6 +49,11 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 # TextMate config
 ln -s "${DOTFILE_DIR}/config/TextMate/.tm_properties" "${HOME}/.tm_properties"
 
+# Keyboard layouts
+KEYBOARD_LAYOUTS="${HOME}/Library/Keyboard Layouts/"
+mkdir -p "${KEYBOARD_LAYOUTS}"
+cp "${DOTFILE_DIR}/config/KeyboardLayouts/." "${KEYBOARD_LAYOUTS}"
+
 # set shell
 echo "Changing shell..."
 command -v zsh | sudo tee -a /etc/shells
