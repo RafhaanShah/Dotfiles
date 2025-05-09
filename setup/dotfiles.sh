@@ -9,6 +9,10 @@ DOTFILE_DIR="${HOME}/Dotfiles"
     echo "Invalid Dotfile folder"
     exit 1
 }
+
+# set hooks path
+git -C "${DOTFILE_DIR}" config --local core.hooksPath .git-hooks
+
 # shellcheck source=../shell/helpers.sh
 source "${DOTFILE_DIR}/shell/helpers.sh"
 

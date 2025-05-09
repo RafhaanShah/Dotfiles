@@ -9,6 +9,7 @@ PATH_DIRS=(
     "${HOME}/Library/Android/sdk/emulator"                 # macOS Android emulator
     "${HOME}/Library/Android/sdk/platform-tools"           # macOS Android platform tools
     "${HOME}/Library/Android/sdk/cmdline-tools/latest/bin" # macOS Android cmdline tools
+    "${DOTFILE_DIR}/bin"                                   # dotfile dir bin
     "/usr/local/go/bin"                                    # go
     "/snap/bin"                                            # snap bin
 )

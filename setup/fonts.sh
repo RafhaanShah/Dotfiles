@@ -14,36 +14,32 @@ source "${DOTFILE_DIR}/shell/helpers.sh"
 
 echo "Installing fonts..."
 
-# https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.tar.xz
-# TODO: download, unzip, install
-# MesloLGMNerdFont-*
-# MESLO_URL='https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf'
-# MESLO_BOLD_URL='https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Meslo/M/Bold/complete/Meslo%20LG%20M%20Bold%20Nerd%20Font%20Complete.ttf'
-JB_MONO_URL='https://download.jetbrains.com/fonts/JetBrainsMono-2.225.zip'
+# MesloLGMNerdFont-*.ttf
+# JetBrainsMonoNerdFont-*.ttf
+# https://github.com/ryanoasis/nerd-fonts/wiki/FAQ-and-Troubleshooting#what-do-these-acronym-variations-in-the-font-name-mean-lg-l-m-s-dz-sz
+MESLO_URL='https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.tar.xz'
+JB_MONO_URL='https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz'
 
 setup_fonts() {
     if _is_wsl; then
-        FONT_DIR="$(wslpath "$(wslvar USERPROFILE)")"
-        wslview "$(wslvar USERPROFILE)"
+        FONT_DIR="$(wslpath "$(wslvar LOCALAPPDATA)")/Microsoft/Windows/Fonts"
     elif _is_mingw; then
-        FONT_DIR="${HOME}"
-        start "${FONT_DIR}"
+        FONT_DIR="${LOCALAPPDATA}/Microsoft/Windows/Fonts"
     elif _is_macos; then
-        FONT_DIR="${HOME}/Downloads"
-        open "${FONT_DIR}"
+        FONT_DIR="${HOME}/Library/Fonts"
     elif _is_termux; then
-        curl -fLo "${HOME}/.termux/font.ttf" "${MESLO_URL}"
+        # termux only needs the 1 file
+        mkdir -p "${HOME}/.termux"
+        curl -sL "${MESLO_URL}" | tar -xO 'MesloLGMNerdFont-Regular.ttf' >"${HOME}/.termux/font.ttf"
         return
     else
         FONT_DIR="${HOME}/.local/share/fonts"
-        mkdir -p "${FONT_DIR}"
     fi
 
-    # curl -fLo "${FONT_DIR}/MesloLGM Nerd Font.ttf" "${MESLO_URL}"
-    # curl -fLo "${FONT_DIR}/MesloLGM Bold Nerd Font.ttf" "${MESLO_BOLD_URL}"
-    curl -fLo "${FONT_DIR}/JB_Mono.zip" "${JB_MONO_URL}"
-    unzip -j "${FONT_DIR}/JB_Mono.zip" "fonts/ttf/*" -d "${FONT_DIR}"
-    rm "${FONT_DIR}/JB_Mono.zip"
+    mkdir -p "${FONT_DIR}"
+    # download directly into tar filtering the right fonts into the folder
+    curl -sL "${MESLO_URL}" | tar -xJ --wildcards -C "${FONT_DIR}" -f - 'MesloLGMNerdFont-*.ttf'
+    curl -sL "${JB_MONO_URL}" | tar -xJ --wildcards -C "${FONT_DIR}" -f - 'JetBrainsMonoNerdFont-*.ttf'
 }
 
 setup_fonts
