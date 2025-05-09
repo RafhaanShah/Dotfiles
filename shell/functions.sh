@@ -191,6 +191,18 @@ tree() {
     fi
 }
 
+# run a command on each line of a file
+do-on-line() {
+    if [[ -f $1 && -n $2 ]]; then
+        while IFS= read -r line; do
+            # Run the command with arguments and pipe the output or handle it as needed
+            eval "$2 \"$line\""
+        done <"$1"
+    else
+        echo "Usage: do-on-line <file> <command>"
+    fi
+}
+
 ### tool related functions
 
 # take android device screenshot

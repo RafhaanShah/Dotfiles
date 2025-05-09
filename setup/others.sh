@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # exit on any error or failed piped commands
-set -eo pipefail
+set -euo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"

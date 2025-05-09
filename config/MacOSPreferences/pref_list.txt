@@ -1,0 +1,16 @@
+com.apple.AppleMultitouchMouse
+com.apple.AppleMultitouchTrackpad
+com.apple.dock
+com.apple.finder
+com.apple.HIToolbox
+com.apple.Terminal
+com.apple.TextInputMenu
+com.apple.universalaccess
+com.apple.universalaccessAuthWarning
+com.ibluebox.say-no-to-notch
+com.if.Amphetamine
+com.jordanbaird.Ice
+com.knollsoft.Rectangle
+com.mowglii.ItsycalApp
+NSGlobalDomain
+wang.jianing.app.OpenInTerminal
