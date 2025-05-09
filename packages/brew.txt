@@ -114,6 +114,8 @@ brew "lolcat"
 brew "lsd"
 # Utility for directing compilation
 brew "make"
+# Mac App Store command-line interface
+brew "mas"
 # Modern and intuitive terminal-based text editor
 brew "micro"
 # Polyglot runtime manager (asdf rust clone)
@@ -138,8 +140,6 @@ brew "pinentry-mac"
 brew "pipx"
 # Python version management
 brew "pyenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -206,3 +206,6 @@ cask "stats"
 cask "textmate"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
+mas "Amphetamine", id: 937984704
+mas "Say No to Notch", id: 1639306886
+mas "The Unarchiver", id: 425424353
