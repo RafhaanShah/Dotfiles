@@ -140,3 +140,9 @@ Search:
 
 Clean:
 `pkg autoclean`
+
+### To do:
+- Clean up `brew` / `npm` / `pip` lists
+- Create Linux-only `npm` and `pip` lists for `brew` installed MacOS packages
+- Migrate from `snap` to `npm` / `pip` so it's portable
+- Find Linux alternatives to installed `brew` packages
