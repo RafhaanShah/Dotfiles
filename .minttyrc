@@ -1,4 +1,5 @@
 # https://mintty.github.io/mintty.1.html
+# used for Git Bash / MINGW on Windows
 
 Transparency=medium
 OpaqueWhenFocused=no

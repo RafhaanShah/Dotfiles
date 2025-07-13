@@ -1,142 +1,109 @@
-// To view the default settings, hold "alt" while clicking on the "Settings" button.
-// For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-
-    "defaultProfile": "Ubuntu",
-
-    // You can add more global application settings here.
-    // To learn more about global settings, visit https://aka.ms/terminal-global-settings
-
-    // If enabled, selections are automatically copied to your clipboard.
-    "copyOnSelect": true,
-
-    // If enabled, formatted data is also copied to your clipboard
-    "copyFormatting": false,
-    
-    // Shrink inactive tabs
-    "tabWidthMode": "titleLength",
-    
-    // Do not ask for confirmation when closing window with multiple tabs
+    "actions": [],
     "confirmCloseAllTabs": false,
-    
-    // Initial width
+    "copyFormatting": "none",
+    "copyOnSelect": true,
+    "defaultProfile": "{a903fa28-a1e4-5e64-b93f-fd1393d3f831}",
     "initialCols": 200,
-    
-    // Initial height
-    "initialRows": 50,
-    
-    // Initial position
     "initialPosition": "550,250",
-    
-    // Warn when the text to paste contains multiple lines
-    "multiLinePasteWarning": false,
-    
-    // Warn when the text to paste is very large
-    "largePasteWarning": true,
-
-    // A profile specifies a command to execute paired with information about how it should look and feel.
-    // Each one of them will appear in the 'New Tab' dropdown,
-    // and can be invoked from the commandline with `wt.exe -p xxx`
-    // To learn more about profiles, visit https://aka.ms/terminal-profile-settings
-    "profiles":
-    {
-        "defaults":
+    "initialRows": 50,
+    "keybindings": [
         {
-            // Put settings here that you want to apply to all profiles.
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.FindText",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        }
+    ],
+    "largePasteWarning": true,
+    "multiLinePasteWarning": false,
+    "newTabMenu": [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": {
+        "defaults": {
             "colorScheme": "Monokai",
             "cursorShape": "underscore",
+            "font": {
+                "face": "MesloLGM Nerd Font",
+                "size": 9,
+                "weight": "normal"
+            },
+            "opacity": 40,
             "tabColor": "#272822",
-            "fontFace": "MesloLGM Nerd Font",
-            "fontSize": 9,
-            "fontWeight": "normal",
-            "useAcrylic": true,
-            "acrylicOpacity": 0.4
+            "useAcrylic": true
         },
-        "list":
-        [
+        "list": [
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell 7",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "guid": "{a903fa28-a1e4-5e64-b93f-fd1393d3f831}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "source": "Git"
+            },
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "name": "Windows PowerShell",
-                "commandline": "powershell.exe",            
-                "hidden": false
-            },
-            {
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "name": "Command Prompt",
-                "commandline": "cmd.exe",          
-                "hidden": false
-            },
-            {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl",            
-                "hidden": false
-            },
-            {
-                "guid": "{00000000-0000-0000-ba54-000000000002}",
-                "commandline": "%PROGRAMFILES%/git/usr/bin/bash.exe -i -l",
-                "icon": "%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico",
-                "name" : "Git Bash",
-                "startingDirectory" : "%USERPROFILE%",
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure",
-                "hidden": true
+                "hidden": false,
+                "name": "Windows PowerShell"
             }
         ]
     },
-
-    // Add custom color schemes to this array.
-    // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
     "schemes": [
-    {
-        "name" : "Monokai",
-
-        "cursorColor": "#F8F8F1",
-        "selectionBackground": "#3E3D32",
-
-        "background" : "#272822",
-        "foreground" : "#F8F8F1",
-
-        "black" : "#333333",
-        "blue" : "#6A7EC8",
-        "cyan" : "#56ADBC",
-        "green" : "#86B42B",
-        "purple" : "#8C6BC8",
-        "red" : "#C4265E",
-        "white" : "#E3E3DD",
-        "yellow" : "#B3B42B",
-        "brightBlack" : "#666666",
-        "brightBlue" : "#819AFF",
-        "brightCyan" : "#66D9EF",
-        "brightGreen" : "#A6E22E",
-        "brightPurple" : "#AE81FF",
-        "brightRed" : "#F92672",
-        "brightWhite" : "#F8F8F1",
-        "brightYellow" : "#E2E22E"
-    }],
-
-    // Add custom actions and keybindings to this array.
-    // To unbind a key combination from your defaults.json, set the command to "unbound".
-    // To learn more about actions and keybindings, visit https://aka.ms/terminal-keybindings
-    "actions":
-    [
-        // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
-        // To learn more about selection, visit https://aka.ms/terminal-selection
-        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        { "command": "paste", "keys": "ctrl+v" },
-
-        // Press Ctrl+Shift+F to open the search box
-        { "command": "find", "keys": "ctrl+shift+f" },
-
-        // Press Ctrl+Shift+D to open a new pane.
-        // - "split": "auto" makes this pane open in the direction that provides the most surface area.
-        // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
-        // To learn more about panes, visit https://aka.ms/terminal-panes
-        { "command": { "action": "splitPane", "split": "vertical", "splitMode": "duplicate" }, "keys": "ctrl+shift+d" }
-    ]
+        {
+            "background": "#272822",
+            "black": "#333333",
+            "blue": "#6A7EC8",
+            "brightBlack": "#666666",
+            "brightBlue": "#819AFF",
+            "brightCyan": "#66D9EF",
+            "brightGreen": "#A6E22E",
+            "brightPurple": "#AE81FF",
+            "brightRed": "#F92672",
+            "brightWhite": "#F8F8F1",
+            "brightYellow": "#E2E22E",
+            "cursorColor": "#F8F8F1",
+            "cyan": "#56ADBC",
+            "foreground": "#F8F8F1",
+            "green": "#86B42B",
+            "name": "Monokai",
+            "purple": "#8C6BC8",
+            "red": "#C4265E",
+            "selectionBackground": "#3E3D32",
+            "white": "#E3E3DD",
+            "yellow": "#B3B42B"
+        }
+    ],
+    "tabWidthMode": "titleLength",
+    "themes": []
 }

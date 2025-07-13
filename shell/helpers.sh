@@ -110,3 +110,14 @@ _remove_from_path() {
     d="${d/#:/}"
     PATH="${d/%:/}"
 }
+
+# gets a Windows Environment variable
+wslvar() {
+    local value
+    value=$(powershell.exe -Command "[Environment]::GetEnvironmentVariable('${1}')")
+    if [ -z "${value}" ]; then
+        return 1
+    else
+        echo "$value"
+    fi
+}

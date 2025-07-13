@@ -35,6 +35,7 @@ CP_FILES=(
 )
 
 # list of files for mingw on windows
+# TODO: symlink, add windows terminal config
 WIN_FILES=(
     .bash_profile
     .bashrc
@@ -45,12 +46,13 @@ WIN_FILES=(
 )
 
 run_setup() {
+    mkdir -p "${BACKUP_DIR}"
+    
     if _is_mingw; then
         setup_windows
         return
     fi
 
-    mkdir -p "${DOTFILE_DIR}/old"
     copy_dotfiles
     symlink_dotfiles
 }
@@ -74,6 +76,7 @@ symlink_dotfiles() {
 setup_windows() {
     for FILE in "${WIN_FILES[@]}"; do
         echo "${FILE}"
+        [ -f "${HOME}/${FILE}" ] && mv "${HOME}/${FILE}" "${BACKUP_DIR}/${FILE}"
         cp "${DOTFILE_DIR}/${FILE}" "${HOME}/${FILE}"
     done
 }
