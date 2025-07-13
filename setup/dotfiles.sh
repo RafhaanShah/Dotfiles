@@ -47,7 +47,7 @@ WIN_FILES=(
 
 run_setup() {
     mkdir -p "${BACKUP_DIR}"
-    
+
     if _is_mingw; then
         setup_windows
         return
