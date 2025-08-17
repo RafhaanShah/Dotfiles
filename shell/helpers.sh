@@ -111,13 +111,13 @@ _remove_from_path() {
     PATH="${d/%:/}"
 }
 
-# gets a Windows Environment variable
-wslvar() {
-    local value
-    value=$(powershell.exe -Command "[Environment]::GetEnvironmentVariable('${1}')")
-    if [ -z "${value}" ]; then
-        return 1
-    else
-        echo "$value"
-    fi
+# prompts the user for a yes/no response; returns 0 for yes, 1 for no
+_prompt_yes_no() {
+    local prompt="${1:-Continue? [y/N]}"
+    local reply
+    read -r -p "$prompt " reply
+    case "${reply,,}" in
+        y | yes) return 0 ;;
+        *) return 1 ;;
+    esac
 }

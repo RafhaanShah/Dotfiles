@@ -5,11 +5,6 @@ set -euo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-[ ! -d "${DOTFILE_DIR}" ] && {
-    echo "Invalid Dotfile folder"
-    exit 1
-}
-
 # shellcheck source=../../shell/helpers.sh
 source "${DOTFILE_DIR}/shell/helpers.sh"
 

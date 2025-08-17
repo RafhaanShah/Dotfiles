@@ -5,16 +5,11 @@ set -eo pipefail
 
 # dotfile repo folder
 DOTFILE_DIR="${HOME}/Dotfiles"
-[ ! -d "${DOTFILE_DIR}" ] && {
-    echo "Invalid Dotfile folder"
-    exit 1
-}
+# shellcheck source=../shell/helpers.sh
+source "${DOTFILE_DIR}/shell/helpers.sh"
 
 # set hooks path
 git -C "${DOTFILE_DIR}" config --local core.hooksPath .git-hooks
-
-# shellcheck source=../shell/helpers.sh
-source "${DOTFILE_DIR}/shell/helpers.sh"
 
 # folder to backup existing dotfiles
 BACKUP_DIR="${DOTFILE_DIR}/old"
