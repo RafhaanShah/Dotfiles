@@ -49,6 +49,8 @@ if [ -f "${HOMEBREW_PATH}" ]; then
 fi
 
 # non gnu ls options
+# default ls does not have some options
+unalias ls
 if ! _command_exists "gls"; then
     export CLICOLOR=1
     export LSCOLORS="GxFxcxdxbxagheabhchdad"
