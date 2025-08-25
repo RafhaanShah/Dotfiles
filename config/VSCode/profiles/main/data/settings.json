@@ -147,5 +147,5 @@
   "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.settings.enableNaturalLanguageSearch": false
 }

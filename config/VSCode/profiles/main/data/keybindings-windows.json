@@ -312,5 +312,5 @@
         "command": "workbench.action.terminal.focus",
         "key": "ctrl+t",
         "when": "editorTextFocus"
-    },
+    }
 ]
