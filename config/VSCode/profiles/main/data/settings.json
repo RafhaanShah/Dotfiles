@@ -1,0 +1,195 @@
+{
+  "[home-assistant]": {
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    },
+    "editor.wordWrap": "on"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[yaml]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "debug.console.fontFamily": "MesloLGM Nerd Font, Consolas, monospace",
+  "debug.console.fontSize": 12,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "docker.extension.enableComposeLanguageServer": true,
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "JetBrainsMono NF, JetBrains Mono, Consolas, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.wordWrap": "on",
+  "explorer.autoReveal": false,
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    ".bemol": true,
+    ".viceroy": true,
+    "**/.classpath": true,
+    "**/.DS_Store": true,
+    "**/.factorypath": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/Thumbs.db": true,
+    "apollo-overrides": true,
+    "build": false,
+    "env": true,
+    "packageInfo*": true,
+    "release-info": true,
+    "src/*/build": false
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.watcherExclude": {
+    "**/.bootstrap/**": true,
+    "**/.git/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.hg/store/**": true,
+    "**/.idea/**": true,
+    "**/.repo/**": true,
+    "**/build/**": true,
+    "**/node_modules/*/**": true,
+    "**/out/**": true
+  },
+  "git.autofetch": true,
+  "git.autofetchPeriod": 600,
+  "git.blame.editorDecoration.enabled": false,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "github.copilot.enable": {
+    "*": false
+  },
+  "go.useLanguageServer": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "jupyter.askForKernelRestart": false,
+  "python.analysis.typeCheckingMode": "standard",
+  "redhat.telemetry.enabled": false,
+  "remote.defaultExtensionsIfInstalledLocally": [
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "GitHub.vscode-pull-request-github",
+    "maximus136.change-string-case",
+    "formulahendry.code-runner",
+    "donjayamanne.githistory",
+    "qezhu.gitlink",
+    "jerrygoyal.shortcut-menu-bar",
+    "Tyriar.sort-lines",
+    "WakaTime.vscode-wakatime",
+    "mutantdino.resourcemonitor"
+  ],
+  "search.collapseResults": "auto",
+  "search.exclude": {
+    "**/.bootstrap/**": true,
+    "**/.git/**": true,
+    "**/.idea/**": true,
+    "**/.repo/**": true,
+    "**/*.code-search": true,
+    "**/bower_components": true,
+    "**/node_modules": true,
+    "**/out/**": true,
+    "build": true,
+    "env": true,
+    "src/*/build": true
+  },
+  "settingsSync.ignoredSettings": [
+    "remote.SSH.remotePlatform",
+  ],
+  "syncSettings.resources": [
+    "keybindings",
+    "settings",
+  ],
+  "syncSettings.ignoredSettings": [
+    "remote.SSH.remotePlatform",
+    "settingsSync.ignoredExtensions",
+    "settingsSync.excludedExtensions",
+    "syncing.excludedSettings",
+    "syncing.excludedExtensions"
+  ],
+  "syncSettings.keybindingsPerPlatform": true,
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.drawBoldTextInBrightColors": false,
+  "terminal.integrated.fontFamily": "MesloLGM Nerd Font, Consolas, monospace",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontWeight": "100",
+  "terminal.integrated.lineHeight": 0,
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.menuBarVisibility": "classic",
+  "window.restoreWindows": "none",
+  "workbench.colorTheme": "Monokai",
+  "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ]
+}

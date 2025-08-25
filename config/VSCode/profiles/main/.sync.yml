@@ -1,0 +1,10 @@
+keybindingsPerPlatform: true
+ignoredSettings:
+  - remote.SSH.remotePlatform
+  - settingsSync.ignoredExtensions
+  - settingsSync.excludedExtensions
+  - syncing.excludedSettings
+  - syncing.excludedExtensions
+resources:
+  - keybindings
+  - settings

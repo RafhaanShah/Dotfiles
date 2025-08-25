@@ -1,0 +1,316 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "command": "-cursorDownSelect",
+        "key": "ctrl+shift+down",
+        "when": "textInputFocus"
+    },
+    {
+        "command": "editor.action.moveLinesDownAction",
+        "key": "ctrl+shift+down",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "-editor.action.moveLinesDownAction",
+        "key": "alt+down",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "-cursorUpSelect",
+        "key": "ctrl+shift+up",
+        "when": "textInputFocus"
+    },
+    {
+        "command": "editor.action.moveLinesUpAction",
+        "key": "ctrl+shift+up",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "-editor.action.moveLinesUpAction",
+        "key": "alt+up",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "-deleteWordLeft",
+        "key": "ctrl+backspace",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "command": "editor.action.deleteLines",
+        "key": "ctrl+backspace",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "command": "-editor.action.deleteLines",
+        "key": "ctrl+shift+k",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "command": "-editor.action.copyLinesUpAction",
+        "key": "shift+alt+up",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "-editor.action.copyLinesDownAction",
+        "key": "shift+alt+down",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "-editor.action.moveSelectionToNextFindMatch",
+        "key": "ctrl+k ctrl+d",
+        "when": "editorFocus"
+    },
+    {
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "key": "ctrl+d",
+        "when": "editorFocus"
+    },
+    {
+        "command": "editor.action.copyLinesDownAction",
+        "key": "ctrl+d",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "command": "workbench.action.quickOpenView",
+        "key": "ctrl+q",
+        "when": "editorTextFocus"
+    },
+    {
+        "command": "-workbench.action.quickOpenView",
+        "key": "ctrl+q"
+    },
+    {
+        "command": "-workbench.action.openRecent",
+        "key": "ctrl+r"
+    },
+    {
+        "command": "editor.action.startFindReplaceAction",
+        "key": "ctrl+r",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "command": "-editor.action.startFindReplaceAction",
+        "key": "ctrl+h",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "command": "workbench.action.replaceInFiles",
+        "key": "ctrl+shift+r",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "command": "-workbench.action.replaceInFiles",
+        "key": "ctrl+shift+h"
+    },
+    {
+        "command": "-editor.action.refactor",
+        "key": "ctrl+shift+r",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "key": "ctrl+shift+p",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "command": "-workbench.action.files.openFile",
+        "key": "ctrl+o",
+        "when": "true"
+    },
+    {
+        "command": "-workbench.action.files.openFolderViaWorkspace",
+        "key": "ctrl+o",
+        "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+    },
+    {
+        "command": "-workbench.action.files.openFileFolder",
+        "key": "ctrl+o",
+        "when": "isMacNative && openFolderWorkspaceSupport"
+    },
+    {
+        "command": "-workbench.action.files.openLocalFile",
+        "key": "ctrl+o",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "key": "ctrl+p",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "command": "workbench.action.quickOpen",
+        "key": "ctrl+o"
+    },
+    {
+        "command": "-workbench.action.quickOpen",
+        "key": "ctrl+p"
+    },
+    {
+        "command": "workbench.action.showCommands",
+        "key": "ctrl+p"
+    },
+    {
+        "command": "-workbench.action.showCommands",
+        "key": "ctrl+shift+p"
+    },
+    {
+        "key": "ctrl+oem_comma",
+        "command": "-workbench.action.openSettings"
+    },
+    {
+        "key": "ctrl+oem_comma",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "alt+left",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-notebook.cell.openFailureActions",
+        "when": "notebookCellFocused && notebookCellHasErrorDiagnostics && !notebookCellEditorFocused"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-workbench.action.terminal.showQuickFixes",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-acceptSelectedCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-editor.changeDropType",
+        "when": "dropWidgetVisible"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-editor.changePasteType",
+        "when": "pasteWidgetVisible"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-problems.action.showQuickFixes",
+        "when": "problemFocus"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "-workbench.action.chat.openModePicker",
+        "when": "chatIsEnabled && inChatInput && chatLocation == 'panel'"
+    },
+    {
+        "key": "ctrl+oem_period",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "alt+right",
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+k ctrl+shift+s",
+        "command": "-workbench.action.files.saveWithoutFormatting"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-notebook.centerActiveCell",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-workbench.action.chat.startVoiceChat",
+        "when": "chatIsEnabled && hasSpeechProvider && inChatInput && !chatSessionRequestInProgress && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress || chatIsEnabled && hasSpeechProvider && inlineChatFocused && !chatSessionRequestInProgress && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-workbench.action.chat.stopListeningAndSubmit",
+        "when": "inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'view' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'view'"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-workbench.action.chat.newChat",
+        "when": "chatIsEnabled && inChat"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "notebook.formatCell",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-notebook.formatCell",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "editor.action.formatSelection",
+        "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+k ctrl+f",
+        "command": "-editor.action.formatSelection",
+        "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.chat.newChat",
+        "when": "chatIsEnabled && inChat"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.openChat",
+        "when": "chatIsEnabled && inChat && inChatEditor"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.chat.openInSidebar"
+    },
+    {
+        "key": "ctrl+k ctrl+t",
+        "command": "-workbench.action.selectTheme"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorTextFocus"
+    }
+]
