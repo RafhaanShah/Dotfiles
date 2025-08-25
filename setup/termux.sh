@@ -31,6 +31,7 @@ termux-setup-storage
 # setup nodejs
 mkdir -p "${HOME}/.npm-global/bin"
 npm config set prefix "${HOME}/.npm-global"
+# shellcheck disable=SC2218
 _add_to_path "${HOME}/.npm-global/bin"
 
 xargs <"${DOTFILE_DIR}/packages/npm.txt" npm install -g
