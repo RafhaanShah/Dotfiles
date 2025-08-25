@@ -1,11 +1,44 @@
 keybindingsPerPlatform: true
 ignoredSettings:
-  - remote.SSH.remotePlatform
+  - "[blueprint]"
+  - "[c]"
+  - "[cpp]"
+  - "[cuda-cpp]"
+  - "[go]"
+  - "[hack]"
+  - "[home-assistant]"
+  - "[java]"
+  - "[javascript]"
+  - "[json]"
+  - "[jsonc]"
+  - "[kotlin]"
+  - "[objective-c]"
+  - "[objective-cpp]"
+  - "[ocaml]"
+  - "[proto]"
+  - "[python]"
+  - "[rust]"
+  - "[starlark-skycastle]"
+  - "[starlark]"
+  - "[swift]"
+  - "[tcc-cpp]"
+  - "[typescript]"
+  - "[typescriptreact]"
+  - "[yaml]"
+  - devmate.clickableSparkleDecorator
+  - extensions.experimental.deferredStartupFinishedActivation
+  - fb.ms-remote-connections.odtypes
+  - meta.global.history.enabled
   - remote.defaultExtensionsIfInstalledLocally
+  - remote.SSH.remotePlatform
   - settingsSync.ignoredExtensions
-  - settingsSync.excludedExtensions
-  - syncing.excludedSettings
+  - settingsSync.ignoredSettings
   - syncing.excludedExtensions
+  - syncing.excludedSettings
+  - terminal.integrated.systemd.shouldUse
+  - wasabi.interactiveDevelopment.disableIntroMessage
+  - wasabi.interactiveDevelopment.introMessageNumTimesShown
+  - yaml.customTags
 resources:
   - keybindings
   - settings

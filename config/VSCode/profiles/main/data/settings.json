@@ -1,23 +1,4 @@
 {
-  "[home-assistant]": {
-    "editor.autoIndent": "full",
-    "editor.insertSpaces": true,
-    "editor.quickSuggestions": {
-      "comments": false,
-      "other": true,
-      "strings": true
-    },
-    "editor.tabSize": 2
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
   "[markdown]": {
     "editor.quickSuggestions": {
       "comments": "off",
@@ -26,25 +7,9 @@
     },
     "editor.wordWrap": "on"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[yaml]": {
-    "editor.autoIndent": "advanced",
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.insertSpaces": true,
-    "editor.quickSuggestions": {
-      "comments": false,
-      "other": true,
-      "strings": true
-    },
-    "editor.tabSize": 2
-  },
   "debug.console.fontFamily": "MesloLGM Nerd Font, Consolas, monospace",
   "debug.console.fontSize": 12,
+  "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
   "diffEditor.ignoreTrimWhitespace": false,
   "docker.extension.enableComposeLanguageServer": true,
   "editor.accessibilitySupport": "off",
@@ -54,6 +19,7 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  "editor.lightbulb.enabled": "on",
   "editor.wordWrap": "on",
   "explorer.autoReveal": false,
   "files.autoSave": "afterDelay",
@@ -118,25 +84,56 @@
     "env": true,
     "src/*/build": true
   },
-  "settingsSync.ignoredSettings": [
+  "syncSettings.ignoredSettings": [
+    "[blueprint]",
+    "[c]",
+    "[cpp]",
+    "[cuda-cpp]",
+    "[go]",
+    "[hack]",
+    "[home-assistant]",
+    "[java]",
+    "[javascript]",
+    "[json]",
+    "[jsonc]",
+    "[kotlin]",
+    "[objective-c]",
+    "[objective-cpp]",
+    "[ocaml]",
+    "[proto]",
+    "[python]",
+    "[rust]",
+    "[starlark-skycastle]",
+    "[starlark]",
+    "[swift]",
+    "[tcc-cpp]",
+    "[typescript]",
+    "[typescriptreact]",
+    "[yaml]",
+    "devmate.clickableSparkleDecorator",
+    "extensions.experimental.deferredStartupFinishedActivation",
+    "fb.ms-remote-connections.odtypes",
+    "meta.global.history.enabled",
+    "remote.defaultExtensionsIfInstalledLocally",
     "remote.SSH.remotePlatform",
+    "settingsSync.ignoredExtensions",
+    "settingsSync.ignoredSettings",
+    "syncing.excludedExtensions",
+    "syncing.excludedSettings",
+    "terminal.integrated.systemd.shouldUse",
+    "wasabi.interactiveDevelopment.disableIntroMessage",
+    "wasabi.interactiveDevelopment.introMessageNumTimesShown",
+    "yaml.customTags",
   ],
+  "syncSettings.keybindingsPerPlatform": true,
   "syncSettings.resources": [
     "keybindings",
     "settings",
   ],
-  "syncSettings.ignoredSettings": [
-    "remote.SSH.remotePlatform",
-    "remote.defaultExtensionsIfInstalledLocally",
-    "settingsSync.ignoredExtensions",
-    "settingsSync.excludedExtensions",
-    "syncing.excludedSettings",
-    "syncing.excludedExtensions"
-  ],
-  "syncSettings.keybindingsPerPlatform": true,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.fontFamily": "MesloLGM Nerd Font, Consolas, monospace",
   "terminal.integrated.fontSize": 12,
@@ -151,33 +148,4 @@
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.settings.enableNaturalLanguageSearch": false,
-  "yaml.customTags": [
-    "!And",
-    "!And sequence",
-    "!If",
-    "!If sequence",
-    "!Not",
-    "!Not sequence",
-    "!Equals",
-    "!Equals sequence",
-    "!Or",
-    "!Or sequence",
-    "!FindInMap",
-    "!FindInMap sequence",
-    "!Base64",
-    "!Join",
-    "!Join sequence",
-    "!Cidr",
-    "!Ref",
-    "!Sub",
-    "!Sub sequence",
-    "!GetAtt",
-    "!GetAZs",
-    "!ImportValue",
-    "!ImportValue sequence",
-    "!Select",
-    "!Select sequence",
-    "!Split",
-    "!Split sequence"
-  ]
 }
