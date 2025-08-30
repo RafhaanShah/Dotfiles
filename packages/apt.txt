@@ -13,7 +13,8 @@ gnupg-agent
 gnupg
 nano
 ncdu
-neofetch
+nnn
+fastfetch
 pass
 pinentry-tty
 pipx

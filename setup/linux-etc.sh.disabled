@@ -30,11 +30,6 @@ else
     source "${HOME}/.asdf/asdf.sh" && asdf update
 fi
 
-# fff: file manager
-# https://github.com/dylanaraps/fff
-[ ! -d "/tmp/fff" ] && git clone 'https://github.com/dylanaraps/fff.git' "/tmp/fff"
-(cd "/tmp/fff" && sudo make install)
-rm -rf "/tmp/fff"
 
 # lazygit: git ui
 # https://github.com/jesseduffield/lazygit

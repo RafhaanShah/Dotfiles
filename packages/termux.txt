@@ -13,11 +13,12 @@ fortune
 fzf
 git
 gnupg
-neofetch
+fastfetch
 lsd
 micro
 ncdu
 nmap
+nnn
 nodejs
 ripgrep
 openssh

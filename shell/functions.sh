@@ -370,10 +370,22 @@ apk-sign() {
 # exec into a docker container
 dk-exec() { docker exec -it "${1?Container name not set}" "${2:-sh}"; }
 
-# file manager: https://github.com/dylanaraps/fff
-f() {
-    fff "$@"
-    cd "$(\cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || return
+# file manager: https://github.com/jarun/nnn/
+# https://github.com/jarun/nnn/blob/master/misc/quitcd/quitcd.bash_sh_zsh
+n() {
+    [ "${NNNLVL:-0}" -eq 0 ] || {
+        echo "nnn is already running"
+        return
+    }
+
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    command nnn "$@"
+
+    [ ! -f "$NNN_TMPFILE" ] || {
+        # shellcheck disable=SC1090
+        . "$NNN_TMPFILE"
+        rm -f -- "$NNN_TMPFILE" >/dev/null
+    }
 }
 
 # scrcpy: android screen mirror
