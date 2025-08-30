@@ -10,14 +10,6 @@ brew "little-cms2"
 brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Core application library for C
 brew "glib"
 # OpenType text shaping engine
@@ -26,12 +18,16 @@ brew "harfbuzz"
 brew "openjdk"
 # Tool for reverse engineering 3rd party, closed, binary Android apps
 brew "apktool"
+# Library for command-line editing
+brew "readline"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
 # Bastard Tetris
 brew "bastet"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # GNU binary tools for native development
@@ -46,6 +42,8 @@ brew "diffutils"
 brew "dua-cli"
 # Program that can automate interactive applications
 brew "expect"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Validating, recursive, caching DNS resolver
@@ -68,8 +66,6 @@ brew "findutils"
 brew "fortune"
 # CLI program that accepts piped input and presents files for selection
 brew "fpp"
-# Platform built on V8 to build network applications
-brew "node"
 # Terminal JSON viewer
 brew "fx"
 # Command-line fuzzy finder written in Go
@@ -96,6 +92,12 @@ brew "grep"
 brew "gzip"
 # Lazier way to manage everything docker
 brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Command-line interface for SQLite
+brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Pager program similar to more
 brew "less"
 # Version of the SSL/TLS protocol forked from OpenSSL
@@ -118,6 +120,10 @@ brew "mise"
 brew "nano"
 # Space Invaders in the terminal
 brew "ninvaders"
+# Tiny, lightning fast, feature-packed file manager
+brew "nnn"
+# Platform built on V8 to build network applications
+brew "node"
 # Classic snake game with textual interface
 brew "nsnake"
 # Renders an animated, color, ANSI-text loop of the Poptart Cat
@@ -160,8 +166,6 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# A simple terminal UI for git commands, written in Go
-brew "jesseduffield/lazygit/lazygit"
 # A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/Kube/SMB/WebDAV
 brew "veeso/termscp/termscp"
 # Desktop client for GitHub repositories
@@ -176,10 +180,10 @@ cask "itsycal"
 cask "jordanbaird-ice"
 # Customise mouse behavior
 cask "linearmouse"
+# Simple application that will prevent iTunes or Apple Music from launching
+cask "notunes"
 # Finder Toolbar app to open the current directory in Terminal or Editor
 cask "openinterminal"
-# Image viewer
-cask "qview"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Screenshot measurement and annotation tool
