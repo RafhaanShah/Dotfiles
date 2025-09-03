@@ -8,7 +8,7 @@ wslvar() {
     if [ -z "${value}" ]; then
         return 1
     else
-        echo "$value"
+        printf '%s\n' "${value}" | tr -d '\r'
     fi
 }
 
