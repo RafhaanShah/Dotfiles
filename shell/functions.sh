@@ -390,11 +390,11 @@ n() {
 
 # scrcpy: android screen mirror
 scr-record() {
-    scrcpy --max-size=1080 --max-fps=20 --video-bit-rate 2M --video-codec=h265 --no-playback --no-window --no-clipboard-autosync --no-control --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
+    scrcpy --max-size=1080 --max-fps=20 --video-bit-rate 2M --video-codec=h265 --no-playback --no-window --no-clipboard-autosync --no-control --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
 }
 
 scr-mirror() {
-    scrcpy --max-size=1080 --max-fps=20 --video-bit-rate 2M --video-codec=h265 --no-audio --no-mouse-hover --turn-screen-off --stay-awake --always-on-top
+    scrcpy --max-size=1080 --max-fps=20 --video-bit-rate 2M --video-codec=h265 --no-audio --no-mouse-hover --show-touches --turn-screen-off --stay-awake --always-on-top
 }
 
 ### misc
