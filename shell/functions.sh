@@ -278,6 +278,36 @@ adb-dark-mode() {
     esac
 }
 
+# sets show touches on or off
+adb-touches() {
+    case "$1" in
+        on)
+            adb shell "settings put system show_touches 1"
+            ;;
+        off)
+            adb shell "settings put system show_touches 0"
+            ;;
+        *)
+            echo "Usage adb-touches [on/off]"
+            ;;
+    esac
+}
+
+# sets show touches on or off
+adb-button-nav() {
+    case "$1" in
+        on)
+            adb shell "cmd overlay enable com.android.internal.systemui.navbar.threebutton"
+            ;;
+        off)
+            adb shell "cmd overlay enable com.android.internal.systemui.navbar.gestural"
+            ;;
+        *)
+            echo "Usage adb-button-nav [on/off]"
+            ;;
+    esac
+}
+
 # kill an app
 adb-kill() {
     adb shell pkill -f "${1?Package name not set}"
@@ -390,7 +420,7 @@ n() {
 
 # scrcpy: android screen mirror
 scr-record() {
-    scrcpy --max-size=1080 --max-fps=20 --video-bit-rate 2M --video-codec=h265 --no-playback --no-window --no-clipboard-autosync --no-control --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
+    scrcpy --max-size=1080 --max-fps=20 --video-bit-rate 2M --video-codec=h265 --no-playback --no-window --no-clipboard-autosync --show-touches --record "${1:-Recording_$(date +"%Y%m%dT%H%M%S")}.mp4"
 }
 
 scr-mirror() {
