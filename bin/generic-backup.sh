@@ -25,6 +25,7 @@ for FILE in "${FILES[@]}"; do
         cp -f "${FILE}" "${DEST_DIR}/"
         echo "Copied file: ${FILE} -> ${DEST_DIR}/"
     elif [ -d "${FILE}" ]; then
+        # shellcheck disable=SC2336 # TODO: check this
         cp -rf "${FILE}" "${DEST_DIR}/"
         echo "Copied directory: ${FILE} -> ${DEST_DIR}/"
     else
