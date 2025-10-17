@@ -178,6 +178,9 @@ alias adb-start='adb shell am broadcast'
 # adb grant a permission
 alias adb-grant='adb shell pm grant'
 
+# adb restart server
+alias adb-restart='adb kill-server && adb start-server'
+
 alias adb-remote='python3 "${DOTFILE_DIR}/bin/adb-remote-tui.py"'
 
 alias bytecode='java -jar "${HOME}/bin/Bytecode-Viewer.jar"'
