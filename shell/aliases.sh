@@ -210,7 +210,6 @@ alias bored='fcl'
 
 # fx: json processor https://github.com/antonmedv/fx
 alias json='fx'
-alias jq='json'
 
 # google
 alias goog='google'

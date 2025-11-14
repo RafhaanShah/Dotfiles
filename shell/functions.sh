@@ -440,3 +440,8 @@ google() { open "https://www.google.com/search?q=${*// /+}"; }
 
 # shows the current weather
 weather() { curl "http://wttr.in/${1:-London}"; }
+
+# compress a video with ffmpeg
+compress-video() {
+    ffmpeg -i "${1}" -vcodec libx264 -crf 20 "${1}-compressed.mp4"
+}
