@@ -445,3 +445,27 @@ weather() { curl "http://wttr.in/${1:-London}"; }
 compress-video() {
     ffmpeg -i "${1}" -vcodec libx264 -crf 20 "${1}-compressed.mp4"
 }
+
+# check tfl bus time for a given stop and bus number
+tfl_bus() {
+    local stop_name="$1"
+    local bus_no="$2"
+
+    # Fetch data
+    local data now epoch mins
+    data=$(curl -s "https://countdown.api.tfl.gov.uk/interfaces/ura/instant_V1")
+
+    # Each line is a JSON array; process with jq
+    echo "$data" |
+        jq -r --arg stop "$stop_name" --arg bus "$bus_no" '
+            select(.[1] == $stop and .[2] == $bus)
+            | .[3]
+        ' |
+        while read -r ts; do
+            now=$(date +%s)
+            epoch=$((ts / 1000))
+            mins=$(((epoch - now) / 60))
+            echo "$mins"
+        done |
+        sort -n
+}
