@@ -238,6 +238,10 @@ compdef _directories __zoxide_z __zoxide_zi
 zmodload -i zsh/complist # http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fcomplist-Module
 bindkey -M menuselect '^M' .accept-line
 
+# move the cursor left and right over words
+bindkey '^[[1;3D' backward-word  # Alt+Left
+bindkey '^[[1;3C' forward-word   # Alt+Right
+
 # post rc config
 _load_file "${DOTFILE_DIR}/shell/post_rc.sh"
 
@@ -248,3 +252,6 @@ true
 # if zsh is giving tab completion errors like:
 # (eval):1: command not found
 # then: rm ~/.zcompdump; compinit
+
+# amp
+export PATH="$HOME/.local/bin:$PATH"
