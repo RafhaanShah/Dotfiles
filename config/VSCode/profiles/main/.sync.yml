@@ -26,6 +26,7 @@ ignoredSettings:
   - "[typescriptreact]"
   - "[yaml]"
   - devmate.clickableSparkleDecorator
+  - devmate.inline.assertiveness.enable-inline-buttons-highlighted-text
   - extensions.experimental.deferredStartupFinishedActivation
   - fb.ms-remote-connections.odtypes
   - meta.global.history.enabled
@@ -38,6 +39,7 @@ ignoredSettings:
   - terminal.integrated.systemd.shouldUse
   - wasabi.interactiveDevelopment.disableIntroMessage
   - wasabi.interactiveDevelopment.introMessageNumTimesShown
+  - window.title
   - yaml.customTags
 resources:
   - keybindings
