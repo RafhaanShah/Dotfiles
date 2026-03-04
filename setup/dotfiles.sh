@@ -18,6 +18,7 @@ BACKUP_DIR="${DOTFILE_DIR}/old"
 SYM_FILES=(
     .bashrc
     .zshrc
+    .tmux.conf
 )
 
 # list of files to copy so they can be modified as needed

@@ -110,16 +110,16 @@ _configure_autosuggestions() {
 _load_completions() {
     zinit ice blockf # block the traditional method of adding completions, zinit uses own method
     zinit light zsh-users/zsh-completions
-    
+
     zinit ice as"completion" id-as"_cht.sh" # needs to be _command to work
     zinit snippet 'https://cheat.sh/:zsh'
-    
+
     zinit ice as"completion"
     zinit snippet 'OMZ::plugins/docker/completions/_docker'
-    
+
     zinit ice as"completion"
     zinit snippet 'OMZ::plugins/docker-compose/_docker-compose'
-    
+
     zinit ice as"completion"
     zinit snippet 'OMZ::plugins/pip/_pip'
 }
@@ -141,13 +141,13 @@ if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
 
     _load_completions
     _configure_autosuggestions
-    
+
     zinit ice wait lucid atload'_zsh_autosuggest_start'
     zinit light 'zsh-users/zsh-autosuggestions'
 
     zinit light 'djui/alias-tips'
     export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ - -- .. cd.. c cat cmd cls dl dk dkc fu g l ll la o open plz v view"
-    
+
     zinit light 'romkatv/gitstatus'
     _prompt_git_fast
 
@@ -252,6 +252,3 @@ true
 # if zsh is giving tab completion errors like:
 # (eval):1: command not found
 # then: rm ~/.zcompdump; compinit
-
-# amp
-export PATH="$HOME/.local/bin:$PATH"
