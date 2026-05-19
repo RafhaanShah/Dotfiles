@@ -17,4 +17,15 @@ alias open='wslview'
 
 # windows HOME directory
 WHOME="$(wslpath "$(wslvar USERPROFILE)")"
-alias wh='cd ${WHOME}'
+alias whome='cd ${WHOME}'
+alias wh='whome'
+
+# cd with windows path support
+unalias c
+c() {
+    if [[ $1 == *"\\"* ]] || [[ $1 =~ ^[a-zA-Z]: ]]; then
+        cd "$(wslpath "$1")" || return
+    else
+        cd "$@" || return
+    fi
+}
