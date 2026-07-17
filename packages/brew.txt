@@ -1,19 +1,16 @@
 tap "buo/cask-upgrade"
-tap "homebrew/command-not-found"
 tap "jesseduffield/lazygit"
 tap "veeso/termscp"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
-# New file format for still image compression
-brew "jpeg-xl"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
 # Core application library for C
 brew "glib"
 # OpenType text shaping engine
 brew "harfbuzz"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
 # Development kit for the Java programming language
 brew "openjdk"
 # Tool for reverse engineering 3rd party, closed, binary Android apps
@@ -35,7 +32,7 @@ brew "binutils"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
 # GNU File, Shell, and Text utilities
-brew "coreutils"
+brew "coreutils", link: false
 # File comparison utilities
 brew "diffutils"
 # View disk space usage and delete unwanted data, fast
@@ -46,17 +43,7 @@ brew "expect"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# Image processing and image analysis library
-brew "leptonica"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Utility to determine file types
 brew "file-formula"
@@ -66,8 +53,6 @@ brew "findutils"
 brew "fortune"
 # CLI program that accepts piped input and presents files for selection
 brew "fpp"
-# Terminal JSON viewer
-brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GNU awk utility
@@ -84,22 +69,30 @@ brew "gnu-sed"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
-# GNU Pretty Good Privacy (PGP) package
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Popular GNU data compression program
 brew "gzip"
+# New file format for still image compression
+brew "jpeg-xl"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Command-line interface for SQLite
 brew "sqlite"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
+# Image processing and image analysis library
+brew "leptonica"
 # Pager program similar to more
 brew "less"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
 # Version of the SSL/TLS protocol forked from OpenSSL
 brew "libressl"
 # Curses-based tool for viewing and analyzing log files
@@ -120,9 +113,11 @@ brew "mise"
 brew "nano"
 # Space Invaders in the terminal
 brew "ninvaders"
+# Port scanning utility for large networks
+brew "nmap"
 # Tiny, lightning fast, feature-packed file manager
 brew "nnn"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Classic snake game with textual interface
 brew "nsnake"
@@ -138,6 +133,8 @@ brew "pinentry-mac"
 brew "pipx"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -154,8 +151,14 @@ brew "sl"
 brew "spaceinvaders-go"
 # Spotify daemon
 brew "spotifyd"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
 # Executes a program periodically, showing output fullscreen
@@ -166,12 +169,14 @@ brew "wget"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# A feature rich terminal file transfer and explorer with support for SCP/SFTP/FTP/S3/Kube/SMB/WebDAV
-brew "veeso/termscp/termscp"
+# Display management tool
+cask "betterdisplay"
 # Desktop client for GitHub repositories
 cask "github"
 # Desktop automation application
 cask "hammerspoon"
+# Free and open-source media player
+cask "iina"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar calendar
@@ -180,10 +185,14 @@ cask "itsycal"
 cask "jordanbaird-ice"
 # Customise mouse behavior
 cask "linearmouse"
-# Simple application that will prevent iTunes or Apple Music from launching
-cask "notunes"
+# Shows the next meeting in the menu bar
+cask "meetingbar"
+# Music app blocker utility
+cask "music-decoy"
 # Finder Toolbar app to open the current directory in Terminal or Editor
 cask "openinterminal"
+# Image viewer
+cask "qview"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Screenshot measurement and annotation tool
@@ -195,5 +204,6 @@ cask "textmate"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 mas "Amphetamine", id: 937984704
+mas "Discovery", id: 1381004916
+mas "Equinox", id: 1591510203
 mas "Say No to Notch", id: 1639306886
-mas "The Unarchiver", id: 425424353

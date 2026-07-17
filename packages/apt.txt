@@ -11,6 +11,7 @@ fzf
 git
 gnupg-agent
 gnupg
+jq
 nano
 ncdu
 nnn

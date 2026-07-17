@@ -50,7 +50,7 @@ sudo mv micro "/usr/bin"
 # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 # sudo apt-getupdate && sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 # sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
-# sudo curl -L "https://github.com/docker/compose/releases/download/$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | fx .name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# sudo curl -L "https://github.com/docker/compose/releases/download/$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 # sudo chmod +x "/usr/local/bin/docker-compose"
 
 # hack nerd font, patched with glyphs

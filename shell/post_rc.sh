@@ -15,16 +15,6 @@ if _is_macos; then
     unset GNU_DIR GNU_TOOL
 fi
 
-# fx: json processor
-# https://github.com/antonmedv/fx
-# TODO: check if there's a conflict
-if _is_macos && _command_exists "fx"; then
-    # shellcheck source=/dev/null
-    _is_bash && source <(fx --comp bash)
-    # shellcheck source=/dev/null
-    _is_zsh && source <(fx --comp zsh)
-fi
-
 # iTerm2 shell integration
 # https://iterm2.com/documentation-shell-integration.html
 if [[ ${TERM_PROGRAM} == "iTerm.app" ]]; then

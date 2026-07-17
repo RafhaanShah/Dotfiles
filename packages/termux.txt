@@ -14,6 +14,7 @@ fzf
 git
 gnupg
 fastfetch
+jq
 lsd
 micro
 ncdu

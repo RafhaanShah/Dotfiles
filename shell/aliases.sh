@@ -208,9 +208,6 @@ alias dk-ui='docker-ui'
 alias fcl='fortune | cowsay | lolcat'
 alias bored='fcl'
 
-# fx: json processor https://github.com/antonmedv/fx
-alias json='fx'
-
 # google
 alias goog='google'
 
