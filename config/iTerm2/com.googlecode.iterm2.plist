@@ -5,17 +5,19 @@
 	<key>AIFeatureFunctionCalling</key>
 	<true/>
 	<key>AIFeatureHostedCodeInterpeter</key>
-	<true/>
+	<false/>
 	<key>AIFeatureHostedFileSearch</key>
-	<true/>
+	<false/>
 	<key>AIFeatureHostedWebSearch</key>
-	<true/>
+	<false/>
 	<key>AIFeatureStreamingResponses</key>
 	<true/>
 	<key>AITermAPI</key>
-	<integer>2</integer>
+	<integer>5</integer>
 	<key>AIVectorStore</key>
 	<integer>0</integer>
+	<key>AIVendor</key>
+	<integer>3</integer>
 	<key>AboutToPasteTabsWithCancel</key>
 	<true/>
 	<key>AboutToPasteTabsWithCancel_selection</key>
@@ -23,31 +25,23 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<false/>
 	<key>AiMaxTokens</key>
-	<integer>1050000</integer>
+	<integer>131072</integer>
 	<key>AiModel</key>
-	<string>gpt-5.5</string>
+	<string>llama3.3:latest</string>
 	<key>AiResponseMaxTokens</key>
-	<integer>128000</integer>
+	<integer>131072</integer>
 	<key>AitermURL</key>
-	<string>https://api.openai.com/v1/responses</string>
+	<string>http://localhost:11434/api/chat</string>
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AutoCommandHistory</key>
 	<false/>
-	<key>AutoHideTmuxClientSession</key>
-	<true/>
 	<key>BootstrapDaemon</key>
 	<false/>
-	<key>ClosingTmuxTabKillsTmuxWindows</key>
-	<true/>
-	<key>ClosingTmuxTabKillsTmuxWindows_selection</key>
-	<integer>1</integer>
-	<key>ClosingTmuxWindowKillsTmuxWindows</key>
-	<true/>
-	<key>ClosingTmuxWindowKillsTmuxWindows_selection</key>
-	<integer>2</integer>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>ConvertDosNewlines</key>
 	<true/>
 	<key>CopySelection</key>
@@ -432,8 +426,6 @@
 	<false/>
 	<key>DoubleClickPerformsSmartSelection</key>
 	<false/>
-	<key>EnableAPIServer</key>
-	<true/>
 	<key>EnableDivisionView</key>
 	<false/>
 	<key>EscapeShellCharsWithBackslash</key>
@@ -461,8 +453,6 @@
 	</dict>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
-	<key>HideMenuBarInFullscreen</key>
-	<false/>
 	<key>HideTab</key>
 	<false/>
 	<key>HideTabNumber</key>
@@ -471,8 +461,6 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NeverBlockSystemShutdown</key>
-	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -487,15 +475,11 @@
 			<key>AWDS Tab Directory</key>
 			<string></string>
 			<key>AWDS Tab Option</key>
-			<string>Recycle</string>
+			<string>No</string>
 			<key>AWDS Window Directory</key>
 			<string></string>
 			<key>AWDS Window Option</key>
 			<string>No</string>
-			<key>Allow Change Cursor Blink</key>
-			<true/>
-			<key>Allow Title Reporting</key>
-			<true/>
 			<key>Allow Title Setting</key>
 			<true/>
 			<key>Ambiguous Double Width</key>
@@ -708,8 +692,6 @@
 				<key>Red Component</key>
 				<real>0.97647058963775635</real>
 			</dict>
-			<key>Application Keypad Allowed</key>
-			<true/>
 			<key>BM Growl</key>
 			<true/>
 			<key>Background Color</key>
@@ -992,19 +974,6 @@
 					<key>Text</key>
 					<string>0x1b 0x7f</string>
 				</dict>
-				<key>0xd-0x20000-0x24</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Apply Mode</key>
-					<integer>0</integer>
-					<key>Escaping</key>
-					<integer>2</integer>
-					<key>Text</key>
-					<string>0x1b 0x0d</string>
-					<key>Version</key>
-					<integer>2</integer>
-				</dict>
 				<key>0xf702-0x280000</key>
 				<dict>
 					<key>Action</key>
@@ -1074,8 +1043,6 @@
 			<integer>0</integer>
 			<key>Mouse Reporting</key>
 			<true/>
-			<key>Movement Keys Scroll Outside Interactive Apps</key>
-			<true/>
 			<key>Name</key>
 			<string>Raf</string>
 			<key>Non Ascii Font</key>
@@ -1089,27 +1056,21 @@
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
-			<integer>2</integer>
-			<key>Place Prompt at First Column</key>
-			<true/>
+			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
-			<key>Prompt Path Click Opens Navigator</key>
-			<true/>
-			<key>Right Option Key Changeable</key>
-			<true/>
 			<key>Right Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Rows</key>
 			<integer>45</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>10000</integer>
+			<integer>0</integer>
 			<key>Scrollback With Status Bar</key>
-			<true/>
+			<false/>
 			<key>Scrollback in Alternate Screen</key>
-			<true/>
+			<false/>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1144,14 +1105,10 @@
 			<string></string>
 			<key>Show Mark Indicators</key>
 			<false/>
-			<key>Show Offscreen Command line</key>
-			<false/>
 			<key>Show Status Bar</key>
-			<true/>
+			<false/>
 			<key>Silence Bell</key>
 			<true/>
-			<key>Smart Cursor Color</key>
-			<false/>
 			<key>Status Bar Layout</key>
 			<dict>
 				<key>advanced configuration</key>
@@ -1161,155 +1118,12 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>.SFNS-Regular 12</string>
+					<string>.AppleSystemUIFont 12</string>
 					<key>remove empty components</key>
 					<false/>
 				</dict>
 				<key>components</key>
-				<array>
-					<dict>
-						<key>class</key>
-						<string>iTermStatusBarActionMenuComponent</string>
-						<key>configuration</key>
-						<dict>
-							<key>knobs</key>
-							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-							</dict>
-							<key>layout advanced configuration dictionary value</key>
-							<dict>
-								<key>algorithm</key>
-								<integer>0</integer>
-								<key>auto-rainbow style</key>
-								<integer>0</integer>
-								<key>remove empty components</key>
-								<false/>
-							</dict>
-						</dict>
-					</dict>
-					<dict>
-						<key>class</key>
-						<string>iTermStatusBarTriggersComponent</string>
-						<key>configuration</key>
-						<dict>
-							<key>knobs</key>
-							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-							</dict>
-							<key>layout advanced configuration dictionary value</key>
-							<dict>
-								<key>algorithm</key>
-								<integer>0</integer>
-								<key>auto-rainbow style</key>
-								<integer>0</integer>
-								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
-								<key>remove empty components</key>
-								<false/>
-							</dict>
-						</dict>
-					</dict>
-					<dict>
-						<key>class</key>
-						<string>iTermStatusBarSnippetMenuComponent</string>
-						<key>configuration</key>
-						<dict>
-							<key>knobs</key>
-							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-							</dict>
-							<key>layout advanced configuration dictionary value</key>
-							<dict>
-								<key>algorithm</key>
-								<integer>0</integer>
-								<key>auto-rainbow style</key>
-								<integer>0</integer>
-								<key>font</key>
-								<string>.AppleSystemUIFont 12</string>
-								<key>remove empty components</key>
-								<false/>
-							</dict>
-						</dict>
-					</dict>
-					<dict>
-						<key>class</key>
-						<string>iTermStatusBarComposerComponent</string>
-						<key>configuration</key>
-						<dict>
-							<key>knobs</key>
-							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-							</dict>
-							<key>layout advanced configuration dictionary value</key>
-							<dict>
-								<key>algorithm</key>
-								<integer>0</integer>
-								<key>auto-rainbow style</key>
-								<integer>0</integer>
-								<key>remove empty components</key>
-								<false/>
-							</dict>
-						</dict>
-					</dict>
-					<dict>
-						<key>class</key>
-						<string>iTermStatusBarFilterComponent</string>
-						<key>configuration</key>
-						<dict>
-							<key>knobs</key>
-							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-							</dict>
-							<key>layout advanced configuration dictionary value</key>
-							<dict>
-								<key>algorithm</key>
-								<integer>0</integer>
-								<key>auto-rainbow style</key>
-								<integer>0</integer>
-								<key>remove empty components</key>
-								<false/>
-							</dict>
-						</dict>
-					</dict>
-					<dict>
-						<key>class</key>
-						<string>iTermStatusBarSearchFieldComponent</string>
-						<key>configuration</key>
-						<dict>
-							<key>knobs</key>
-							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-							</dict>
-							<key>layout advanced configuration dictionary value</key>
-							<dict>
-								<key>algorithm</key>
-								<integer>0</integer>
-								<key>auto-rainbow style</key>
-								<integer>0</integer>
-								<key>remove empty components</key>
-								<false/>
-							</dict>
-						</dict>
-					</dict>
-				</array>
+				<array/>
 			</dict>
 			<key>Sync Title</key>
 			<false/>
@@ -1332,10 +1146,6 @@
 			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
 			<integer>4</integer>
-			<key>Timestamps Style</key>
-			<integer>1</integer>
-			<key>Timestamps Visible</key>
-			<false/>
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
@@ -1356,7 +1166,7 @@
 			<key>Unicode Normalization</key>
 			<integer>0</integer>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
@@ -1388,11 +1198,9 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenFileInNewWindows</key>
-	<true/>
+	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<true/>
-	<key>OpenTmuxWindowsIn</key>
-	<integer>2</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PasteSpecialRegex</key>
@@ -1439,7 +1247,7 @@
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>
-	<true/>
+	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>SavePasteHistory</key>
@@ -1449,19 +1257,13 @@
 	<key>SeparateWindowTitlePerTab</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
-	<key>ShowPaneTitlesEvenIfOnlyOnePane</key>
-	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.32810561784351144</real>
-	<key>SshIntegrationForURLs</key>
-	<true/>
-	<key>StatusBarPosition</key>
-	<integer>1</integer>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TabStyleWithAutomaticOption</key>
@@ -1474,30 +1276,16 @@
 	<true/>
 	<key>ThreeFingerEmulates</key>
 	<true/>
-	<key>TmuxIncludeClientNameInWindowTitle</key>
-	<false/>
-	<key>TmuxSyncClipboard</key>
-	<true/>
-	<key>TmuxUnpauseAutomatically</key>
-	<true/>
-	<key>TmuxUsesDedicatedProfile</key>
-	<false/>
 	<key>ToolbeltTools</key>
 	<array>
 		<string>Profiles</string>
 	</array>
 	<key>UseBorder</key>
 	<false/>
-	<key>UseTmuxStatusBar</key>
-	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WindowNumber</key>
 	<false/>
-	<key>WindowPlacement</key>
-	<integer>3</integer>
-	<key>WrapDroppedFilenamesInQuotesWhenPasting</key>
-	<true/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
